@@ -636,8 +636,8 @@ export default function HomePage() {
 
         <WaveDivider
           fill="oklch(0.18 0.05 270)"
-          path="M0,60 C480,100 960,20 1440,60 L1440,90 L0,90 Z"
-          height={90}
+          path="M0,33 C480,55 960,11 1440,33 L1440,50 L0,50 Z"
+          height={50}
         />
       </section>
 
