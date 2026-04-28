@@ -1,0 +1,22 @@
+{
+  "overview": "A modern, fully responsive 8-page website for Shapetech Solutions with an admin dashboard for content management. Features fluid design with curved sections, dark navy and teal brand colors, and full PDF copy integration across all pages.",
+  "features": [
+    "8-page website: Home, About, Industries, Shapes, Solutions, Partners, Blog, Contact",
+    "Admin dashboard with 14 tabs for content management",
+    "Brand-accurate dark navy and teal color scheme",
+    "Fluid, curved section design with organic shapes",
+    "Fully responsive across mobile, tablet, and desktop",
+    "Dynamic hero section with animations",
+    "Contact form with backend storage",
+    "Blog with post listing and detail views"
+  ],
+  "category": "business",
+  "tags": [
+    "website",
+    "corporate",
+    "admin-dashboard",
+    "responsive",
+    "content-management"
+  ],
+  "last_updated": "2026-04-24T21:57:16.756Z"
+}

@@ -1,0 +1,2 @@
+// Re-export the shadcn button — added here for convenient named import
+export { Button, buttonVariants } from "@/components/ui/button";

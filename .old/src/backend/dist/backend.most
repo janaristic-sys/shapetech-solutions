@@ -1,0 +1,205 @@
+// Version: 1.0.0
+type AboutContent__162008719 =
+  {description : Text; mission : Text; vision : Text};
+type BlogPost__240102757 =
+  {
+    author : Text;
+    content : Text;
+    date : Timestamp__622751799;
+    id : Id__614397628;
+    published : Bool;
+    slug : Text;
+    summary : Text;
+    tags : [Text];
+    title : Text
+  };
+type Client__698312355 =
+  {
+    id : Id__614397628;
+    logoUrl : Url__276654976;
+    name : Text;
+    sortOrder : Nat;
+    websiteUrl : Url__276654976
+  };
+type ContactSubmission__349920452 =
+  {
+    email : Text;
+    id : Id__614397628;
+    message : Text;
+    name : Text;
+    timestamp : Timestamp__622751799
+  };
+type FaqItem__599334758 =
+  {answer : Text; id : Id__614397628; question : Text; sortOrder : Nat};
+type HeroContent__1036461411 =
+  {
+    ctaLink : Text;
+    ctaText : Text;
+    headline : Text;
+    secondaryCtaLink : Text;
+    secondaryCtaText : Text;
+    subheading : Text
+  };
+type Id__389469852 = Nat;
+type Id__614397628 = Id__389469852;
+type Industry__201723378 =
+  {
+    description : Text;
+    iconName : Text;
+    id : Id__614397628;
+    sortOrder : Nat;
+    title : Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Partner__457157119 =
+  {
+    description : Text;
+    id : Id__614397628;
+    logoUrl : Url__276654976;
+    name : Text;
+    sortOrder : Nat;
+    websiteUrl : Url__276654976
+  };
+type PortfolioItem__677227695 =
+  {
+    description : Text;
+    id : Id__614397628;
+    imageUrl : Url__276654976;
+    link : Url__276654976;
+    sortOrder : Nat;
+    tags : [Text];
+    title : Text
+  };
+type Shape__209583718 =
+  {
+    description : Text;
+    icon : Text;
+    id : Id__614397628;
+    sortOrder : Nat;
+    title : Text
+  };
+type SiteSettings__523338558 =
+  {
+    addressLine1 : Text;
+    addressLine2 : Text;
+    companyName : Text;
+    email : Text;
+    phone : Text;
+    socialLinks : SocialLinks__666314053;
+    tagline : Text
+  };
+type SocialLinks__666314053 =
+  {
+    facebook : Text;
+    github : Text;
+    instagram : Text;
+    linkedin : Text;
+    twitter : Text
+  };
+type Solution__551178048 =
+  {
+    description : Text;
+    features : [Text];
+    icon : Text;
+    id : Id__614397628;
+    sortOrder : Nat;
+    title : Text
+  };
+type TeamMember__1012942943 =
+  {
+    bio : Text;
+    id : Id__614397628;
+    name : Text;
+    photoUrl : Url__276654976;
+    role : Text;
+    sortOrder : Nat
+  };
+type Testimonial__126880530 =
+  {
+    company : Text;
+    id : Id__614397628;
+    name : Text;
+    quote : Text;
+    rating : Nat;
+    sortOrder : Nat;
+    title : Text
+  };
+type Timestamp__301639476 = Int;
+type Timestamp__622751799 = Timestamp__301639476;
+type Url__276654976 = Url__416326484;
+type Url__416326484 = Text;
+actor {
+  stable about : {var data : ?AboutContent__162008719};
+  stable admins : {var primary : Principal};
+  stable blog :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?BlogPost__240102757]];
+      var elementIndex : Nat__490723111
+    };
+  stable clients :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Client__698312355]];
+      var elementIndex : Nat__490723111
+    };
+  stable contacts :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ContactSubmission__349920452]];
+      var elementIndex : Nat__490723111
+    };
+  stable faq :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?FaqItem__599334758]];
+      var elementIndex : Nat__490723111
+    };
+  stable hero : {var data : ?HeroContent__1036461411};
+  stable idCounter : {var value : Nat};
+  stable industries :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Industry__201723378]];
+      var elementIndex : Nat__490723111
+    };
+  stable partners :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Partner__457157119]];
+      var elementIndex : Nat__490723111
+    };
+  stable portfolio :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?PortfolioItem__677227695]];
+      var elementIndex : Nat__490723111
+    };
+  stable seeded : {var value : Bool};
+  stable settings : {var data : ?SiteSettings__523338558};
+  stable shapes :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Shape__209583718]];
+      var elementIndex : Nat__490723111
+    };
+  stable solutions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Solution__551178048]];
+      var elementIndex : Nat__490723111
+    };
+  stable team :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?TeamMember__1012942943]];
+      var elementIndex : Nat__490723111
+    };
+  stable testimonials :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Testimonial__126880530]];
+      var elementIndex : Nat__490723111
+    }
+};

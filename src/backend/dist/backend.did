@@ -1,0 +1,282 @@
+type Url = text;
+type Timestamp = int;
+type TestimonialInput = 
+ record {
+   company: text;
+   name: text;
+   quote: text;
+   rating: nat;
+   sortOrder: nat;
+   title: text;
+ };
+type Testimonial = 
+ record {
+   company: text;
+   id: Id;
+   name: text;
+   quote: text;
+   rating: nat;
+   sortOrder: nat;
+   title: text;
+ };
+type TeamMemberInput = 
+ record {
+   bio: text;
+   name: text;
+   photoUrl: Url;
+   role: text;
+   sortOrder: nat;
+ };
+type TeamMember = 
+ record {
+   bio: text;
+   id: Id;
+   name: text;
+   photoUrl: Url;
+   role: text;
+   sortOrder: nat;
+ };
+type SolutionInput = 
+ record {
+   description: text;
+   features: vec text;
+   icon: text;
+   sortOrder: nat;
+   title: text;
+ };
+type Solution = 
+ record {
+   description: text;
+   features: vec text;
+   icon: text;
+   id: Id;
+   sortOrder: nat;
+   title: text;
+ };
+type SocialLinks = 
+ record {
+   facebook: text;
+   github: text;
+   instagram: text;
+   linkedin: text;
+   twitter: text;
+ };
+type SiteSettings = 
+ record {
+   addressLine1: text;
+   addressLine2: text;
+   companyName: text;
+   email: text;
+   phone: text;
+   socialLinks: SocialLinks;
+   tagline: text;
+ };
+type ShapeInput = 
+ record {
+   description: text;
+   icon: text;
+   sortOrder: nat;
+   title: text;
+ };
+type Shape = 
+ record {
+   description: text;
+   icon: text;
+   id: Id;
+   sortOrder: nat;
+   title: text;
+ };
+type PortfolioItem = 
+ record {
+   description: text;
+   id: Id;
+   imageUrl: Url;
+   link: Url;
+   sortOrder: nat;
+   tags: vec text;
+   title: text;
+ };
+type PortfolioInput = 
+ record {
+   description: text;
+   imageUrl: Url;
+   link: Url;
+   sortOrder: nat;
+   tags: vec text;
+   title: text;
+ };
+type PartnerInput = 
+ record {
+   description: text;
+   logoUrl: Url;
+   name: text;
+   sortOrder: nat;
+   websiteUrl: Url;
+ };
+type Partner = 
+ record {
+   description: text;
+   id: Id;
+   logoUrl: Url;
+   name: text;
+   sortOrder: nat;
+   websiteUrl: Url;
+ };
+type IndustryInput = 
+ record {
+   description: text;
+   iconName: text;
+   sortOrder: nat;
+   title: text;
+ };
+type Industry = 
+ record {
+   description: text;
+   iconName: text;
+   id: Id;
+   sortOrder: nat;
+   title: text;
+ };
+type Id = nat;
+type HeroContent = 
+ record {
+   ctaLink: text;
+   ctaText: text;
+   headline: text;
+   secondaryCtaLink: text;
+   secondaryCtaText: text;
+   subheading: text;
+ };
+type FaqItem = 
+ record {
+   answer: text;
+   id: Id;
+   question: text;
+   sortOrder: nat;
+ };
+type FaqInput = 
+ record {
+   answer: text;
+   question: text;
+   sortOrder: nat;
+ };
+type ContactSubmission = 
+ record {
+   email: text;
+   id: Id;
+   message: text;
+   name: text;
+   timestamp: Timestamp;
+ };
+type ContactInput = 
+ record {
+   email: text;
+   message: text;
+   name: text;
+ };
+type ClientInput = 
+ record {
+   logoUrl: Url;
+   name: text;
+   sortOrder: nat;
+   websiteUrl: Url;
+ };
+type Client = 
+ record {
+   id: Id;
+   logoUrl: Url;
+   name: text;
+   sortOrder: nat;
+   websiteUrl: Url;
+ };
+type BlogPostInput = 
+ record {
+   author: text;
+   content: text;
+   date: Timestamp;
+   published: bool;
+   slug: text;
+   summary: text;
+   tags: vec text;
+   title: text;
+ };
+type BlogPost = 
+ record {
+   author: text;
+   content: text;
+   date: Timestamp;
+   id: Id;
+   published: bool;
+   slug: text;
+   summary: text;
+   tags: vec text;
+   title: text;
+ };
+type AdminResult = 
+ variant {
+   notFound;
+   ok;
+   unauthorized;
+ };
+type AboutContent = 
+ record {
+   description: text;
+   mission: text;
+   vision: text;
+ };
+service : {
+  addBlogPost: (input: BlogPostInput) -> (AdminResult);
+  addClient: (input: ClientInput) -> (AdminResult);
+  addFaqItem: (input: FaqInput) -> (AdminResult);
+  addIndustry: (input: IndustryInput) -> (AdminResult);
+  addPartner: (input: PartnerInput) -> (AdminResult);
+  addPortfolioItem: (input: PortfolioInput) -> (AdminResult);
+  addShape: (input: ShapeInput) -> (AdminResult);
+  addSolution: (input: SolutionInput) -> (AdminResult);
+  addTeamMember: (input: TeamMemberInput) -> (AdminResult);
+  addTestimonial: (input: TestimonialInput) -> (AdminResult);
+  deleteBlogPost: (id: Id) -> (AdminResult);
+  deleteClient: (id: Id) -> (AdminResult);
+  deleteContactSubmission: (id: Id) -> (AdminResult);
+  deleteFaqItem: (id: Id) -> (AdminResult);
+  deleteIndustry: (id: Id) -> (AdminResult);
+  deletePartner: (id: Id) -> (AdminResult);
+  deletePortfolioItem: (id: Id) -> (AdminResult);
+  deleteShape: (id: Id) -> (AdminResult);
+  deleteSolution: (id: Id) -> (AdminResult);
+  deleteTeamMember: (id: Id) -> (AdminResult);
+  deleteTestimonial: (id: Id) -> (AdminResult);
+  getAbout: () -> (AboutContent) query;
+  getAdmin: () -> (principal) query;
+  getBlogPost: (id: Id) -> (opt BlogPost) query;
+  getBlogPostBySlug: (slug: text) -> (opt BlogPost) query;
+  getHero: () -> (HeroContent) query;
+  getSettings: () -> (SiteSettings) query;
+  listBlogPosts: () -> (vec BlogPost) query;
+  listClients: () -> (vec Client) query;
+  listContactSubmissions: () -> (vec ContactSubmission);
+  listFaq: () -> (vec FaqItem) query;
+  listIndustries: () -> (vec Industry) query;
+  listPartners: () -> (vec Partner) query;
+  listPortfolio: () -> (vec PortfolioItem) query;
+  listPublishedBlogPosts: () -> (vec BlogPost) query;
+  listShapes: () -> (vec Shape) query;
+  listSolutions: () -> (vec Solution) query;
+  listTeam: () -> (vec TeamMember) query;
+  listTestimonials: () -> (vec Testimonial) query;
+  setAdmin: (newAdmin: principal) -> (AdminResult);
+  submitContact: (input: ContactInput) -> (bool);
+  updateAbout: (input: AboutContent) -> (AdminResult);
+  updateBlogPost: (id: Id, input: BlogPostInput) -> (AdminResult);
+  updateClient: (id: Id, input: ClientInput) -> (AdminResult);
+  updateFaqItem: (id: Id, input: FaqInput) -> (AdminResult);
+  updateHero: (input: HeroContent) -> (AdminResult);
+  updateIndustry: (id: Id, input: IndustryInput) -> (AdminResult);
+  updatePartner: (id: Id, input: PartnerInput) -> (AdminResult);
+  updatePortfolioItem: (id: Id, input: PortfolioInput) -> (AdminResult);
+  updateSettings: (input: SiteSettings) -> (AdminResult);
+  updateShape: (id: Id, input: ShapeInput) -> (AdminResult);
+  updateSolution: (id: Id, input: SolutionInput) -> (AdminResult);
+  updateTeamMember: (id: Id, input: TeamMemberInput) -> (AdminResult);
+  updateTestimonial: (id: Id, input: TestimonialInput) -> (AdminResult);
+}
