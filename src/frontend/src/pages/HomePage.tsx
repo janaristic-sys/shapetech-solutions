@@ -611,7 +611,7 @@ export default function HomePage() {
             {/* Stats row */}
             <div className="flex items-center justify-center gap-10 pt-4">
               {[
-                { value: "20+", label: "Team Members" },
+                { value: "50+", label: "Team Members" },
                 { value: "50+", label: "Projects Delivered" },
                 { value: "2", label: "Global Offices" },
               ].map((stat, i) => (

@@ -43,10 +43,10 @@ interface ValueItem {
 // Static data
 // ---------------------------------------------------------------------------
 const STATS: StatItem[] = [
-  { value: "20+", label: "International Team" },
+  { value: "50+", label: "International Team" },
   { value: "50+", label: "Projects Delivered" },
   { value: "2", label: "Global Offices" },
-  { value: "100+", label: "Years Tech Experience" },
+  { value: "10+", label: "Years Tech Experience" },
 ];
 
 const OFFICES: Office[] = [
