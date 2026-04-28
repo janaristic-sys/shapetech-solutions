@@ -696,7 +696,7 @@ export default function HomePage() {
               <div className="grid grid-cols-2 gap-4">
                 {[
                   {
-                    value: "20+",
+                    value: "50+",
                     label: "International Team",
                     sub: "Across 2 offices",
                     offset: false,
