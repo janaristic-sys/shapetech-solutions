@@ -1083,20 +1083,20 @@ export default function HomePage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.09 }}
                   data-ocid={`home.shape.${i + 1}`}
-                  className={`group card-fluid p-7 overflow-hidden relative ${i % 3 === 1 ? "mt-4" : ""}`}
+                  className="group card-fluid p-7 overflow-hidden relative flex flex-col h-full"
                 >
-                  <span className="absolute -bottom-3 -right-2 font-display font-bold text-[5rem] leading-none text-foreground/[0.04] select-none pointer-events-none">
+                  <span className="absolute -top-3 -right-2 font-display font-bold text-[5rem] leading-none text-foreground/[0.04] select-none pointer-events-none">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="absolute top-0 left-0 w-1 h-full rounded-l-2xl bg-gradient-to-b from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
-                  <div className="relative z-10">
+                  <div className="relative z-10 flex flex-col h-full">
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 text-primary mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-smooth">
                       <DynamicIcon name={shape.iconName} className="size-6" />
                     </div>
                     <h3 className="font-display font-semibold text-foreground text-base mb-2">
                       {shape.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                       {shape.description}
                     </p>
                   </div>
