@@ -559,7 +559,7 @@ export default function HomePage() {
         <HeroBlobs />
 
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-32 relative z-10">
-          <Card className="w-full min-h-[600px] bg-background/50 border-border/40 relative overflow-hidden rounded-3xl backdrop-blur-sm">
+          <Card className="w-full min-h-[600px] bg-background/50 border-none relative overflow-hidden rounded-3xl backdrop-blur-sm">
             <Spotlight
               className="-top-40 left-0 md:left-60 md:-top-20"
               fill="oklch(var(--primary))"

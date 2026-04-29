@@ -36,8 +36,11 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
         </div>
       }
     >
-      <div className={className}>
-        <spline-viewer url={scene} />
+      <div className={`${className} overflow-hidden`}>
+        <spline-viewer 
+          url={scene} 
+          style={{ width: '100%', height: 'calc(100% + 48px)', marginBottom: '-48px' }}
+        />
       </div>
     </Suspense>
   )
