@@ -1189,18 +1189,19 @@ function TeamMemberCard({
   if (variant === "compact") {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: (index % 10) * 0.05 }}
-        className="group relative flex items-center gap-4 p-4 rounded-2xl bg-card border border-border/50 hover:border-primary/30 hover:bg-card/80 transition-smooth h-full"
+        className="group relative flex items-center gap-4 p-4 rounded-3xl bg-card/40 backdrop-blur-sm border border-border/40 hover:border-primary/40 hover:bg-card/60 transition-all duration-500 h-full overflow-hidden"
       >
-        <div className="shrink-0 w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="shrink-0 w-14 h-14 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-center overflow-hidden relative z-10">
           {member.avatarUrl ? (
             <img
               src={member.avatarUrl}
               alt={member.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-500"
             />
           ) : (
             <span className="font-display font-bold text-primary text-sm">
@@ -1208,11 +1209,11 @@ function TeamMemberCard({
             </span>
           )}
         </div>
-        <div className="min-w-0">
-          <h4 className="font-display font-semibold text-foreground text-sm truncate group-hover:text-primary transition-colors">
+        <div className="min-w-0 relative z-10">
+          <h4 className="font-display font-bold text-foreground text-sm truncate group-hover:text-primary transition-colors duration-300">
             {member.name}
           </h4>
-          <p className="text-muted-foreground text-[10px] uppercase tracking-wider font-medium truncate">
+          <p className="text-muted-foreground text-[10px] uppercase tracking-widest font-semibold truncate opacity-80">
             {member.role}
           </p>
         </div>
@@ -1222,55 +1223,66 @@ function TeamMemberCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative bg-card rounded-3xl border border-border/50 hover:border-primary/30 transition-smooth overflow-hidden h-full"
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.21, 0.45, 0.32, 0.9] }}
+      className="group relative bg-card/30 backdrop-blur-md rounded-[2.5rem] border border-border/30 hover:border-primary/30 transition-all duration-700 overflow-hidden h-full"
       data-ocid={`about.team_card.${index + 1}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-      <div className="relative p-6 lg:p-8">
-        <div className="mb-6">
+      <div className="relative p-8 lg:p-10 flex flex-col h-full">
+        <div className="mb-8 relative inline-block">
+          <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           {member.avatarUrl ? (
             <img
               src={member.avatarUrl}
               alt={member.name}
-              className="w-20 h-20 rounded-2xl object-cover border-2 border-primary/20 shadow-subtle"
+              className="w-24 h-24 rounded-[2rem] object-cover border-2 border-primary/10 shadow-2xl relative z-10 group-hover:scale-105 transition-transform duration-700"
             />
           ) : (
-            <div className="w-20 h-20 rounded-2xl bg-primary/10 border-2 border-primary/20 flex items-center justify-center float-subtle">
-              <span className="font-display font-bold text-primary text-2xl">
+            <div className="w-24 h-24 rounded-[2rem] bg-primary/5 border-2 border-primary/10 flex items-center justify-center relative z-10">
+              <span className="font-display font-bold text-primary text-3xl">
                 {initials}
               </span>
             </div>
           )}
         </div>
-        <h3 className="font-display font-bold text-foreground text-xl lg:text-2xl leading-tight mb-1">
-          {member.name}
-        </h3>
-        <p className="text-primary font-medium text-sm lg:text-base mb-4">
-          {member.role}
-        </p>
+
+        <div className="mb-6">
+          <h3 className="font-display font-bold text-foreground text-2xl lg:text-3xl leading-[1.1] mb-2 group-hover:text-primary transition-colors duration-300">
+            {member.name}
+          </h3>
+          <Badge variant="outline" className="bg-primary/5 border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+            {member.role}
+          </Badge>
+        </div>
+
         {member.bio && (
-          <p className="text-muted-foreground text-sm lg:text-base leading-relaxed mb-6 line-clamp-4">
+          <p className="text-muted-foreground text-base leading-relaxed mb-8 line-clamp-4 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
             {member.bio}
           </p>
         )}
-        {member.linkedinUrl && member.linkedinUrl !== "#" && (
-          <a
-            href={member.linkedinUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${member.name} on LinkedIn`}
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-            data-ocid={`about.team_linkedin.${index + 1}`}
-          >
-            <FaLinkedinIn className="w-4 h-4" />
-            <span className="font-medium">Connect</span>
-          </a>
-        )}
+
+        <div className="mt-auto">
+          {member.linkedinUrl && member.linkedinUrl !== "#" ? (
+            <a
+              href={member.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 text-sm font-bold text-muted-foreground hover:text-primary transition-all duration-300 group/link"
+              data-ocid={`about.team_linkedin.${index + 1}`}
+            >
+              <div className="w-8 h-8 rounded-full bg-border/40 flex items-center justify-center group-hover/link:bg-primary/10 transition-colors">
+                <FaLinkedinIn className="w-3.5 h-3.5" />
+              </div>
+              <span className="uppercase tracking-widest text-[10px]">Connect on LinkedIn</span>
+            </a>
+          ) : (
+            <div className="h-8" />
+          )}
+        </div>
       </div>
     </motion.div>
   );
@@ -1282,16 +1294,21 @@ function TeamMemberCard({
 function TeamCarouselSection({ label, members, variant }: { label: string; members: TeamMember[]; variant: "detailed" | "compact" }) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const descriptions: Record<string, string> = {
+    "Leadership": "The visionary force steering Shapetech Solutions towards global innovation.",
+    "Frontend Engineering": "Crafting immersive, high-performance user interfaces with precision and flair.",
+    "Backend Engineering": "Building the robust, scalable foundations that power our complex digital systems.",
+    "Full-Stack & Core Engineering": "Bridging the gap between design and logic with versatile engineering expertise.",
+    "Creative": "Defining our visual identity and creating digital experiences that inspire.",
+    "Operations": "The engine room of our success, ensuring seamless delivery and client satisfaction.",
+  };
+
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      // Get the width of one card + gap
       const firstChild = scrollRef.current.firstElementChild as HTMLElement;
       if (!firstChild) return;
-
-      // Calculate scroll amount based on visible items
-      const itemWidth = firstChild.offsetWidth + 24; // width + gap-6 (24px)
-      const scrollAmount = itemWidth * 3; // Try to scroll 3 items if possible
-
+      const itemWidth = firstChild.offsetWidth + 24;
+      const scrollAmount = itemWidth * 2;
       scrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -1300,57 +1317,74 @@ function TeamCarouselSection({ label, members, variant }: { label: string; membe
   };
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-6 flex-1">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
-          <h3 className="font-display text-xl font-bold text-primary uppercase tracking-[0.2em] whitespace-nowrap">
+    <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+      {/* Category Info (Left) */}
+      <div className="lg:w-1/3 lg:sticky lg:top-32 space-y-8">
+        <div className="space-y-6">
+          <Badge variant="outline" className="bg-primary/5 border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
+            Department
+          </Badge>
+          <h3 className="font-display text-4xl lg:text-5xl font-bold text-foreground leading-[1.1]">
             {label}
           </h3>
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-sm">
+            {descriptions[label] || `Driving excellence and innovation within our ${label.toLowerCase()} division.`}
+          </p>
         </div>
 
-        {members.length > 3 && (
-          <div className="hidden md:flex items-center gap-2 ml-4 shrink-0">
+        {/* Navigation Arrows */}
+        {members.length > (variant === "detailed" ? 2 : 3) && (
+          <div className="flex items-center gap-4">
             <Button
               variant="outline"
               size="icon"
-              className="rounded-full w-10 h-10 border-border hover:border-primary/50 hover:text-primary transition-smooth bg-card"
+              className="rounded-full w-14 h-14 border-border/40 hover:border-primary/50 hover:text-primary transition-all duration-300 bg-card/50 backdrop-blur-sm group/btn"
               onClick={() => scroll("left")}
               aria-label={`Scroll ${label} left`}
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-6 h-6 group-hover/btn:-translate-x-0.5 transition-transform" />
             </Button>
             <Button
               variant="outline"
               size="icon"
-              className="rounded-full w-10 h-10 border-border hover:border-primary/50 hover:text-primary transition-smooth bg-card"
+              className="rounded-full w-14 h-14 border-border/40 hover:border-primary/50 hover:text-primary transition-all duration-300 bg-card/50 backdrop-blur-sm group/btn"
               onClick={() => scroll("right")}
               aria-label={`Scroll ${label} right`}
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-6 h-6 group-hover/btn:translate-x-0.5 transition-transform" />
             </Button>
           </div>
         )}
       </div>
 
-      <div
-        ref={scrollRef}
-        className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-6 px-6 lg:-mx-10 lg:px-10"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-      >
-        <style dangerouslySetInnerHTML={{
-          __html: `
-          .flex::-webkit-scrollbar { display: none; }
-        `}} />
-        {members.map((member, i) => (
-          <div
-            key={String(member.id)}
-            className="w-[85vw] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] shrink-0 snap-start"
-          >
-            <TeamMemberCard member={member} index={i} variant={variant} />
-          </div>
-        ))}
+      {/* Carousel (Right) */}
+      <div className="lg:w-2/3 w-full relative min-w-0">
+        <div
+          ref={scrollRef}
+          className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 hide-scrollbar scroll-smooth"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          <style dangerouslySetInnerHTML={{
+            __html: `
+            .hide-scrollbar::-webkit-scrollbar { display: none; }
+          `}} />
+          {members.map((member, i) => (
+            <div
+              key={String(member.id)}
+              className={variant === "detailed"
+                ? "w-[85vw] md:w-[calc(50%-12px)] shrink-0 snap-start"
+                : "w-[85vw] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] shrink-0 snap-start"
+              }
+            >
+              <TeamMemberCard member={member} index={i} variant={variant} />
+            </div>
+          ))}
+          {/* Spacer at the end for better scrolling feel */}
+          <div className="w-[10vw] shrink-0" />
+        </div>
+
+        {/* Visual Fade effect on the right for desktop */}
+        <div className="hidden lg:block absolute top-0 right-0 bottom-12 w-32 bg-gradient-to-l from-card/20 to-transparent pointer-events-none z-10" />
       </div>
     </div>
   );
@@ -1393,47 +1427,70 @@ function TeamSection() {
         bottomColor="oklch(0.22 0.05 270)"
       />
       <section
-        className="bg-card py-24 lg:py-32"
+        className="relative bg-card py-24 lg:py-40 overflow-hidden"
         data-ocid="about.team_section"
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+          <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full" />
+          <div className="absolute bottom-1/4 -left-20 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-full" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16 lg:mb-24"
+            transition={{ duration: 0.8 }}
+            className="mb-24 lg:mb-32"
           >
-            <Badge
-              variant="outline"
-              className="mb-4 border-primary/40 text-primary uppercase tracking-widest text-xs font-display"
-            >
-              Our Team
-            </Badge>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              The People Behind the Work
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-              A diverse, globally distributed crew of 40+ builders, designers,
-              and strategists dedicated to your success.
-            </p>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+              <div className="max-w-2xl">
+                <Badge
+                  variant="outline"
+                  className="mb-6 border-primary/30 text-primary uppercase tracking-[0.3em] text-[10px] font-bold px-4 py-1.5 rounded-full"
+                >
+                  Our People
+                </Badge>
+                <h2 className="font-display text-5xl lg:text-7xl font-bold text-foreground mb-8 leading-[1.05]">
+                  The Talent Behind <br />
+                  <span className="gradient-accent">ShapeTech</span>
+                </h2>
+                <p className="text-muted-foreground text-xl leading-relaxed max-w-xl">
+                  A globally distributed team of designers, engineers, and strategists
+                  committed to transforming businesses through technology.
+                </p>
+              </div>
+              <div className="hidden md:block">
+                <div className="flex items-center gap-4 text-primary font-display font-bold text-lg">
+                  <span className="text-5xl lg:text-7xl opacity-20">50+</span>
+                  <span className="uppercase tracking-widest text-[10px] opacity-60 leading-tight">
+                    International <br /> Experts
+                  </span>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           {isLoading ? (
-            <div className="space-y-24">
+            <div className="space-y-32">
               {[1, 2].map((s) => (
-                <div key={s} className="space-y-10">
-                  <Skeleton className="h-8 w-48 mx-auto" />
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                    {[1, 2, 3].map((i) => (
-                      <Skeleton key={i} className="h-40 rounded-3xl" />
+                <div key={s} className="flex flex-col lg:flex-row gap-12">
+                  <div className="lg:w-1/3 space-y-6">
+                    <Skeleton className="h-6 w-24 rounded-full" />
+                    <Skeleton className="h-12 w-48" />
+                    <Skeleton className="h-20 w-full" />
+                  </div>
+                  <div className="lg:w-2/3 flex gap-6 overflow-hidden">
+                    {[1, 2].map((i) => (
+                      <Skeleton key={i} className="h-[400px] w-[300px] shrink-0 rounded-[2.5rem]" />
                     ))}
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="space-y-16 lg:space-y-24">
+            <div className="space-y-32 lg:space-y-48">
               {sections.map((section) => (
                 <TeamCarouselSection
                   key={section.id}
