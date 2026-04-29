@@ -558,14 +558,14 @@ export default function HomePage() {
       >
         <HeroBlobs />
 
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-32 pb-0 relative z-10">
-          <div className="relative w-full min-h-[600px] lg:min-h-[800px] border-none rounded-3xl">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-32 relative z-10">
+          <Card className="w-full min-h-[600px] bg-background/5 border-none relative rounded-3xl backdrop-blur-sm overflow-visible">
             <Spotlight
               className="-top-40 left-0 md:left-60 md:-top-20"
               fill="oklch(var(--primary))"
             />
 
-            <div className="flex flex-col lg:flex-row h-full min-h-[600px] lg:min-h-[800px] overflow-visible items-center lg:items-stretch">
+            <div className="flex flex-col lg:flex-row h-full min-h-[600px] items-center overflow-visible">
               {/* Left content */}
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
@@ -631,17 +631,17 @@ export default function HomePage() {
                 </div>
               </motion.div>
 
-              {/* Right content - Enlarged and Standalone Anchored to Bottom */}
+              {/* Right content - Enlarged and Standalone */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 100 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 1.4, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="flex-1 relative w-full h-[600px] lg:h-full z-10 lg:-mr-40 overflow-visible flex items-end"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, delay: 0.2 }}
+                className="flex-1 relative w-full h-[500px] lg:h-[600px] z-10 overflow-visible"
               >
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-[140%] bg-primary/10 rounded-full blur-[140px] opacity-20 pointer-events-none" />
+                <div className="absolute inset-0 bg-primary/10 rounded-full blur-[120px] opacity-20 pointer-events-none" />
                 <SplineScene
                   scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                  className="w-full h-full transform lg:scale-[1.6] origin-bottom lg:translate-x-32 lg:translate-y-12"
+                  className="w-full h-full transform lg:scale-[1.4] origin-center"
                 />
               </motion.div>
             </div>
@@ -653,13 +653,13 @@ export default function HomePage() {
           path="M0,33 C480,55 960,11 1440,33 L1440,50 L0,50 Z"
           height={50}
         />
-      </section>
+      </section >
 
-      {/* ─── About Teaser ─────────────────────────────────────────────────── */}
-      <section
-        className="relative bg-card py-28"
-        data-ocid="home.about_section"
-      >
+    {/* ─── About Teaser ─────────────────────────────────────────────────── */ }
+    < section
+  className = "relative bg-card py-28"
+  data - ocid="home.about_section"
+    >
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -763,13 +763,13 @@ export default function HomePage() {
           fill="oklch(0.13 0.05 267)"
           path="M0,35 C720,70 1080,0 1440,35 L1440,70 L0,70 Z"
         />
-      </section>
+      </section >
 
-      {/* ─── Services (What We Do Best) ───────────────────────────────────── */}
-      <section
-        className="relative bg-background py-28"
-        data-ocid="home.services_section"
-      >
+    {/* ─── Services (What We Do Best) ───────────────────────────────────── */ }
+    < section
+  className = "relative bg-background py-28"
+  data - ocid="home.services_section"
+    >
         <div
           className="absolute inset-0 overflow-hidden opacity-[0.04]"
           aria-hidden
@@ -877,13 +877,13 @@ export default function HomePage() {
           path="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z"
           height={60}
         />
-      </section>
+      </section >
 
-      {/* ─── Clients ──────────────────────────────────────────────────────── */}
-      <section
-        className="relative bg-card py-20"
-        data-ocid="home.clients_section"
-      >
+    {/* ─── Clients ──────────────────────────────────────────────────────── */ }
+    < section
+  className = "relative bg-card py-20"
+  data - ocid="home.clients_section"
+    >
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground/60 mb-12">
             Trusted by innovative companies
@@ -904,13 +904,13 @@ export default function HomePage() {
           path="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z"
           height={60}
         />
-      </section>
+      </section >
 
-      {/* ─── Industries ───────────────────────────────────────────────────── */}
-      <section
-        className="relative bg-background py-28"
-        data-ocid="home.industries_section"
-      >
+    {/* ─── Industries ───────────────────────────────────────────────────── */ }
+    < section
+  className = "relative bg-background py-28"
+  data - ocid="home.industries_section"
+    >
         <div className="w-full">
           <div className="container max-w-7xl mx-auto px-4 sm:px-6 mb-16">
             <SectionHeading
@@ -992,13 +992,13 @@ export default function HomePage() {
           fill="oklch(0.18 0.05 270)"
           path="M0,0 C480,70 960,0 1440,50 L1440,70 L0,70 Z"
         />
-      </section>
+      </section >
 
-      {/* ─── Process (How We Do It) ───────────────────────────────────────── */}
-      <section
-        className="relative bg-card py-28"
-        data-ocid="home.process_section"
-      >
+    {/* ─── Process (How We Do It) ───────────────────────────────────────── */ }
+    < section
+  className = "relative bg-card py-28"
+  data - ocid="home.process_section"
+    >
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-primary/5 blur-[120px] pointer-events-none"
           aria-hidden
@@ -1051,13 +1051,13 @@ export default function HomePage() {
           fill="oklch(0.13 0.05 267)"
           path="M0,40 C240,70 720,0 1440,50 L1440,70 L0,70 Z"
         />
-      </section>
+      </section >
 
-      {/* ─── Who We Are For ───────────────────────────────────────────────── */}
-      <section
-        className="relative bg-background py-28"
-        data-ocid="home.profiles_section"
-      >
+    {/* ─── Who We Are For ───────────────────────────────────────────────── */ }
+    < section
+  className = "relative bg-background py-28"
+  data - ocid="home.profiles_section"
+    >
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
           <SectionHeading
             eyebrow="Who We Serve"
@@ -1095,13 +1095,13 @@ export default function HomePage() {
           fill="oklch(0.18 0.05 270)"
           path="M0,50 C360,0 1080,70 1440,30 L1440,70 L0,70 Z"
         />
-      </section>
+      </section >
 
-      {/* ─── Shapes / Methodology ─────────────────────────────────────────── */}
-      <section
-        className="relative bg-card py-28"
-        data-ocid="home.shapes_section"
-      >
+    {/* ─── Shapes / Methodology ─────────────────────────────────────────── */ }
+    < section
+  className = "relative bg-card py-28"
+  data - ocid="home.shapes_section"
+    >
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
           <SectionHeading
             eyebrow="Our Approach"
@@ -1159,13 +1159,13 @@ export default function HomePage() {
           fill="oklch(0.13 0.05 267)"
           path="M0,20 C480,70 960,10 1440,40 L1440,70 L0,70 Z"
         />
-      </section>
+      </section >
 
-      {/* ─── Testimonials ─────────────────────────────────────────────────── */}
-      <section
-        className="relative bg-background py-28"
-        data-ocid="home.testimonials_section"
-      >
+    {/* ─── Testimonials ─────────────────────────────────────────────────── */ }
+    < section
+  className = "relative bg-background py-28"
+  data - ocid="home.testimonials_section"
+    >
         <div
           className="absolute inset-0 overflow-hidden pointer-events-none"
           aria-hidden
@@ -1221,13 +1221,13 @@ export default function HomePage() {
           fill="oklch(0.18 0.05 270)"
           path="M0,50 C360,0 1080,70 1440,30 L1440,70 L0,70 Z"
         />
-      </section>
+      </section >
 
-      {/* ─── Recent Launches ──────────────────────────────────────────────── */}
-      <section
-        className="relative bg-card py-28"
-        data-ocid="home.launches_section"
-      >
+    {/* ─── Recent Launches ──────────────────────────────────────────────── */ }
+    < section
+  className = "relative bg-card py-28"
+  data - ocid="home.launches_section"
+    >
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-16">
             <div className="space-y-4">
@@ -1349,13 +1349,13 @@ export default function HomePage() {
           fill="oklch(0.13 0.05 267)"
           path="M0,30 C600,70 1000,0 1440,45 L1440,70 L0,70 Z"
         />
-      </section>
+      </section >
 
-      {/* ─── FAQ ──────────────────────────────────────────────────────────── */}
-      <section
-        className="relative bg-background py-28"
-        data-ocid="home.faq_section"
-      >
+    {/* ─── FAQ ──────────────────────────────────────────────────────────── */ }
+    < section
+  className = "relative bg-background py-28"
+  data - ocid="home.faq_section"
+    >
         <div className="container max-w-3xl mx-auto px-4 sm:px-6">
           <SectionHeading
             eyebrow="FAQ"
@@ -1400,13 +1400,13 @@ export default function HomePage() {
           fill="oklch(0.18 0.05 270)"
           path="M0,15 C360,70 1080,0 1440,40 L1440,70 L0,70 Z"
         />
-      </section>
+      </section >
 
-      {/* ─── Contact CTA Banner ───────────────────────────────────────────── */}
-      <section
-        className="relative bg-card py-24 overflow-hidden"
-        data-ocid="home.cta_section"
-      >
+    {/* ─── Contact CTA Banner ───────────────────────────────────────────── */ }
+    < section
+  className = "relative bg-card py-24 overflow-hidden"
+  data - ocid="home.cta_section"
+    >
         <div
           className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/8 blur-[120px] pointer-events-none"
           aria-hidden
@@ -1458,13 +1458,13 @@ export default function HomePage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section >
 
-      {/* ─── Contact Form ─────────────────────────────────────────────────── */}
-      <section
-        className="relative bg-background pt-28 pb-32 overflow-hidden"
-        data-ocid="home.contact_section"
-      >
+    {/* ─── Contact Form ─────────────────────────────────────────────────── */ }
+    < section
+  className = "relative bg-background pt-28 pb-32 overflow-hidden"
+  data - ocid="home.contact_section"
+    >
         <div
           className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/8 blur-[120px] pointer-events-none"
           aria-hidden
@@ -1528,7 +1528,7 @@ export default function HomePage() {
             </motion.div>
           </div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 }
