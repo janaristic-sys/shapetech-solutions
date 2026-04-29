@@ -1221,11 +1221,16 @@ export default function HomePage() {
         data-ocid="home.launches_section"
       >
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-          <SectionHeading
-            eyebrow="Recent Launches"
-            title="Fresh Off the Build"
-            subtitle="Projects we've shipped recently — real work, real impact."
-          />
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <SectionHeading
+              eyebrow="Recent Launches"
+              title="Fresh Off the Build"
+              subtitle="Projects we've shipped recently — real work, real impact."
+            />
+            <Badge variant="outline" className="w-fit h-fit px-4 py-1.5 border-primary/30 text-primary bg-primary/5 rounded-full animate-pulse font-semibold uppercase tracking-widest text-[10px]">
+              Coming Soon
+            </Badge>
+          </div>
           {portfolioLoading ? (
             <div className="grid md:grid-cols-3 gap-6">
               {[1, 2, 3].map((i) => (
@@ -1233,7 +1238,21 @@ export default function HomePage() {
               ))}
             </div>
           ) : (
-            <div className="grid md:grid-cols-12 gap-6">
+            <div 
+              className="relative group/portfolio"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+              }}
+            >
+              <div 
+                className="grid md:grid-cols-12 gap-6 transition-opacity duration-700"
+                style={{
+                  maskImage: `radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, rgba(0,0,0,0.25) 100%)`,
+                  WebkitMaskImage: `radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, rgba(0,0,0,0.25) 100%)`,
+                }}
+              >
               {portfolio.slice(0, 3).map((item, i) => (
                 <motion.div
                   key={String(item.id)}
