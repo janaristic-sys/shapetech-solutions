@@ -558,14 +558,14 @@ export default function HomePage() {
       >
         <HeroBlobs />
 
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-32 relative z-10">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-20 pb-20 md:pt-24 md:pb-32 relative z-10">
           <Card className="w-full min-h-[600px] bg-background/5 border-none relative rounded-3xl backdrop-blur-sm overflow-visible">
             <Spotlight
               className="-top-40 left-0 md:left-60 md:-top-20"
               fill="oklch(var(--primary))"
             />
 
-            <div className="flex flex-col lg:flex-row h-full min-h-[600px] items-center overflow-visible">
+            <div className="flex flex-col lg:flex-row h-full min-h-[500px] md:min-h-[600px] items-center overflow-visible">
               {/* Left content */}
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
@@ -636,7 +636,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.2, delay: 0.2 }}
-                className="flex-1 relative w-full h-[500px] lg:h-[600px] z-10 overflow-visible"
+                className="flex-1 relative w-full h-[350px] sm:h-[450px] lg:h-[600px] z-10 overflow-visible"
               >
                 <div className="absolute inset-0 bg-primary/10 rounded-full blur-[120px] opacity-20 pointer-events-none" />
                 <SplineScene
@@ -657,7 +657,7 @@ export default function HomePage() {
 
       {/* ─── About Teaser ─────────────────────────────────────────────────── */}
       <section
-        className="relative bg-card py-28"
+        className="relative bg-card py-16 md:py-24"
         data-ocid="home.about_section"
       >
         <div
@@ -671,7 +671,7 @@ export default function HomePage() {
         />
 
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="grid lg:grid-cols-[1fr_1.1fr] gap-16 items-center">
+          <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 md:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -32 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -767,7 +767,7 @@ export default function HomePage() {
 
       {/* ─── Services (What We Do Best) ───────────────────────────────────── */}
       <section
-        className="relative bg-background py-28"
+        className="relative bg-background py-16 md:py-24"
         data-ocid="home.services_section"
       >
         <div

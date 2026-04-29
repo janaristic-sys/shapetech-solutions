@@ -602,7 +602,7 @@ function WaveDivider({
   return (
     <div
       className="relative w-full overflow-hidden -my-px"
-      style={{ height: 80 }}
+      style={{ height: 60 }}
     >
       <svg
         aria-hidden="true"
@@ -611,7 +611,7 @@ function WaveDivider({
         className="absolute inset-0 w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width="1440" height="80" fill={topColor} />
+        <rect width="1440" height="60" fill={topColor} />
         <path
           d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"
           fill={bottomColor}
@@ -659,7 +659,7 @@ function PageHero() {
   return (
     <>
       <section
-        className="relative bg-card overflow-hidden py-28 lg:py-40"
+        className="relative bg-card overflow-hidden py-16 md:py-24"
         data-ocid="about.hero_section"
       >
         <BlobBackground />
@@ -709,7 +709,7 @@ function PageHero() {
 function StatsSection() {
   return (
     <section
-      className="relative bg-background py-20 overflow-hidden"
+      className="relative bg-background py-16 overflow-hidden"
       data-ocid="about.stats_section"
     >
       <div
@@ -775,7 +775,7 @@ function MissionVisionSection() {
         bottomColor="oklch(0.22 0.05 270)"
       />
       <section
-        className="relative bg-card py-24 overflow-hidden"
+        className="relative bg-card py-16 overflow-hidden"
         data-ocid="about.mission_vision_section"
       >
         <BlobBackground />
@@ -889,7 +889,7 @@ function MissionVisionSection() {
 function CompanyStorySection() {
   return (
     <section
-      className="relative bg-background py-24 overflow-hidden"
+      className="relative bg-background py-16 md:py-20 overflow-hidden"
       data-ocid="about.story_section"
     >
       <div
@@ -901,7 +901,7 @@ function CompanyStorySection() {
         }}
       />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -986,7 +986,7 @@ function ValuesSection() {
         bottomColor="oklch(0.22 0.05 270)"
       />
       <section
-        className="relative bg-card py-20 lg:py-28 overflow-hidden"
+        className="relative bg-card py-12 md:py-20 overflow-hidden"
         data-ocid="about.values_section"
       >
         <BlobBackground />
@@ -996,7 +996,7 @@ function ValuesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16 lg:mb-24"
+            className="mb-12 lg:mb-16"
           >
             <Badge
               variant="outline"
@@ -1010,7 +1010,7 @@ function ValuesSection() {
             </h2>
           </motion.div>
 
-          <div className="space-y-16 lg:space-y-28">
+          <div className="space-y-12 lg:space-y-20">
             {VALUES.map((value, i) => {
               const Icon = value.icon;
               const isEven = i % 2 === 0;
@@ -1131,7 +1131,7 @@ function OfficeCard({ office, index }: { office: Office; index: number }) {
 // ---------------------------------------------------------------------------
 function OfficesSection() {
   return (
-    <section className="bg-background py-24" data-ocid="about.offices_section">
+    <section className="bg-background py-16" data-ocid="about.offices_section">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -1234,7 +1234,7 @@ function TeamMemberCard({
     >
       <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-      <div className="relative p-8 lg:p-10 flex flex-col h-full flex-1">
+      <div className="relative p-6 lg:p-10 flex flex-col h-full flex-1">
         <div className="mb-8 relative inline-block">
           <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           {member.avatarUrl ? (
@@ -1319,7 +1319,7 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
       {/* Category Info (Left) */}
       <div className="lg:w-1/3 lg:sticky lg:top-32 space-y-8">
         <div className="space-y-6">
@@ -1363,7 +1363,7 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
 
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-12 hide-scrollbar scroll-smooth"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-8 hide-scrollbar scroll-smooth"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           <style dangerouslySetInnerHTML={{
@@ -1373,12 +1373,12 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
           {members.map((member, i) => (
             <div
               key={String(member.id)}
-              className="w-[85vw] md:w-[calc(50%-16px)] lg:w-[calc(50%-20px)] shrink-0 snap-start"
+              className="w-[80vw] md:w-[calc(50%-16px)] lg:w-[calc(50%-20px)] shrink-0 snap-start"
             >
               <TeamMemberCard member={member} index={i} variant="detailed" />
             </div>
           ))}
-          <div className="w-[15vw] shrink-0" />
+          <div className="w-[20vw] shrink-0" />
         </div>
 
         <div className="hidden lg:block absolute top-0 right-0 bottom-12 w-24 bg-gradient-to-l from-card/20 to-transparent pointer-events-none z-10" />
@@ -1424,7 +1424,7 @@ function TeamSection() {
         bottomColor="oklch(0.22 0.05 270)"
       />
       <section
-        className="relative bg-card py-24 lg:py-40 overflow-hidden"
+        className="relative bg-card py-16 lg:py-20 overflow-hidden"
         data-ocid="about.team_section"
       >
         {/* Background Decorative Elements */}
@@ -1439,7 +1439,7 @@ function TeamSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mb-24 lg:mb-32"
+            className="mb-16 lg:mb-24"
           >
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div className="max-w-2xl">
@@ -1487,7 +1487,7 @@ function TeamSection() {
               ))}
             </div>
           ) : (
-            <div className="space-y-32 lg:space-y-48">
+            <div className="space-y-16 lg:space-y-20">
               {sections.map((section) => (
                 <TeamCarouselSection
                   key={section.id}
@@ -1514,7 +1514,7 @@ function ContactCta() {
         bottomColor="oklch(0.15 0.07 267)"
       />
       <section
-        className="relative overflow-hidden bg-background py-28"
+        className="relative overflow-hidden bg-background py-20"
         data-ocid="about.contact_cta_section"
       >
         <div

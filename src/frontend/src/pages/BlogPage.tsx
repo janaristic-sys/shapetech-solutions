@@ -9,7 +9,7 @@ export default function BlogPage() {
     <div data-ocid="blog.page">
       {/* ── Hero ── */}
       <section
-        className="relative overflow-hidden pt-24 pb-44 md:pt-32 md:pb-52"
+        className="relative overflow-hidden pt-16 pb-28 md:pt-32 md:pb-40"
         data-ocid="blog.hero_section"
         style={{ background: "oklch(0.22 0.05 270)" }}
       >
@@ -67,7 +67,7 @@ export default function BlogPage() {
             xmlns="http://www.w3.org/2000/svg"
             className="w-full block"
             preserveAspectRatio="none"
-            style={{ height: "120px" }}
+            style={{ height: "80px" }}
           >
             <path
               d="M0,40 C180,100 360,0 540,50 C720,100 900,10 1080,55 C1260,95 1380,20 1440,45 L1440,120 L0,120 Z"
@@ -79,7 +79,7 @@ export default function BlogPage() {
 
       {/* ── Coming Soon ── */}
       <section
-        className="bg-background py-24 md:py-32"
+        className="bg-background py-16 md:py-20"
         data-ocid="blog.coming_soon_section"
         style={{ background: "oklch(0.15 0.07 267)" }}
       >
@@ -142,7 +142,7 @@ export default function BlogPage() {
 
       {/* ── Newsletter strip ── */}
       <section
-        className="relative py-20 overflow-hidden"
+        className="relative py-16 overflow-hidden"
         data-ocid="blog.newsletter_section"
         style={{ background: "oklch(0.19 0.08 260)" }}
       >

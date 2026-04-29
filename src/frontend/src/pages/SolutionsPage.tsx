@@ -393,7 +393,7 @@ export default function SolutionsPage() {
     <div data-ocid="solutions.page">
       {/* ── Hero ── */}
       <section
-        className="relative bg-card overflow-hidden pt-24 pb-44 md:pt-32 md:pb-56"
+        className="relative bg-card overflow-hidden pt-16 pb-28 md:pt-32 md:pb-44"
         data-ocid="solutions.hero_section"
       >
         {/* blobs */}
@@ -470,7 +470,7 @@ export default function SolutionsPage() {
             xmlns="http://www.w3.org/2000/svg"
             className="w-full block"
             preserveAspectRatio="none"
-            style={{ height: "120px" }}
+            style={{ height: "80px" }}
             aria-hidden="true"
           >
             <path
@@ -483,7 +483,7 @@ export default function SolutionsPage() {
 
       {/* ── Solutions list ── */}
       <section
-        className="bg-background py-20 md:py-32"
+        className="bg-background py-16 md:py-24"
         data-ocid="solutions.list_section"
       >
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
@@ -492,7 +492,7 @@ export default function SolutionsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-20"
+            className="text-center mb-14"
           >
             <h2 className="font-display font-bold text-4xl sm:text-5xl text-foreground mb-4">
               What We <span className="gradient-accent">Deliver</span>
@@ -503,7 +503,7 @@ export default function SolutionsPage() {
             </p>
           </motion.div>
 
-          <div className="flex flex-col gap-28 md:gap-36">
+          <div className="flex flex-col gap-20 md:gap-24">
             {isLoading
               ? ["s1", "s2", "s3", "s4"].map((k) => (
                   <SolutionSkeleton key={k} />
@@ -519,7 +519,7 @@ export default function SolutionsPage() {
 
       {/* ── Partner badges ── */}
       <section
-        className="bg-card py-20 md:py-24"
+        className="bg-card py-16"
         data-ocid="solutions.partners_section"
       >
         <div className="container max-w-5xl mx-auto px-4 sm:px-6">
@@ -559,7 +559,7 @@ export default function SolutionsPage() {
 
       {/* ── Bottom CTA ── */}
       <section
-        className="relative overflow-hidden py-28 md:py-36 bg-background"
+        className="relative overflow-hidden py-20 md:py-28 bg-background"
         data-ocid="solutions.cta_section"
       >
         {/* diagonal accent */}

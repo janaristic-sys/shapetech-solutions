@@ -314,7 +314,7 @@ export default function IndustriesPage() {
     <div data-ocid="industries.page">
       {/* ── Hero Banner ── */}
       <section
-        className="relative overflow-hidden bg-card py-24 lg:py-36"
+        className="relative overflow-hidden bg-card py-16 md:py-24"
         data-ocid="industries.hero_section"
       >
         {/* Organic animated blobs */}
@@ -398,7 +398,7 @@ export default function IndustriesPage() {
 
       {/* ── Industries Grid ── */}
       <section
-        className="bg-background py-20 lg:py-28"
+        className="bg-background py-16 md:py-20"
         data-ocid="industries.list_section"
       >
         <div className="container max-w-7xl mx-auto px-6 lg:px-10">
@@ -407,7 +407,7 @@ export default function IndustriesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-2xl mb-14"
+            className="max-w-2xl mb-10"
           >
             <h2 className="font-display font-bold text-4xl lg:text-5xl text-foreground leading-tight mb-4">
               Industries We've{" "}
@@ -448,7 +448,7 @@ export default function IndustriesPage() {
 
       {/* ── Why Shapetech strip ── */}
       <section
-        className="bg-card py-20 lg:py-24"
+        className="bg-card py-16"
         data-ocid="industries.why_section"
       >
         <div className="container max-w-7xl mx-auto px-6 lg:px-10">
@@ -457,7 +457,7 @@ export default function IndustriesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-14"
+            className="text-center mb-10"
           >
             <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-5 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10">
               Why Choose Us
@@ -519,7 +519,7 @@ export default function IndustriesPage() {
 
       {/* ── CTA ── */}
       <section
-        className="relative overflow-hidden bg-background py-24"
+        className="relative overflow-hidden bg-background py-16 md:py-20"
         data-ocid="industries.cta_section"
       >
         <div

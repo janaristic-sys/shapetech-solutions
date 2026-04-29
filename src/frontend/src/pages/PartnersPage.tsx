@@ -298,7 +298,7 @@ export default function PartnersPage() {
     <div data-ocid="partners.page">
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden pt-24 pb-44 md:pt-32 md:pb-52"
+        className="relative overflow-hidden pt-16 pb-28 md:pt-32 md:pb-40"
         data-ocid="partners.hero_section"
         style={{ background: "oklch(0.22 0.05 270)" }}
       >
@@ -354,7 +354,7 @@ export default function PartnersPage() {
             xmlns="http://www.w3.org/2000/svg"
             className="w-full block"
             preserveAspectRatio="none"
-            style={{ height: "120px" }}
+            style={{ height: "80px" }}
           >
             <path
               d="M0,80 C320,20 620,100 900,60 C1100,30 1300,80 1440,50 L1440,120 L0,120 Z"
@@ -375,7 +375,7 @@ export default function PartnersPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="mb-14"
+            className="mb-10"
           >
             <h2 className="font-display font-bold text-4xl sm:text-5xl text-foreground mb-3">
               Technology <span className="gradient-accent">Partners</span>
@@ -411,7 +411,7 @@ export default function PartnersPage() {
 
       {/* ── HubSpot Partner Highlight ─────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden py-20 md:py-28"
+        className="relative overflow-hidden py-16 md:py-20"
         data-ocid="partners.hubspot_section"
         style={{ background: "oklch(0.19 0.06 260)" }}
       >
@@ -427,7 +427,7 @@ export default function PartnersPage() {
             xmlns="http://www.w3.org/2000/svg"
             className="w-full block"
             preserveAspectRatio="none"
-            style={{ height: "80px" }}
+            style={{ height: "60px" }}
           >
             <path
               d="M0,0 C480,80 960,0 1440,60 L1440,0 L0,0 Z"
@@ -538,7 +538,7 @@ export default function PartnersPage() {
             xmlns="http://www.w3.org/2000/svg"
             className="w-full block"
             preserveAspectRatio="none"
-            style={{ height: "80px" }}
+            style={{ height: "60px" }}
           >
             <path
               d="M0,40 C360,80 1080,0 1440,60 L1440,80 L0,80 Z"
@@ -639,7 +639,7 @@ export default function PartnersPage() {
 
       {/* ── Partnership Benefits ──────────────────────────────────────────── */}
       <section
-        className="relative py-20 md:py-28 overflow-hidden"
+        className="relative py-16 md:py-20 overflow-hidden"
         data-ocid="partners.benefits_section"
         style={{ background: "oklch(0.19 0.08 260)" }}
       >
@@ -664,7 +664,7 @@ export default function PartnersPage() {
             xmlns="http://www.w3.org/2000/svg"
             className="w-full block"
             preserveAspectRatio="none"
-            style={{ height: "80px" }}
+            style={{ height: "60px" }}
           >
             <path
               d="M0,60 C480,0 960,80 1440,20 L1440,0 L0,0 Z"
@@ -679,7 +679,7 @@ export default function PartnersPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="text-center max-w-2xl mx-auto mb-14"
+            className="text-center max-w-2xl mx-auto mb-10"
           >
             <h2 className="font-display font-bold text-4xl sm:text-5xl text-foreground mb-4">
               Partnership <span className="gradient-accent">Benefits</span>
@@ -747,7 +747,7 @@ export default function PartnersPage() {
             xmlns="http://www.w3.org/2000/svg"
             className="w-full block"
             preserveAspectRatio="none"
-            style={{ height: "80px" }}
+            style={{ height: "60px" }}
           >
             <path
               d="M0,20 C360,80 1080,0 1440,50 L1440,80 L0,80 Z"
@@ -768,7 +768,7 @@ export default function PartnersPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-foreground mb-3">
               Trusted by Leading{" "}
@@ -791,7 +791,7 @@ export default function PartnersPage() {
 
       {/* ── Bottom CTA ───────────────────────────────────────────────────── */}
       <section
-        className="relative py-24 overflow-hidden"
+        className="relative py-16 md:py-20 overflow-hidden"
         data-ocid="partners.cta_section"
         style={{ background: "oklch(0.22 0.05 270)" }}
       >

@@ -235,7 +235,7 @@ export default function ContactPage() {
     <div data-ocid="contact.page">
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden pt-24 pb-44 md:pt-32 md:pb-52"
+        className="relative overflow-hidden pt-16 pb-28 md:pt-32 md:pb-52"
         data-ocid="contact.hero_section"
         style={{ background: "oklch(0.22 0.05 270)" }}
       >
@@ -293,7 +293,7 @@ export default function ContactPage() {
             xmlns="http://www.w3.org/2000/svg"
             className="w-full block"
             preserveAspectRatio="none"
-            style={{ height: "120px" }}
+            style={{ height: "80px" }}
           >
             <path
               d="M0,60 C240,110 480,10 720,60 C960,110 1200,10 1440,55 L1440,120 L0,120 Z"
@@ -305,7 +305,7 @@ export default function ContactPage() {
 
       {/* ── Main Form + Info ──────────────────────────────────────────────── */}
       <section
-        className="py-16 md:py-24"
+        className="py-12 md:py-20"
         data-ocid="contact.form_section"
         style={{ background: "oklch(0.15 0.07 267)" }}
       >
@@ -760,7 +760,7 @@ export default function ContactPage() {
 
       {/* ── Why Work With Shapetech ───────────────────────────────────────── */}
       <section
-        className="relative py-20 md:py-28 overflow-hidden"
+        className="relative py-16 md:py-20 overflow-hidden"
         data-ocid="contact.why_section"
         style={{ background: "oklch(0.19 0.08 260)" }}
       >
