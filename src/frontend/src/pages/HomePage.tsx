@@ -18,6 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
 import LogoTicker from "@/components/LogoTicker";
+import { SplineScene } from "@/components/SplineScene";
 import {
   useAbout,
   useClients,
@@ -570,76 +571,90 @@ export default function HomePage() {
       >
         <HeroBlobs />
 
-        <div className="container max-w-5xl mx-auto px-4 sm:px-6 pt-24 pb-32 flex flex-col items-center text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col gap-7 items-center"
-          >
-            <div className="flex items-center gap-2">
-              <div className="h-px w-10 bg-gradient-to-r from-transparent to-primary" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-                Boutique Tech & Design Firm
-              </span>
-              <div className="h-px w-10 bg-gradient-to-l from-transparent to-primary" />
-            </div>
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-32 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col gap-7 text-left items-start"
+            >
+              <div className="flex items-center gap-2">
+                <div className="h-px w-10 bg-gradient-to-r from-transparent to-primary" />
+                <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                  Boutique Tech & Design Firm
+                </span>
+              </div>
 
-            <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.04] tracking-tight max-w-4xl">
-              Shaping the <span className="gradient-accent">Future</span> of
-              Your Business.
-            </h1>
+              <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.04] tracking-tight">
+                Shaping the <span className="gradient-accent">Future</span> of
+                Your Business.
+              </h1>
 
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
-              We are a boutique tech design and full-stack development firm
-              helping companies leverage technology to transform their business.
-            </p>
+              <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
+                We are a boutique tech design and full-stack development firm
+                helping companies leverage technology to transform their business.
+              </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link to="/solutions" data-ocid="home.hero_primary_cta">
-                <Button
-                  size="lg"
-                  className="rounded-full bg-primary hover:bg-primary/90 text-foreground font-semibold px-8 gap-2 transition-smooth shadow-[0_0_28px_oklch(0.75_0.12_195/0.4)] hover:shadow-[0_0_40px_oklch(0.75_0.12_195/0.6)] hover:-translate-y-0.5"
-                >
-                  Explore Solutions
-                  <ArrowRight className="size-4" />
-                </Button>
-              </Link>
-              <Link to="/contact" data-ocid="home.hero_secondary_cta">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-full border-border/60 hover:border-primary/50 text-foreground font-semibold px-8 transition-smooth hover:bg-primary/5 hover:-translate-y-0.5"
-                >
-                  Contact Us
-                </Button>
-              </Link>
-            </div>
+              <div className="flex flex-wrap items-center gap-4">
+                <Link to="/solutions" data-ocid="home.hero_primary_cta">
+                  <Button
+                    size="lg"
+                    className="rounded-full bg-primary hover:bg-primary/90 text-foreground font-semibold px-8 gap-2 transition-smooth shadow-[0_0_28px_oklch(0.75_0.12_195/0.4)] hover:shadow-[0_0_40px_oklch(0.75_0.12_195/0.6)] hover:-translate-y-0.5"
+                  >
+                    Explore Solutions
+                    <ArrowRight className="size-4" />
+                  </Button>
+                </Link>
+                <Link to="/contact" data-ocid="home.hero_secondary_cta">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="rounded-full border-border/60 hover:border-primary/50 text-foreground font-semibold px-8 transition-smooth hover:bg-primary/5 hover:-translate-y-0.5"
+                  >
+                    Contact Us
+                  </Button>
+                </Link>
+              </div>
 
-            {/* Stats row */}
-            <div className="flex items-center justify-center gap-10 pt-4">
-              {[
-                { value: "50+", label: "Team Members" },
-                { value: "50+", label: "Projects Delivered" },
-                { value: "2", label: "Global Offices" },
-              ].map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                  className="flex flex-col items-center"
-                >
-                  <span className="font-display font-bold text-3xl gradient-accent">
-                    {stat.value}
-                  </span>
-                  <span className="text-xs text-muted-foreground mt-0.5">
-                    {stat.label}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+              {/* Stats row */}
+              <div className="flex items-center gap-10 pt-4">
+                {[
+                  { value: "50+", label: "Team Members" },
+                  { value: "50+", label: "Projects Delivered" },
+                  { value: "2", label: "Global Offices" },
+                ].map((stat, i) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
+                    className="flex flex-col items-start"
+                  >
+                    <span className="font-display font-bold text-3xl gradient-accent">
+                      {stat.value}
+                    </span>
+                    <span className="text-xs text-muted-foreground mt-0.5">
+                      {stat.label}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="relative aspect-square lg:aspect-auto lg:h-[600px] w-full"
+            >
+              <div className="absolute inset-0 bg-primary/5 rounded-3xl blur-3xl" />
+              <SplineScene 
+                scene="https://prod.spline.design/kZqonS6vfjL9s0S2/scene.splinecode" 
+                className="w-full h-full relative z-10"
+              />
+            </motion.div>
+          </div>
         </div>
 
         <WaveDivider
