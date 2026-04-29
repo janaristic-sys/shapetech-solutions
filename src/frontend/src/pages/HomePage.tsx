@@ -966,10 +966,10 @@ export default function HomePage() {
               ))}
             </div>
           )}
-          
+
           <div className="text-center mt-20">
             <Link to="/industries" data-ocid="home.industries_cta">
-              <Button 
+              <Button
                 variant="outline"
                 size="lg"
                 className="rounded-full border-border/60 hover:border-primary/40 hover:bg-primary/5 text-foreground px-10 gap-3 transition-smooth hover:-translate-y-1"
@@ -1238,7 +1238,7 @@ export default function HomePage() {
               ))}
             </div>
           ) : (
-            <div 
+            <div
               className="relative group/portfolio"
               onMouseMove={(e) => {
                 const rect = e.currentTarget.getBoundingClientRect();
@@ -1246,73 +1246,74 @@ export default function HomePage() {
                 e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
               }}
             >
-              <div 
+              <div
                 className="grid md:grid-cols-12 gap-6 transition-opacity duration-700"
                 style={{
                   maskImage: `radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, rgba(0,0,0,0.25) 100%)`,
                   WebkitMaskImage: `radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, rgba(0,0,0,0.25) 100%)`,
                 }}
               >
-              {portfolio.slice(0, 3).map((item, i) => (
-                <motion.div
-                  key={String(item.id)}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  data-ocid={`home.launch.${i + 1}`}
-                  className={`group card-fluid overflow-hidden
+                {portfolio.slice(0, 3).map((item, i) => (
+                  <motion.div
+                    key={String(item.id)}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    data-ocid={`home.launch.${i + 1}`}
+                    className={`group card-fluid overflow-hidden
                     ${i === 0 ? "md:col-span-7" : "md:col-span-5"}
                     ${i === 2 ? "md:col-span-12 md:grid md:grid-cols-2" : ""}`}
-                >
-                  <div
-                    className={`bg-gradient-to-br from-muted/80 to-background overflow-hidden relative
-                    ${i === 2 ? "h-full min-h-[200px]" : "h-52"}`}
                   >
-                    {item.imageUrl ? (
-                      <img
-                        src={item.imageUrl}
-                        alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-smooth duration-700"
-                      />
-                    ) : (
-                      <div className="flex items-center justify-center h-full">
-                        <div className="flex items-center justify-center w-16 h-16 rounded-3xl bg-primary/10 text-primary text-2xl font-display font-bold blob-accent">
-                          {item.title.charAt(0)}
+                    <div
+                      className={`bg-gradient-to-br from-muted/80 to-background overflow-hidden relative
+                    ${i === 2 ? "h-full min-h-[200px]" : "h-52"}`}
+                    >
+                      {item.imageUrl ? (
+                        <img
+                          src={item.imageUrl}
+                          alt={item.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-smooth duration-700"
+                        />
+                      ) : (
+                        <div className="flex items-center justify-center h-full">
+                          <div className="flex items-center justify-center w-16 h-16 rounded-3xl bg-primary/10 text-primary text-2xl font-display font-bold blob-accent">
+                            {item.title.charAt(0)}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
-                    {i === 0 && (
-                      <Badge className="absolute top-4 right-4 rounded-full bg-primary/20 text-primary border-primary/30 text-xs backdrop-blur-sm">
-                        Featured
-                      </Badge>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <p className="text-xs text-muted-foreground mb-1">
-                      {item.clientName}
-                      {item.launchDate ? ` · ${item.launchDate}` : ""}
-                    </p>
-                    <h3 className="font-display font-bold text-foreground text-lg mb-2 group-hover:text-primary transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                      {item.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {item.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs px-3 py-0.5 rounded-full bg-primary/10 text-primary/80 border border-primary/20"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
+                      {i === 0 && (
+                        <Badge className="absolute top-4 right-4 rounded-full bg-primary/20 text-primary border-primary/30 text-xs backdrop-blur-sm">
+                          Featured
+                        </Badge>
+                      )}
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                    <div className="p-6">
+                      <p className="text-xs text-muted-foreground mb-1">
+                        {item.clientName}
+                        {item.launchDate ? ` · ${item.launchDate}` : ""}
+                      </p>
+                      <h3 className="font-display font-bold text-foreground text-lg mb-2 group-hover:text-primary transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                        {item.description}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {item.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-xs px-3 py-0.5 rounded-full bg-primary/10 text-primary/80 border border-primary/20"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           )}
         </div>
