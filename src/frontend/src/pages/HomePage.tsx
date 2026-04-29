@@ -558,14 +558,14 @@ export default function HomePage() {
       >
         <HeroBlobs />
 
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-32 relative z-10">
-          <Card className="w-full min-h-[600px] bg-background/20 border-none relative rounded-3xl backdrop-blur-sm">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-32 pb-0 relative z-10">
+          <div className="relative w-full min-h-[600px] lg:min-h-[800px] border-none rounded-3xl">
             <Spotlight
               className="-top-40 left-0 md:left-60 md:-top-20"
               fill="oklch(var(--primary))"
             />
 
-            <div className="flex flex-col lg:flex-row h-full min-h-[600px] overflow-visible">
+            <div className="flex flex-col lg:flex-row h-full min-h-[600px] lg:min-h-[800px] overflow-visible items-center lg:items-stretch">
               {/* Left content */}
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
@@ -631,21 +631,21 @@ export default function HomePage() {
                 </div>
               </motion.div>
 
-              {/* Right content - Enlarged and Standalone */}
+              {/* Right content - Enlarged and Standalone Anchored to Bottom */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.8, x: 40 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
-                transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-                className="flex-1 relative w-full h-[500px] lg:h-[700px] z-10 lg:-mr-32 overflow-visible"
+                initial={{ opacity: 0, scale: 0.8, y: 100 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 1.4, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="flex-1 relative w-full h-[600px] lg:h-full z-10 lg:-mr-40 overflow-visible flex items-end"
               >
-                <div className="absolute inset-0 bg-primary/10 rounded-full blur-[120px] opacity-20 pointer-events-none" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-[140%] bg-primary/10 rounded-full blur-[140px] opacity-20 pointer-events-none" />
                 <SplineScene
                   scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                  className="w-full h-full transform lg:scale-125 origin-center lg:translate-x-12"
+                  className="w-full h-full transform lg:scale-[1.6] origin-bottom lg:translate-x-32 lg:translate-y-12"
                 />
               </motion.div>
             </div>
-          </Card>
+          </div>
         </div>
 
         <WaveDivider
