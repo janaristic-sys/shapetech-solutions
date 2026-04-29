@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
+import LogoTicker from "@/components/LogoTicker";
 import {
   useAbout,
   useClients,
@@ -882,35 +883,13 @@ export default function HomePage() {
             Trusted by innovative companies
           </p>
           {clientsLoading ? (
-            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
+            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 py-10">
               {[1, 2, 3, 4, 5].map((i) => (
-                <Skeleton key={i} className="h-6 w-24 rounded-full" />
+                <Skeleton key={i} className="h-8 w-24 rounded-lg" />
               ))}
             </div>
           ) : (
-            <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
-              {clients.map((client, i) => (
-                <motion.a
-                  key={String(client.id)}
-                  href={client.websiteUrl || "#"}
-                  target={
-                    client.websiteUrl && client.websiteUrl !== "#"
-                      ? "_blank"
-                      : undefined
-                  }
-                  rel="noopener noreferrer"
-                  data-ocid={`home.client.${i + 1}`}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.06 }}
-                  whileHover={{ scale: 1.08 }}
-                  className="font-display font-bold text-xl text-muted-foreground/40 hover:text-muted-foreground transition-smooth tracking-tight select-none"
-                >
-                  {client.name}
-                </motion.a>
-              ))}
-            </div>
+            <LogoTicker clients={clients} />
           )}
         </div>
 

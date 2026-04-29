@@ -99,10 +99,10 @@ function PinLogin({ onSuccess }: { onSuccess: () => void }) {
               <div
                 key={dk}
                 className={`w-3 h-3 rounded-full border-2 transition-all duration-150 ${i < pin.length
-                    ? error
-                      ? "bg-destructive border-destructive"
-                      : "bg-primary border-primary"
-                    : "border-border bg-transparent"
+                  ? error
+                    ? "bg-destructive border-destructive"
+                    : "bg-primary border-primary"
+                  : "border-border bg-transparent"
                   }`}
               />
             ))}
@@ -214,8 +214,8 @@ export default function AdminPage() {
               type="button"
               onClick={() => handleTabChange(tab.value)}
               className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-smooth mb-0.5 ${activeTab === tab.value
-                  ? "bg-primary/15 text-primary border border-primary/25"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                ? "bg-primary/15 text-primary border border-primary/25"
+                : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 }`}
               data-ocid={`admin.${tab.value}_tab`}
             >
@@ -270,8 +270,8 @@ export default function AdminPage() {
                   type="button"
                   onClick={() => handleTabChange(tab.value)}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-smooth mb-0.5 ${activeTab === tab.value
-                      ? "bg-primary/15 text-primary border border-primary/25"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    ? "bg-primary/15 text-primary border border-primary/25"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     }`}
                   data-ocid={`admin.mobile.${tab.value}_tab`}
                 >

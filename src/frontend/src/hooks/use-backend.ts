@@ -53,44 +53,15 @@ const defaultAbout: AboutContent = {
 };
 
 const defaultClients: Client[] = [
-  {
-    id: 1n,
-    name: "Forever Living",
-    logoUrl: "",
-    websiteUrl: "#",
-    sortOrder: 1n,
-  },
-  { id: 2n, name: "Isagenix", logoUrl: "", websiteUrl: "#", sortOrder: 2n },
-  {
-    id: 3n,
-    name: "4Life Research",
-    logoUrl: "",
-    websiteUrl: "#",
-    sortOrder: 3n,
-  },
-  { id: 4n, name: "Kyäni", logoUrl: "", websiteUrl: "#", sortOrder: 4n },
-  {
-    id: 5n,
-    name: "Synergy WorldWide",
-    logoUrl: "",
-    websiteUrl: "#",
-    sortOrder: 5n,
-  },
-  {
-    id: 6n,
-    name: "Noni by NewAge",
-    logoUrl: "",
-    websiteUrl: "#",
-    sortOrder: 6n,
-  },
-  { id: 7n, name: "Mannatech", logoUrl: "", websiteUrl: "#", sortOrder: 7n },
-  {
-    id: 8n,
-    name: "Rain International",
-    logoUrl: "",
-    websiteUrl: "#",
-    sortOrder: 8n,
-  },
+  { id: 1n, name: "Crunchi", logoUrl: "https://logo.clearbit.com/crunchi.com", websiteUrl: "https://crunchi.com", sortOrder: 1n },
+  { id: 2n, name: "New U Life", logoUrl: "https://logo.clearbit.com/newulife.com", websiteUrl: "https://newulife.com", sortOrder: 2n },
+  { id: 3n, name: "IDLife", logoUrl: "https://logo.clearbit.com/idlife.com", websiteUrl: "https://idlife.com", sortOrder: 3n },
+  { id: 4n, name: "LifePharm", logoUrl: "https://logo.clearbit.com/lifepharm.com", websiteUrl: "https://lifepharm.com", sortOrder: 4n },
+  { id: 5n, name: "Nuvita", logoUrl: "https://logo.clearbit.com/nuvitaglobal.com", websiteUrl: "https://nuvitaglobal.com", sortOrder: 5n },
+  { id: 6n, name: "Wine Shop at Home", logoUrl: "https://logo.clearbit.com/wineshopathome.com", websiteUrl: "https://wineshopathome.com", sortOrder: 6n },
+  { id: 7n, name: "PM International", logoUrl: "https://logo.clearbit.com/pm-international.com", websiteUrl: "https://pm-international.com", sortOrder: 7n },
+  { id: 8n, name: "NeoLife", logoUrl: "https://logo.clearbit.com/neolife.com", websiteUrl: "https://neolife.com", sortOrder: 8n },
+  { id: 9n, name: "Reliv", logoUrl: "https://logo.clearbit.com/reliv.com", websiteUrl: "https://reliv.com", sortOrder: 9n },
 ];
 
 const defaultIndustries: Industry[] = [
