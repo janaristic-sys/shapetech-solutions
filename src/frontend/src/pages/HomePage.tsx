@@ -918,7 +918,7 @@ export default function HomePage() {
               ))}
             </div>
           ) : (
-            <div className="mt-16 flex flex-col">
+            <div className="mt-10 flex flex-col">
               {industries.map((ind, i) => (
                 <motion.div
                   key={String(ind.id)}
@@ -929,32 +929,32 @@ export default function HomePage() {
                   data-ocid={`home.industry.${i + 1}`}
                   className="group relative border-t border-border/40 last:border-b transition-smooth hover:bg-primary/[0.02]"
                 >
-                  <div className="container max-w-7xl mx-auto px-4 py-10 lg:py-14 relative z-10 flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-16">
+                  <div className="container max-w-7xl mx-auto px-4 py-6 lg:py-8 relative z-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
                     {/* Number & Icon */}
-                    <div className="flex items-center gap-6 lg:min-w-[300px]">
-                      <span className="font-display font-bold text-5xl lg:text-6xl text-primary/10 group-hover:text-primary/30 transition-smooth tabular-nums">
+                    <div className="flex items-center gap-5 lg:min-w-[240px]">
+                      <span className="font-display font-bold text-4xl lg:text-5xl text-primary/10 group-hover:text-primary/30 transition-smooth tabular-nums">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <div className="w-16 h-16 rounded-2xl bg-primary/5 text-primary flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/15 transition-smooth">
-                        <DynamicIcon name={ind.iconName} className="size-8" />
+                      <div className="w-12 h-12 rounded-xl bg-primary/5 text-primary flex items-center justify-center group-hover:scale-105 group-hover:bg-primary/15 transition-smooth">
+                        <DynamicIcon name={ind.iconName} className="size-6" />
                       </div>
                     </div>
 
                     {/* Title */}
                     <div className="flex-1">
-                      <h3 className="font-display font-bold text-3xl lg:text-4xl text-foreground group-hover:text-primary transition-smooth mb-2">
+                      <h3 className="font-display font-bold text-xl lg:text-2xl text-foreground group-hover:text-primary transition-smooth">
                         {ind.title}
                       </h3>
-                      <div className="lg:hidden mt-4">
-                        <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
+                      <div className="lg:hidden mt-3">
+                        <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl">
                           {ind.description}
                         </p>
                       </div>
                     </div>
 
                     {/* Description (Desktop) */}
-                    <div className="hidden lg:block flex-1 max-w-2xl opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-smooth delay-75">
-                      <p className="text-muted-foreground text-lg leading-relaxed">
+                    <div className="hidden lg:block flex-[1.5] max-w-2xl opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-smooth delay-75">
+                      <p className="text-muted-foreground text-base leading-relaxed">
                         {ind.description}
                       </p>
                     </div>

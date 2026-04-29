@@ -28,8 +28,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
   ShoppingCart,
   Sparkles,
   Users,
-  BookOpen,
-  CreditCard,
+  GraduationCap,
 };
 
 function IndustryIcon({
