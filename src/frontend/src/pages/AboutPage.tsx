@@ -1430,6 +1430,16 @@ function TeamSection() {
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full" />
           <div className="absolute bottom-1/4 -left-20 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-full" />
+
+          {/* Massive Watermark Design Component */}
+          <div className="absolute -top-10 left-10 lg:left-20 opacity-[0.03] select-none">
+            <span className="font-display font-black text-[25vw] lg:text-[22rem] leading-none text-primary block tracking-tighter">
+              50+
+            </span>
+            <span className="font-display font-black text-[12vw] lg:text-[10rem] leading-none text-primary block -mt-10 lg:-mt-20 ml-12 lg:ml-24 tracking-[0.2em]">
+              EXPERTS
+            </span>
+          </div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
@@ -1457,47 +1467,40 @@ function TeamSection() {
                   committed to transforming businesses through technology.
                 </p>
               </div>
-              <div className="hidden md:block">
-                <div className="flex items-center gap-4 text-primary font-display font-bold text-lg">
-                  <span className="text-5xl lg:text-7xl opacity-20">50+</span>
-                  <span className="uppercase tracking-widest text-[10px] opacity-60 leading-tight">
-                    International <br /> Experts
-                  </span>
-                </div>
+            </div>
+        </div>
+      </motion.div>
+
+      {isLoading ? (
+        <div className="space-y-32">
+          {[1, 2].map((s) => (
+            <div key={s} className="flex flex-col lg:flex-row gap-12">
+              <div className="lg:w-1/3 space-y-6">
+                <Skeleton className="h-6 w-24 rounded-full" />
+                <Skeleton className="h-12 w-48" />
+                <Skeleton className="h-20 w-full" />
+              </div>
+              <div className="lg:w-2/3 flex gap-6 overflow-hidden">
+                {[1, 2].map((i) => (
+                  <Skeleton key={i} className="h-[400px] w-[300px] shrink-0 rounded-[2.5rem]" />
+                ))}
               </div>
             </div>
-          </motion.div>
-
-          {isLoading ? (
-            <div className="space-y-32">
-              {[1, 2].map((s) => (
-                <div key={s} className="flex flex-col lg:flex-row gap-12">
-                  <div className="lg:w-1/3 space-y-6">
-                    <Skeleton className="h-6 w-24 rounded-full" />
-                    <Skeleton className="h-12 w-48" />
-                    <Skeleton className="h-20 w-full" />
-                  </div>
-                  <div className="lg:w-2/3 flex gap-6 overflow-hidden">
-                    {[1, 2].map((i) => (
-                      <Skeleton key={i} className="h-[400px] w-[300px] shrink-0 rounded-[2.5rem]" />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="space-y-16 lg:space-y-20">
-              {sections.map((section) => (
-                <TeamCarouselSection
-                  key={section.id}
-                  label={section.label}
-                  members={section.members}
-                />
-              ))}
-            </div>
-          )}
+          ))}
         </div>
-      </section>
+      ) : (
+        <div className="space-y-16 lg:space-y-20">
+          {sections.map((section) => (
+            <TeamCarouselSection
+              key={section.id}
+              label={section.label}
+              members={section.members}
+            />
+          ))}
+        </div>
+      )}
+    </div >
+      </section >
     </>
   );
 }
