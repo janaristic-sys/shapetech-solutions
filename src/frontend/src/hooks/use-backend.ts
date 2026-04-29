@@ -42,7 +42,7 @@ const defaultHero: HeroContent = {
 
 const defaultAbout: AboutContent = {
   title: "A Boutique Firm That Thinks Like Your Partner",
-  body: "ShapeTech Solutions is a boutique tech design and full-stack development firm with offices in Sarasota, Florida and Niš, Serbia. We are an international team of 20+ business consultants, developers, and designers who help companies leverage technology to transform their business.",
+  body: "ShapeTech Solutions is a boutique tech design and full-stack development firm with offices in Sarasota, Florida and Niš, Serbia. We are an international team of 50+ business consultants, developers, and designers who help companies leverage technology to transform their business.",
   mission:
     "To help companies of all sizes leverage technology to transform their operations, accelerate growth, and build a competitive advantage.",
   vision:
@@ -392,7 +392,7 @@ const defaultFaq: FaqItem[] = [
     id: 4n,
     question: "Where is your team located?",
     answer:
-      "We have offices in Sarasota, Florida and Niš, Serbia. Our team of 20+ includes business consultants, developers, and designers working across both locations. This gives us the advantage of US-based leadership and client communication with a highly skilled, cost-effective development team.",
+      "We have offices in Sarasota, Florida and Niš, Serbia. Our team of 50+ includes business consultants, developers, and designers working across both locations. This gives us the advantage of US-based leadership and client communication with a highly skilled, cost-effective development team.",
     sortOrder: 4n,
   },
   {

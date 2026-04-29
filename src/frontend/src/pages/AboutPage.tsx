@@ -545,7 +545,7 @@ function CompanyStorySection() {
               </span>{" "}
               and{" "}
               <span className="text-foreground font-medium">Niš, Serbia</span>.
-              Our international team of 20+ business consultants, developers,
+              Our international team of 50+ business consultants, developers,
               and designers combines US-based leadership and client
               communication with a highly skilled engineering team — giving
               every client the best of both worlds.

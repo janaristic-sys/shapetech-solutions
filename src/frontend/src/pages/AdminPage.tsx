@@ -98,13 +98,12 @@ function PinLogin({ onSuccess }: { onSuccess: () => void }) {
             {["d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8"].map((dk, i) => (
               <div
                 key={dk}
-                className={`w-3 h-3 rounded-full border-2 transition-all duration-150 ${
-                  i < pin.length
+                className={`w-3 h-3 rounded-full border-2 transition-all duration-150 ${i < pin.length
                     ? error
                       ? "bg-destructive border-destructive"
                       : "bg-primary border-primary"
                     : "border-border bg-transparent"
-                }`}
+                  }`}
               />
             ))}
           </div>
@@ -129,10 +128,9 @@ function PinLogin({ onSuccess }: { onSuccess: () => void }) {
                   type="button"
                   onClick={() => handleKey(k)}
                   className={`h-14 rounded-xl font-display font-semibold text-xl transition-smooth flex items-center justify-center
-                    ${
-                      k === "⌫"
-                        ? "bg-muted text-muted-foreground hover:bg-muted/70 hover:text-foreground"
-                        : "bg-background border border-border text-foreground hover:border-primary hover:text-primary hover:bg-primary/5"
+                    ${k === "⌫"
+                      ? "bg-muted text-muted-foreground hover:bg-muted/70 hover:text-foreground"
+                      : "bg-background border border-border text-foreground hover:border-primary hover:text-primary hover:bg-primary/5"
                     }`}
                   data-ocid={`admin.pin_key_${k === "⌫" ? "back" : k}`}
                   aria-label={k === "⌫" ? "Delete" : `Digit ${k}`}
@@ -215,11 +213,10 @@ export default function AdminPage() {
               key={tab.value}
               type="button"
               onClick={() => handleTabChange(tab.value)}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-smooth mb-0.5 ${
-                activeTab === tab.value
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-smooth mb-0.5 ${activeTab === tab.value
                   ? "bg-primary/15 text-primary border border-primary/25"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-              }`}
+                }`}
               data-ocid={`admin.${tab.value}_tab`}
             >
               <span className="text-base leading-none">{tab.icon}</span>
@@ -272,11 +269,10 @@ export default function AdminPage() {
                   key={tab.value}
                   type="button"
                   onClick={() => handleTabChange(tab.value)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-smooth mb-0.5 ${
-                    activeTab === tab.value
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-smooth mb-0.5 ${activeTab === tab.value
                       ? "bg-primary/15 text-primary border border-primary/25"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                  }`}
+                    }`}
                   data-ocid={`admin.mobile.${tab.value}_tab`}
                 >
                   <span className="text-base leading-none">{tab.icon}</span>
