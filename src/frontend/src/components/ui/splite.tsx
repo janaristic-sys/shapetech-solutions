@@ -24,7 +24,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
     document.head.appendChild(script)
 
     return () => {
-      document.head.removeChild(script)
+      // We don't remove the script to avoid re-loading if component remounts elsewhere
     }
   }, [])
 
@@ -32,7 +32,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
     <Suspense 
       fallback={
         <div className="w-full h-full flex items-center justify-center">
-          <span className="loader"></span>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
         </div>
       }
     >
