@@ -649,8 +649,8 @@ export default function HomePage() {
               className="relative aspect-square lg:aspect-auto lg:h-[600px] w-full"
             >
               <div className="absolute inset-0 bg-primary/5 rounded-3xl blur-3xl" />
-              <SplineScene 
-                scene="https://prod.spline.design/kZqonS6vfjL9s0S2/scene.splinecode" 
+              <SplineScene
+                scene="https://prod.spline.design/kZqonS6vfjL9s0S2/scene.splinecode"
                 className="w-full h-full relative z-10"
               />
             </motion.div>

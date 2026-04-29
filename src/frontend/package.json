@@ -91,7 +91,6 @@
     "react-quill-new": "3.4.6",
     "three": "^0.176.0",
     "zustand": "~5.0.5",
-    "motion": "^12.34.3",
-    "@splinetool/react-spline": "^1.0.50"
+    "motion": "^12.34.3"
   }
 }
