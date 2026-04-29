@@ -650,7 +650,7 @@ export default function HomePage() {
             >
               <div className="absolute inset-0 bg-primary/5 rounded-3xl blur-3xl" />
               <SplineScene
-                scene="https://prod.spline.design/kZqonS6vfjL9s0S2/scene.splinecode"
+                scene="https://prod.spline.design/6Wq1Q7YGyWf8Z9eR/scene.splinecode"
                 className="w-full h-full relative z-10"
               />
             </motion.div>

@@ -20,7 +20,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
     // Load the Spline Viewer script dynamically
     const script = document.createElement('script')
     script.type = 'module'
-    script.src = 'https://unpkg.com/@splinetool/viewer@1.9.72/build/spline-viewer.js'
+    script.src = 'https://unpkg.com/@splinetool/viewer/build/spline-viewer.js'
     document.head.appendChild(script)
 
     return () => {
