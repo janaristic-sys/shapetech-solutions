@@ -559,15 +559,15 @@ export default function HomePage() {
         <HeroBlobs />
 
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-32 relative z-10">
-          <Card className="w-full min-h-[600px] bg-background/50 border-none relative overflow-hidden rounded-3xl backdrop-blur-sm">
+          <Card className="w-full min-h-[600px] bg-background/20 border-none relative rounded-3xl backdrop-blur-sm">
             <Spotlight
               className="-top-40 left-0 md:left-60 md:-top-20"
               fill="oklch(var(--primary))"
             />
-            
+
             <div className="flex flex-col lg:flex-row h-full min-h-[600px]">
               {/* Left content */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -631,17 +631,17 @@ export default function HomePage() {
                 </div>
               </motion.div>
 
-              {/* Right content */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, delay: 0.2 }}
-                className="flex-1 relative min-h-[400px] lg:min-h-full"
+              {/* Right content - Enlarged and Standalone */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, x: 40 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+                className="flex-1 relative w-full h-[500px] lg:h-[700px] z-10 lg:-mr-16"
               >
-                <div className="absolute inset-0 bg-primary/5 rounded-3xl blur-3xl opacity-20" />
-                <SplineScene 
+                <div className="absolute inset-0 bg-primary/10 rounded-full blur-[120px] opacity-20" />
+                <SplineScene
                   scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                  className="w-full h-full relative z-10"
+                  className="w-full h-full transform lg:scale-125 origin-center"
                 />
               </motion.div>
             </div>

@@ -23,9 +23,19 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
     script.src = 'https://unpkg.com/@splinetool/viewer/build/spline-viewer.js'
     document.head.appendChild(script)
 
-    return () => {
-      // We don't remove the script to avoid re-loading if component remounts elsewhere
-    }
+    // Hide the Spline logo badge once the viewer is loaded
+    const interval = setInterval(() => {
+      const viewer = document.querySelector('spline-viewer');
+      if (viewer && viewer.shadowRoot) {
+        const logo = viewer.shadowRoot.querySelector('#logo');
+        if (logo) {
+          (logo as HTMLElement).style.display = 'none';
+          clearInterval(interval);
+        }
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
   }, [])
 
   return (
@@ -36,11 +46,8 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
         </div>
       }
     >
-      <div className={`${className} overflow-hidden`}>
-        <spline-viewer 
-          url={scene} 
-          style={{ width: '100%', height: 'calc(100% + 48px)', marginBottom: '-48px' }}
-        />
+      <div className={className}>
+        <spline-viewer url={scene} />
       </div>
     </Suspense>
   )
