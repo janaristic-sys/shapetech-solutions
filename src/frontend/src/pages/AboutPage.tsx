@@ -1228,8 +1228,7 @@ function TeamMemberCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.05, ease: [0.21, 0.45, 0.32, 0.9] }}
-      whileHover={{ y: -12, scale: 1.01 }}
-      className="group relative bg-card/30 backdrop-blur-md rounded-[2.5rem] border border-border/30 hover:border-primary/40 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 overflow-hidden h-full flex flex-col"
+      className="group relative bg-card/30 backdrop-blur-md rounded-[2.5rem] border border-border/30 hover:border-primary/40 transition-all duration-500 overflow-hidden h-full flex flex-col"
       data-ocid={`about.team_card.${index + 1}`}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -1241,7 +1240,7 @@ function TeamMemberCard({
             <img
               src={member.avatarUrl}
               alt={member.name}
-              className="w-24 h-24 rounded-[2.5rem] object-cover border-2 border-primary/10 shadow-2xl relative z-10 group-hover:scale-110 group-hover:rotate-2 transition-all duration-500"
+              className="w-24 h-24 rounded-[2.5rem] object-cover border-2 border-primary/10 shadow-2xl relative z-10 transition-all duration-500"
             />
           ) : (
             <div className="w-24 h-24 rounded-[2.5rem] bg-primary/5 border-2 border-primary/10 flex items-center justify-center relative z-10">
@@ -1253,7 +1252,7 @@ function TeamMemberCard({
         </div>
 
         <div className="mb-6">
-          <h3 className="font-display font-bold text-foreground text-2xl lg:text-3xl leading-[1.1] mb-2 group-hover:text-primary transition-colors duration-300">
+          <h3 className="font-display font-bold text-foreground text-2xl lg:text-3xl leading-[1.1] mb-2 transition-colors duration-300">
             {member.name}
           </h3>
           <Badge variant="outline" className="bg-primary/5 border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
@@ -1276,7 +1275,7 @@ function TeamMemberCard({
               className="inline-flex items-center gap-3 text-sm font-bold text-muted-foreground hover:text-primary transition-all duration-300 group/link"
               data-ocid={`about.team_linkedin.${index + 1}`}
             >
-              <div className="w-9 h-9 rounded-xl bg-border/40 flex items-center justify-center group-hover/link:bg-primary/10 group-hover/link:rotate-12 transition-all duration-300">
+              <div className="w-9 h-9 rounded-xl bg-border/40 flex items-center justify-center group-hover/link:bg-primary/10 transition-all duration-300">
                 <FaLinkedinIn className="w-4 h-4" />
               </div>
               <span className="uppercase tracking-widest text-[10px]">Professional Profile</span>
@@ -1310,7 +1309,7 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
       const firstChild = scrollRef.current.firstElementChild as HTMLElement;
       if (!firstChild) return;
       const itemWidth = firstChild.offsetWidth + 32; // width + gap-8 (32px)
-      const scrollAmount = itemWidth * 2;
+      const scrollAmount = itemWidth * (window.innerWidth >= 1024 ? 3 : 1);
       scrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -1373,7 +1372,7 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
           {members.map((member, i) => (
             <div
               key={String(member.id)}
-              className="w-[80vw] md:w-[calc(50%-16px)] lg:w-[calc(50%-20px)] shrink-0 snap-start"
+              className="w-[80vw] md:w-[calc(50%-16px)] lg:w-[calc(33.33%-22px)] shrink-0 snap-start"
             >
               <TeamMemberCard member={member} index={i} variant="detailed" />
             </div>

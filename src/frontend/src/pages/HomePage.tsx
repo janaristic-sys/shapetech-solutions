@@ -636,7 +636,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.2, delay: 0.2 }}
-                className="flex-1 relative w-full h-[350px] sm:h-[450px] lg:h-[600px] z-10 overflow-visible"
+                className="hidden lg:flex flex-1 relative w-full h-[350px] sm:h-[450px] lg:h-[600px] z-10 overflow-visible"
               >
                 <div className="absolute inset-0 bg-primary/10 rounded-full blur-[120px] opacity-20 pointer-events-none" />
                 <SplineScene
