@@ -107,11 +107,22 @@ const VALUES: ValueItem[] = [
 // ---------------------------------------------------------------------------
 const REAL_TEAM: TeamMember[] = [
   {
+    id: 0n,
+    name: "Gordon Hester",
+    role: "Co-Founder & Chairman of the Board",
+    bio: 'Gordon is a 30+ year veteran of direct selling with experience on both the field and operations side of the business. He co-founded ShapeTech Solutions in 2018 to provide transformative technology solutions for direct selling businesses worldwide. He is the author of "Positioned Right: The Forces Shaping the Future of Direct Selling and Network Marketing" and sits on the DSA/DSEF Board.',
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 0n,
+    category: "leadership",
+  },
+  {
     id: 1n,
     name: "Connor Hester",
     role: "Co-Founder & CEO",
     bio: "Connor leads the strategic vision at ShapeTech Solutions, helping clients transform their businesses through technology. He has worked with dozens of companies from startups to $100M+ enterprises.",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Connor-512x491.png",
     linkedinUrl: "",
     sortOrder: 1n,
     category: "leadership",
@@ -121,7 +132,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Saša Veličković",
     role: "Co-Founder & President",
     bio: "Saša oversees client relations and business strategy, ensuring that every project is perfectly aligned with the client's long-term objectives.",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Sale-512x491.png",
     linkedinUrl: "",
     sortOrder: 2n,
     category: "leadership",
@@ -131,7 +143,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Nenad Andrejević",
     role: "Co-Founder & CTO",
     bio: "Nenad is the architectural lead, responsible for the technical integrity and scalability of the solutions we deliver.",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Neca-512x491.png",
     linkedinUrl: "",
     sortOrder: 3n,
     category: "leadership",
@@ -141,7 +154,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Darko Milenković",
     role: "Co-Founder & Creative Director",
     bio: "Darko sets the creative standard, blending high-end design with functional excellence to create immersive digital experiences.",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Dare-512x491.png",
     linkedinUrl: "",
     sortOrder: 4n,
     category: "leadership",
@@ -151,7 +165,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Dušan Mitrović",
     role: "Co-Founder & Managing Partner",
     bio: "Dušan manages operational excellence across our engineering teams, ensuring robust delivery and technical growth.",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Smajli-512x491.png",
     linkedinUrl: "",
     sortOrder: 5n,
     category: "leadership",
@@ -161,7 +176,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Miodrag Vidojković",
     role: "VP of Operations",
     bio: "Miodrag keeps our global operations running smoothly, bridging the gap between strategy and execution.",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Miske-512x491.png",
     linkedinUrl: "",
     sortOrder: 6n,
     category: "leadership",
@@ -171,7 +187,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Nemanja Jotić",
     role: "VP of Finances",
     bio: "Nemanja oversees the financial health and strategic growth planning for ShapeTech Solutions.",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Ares-512x491.png",
     linkedinUrl: "",
     sortOrder: 7n,
     category: "leadership",
@@ -181,7 +198,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Nikola Olarić",
     role: "Back-end Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Nidza-512x491.png",
     linkedinUrl: "",
     sortOrder: 8n,
     category: "engineering",
@@ -191,7 +209,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Ana Mitrović",
     role: "Graphic and Web Designer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Njuksi-512x491.png",
     linkedinUrl: "",
     sortOrder: 9n,
     category: "creative",
@@ -201,7 +220,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Andriana Miladinović",
     role: "Client Manager",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Andriana-512x491.png",
     linkedinUrl: "",
     sortOrder: 10n,
     category: "operations",
@@ -211,7 +231,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Sandra Marković",
     role: "Full-stack Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Sandra-512x491.png",
     linkedinUrl: "",
     sortOrder: 11n,
     category: "engineering",
@@ -221,7 +242,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Milena Blagojević",
     role: "Back-end Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2020/07/Milena-dots-512x491.png",
     linkedinUrl: "",
     sortOrder: 12n,
     category: "engineering",
@@ -231,7 +253,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Djordje Stojanović",
     role: "Client Manager",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2020/11/Djo-dots-512x491.png",
     linkedinUrl: "",
     sortOrder: 13n,
     category: "operations",
@@ -241,7 +264,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Anastasios Spanos",
     role: "QA Engineer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2021/11/Tasos-dots-512x491.png",
     linkedinUrl: "",
     sortOrder: 14n,
     category: "engineering",
@@ -251,7 +275,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Uroš Terzić",
     role: "Back-end Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2021/11/Terza-dots-512x491.png",
     linkedinUrl: "",
     sortOrder: 15n,
     category: "engineering",
@@ -261,7 +286,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Marija Veljković",
     role: "Back-end Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2021/11/Maka-dots-512x491.png",
     linkedinUrl: "",
     sortOrder: 16n,
     category: "engineering",
@@ -271,7 +297,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Milan Stanković",
     role: "Frontend Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2021/11/Milan-Stankovic-dots-\u2013-1-512x491.png",
     linkedinUrl: "",
     sortOrder: 17n,
     category: "engineering",
@@ -281,7 +308,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Katarina Tonić",
     role: "People Operations Manager",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2022/06/Kaca-dots-512x491.png",
     linkedinUrl: "",
     sortOrder: 18n,
     category: "operations",
@@ -291,7 +319,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Sara Milovanović",
     role: "Backend developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2022/06/Sara-dots-512x491.png",
     linkedinUrl: "",
     sortOrder: 19n,
     category: "engineering",
@@ -301,7 +330,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Marko Budiša",
     role: "Back-end Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2022/06/Buda-dots-512x491.png",
     linkedinUrl: "",
     sortOrder: 20n,
     category: "engineering",
@@ -311,7 +341,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Milica Prvulović",
     role: "Frontend Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2022/06/Micka-dots-512x491.png",
     linkedinUrl: "",
     sortOrder: 21n,
     category: "engineering",
@@ -321,7 +352,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Filip Stamenković",
     role: "Full-stack Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2022/06/Filip-dots-512x491.png",
     linkedinUrl: "",
     sortOrder: 22n,
     category: "engineering",
@@ -331,7 +363,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Marko Kostić",
     role: "Back-end Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2023/02/Marko-Kostic-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 23n,
     category: "engineering",
@@ -341,7 +374,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Matea Milosavljević",
     role: "Back-end Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2023/02/Matea-Milosavljevic-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 24n,
     category: "engineering",
@@ -351,17 +385,19 @@ const REAL_TEAM: TeamMember[] = [
     name: "Slađan Milenović",
     role: "IT Administrator",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2023/02/\u0110ani-ST-1-512x491.png",
     linkedinUrl: "",
     sortOrder: 25n,
-    category: "operations",
+    category: "engineering",
   },
   {
     id: 26n,
     name: "Damjan Denić",
     role: "Full-stack Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2023/02/Damjan-Denic-siv-512x491.png",
     linkedinUrl: "",
     sortOrder: 26n,
     category: "engineering",
@@ -371,7 +407,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Predrag Aleksov",
     role: "Full-stack Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2023/04/Predrag-Aleksov-Full-stack-developer-shapetech-Nis-512x491.png",
     linkedinUrl: "",
     sortOrder: 27n,
     category: "engineering",
@@ -381,7 +418,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Mihajlo Petrović",
     role: "Client Manager",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2024/01/MIhajlo-Petrovic-ShapeTech-Solutions-1-512x491.png",
     linkedinUrl: "",
     sortOrder: 28n,
     category: "operations",
@@ -391,7 +429,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Mila Teokarević",
     role: "UX/UI Designer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2024/01/Mila-Teokarevic-ShapeTech-Solutions-1-512x491.png",
     linkedinUrl: "",
     sortOrder: 29n,
     category: "creative",
@@ -401,7 +440,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Milena Radosavljević",
     role: "Project Manager",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2025/02/Milena-Radosavljevic-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 30n,
     category: "operations",
@@ -411,7 +451,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Andrija Đorđević",
     role: "Full-stack Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andrija-\u0110or\u0111evi\u0107-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 31n,
     category: "engineering",
@@ -421,7 +462,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Andria Trojanović",
     role: "Client Manager",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andria-Trojanovi\u0107-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 32n,
     category: "operations",
@@ -431,7 +473,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Milica Antonijević",
     role: "Client Manager",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Milica-Antonijevic-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 33n,
     category: "operations",
@@ -441,7 +484,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Jana Ristić",
     role: "Business Development Representative",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Jana-Risti\u0107-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 34n,
     category: "operations",
@@ -451,7 +495,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Filip Minić",
     role: "Full-stack Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Filip-Minic-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 35n,
     category: "engineering",
@@ -461,7 +506,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Dušan Ristić",
     role: "Back-end Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2025/07/Du\u0161an-Risti\u0107-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 36n,
     category: "engineering",
@@ -471,7 +517,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Teodora Velisavljević",
     role: "Full-stack Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2025/08/Teodora-Velisavljevi\u0107-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 37n,
     category: "engineering",
@@ -481,7 +528,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Marko Spasić",
     role: "Full-stack Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2025/08/Marko-Spasi\u0107-St-512x491.png",
     linkedinUrl: "",
     sortOrder: 38n,
     category: "engineering",
@@ -491,7 +539,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Sara Novosel",
     role: "Project Manager",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2026/03/Sara-Novosel-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 39n,
     category: "operations",
@@ -501,7 +550,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Irina Veličković",
     role: "People Operations Assistant",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2026/03/Irina-Veli\u0107kovi\u0107-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 40n,
     category: "operations",
@@ -511,7 +561,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Milica Savić",
     role: "Frontend Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2026/03/Milica-Savi\u0107-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 41n,
     category: "engineering",
@@ -521,7 +572,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Dalibor Stanojević",
     role: "Fullstack Developer",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2026/03/Dalibor-Stanojevi\u0107-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 42n,
     category: "engineering",
@@ -531,7 +583,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Miloš Videnović",
     role: "Project Manager",
     bio: "",
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2026/03/MIlo\u0161-Videnovi\u0107-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 43n,
     category: "operations",
@@ -1224,29 +1277,18 @@ function TeamMemberCard({
 // ---------------------------------------------------------------------------
 // Team section
 // ---------------------------------------------------------------------------
-const CATEGORIES = [
-  { id: "all", label: "Global Roster" },
-  { id: "leadership", label: "Leadership" },
-  { id: "engineering", label: "Engineering" },
-  { id: "creative", label: "Creative" },
-  { id: "operations", label: "Operations" },
-];
-
 function TeamSection() {
   const { data: backendTeam, isLoading } = useTeam();
-  const [activeCategory, setActiveCategory] = useState("all");
 
   // Use real hardcoded members when backend returns empty
   const allTeam = backendTeam && backendTeam.length > 0 ? backendTeam : REAL_TEAM;
 
-  const filteredTeam = useMemo(() => {
-    if (activeCategory === "all") return allTeam;
-    return allTeam.filter((m) => m.category === activeCategory);
-  }, [allTeam, activeCategory]);
-
-  const leadershipTeam = useMemo(() => {
-    return allTeam.filter((m) => m.category === "leadership");
-  }, [allTeam]);
+  const sections = [
+    { id: "leadership", label: "Leadership", variant: "detailed" as const },
+    { id: "engineering", label: "Engineering", variant: "compact" as const },
+    { id: "creative", label: "Creative", variant: "compact" as const },
+    { id: "operations", label: "Operations", variant: "compact" as const },
+  ];
 
   return (
     <>
@@ -1264,7 +1306,7 @@ function TeamSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-20"
+            className="text-center mb-24"
           >
             <Badge
               variant="outline"
@@ -1281,74 +1323,56 @@ function TeamSection() {
             </p>
           </motion.div>
 
-          {/* Tier 1: Leadership Spotlight */}
-          <div className="mb-24">
-            <div className="flex items-center gap-4 mb-10">
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
-              <h3 className="font-display text-lg font-bold text-primary uppercase tracking-widest">
-                Leadership
-              </h3>
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {leadershipTeam.map((member, i) => (
-                <TeamMemberCard key={String(member.id)} member={member} index={i} />
+          {isLoading ? (
+            <div className="space-y-24">
+              {[1, 2].map((s) => (
+                <div key={s} className="space-y-10">
+                  <Skeleton className="h-8 w-48 mx-auto" />
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {[1, 2, 3, 4].map((i) => (
+                      <Skeleton key={i} className="h-40 rounded-3xl" />
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
-          </div>
+          ) : (
+            <div className="space-y-24 lg:space-y-32">
+              {sections.map((section) => {
+                const members = allTeam.filter((m) => m.category === section.id);
+                if (members.length === 0) return null;
 
-          {/* Tier 2 & 3: Global Team with Filtering */}
-          <div className="space-y-12">
-            <div className="flex flex-col items-center gap-8">
-              <div className="flex items-center gap-4 w-full">
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
-                <h3 className="font-display text-lg font-bold text-primary uppercase tracking-widest">
-                  Global Roster
-                </h3>
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
-              </div>
+                return (
+                  <div key={section.id} className="space-y-12">
+                    <div className="flex items-center gap-6">
+                      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+                      <h3 className="font-display text-xl font-bold text-primary uppercase tracking-[0.2em]">
+                        {section.label}
+                      </h3>
+                      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+                    </div>
 
-              {/* Filters */}
-              <div className="flex flex-wrap justify-center gap-3">
-                {CATEGORIES.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => setActiveCategory(cat.id)}
-                    className={`px-5 py-2 rounded-full text-sm font-medium transition-smooth border ${activeCategory === cat.id
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background/40 text-muted-foreground border-border hover:border-primary/40"
-                      }`}
-                  >
-                    {cat.label}
-                  </button>
-                ))}
-              </div>
+                    <div
+                      className={
+                        section.variant === "detailed"
+                          ? "grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                          : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                      }
+                    >
+                      {members.map((member, i) => (
+                        <TeamMemberCard
+                          key={String(member.id)}
+                          member={member}
+                          index={i}
+                          variant={section.variant}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-
-            {isLoading ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {[...Array(8)].map((_, i) => (
-                  <div key={i} className="h-20 rounded-2xl bg-muted/20 animate-pulse" />
-                ))}
-              </div>
-            ) : (
-              <motion.div
-                layout
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-              >
-                {filteredTeam
-                  .filter((m) => activeCategory !== "all" || m.category !== "leadership")
-                  .map((member, i) => (
-                    <TeamMemberCard
-                      key={String(member.id)}
-                      member={member}
-                      index={i}
-                      variant="compact"
-                    />
-                  ))}
-              </motion.div>
-            )}
-          </div>
+          )}
         </div>
       </section>
     </>

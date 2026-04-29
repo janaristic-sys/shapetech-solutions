@@ -8,6 +8,7 @@ import {
   BookOpen,
   CheckCircle2,
   CreditCard,
+  GraduationCap,
   HeartPulse,
   Landmark,
   Network,
