@@ -6,6 +6,13 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -674,7 +681,7 @@ export default function HomePage() {
               />
               <p className="text-muted-foreground leading-relaxed mb-4 text-base">
                 {about?.body ??
-                  "ShapeTech Solutions is a boutique tech design and full-stack development firm with offices in Sarasota, Florida and Niš, Serbia. We are an international team of 20+ business consultants, developers, and designers who help companies leverage technology to transform their business."}
+                  "ShapeTech Solutions is a boutique tech design and full-stack development firm with offices in Sarasota, Florida and Niš, Serbia. We are an international team of 50+ business consultants, developers, and designers who help companies leverage technology to transform their business."}
               </p>
               {about?.mission && (
                 <p className="text-muted-foreground leading-relaxed mb-6">
@@ -714,7 +721,7 @@ export default function HomePage() {
                     offset: true,
                   },
                   {
-                    value: "100+",
+                    value: "10+",
                     label: "Years Tech Experience",
                     sub: "Combined team expertise",
                     offset: false,
@@ -785,51 +792,74 @@ export default function HomePage() {
               ))}
             </div>
           ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {solutions.map((sol, i) => (
-                <motion.div
-                  key={String(sol.id)}
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: i * 0.08 }}
-                  data-ocid={`home.solution.${i + 1}`}
-                  className="group card-fluid p-8 flex flex-col relative overflow-hidden"
-                >
-                  <div
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-smooth"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.12) 0%, transparent 60%)",
-                    }}
-                  />
-                  <div className="relative z-10 flex flex-col flex-1">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-smooth blob-accent">
-                      <DynamicIcon name={sol.iconName} className="size-6" />
-                    </div>
-                    <h3 className="font-display font-bold text-foreground text-lg mb-3">
-                      {sol.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed flex-1">
-                      {sol.description}
-                    </p>
-                    <Link
-                      to="/solutions"
-                      className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-smooth"
-                      data-ocid={`home.solution_link.${i + 1}`}
+            <Carousel
+              opts={{
+                align: "start",
+                loop: false,
+              }}
+              className="w-full"
+            >
+              <div className="relative">
+                <CarouselContent className="-ml-6">
+                  {solutions.map((sol, i) => (
+                    <CarouselItem
+                      key={String(sol.id)}
+                      className="pl-6 md:basis-1/2 lg:basis-1/3"
                     >
-                      Learn More <ArrowRight className="size-3.5" />
-                    </Link>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                      <Link
+                        to={`/solutions#${sol.slug}`}
+                        className="block h-full transition-transform active:scale-[0.98]"
+                      >
+                        <motion.div
+                          initial={{ opacity: 0, y: 28 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.55, delay: i * 0.08 }}
+                          data-ocid={`home.solution.${i + 1}`}
+                          className="group card-fluid p-8 flex flex-col relative overflow-hidden h-full min-h-[320px] cursor-pointer"
+                        >
+                          <div
+                            className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-smooth"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.12) 0%, transparent 60%)",
+                            }}
+                          />
+                          <div className="relative z-10 flex flex-col h-full">
+                            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-smooth blob-accent">
+                              <DynamicIcon
+                                name={sol.iconName}
+                                className="size-7"
+                              />
+                            </div>
+                            <h3 className="font-display font-bold text-foreground text-xl mb-4 group-hover:text-primary transition-colors">
+                              {sol.title}
+                            </h3>
+                            <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+                              {sol.description}
+                            </p>
+                          </div>
+                        </motion.div>
+                      </Link>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <div className="flex justify-center md:justify-end gap-3 mt-10">
+                  <CarouselPrevious className="static translate-y-0 bg-background/50 border-border/40 hover:bg-primary/10 hover:border-primary/40 text-foreground transition-smooth size-11" />
+                  <CarouselNext className="static translate-y-0 bg-background/50 border-border/40 hover:bg-primary/10 hover:border-primary/40 text-foreground transition-smooth size-11" />
+                </div>
+              </div>
+            </Carousel>
           )}
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-16">
             <Link to="/solutions" data-ocid="home.solutions_cta">
-              <Button className="rounded-full bg-primary hover:bg-primary/90 text-foreground font-semibold gap-2 transition-smooth shadow-[0_0_24px_oklch(0.75_0.12_195/0.3)] hover:shadow-[0_0_36px_oklch(0.75_0.12_195/0.5)] hover:-translate-y-0.5">
-                View All Services <ArrowRight className="size-4" />
+              <Button
+                size="lg"
+                className="rounded-full bg-primary hover:bg-primary/90 text-foreground font-semibold px-10 gap-3 transition-smooth shadow-[0_0_24px_oklch(0.75_0.12_195/0.3)] hover:shadow-[0_0_40px_oklch(0.75_0.12_195/0.5)] hover:-translate-y-1"
+              >
+                View All Services
+                <ArrowRight className="size-5" />
               </Button>
             </Link>
           </div>

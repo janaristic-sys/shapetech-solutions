@@ -107,6 +107,25 @@ const SOLUTIONS: Solution[] = [
       "Ongoing Support & Maintenance",
     ],
   },
+  {
+    id: 5,
+    slug: "tech-consulting",
+    icon: BarChart2,
+    tag: "Strategy",
+    title: "Technology Consulting",
+    tagline: "Strategic guidance for complex technical decisions.",
+    description:
+      "Architecture reviews, technology roadmap development, vendor selection, and digital transformation strategy. We help you build a durable technical foundation that aligns with your business goals.",
+    features: [
+      "Architecture Review",
+      "Tech Roadmap Development",
+      "Vendor Selection",
+      "Digital Transformation",
+      "Security Audits",
+      "Performance Optimization",
+      "Fractional CTO Services",
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -207,12 +226,13 @@ function SolutionRow({
 
   return (
     <motion.div
+      id={solution.slug}
       initial={{ opacity: 0, y: 48 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
       data-ocid={`solutions.item.${index + 1}`}
-      className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${isEven ? "lg:[&>*:first-child]:order-2" : ""}`}
+      className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center scroll-mt-32 ${isEven ? "lg:[&>*:first-child]:order-2" : ""}`}
     >
       {/* ── Text panel ── */}
       <div

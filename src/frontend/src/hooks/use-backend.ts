@@ -255,7 +255,7 @@ const defaultSolutions: Solution[] = [
     description:
       "Custom platforms built for the unique demands of MLM and network marketing companies — commission engines, genealogy trees, distributor back-offices, and replicated websites that handle your compensation plan at scale.",
     iconName: "Network",
-    slug: "direct-selling-software",
+    slug: "direct-selling",
     sortOrder: 1n,
   },
   {
@@ -282,7 +282,7 @@ const defaultSolutions: Solution[] = [
     description:
       "End-to-end custom application development — from initial architecture through design, development, QA, and launch. We build software that fits your process, not the other way around.",
     iconName: "Smartphone",
-    slug: "custom-web-mobile",
+    slug: "custom-development",
     sortOrder: 4n,
   },
   {

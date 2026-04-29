@@ -374,7 +374,6 @@ export default function IndustriesPage() {
             {[
               { value: "7+", label: "Verticals mastered" },
               { value: "150+", label: "Projects delivered" },
-              { value: "Fortune 500", label: "Level clients served" },
             ].map((stat) => (
               <div
                 key={stat.label}
