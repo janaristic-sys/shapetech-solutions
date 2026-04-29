@@ -905,12 +905,14 @@ export default function HomePage() {
         className="relative bg-background py-28"
         data-ocid="home.industries_section"
       >
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-          <SectionHeading
-            eyebrow="Industries"
-            title="Industries We Serve"
-            subtitle="Deep domain expertise across the industries that matter most — with direct selling at the core."
-          />
+        <div className="w-full">
+          <div className="container max-w-7xl mx-auto px-4 sm:px-6 mb-16">
+            <SectionHeading
+              eyebrow="Industries"
+              title="Industries We Serve"
+              subtitle="Deep domain expertise across the industries that matter most — with direct selling at the core."
+            />
+          </div>
           {industriesLoading ? (
             <div className="flex flex-col gap-4">
               {[1, 2, 3, 4].map((i) => (
@@ -1221,15 +1223,34 @@ export default function HomePage() {
         data-ocid="home.launches_section"
       >
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <SectionHeading
-              eyebrow="Recent Launches"
-              title="Fresh Off the Build"
-              subtitle="Projects we've shipped recently — real work, real impact."
-            />
-            <Badge variant="outline" className="w-fit h-fit px-4 py-1.5 border-primary/30 text-primary bg-primary/5 rounded-full animate-pulse font-semibold uppercase tracking-widest text-[10px]">
-              Coming Soon
-            </Badge>
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-16">
+            <div className="space-y-4">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 text-[10px] font-bold uppercase tracking-[0.2em]">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                Recent Launches
+              </span>
+              <h2 className="font-display font-bold text-4xl lg:text-5xl text-foreground">
+                Fresh Off the <span className="gradient-accent">Build</span>
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-xl">
+                Projects we've shipped recently — real work, real impact.
+              </p>
+            </div>
+            <div className="flex items-center gap-4 bg-primary/5 border border-primary/20 p-1.5 rounded-2xl backdrop-blur-md shadow-[0_0_20px_-5px_rgba(var(--primary-rgb),0.3)]">
+              <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-primary-foreground text-xs font-black uppercase tracking-widest shadow-xl shadow-primary/40 animate-pulse">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                </span>
+                Coming Soon
+              </div>
+              <span className="pr-5 text-xs font-bold text-foreground/80">
+                Portfolio Preview
+              </span>
+            </div>
           </div>
           {portfolioLoading ? (
             <div className="grid md:grid-cols-3 gap-6">
