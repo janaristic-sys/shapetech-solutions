@@ -581,7 +581,7 @@ function ValuesSection() {
         bottomColor="oklch(0.22 0.05 270)"
       />
       <section
-        className="relative bg-card py-32 overflow-hidden"
+        className="relative bg-card py-20 lg:py-28 overflow-hidden"
         data-ocid="about.values_section"
       >
         <BlobBackground />
@@ -591,7 +591,7 @@ function ValuesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-24"
+            className="mb-16 lg:mb-24"
           >
             <Badge
               variant="outline"
@@ -599,51 +599,51 @@ function ValuesSection() {
             >
               Our Values
             </Badge>
-            <h2 className="font-display text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] max-w-4xl">
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground leading-[1.15] max-w-2xl">
               The Principles That <br />
               <span className="gradient-accent">Shape Our DNA</span>
             </h2>
           </motion.div>
 
-          <div className="space-y-32 lg:space-y-56">
+          <div className="space-y-16 lg:space-y-28">
             {VALUES.map((value, i) => {
               const Icon = value.icon;
               const isEven = i % 2 === 0;
               return (
                 <motion.div
                   key={value.title}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 32 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} gap-12 lg:gap-24 items-center`}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} gap-8 lg:gap-20 items-center`}
                 >
                   {/* Number & Visual */}
-                  <div className="flex-1 relative w-full flex items-center justify-center">
-                    <span
-                      className={`absolute -top-10 font-display text-[12rem] lg:text-[18rem] font-bold text-primary/5 select-none leading-none ${
-                        isEven ? "left-0" : "right-0"
-                      }`}
-                    >
-                      {(i + 1).toString().padStart(2, "0")}
-                    </span>
-                    <div className="relative z-10 w-32 h-32 lg:w-56 lg:h-56 rounded-full bg-primary/5 flex items-center justify-center group">
-                      <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-smooth" />
-                      <Icon className="w-12 h-12 lg:w-24 lg:h-24 text-primary relative z-10 group-hover:scale-110 transition-smooth" />
+                  <div className="flex-1 relative w-full flex items-center justify-center lg:justify-start">
+                    <div className={`relative flex items-center ${isEven ? "lg:flex-row" : "lg:flex-row-reverse lg:ml-auto"}`}>
+                      <span
+                        className="font-display text-7xl lg:text-[9rem] font-bold text-primary/5 select-none leading-none"
+                      >
+                        {(i + 1).toString().padStart(2, "0")}
+                      </span>
+                      <div className={`relative z-10 w-20 h-20 lg:w-28 lg:h-28 rounded-full bg-primary/5 flex items-center justify-center group ${isEven ? "-ml-8 lg:-ml-12" : "-mr-8 lg:-mr-12"}`}>
+                        <div className="absolute inset-0 bg-primary/10 rounded-full blur-2xl opacity-50 group-hover:opacity-80 transition-smooth" />
+                        <Icon className="w-8 h-8 lg:w-11 lg:h-11 text-primary relative z-10 group-hover:scale-110 transition-smooth" />
+                      </div>
                     </div>
                   </div>
 
                   {/* Content */}
                   <div
-                    className={`flex-1 space-y-6 ${isEven ? "text-left" : "lg:text-right flex flex-col lg:items-end"}`}
+                    className={`flex-1 space-y-4 ${isEven ? "text-left" : "lg:text-right flex flex-col lg:items-end"}`}
                   >
-                    <h3 className="font-display text-4xl lg:text-6xl font-bold text-foreground">
+                    <h3 className="font-display text-2xl lg:text-4xl font-bold text-foreground">
                       {value.title}
                     </h3>
-                    <p className="text-muted-foreground text-lg lg:text-2xl leading-relaxed max-w-xl">
+                    <p className="text-muted-foreground text-base lg:text-lg leading-relaxed max-w-xl">
                       {value.description}
                     </p>
-                    <div className="h-1.5 w-24 bg-gradient-to-r from-primary to-transparent rounded-full" />
+                    <div className="h-1 w-16 bg-gradient-to-r from-primary to-transparent rounded-full" />
                   </div>
                 </motion.div>
               );
