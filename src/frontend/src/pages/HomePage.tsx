@@ -912,44 +912,69 @@ export default function HomePage() {
             subtitle="Deep domain expertise across the industries that matter most — with direct selling at the core."
           />
           {industriesLoading ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <CardSkeleton key={i} />
+            <div className="flex flex-col gap-4">
+              {[1, 2, 3, 4].map((i) => (
+                <Skeleton key={i} className="h-24 w-full rounded-2xl" />
               ))}
             </div>
           ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
+            <div className="mt-16 flex flex-col">
               {industries.map((ind, i) => (
                 <motion.div
                   key={String(ind.id)}
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                   data-ocid={`home.industry.${i + 1}`}
-                  className={`group card-fluid p-7 hover:border-primary/40 cursor-default overflow-hidden relative
-                    ${i === 0 ? "sm:col-span-2 lg:col-span-1 lg:row-span-2" : ""}`}
+                  className="group relative border-t border-border/40 last:border-b transition-smooth hover:bg-primary/[0.02]"
                 >
-                  <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-primary/0 group-hover:bg-primary/10 blur-3xl transition-smooth" />
-                  <div className="relative z-10">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-smooth blob-accent">
-                      <DynamicIcon name={ind.iconName} className="size-6" />
+                  <div className="container max-w-7xl mx-auto px-4 py-10 lg:py-14 relative z-10 flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-16">
+                    {/* Number & Icon */}
+                    <div className="flex items-center gap-6 lg:min-w-[300px]">
+                      <span className="font-display font-bold text-5xl lg:text-6xl text-primary/10 group-hover:text-primary/30 transition-smooth tabular-nums">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <div className="w-16 h-16 rounded-2xl bg-primary/5 text-primary flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/15 transition-smooth">
+                        <DynamicIcon name={ind.iconName} className="size-8" />
+                      </div>
                     </div>
-                    <h3 className="font-display font-bold text-foreground text-lg mb-2 group-hover:text-primary transition-colors">
-                      {ind.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {ind.description}
-                    </p>
+
+                    {/* Title */}
+                    <div className="flex-1">
+                      <h3 className="font-display font-bold text-3xl lg:text-4xl text-foreground group-hover:text-primary transition-smooth mb-2">
+                        {ind.title}
+                      </h3>
+                      <div className="lg:hidden mt-4">
+                        <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
+                          {ind.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Description (Desktop) */}
+                    <div className="hidden lg:block flex-1 max-w-2xl opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-smooth delay-75">
+                      <p className="text-muted-foreground text-lg leading-relaxed">
+                        {ind.description}
+                      </p>
+                    </div>
                   </div>
+
+                  {/* Hover background accent */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-smooth pointer-events-none" />
                 </motion.div>
               ))}
             </div>
           )}
-          <div className="text-center mt-12">
+          
+          <div className="text-center mt-20">
             <Link to="/industries" data-ocid="home.industries_cta">
-              <Button className="rounded-full border border-border/60 bg-transparent hover:border-primary/40 hover:bg-primary/10 text-foreground gap-2 transition-smooth hover:-translate-y-0.5">
-                All Industries <ArrowRight className="size-4" />
+              <Button 
+                variant="outline"
+                size="lg"
+                className="rounded-full border-border/60 hover:border-primary/40 hover:bg-primary/5 text-foreground px-10 gap-3 transition-smooth hover:-translate-y-1"
+              >
+                Explore All Verticals <ArrowRight className="size-5" />
               </Button>
             </Link>
           </div>
