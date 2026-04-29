@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAbout, useTeam } from "@/hooks/use-backend";
 import type { TeamMember } from "@/types";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   Building2,
+  ChevronLeft,
+  ChevronRight,
   Eye,
   Handshake,
   Lightbulb,
@@ -1275,6 +1277,86 @@ function TeamMemberCard({
 }
 
 // ---------------------------------------------------------------------------
+// Team carousel section
+// ---------------------------------------------------------------------------
+function TeamCarouselSection({ label, members, variant }: { label: string; members: TeamMember[]; variant: "detailed" | "compact" }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      // Get the width of one card + gap
+      const firstChild = scrollRef.current.firstElementChild as HTMLElement;
+      if (!firstChild) return;
+
+      // Calculate scroll amount based on visible items
+      const itemWidth = firstChild.offsetWidth + 24; // width + gap-6 (24px)
+      const scrollAmount = itemWidth * 3; // Try to scroll 3 items if possible
+
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  return (
+    <div className="space-y-8">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-6 flex-1">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+          <h3 className="font-display text-xl font-bold text-primary uppercase tracking-[0.2em] whitespace-nowrap">
+            {label}
+          </h3>
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+        </div>
+
+        {members.length > 3 && (
+          <div className="hidden md:flex items-center gap-2 ml-4 shrink-0">
+            <Button
+              variant="outline"
+              size="icon"
+              className="rounded-full w-10 h-10 border-border hover:border-primary/50 hover:text-primary transition-smooth bg-card"
+              onClick={() => scroll("left")}
+              aria-label={`Scroll ${label} left`}
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="rounded-full w-10 h-10 border-border hover:border-primary/50 hover:text-primary transition-smooth bg-card"
+              onClick={() => scroll("right")}
+              aria-label={`Scroll ${label} right`}
+            >
+              <ChevronRight className="w-5 h-5" />
+            </Button>
+          </div>
+        )}
+      </div>
+
+      <div
+        ref={scrollRef}
+        className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-6 px-6 lg:-mx-10 lg:px-10"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        <style dangerouslySetInnerHTML={{
+          __html: `
+          .flex::-webkit-scrollbar { display: none; }
+        `}} />
+        {members.map((member, i) => (
+          <div
+            key={String(member.id)}
+            className="w-[85vw] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] shrink-0 snap-start"
+          >
+            <TeamMemberCard member={member} index={i} variant={variant} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Team section
 // ---------------------------------------------------------------------------
 function TeamSection() {
@@ -1284,12 +1366,25 @@ function TeamSection() {
   const hasValidBackendTeam = backendTeam && backendTeam.length > 0 && backendTeam.some(m => m.category);
   const allTeam = hasValidBackendTeam ? backendTeam : REAL_TEAM;
 
+  const leadership = allTeam.filter((m) => m.category === "leadership");
+  const operations = allTeam.filter((m) => m.category === "operations");
+  const creative = allTeam.filter((m) => m.category === "creative");
+
+  const engineering = allTeam.filter((m) => m.category === "engineering");
+  const frontend = engineering.filter((m) => m.role.toLowerCase().includes("front"));
+  const backend = engineering.filter((m) => m.role.toLowerCase().includes("back"));
+  const fullstack = engineering.filter((m) =>
+    !m.role.toLowerCase().includes("front") && !m.role.toLowerCase().includes("back")
+  );
+
   const sections = [
-    { id: "leadership", label: "Leadership", variant: "detailed" as const },
-    { id: "engineering", label: "Engineering", variant: "compact" as const },
-    { id: "creative", label: "Creative", variant: "compact" as const },
-    { id: "operations", label: "Operations", variant: "compact" as const },
-  ];
+    { id: "leadership", label: "Leadership", members: leadership, variant: "detailed" as const },
+    { id: "frontend", label: "Frontend Engineering", members: frontend, variant: "compact" as const },
+    { id: "backend", label: "Backend Engineering", members: backend, variant: "compact" as const },
+    { id: "fullstack", label: "Full-Stack & Core Engineering", members: fullstack, variant: "compact" as const },
+    { id: "creative", label: "Creative", members: creative, variant: "compact" as const },
+    { id: "operations", label: "Operations", members: operations, variant: "compact" as const },
+  ].filter(s => s.members.length > 0);
 
   return (
     <>
@@ -1307,7 +1402,7 @@ function TeamSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-24"
+            className="text-center mb-16 lg:mb-24"
           >
             <Badge
               variant="outline"
@@ -1329,8 +1424,8 @@ function TeamSection() {
               {[1, 2].map((s) => (
                 <div key={s} className="space-y-10">
                   <Skeleton className="h-8 w-48 mx-auto" />
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {[1, 2, 3, 4].map((i) => (
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    {[1, 2, 3].map((i) => (
                       <Skeleton key={i} className="h-40 rounded-3xl" />
                     ))}
                   </div>
@@ -1338,40 +1433,15 @@ function TeamSection() {
               ))}
             </div>
           ) : (
-            <div className="space-y-24 lg:space-y-32">
-              {sections.map((section) => {
-                const members = allTeam.filter((m) => m.category === section.id);
-                if (members.length === 0) return null;
-
-                return (
-                  <div key={section.id} className="space-y-12">
-                    <div className="flex items-center gap-6">
-                      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
-                      <h3 className="font-display text-xl font-bold text-primary uppercase tracking-[0.2em]">
-                        {section.label}
-                      </h3>
-                      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
-                    </div>
-
-                    <div
-                      className={
-                        section.variant === "detailed"
-                          ? "grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-                          : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-                      }
-                    >
-                      {members.map((member, i) => (
-                        <TeamMemberCard
-                          key={String(member.id)}
-                          member={member}
-                          index={i}
-                          variant={section.variant}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
+            <div className="space-y-16 lg:space-y-24">
+              {sections.map((section) => (
+                <TeamCarouselSection
+                  key={section.id}
+                  label={section.label}
+                  members={section.members}
+                  variant={section.variant}
+                />
+              ))}
             </div>
           )}
         </div>
