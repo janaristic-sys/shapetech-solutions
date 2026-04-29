@@ -1280,8 +1280,9 @@ function TeamMemberCard({
 function TeamSection() {
   const { data: backendTeam, isLoading } = useTeam();
 
-  // Use real hardcoded members when backend returns empty
-  const allTeam = backendTeam && backendTeam.length > 0 ? backendTeam : REAL_TEAM;
+  // Use real hardcoded members when backend returns empty or if backend data lacks categories
+  const hasValidBackendTeam = backendTeam && backendTeam.length > 0 && backendTeam.some(m => m.category);
+  const allTeam = hasValidBackendTeam ? backendTeam : REAL_TEAM;
 
   const sections = [
     { id: "leadership", label: "Leadership", variant: "detailed" as const },
