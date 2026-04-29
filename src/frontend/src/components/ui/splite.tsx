@@ -27,13 +27,28 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
     const interval = setInterval(() => {
       const viewer = document.querySelector('spline-viewer');
       if (viewer && viewer.shadowRoot) {
-        const logo = viewer.shadowRoot.querySelector('#logo');
+        // Try multiple selectors just in case
+        const logo = viewer.shadowRoot.querySelector('#logo') || 
+                     viewer.shadowRoot.querySelector('a[href*="spline"]') ||
+                     viewer.shadowRoot.querySelector('.spline-watermark');
+        
         if (logo) {
-          (logo as HTMLElement).style.display = 'none';
+          logo.remove();
           clearInterval(interval);
         }
       }
     }, 100);
+
+    // Also inject a style to hide it if it re-appears
+    const style = document.createElement('style');
+    style.innerHTML = `
+      spline-viewer {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    `;
+    document.head.appendChild(style);
 
     return () => clearInterval(interval);
   }, [])

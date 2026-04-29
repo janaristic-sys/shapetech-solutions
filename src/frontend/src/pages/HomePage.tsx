@@ -565,13 +565,13 @@ export default function HomePage() {
               fill="oklch(var(--primary))"
             />
 
-            <div className="flex flex-col lg:flex-row h-full min-h-[600px]">
+            <div className="flex flex-col lg:flex-row h-full min-h-[600px] overflow-visible">
               {/* Left content */}
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="flex-1 p-8 md:p-16 relative z-10 flex flex-col justify-center"
+                className="flex-1 p-8 md:p-16 relative z-20 flex flex-col justify-center overflow-visible"
               >
                 <div className="flex items-center gap-2 mb-6">
                   <div className="h-px w-10 bg-gradient-to-r from-transparent to-primary" />
@@ -636,12 +636,12 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.8, x: 40 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-                className="flex-1 relative w-full h-[500px] lg:h-[700px] z-10 lg:-mr-16"
+                className="flex-1 relative w-full h-[500px] lg:h-[700px] z-10 lg:-mr-32 overflow-visible"
               >
-                <div className="absolute inset-0 bg-primary/10 rounded-full blur-[120px] opacity-20" />
+                <div className="absolute inset-0 bg-primary/10 rounded-full blur-[120px] opacity-20 pointer-events-none" />
                 <SplineScene
                   scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                  className="w-full h-full transform lg:scale-125 origin-center"
+                  className="w-full h-full transform lg:scale-125 origin-center lg:translate-x-12"
                 />
               </motion.div>
             </div>
