@@ -1468,39 +1468,38 @@ function TeamSection() {
                 </p>
               </div>
             </div>
-        </div>
-      </motion.div>
+          </motion.div>
 
-      {isLoading ? (
-        <div className="space-y-32">
-          {[1, 2].map((s) => (
-            <div key={s} className="flex flex-col lg:flex-row gap-12">
-              <div className="lg:w-1/3 space-y-6">
-                <Skeleton className="h-6 w-24 rounded-full" />
-                <Skeleton className="h-12 w-48" />
-                <Skeleton className="h-20 w-full" />
-              </div>
-              <div className="lg:w-2/3 flex gap-6 overflow-hidden">
-                {[1, 2].map((i) => (
-                  <Skeleton key={i} className="h-[400px] w-[300px] shrink-0 rounded-[2.5rem]" />
-                ))}
-              </div>
+          {isLoading ? (
+            <div className="space-y-32">
+              {[1, 2].map((s) => (
+                <div key={s} className="flex flex-col lg:flex-row gap-12">
+                  <div className="lg:w-1/3 space-y-6">
+                    <Skeleton className="h-6 w-24 rounded-full" />
+                    <Skeleton className="h-12 w-48" />
+                    <Skeleton className="h-20 w-full" />
+                  </div>
+                  <div className="lg:w-2/3 flex gap-6 overflow-hidden">
+                    {[1, 2].map((i) => (
+                      <Skeleton key={i} className="h-[400px] w-[300px] shrink-0 rounded-[2.5rem]" />
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            <div className="space-y-16 lg:space-y-20">
+              {sections.map((section) => (
+                <TeamCarouselSection
+                  key={section.id}
+                  label={section.label}
+                  members={section.members}
+                />
+              ))}
+            </div>
+          )}
         </div>
-      ) : (
-        <div className="space-y-16 lg:space-y-20">
-          {sections.map((section) => (
-            <TeamCarouselSection
-              key={section.id}
-              label={section.label}
-              members={section.members}
-            />
-          ))}
-        </div>
-      )}
-    </div >
-      </section >
+      </section>
     </>
   );
 }
