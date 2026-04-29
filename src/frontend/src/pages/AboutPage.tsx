@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAbout, useTeam } from "@/hooks/use-backend";
 import type { TeamMember } from "@/types";
+import { useState, useMemo } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -107,84 +108,433 @@ const VALUES: ValueItem[] = [
 const REAL_TEAM: TeamMember[] = [
   {
     id: 1n,
-    name: "Gordon Hester",
-    role: "Co-Founder & Chairman of the Board",
-    bio: 'Gordon is a 30+ year veteran of direct selling with experience on both the field and operations side of the business. He co-founded ShapeTech Solutions in 2018 to provide transformative technology solutions for direct selling businesses worldwide. He is the author of "Positioned Right: The Forces Shaping the Future of Direct Selling and Network Marketing" and sits on the DSA/DSEF Board.',
+    name: "Connor Hester",
+    role: "Co-Founder & CEO",
+    bio: "Connor leads the strategic vision at ShapeTech Solutions, helping clients transform their businesses through technology. He has worked with dozens of companies from startups to $100M+ enterprises.",
     avatarUrl: "",
     linkedinUrl: "",
     sortOrder: 1n,
+    category: "leadership",
   },
   {
     id: 2n,
-    name: "Connor Hester",
-    role: "Co-Founder & CEO",
-    bio: "Connor spends most of his time using an overly complex story or analogy to explain something that could have been said in a few words. However, when not annoying the staff, Connor works on helping to develop new business, managing client projects ranging from product launches to company modernization projects and overall, leading the continued scaling of the ShapeTech operations. He has worked with over a half-dozen companies ranging from pre-product startups to $100 million+ in revenue. He can constantly be found either reading a new book or on the tennis court.",
+    name: "Saša Veličković",
+    role: "Co-Founder & President",
+    bio: "Saša oversees client relations and business strategy, ensuring that every project is perfectly aligned with the client's long-term objectives.",
     avatarUrl: "",
     linkedinUrl: "",
     sortOrder: 2n,
+    category: "leadership",
   },
   {
     id: 3n,
-    name: "Saša Veličković",
-    role: "Co-Founder & Client Manager",
-    bio: "Probably the first person you'll meet from our team, Saša will help define the problem and suggest ways to fix it. He knows what everyone on the team does, understands the processes and works with others to define the project. His job includes client communication, business analysis and problem-solving. Saša has a way of making others feel better, motivating them and supporting them, which makes him a great Client Manager, Colleague and Mentor.",
+    name: "Nenad Andrejević",
+    role: "Co-Founder & CTO",
+    bio: "Nenad is the architectural lead, responsible for the technical integrity and scalability of the solutions we deliver.",
     avatarUrl: "",
     linkedinUrl: "",
     sortOrder: 3n,
+    category: "leadership",
   },
   {
     id: 4n,
-    name: "Nenad Andrejević",
-    role: "Co-Founder & Chief Technology Officer",
-    bio: "Nenad is a co-founder and the technical backbone of ShapeTech Solutions. As Chief Technology Officer, he oversees the architecture and delivery of complex full-stack solutions, ensuring our technology choices are always aligned with client goals and industry best practices.",
+    name: "Darko Milenković",
+    role: "Co-Founder & Creative Director",
+    bio: "Darko sets the creative standard, blending high-end design with functional excellence to create immersive digital experiences.",
     avatarUrl: "",
     linkedinUrl: "",
     sortOrder: 4n,
+    category: "leadership",
   },
   {
     id: 5n,
-    name: "Darko Milenković",
-    role: "Co-Founder & Creative Director",
-    bio: "Darko is a Senior Web and Graphic designer passionate about making people see things his way. He has worked on a vast range of projects; whatever request you can think of he's probably done it for one of our clients. His greatest abilities include Visual Identity, UX, designing graphics and photo manipulation. Internally, he is our Creative Director, Mentor and Team Lead to the Creative team.",
+    name: "Dušan Mitrović",
+    role: "Co-Founder & Managing Partner",
+    bio: "Dušan manages operational excellence across our engineering teams, ensuring robust delivery and technical growth.",
     avatarUrl: "",
     linkedinUrl: "",
     sortOrder: 5n,
+    category: "leadership",
   },
   {
     id: 6n,
-    name: "Dušan Mitrović",
-    role: "Co-Founder & Managing Partner",
-    bio: "Dušan is a co-founder and Managing Partner at ShapeTech Solutions. He brings deep expertise in full-stack development and project delivery, helping guide the engineering team toward scalable and robust solutions for clients across the direct selling and technology sectors.",
+    name: "Miodrag Vidojković",
+    role: "VP of Operations",
+    bio: "Miodrag keeps our global operations running smoothly, bridging the gap between strategy and execution.",
     avatarUrl: "",
     linkedinUrl: "",
     sortOrder: 6n,
+    category: "leadership",
   },
   {
     id: 7n,
-    name: "Miodrag Vidojković",
-    role: "VP of Operations",
-    bio: "Miodrag oversees day-to-day operations at ShapeTech Solutions, ensuring projects run smoothly from kickoff to delivery. His operational expertise keeps the team aligned and clients informed, making him the anchor of ShapeTech's delivery process.",
+    name: "Nemanja Jotić",
+    role: "VP of Finances",
+    bio: "Nemanja oversees the financial health and strategic growth planning for ShapeTech Solutions.",
     avatarUrl: "",
     linkedinUrl: "",
     sortOrder: 7n,
+    category: "leadership",
   },
   {
     id: 8n,
-    name: "Nemanja Jotić",
-    role: "VP of Finances",
-    bio: "Nemanja manages the financial health of ShapeTech Solutions, overseeing budgeting, forecasting, and financial strategy. His expertise ensures the company remains well-positioned for sustainable growth and continued investment in talent and technology.",
+    name: "Nikola Olarić",
+    role: "Back-end Developer",
+    bio: "",
     avatarUrl: "",
     linkedinUrl: "",
     sortOrder: 8n,
+    category: "engineering",
   },
   {
     id: 9n,
-    name: "Nikola Olarić",
-    role: "Back-end Developer",
-    bio: "Nikola is a back-end developer at ShapeTech Solutions, specializing in building robust and scalable server-side systems. He works closely with the team to deliver clean, efficient code that powers ShapeTech's client solutions.",
+    name: "Ana Mitrović",
+    role: "Graphic and Web Designer",
+    bio: "",
     avatarUrl: "",
     linkedinUrl: "",
     sortOrder: 9n,
+    category: "creative",
+  },
+  {
+    id: 10n,
+    name: "Andriana Miladinović",
+    role: "Client Manager",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 10n,
+    category: "operations",
+  },
+  {
+    id: 11n,
+    name: "Sandra Marković",
+    role: "Full-stack Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 11n,
+    category: "engineering",
+  },
+  {
+    id: 12n,
+    name: "Milena Blagojević",
+    role: "Back-end Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 12n,
+    category: "engineering",
+  },
+  {
+    id: 13n,
+    name: "Djordje Stojanović",
+    role: "Client Manager",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 13n,
+    category: "operations",
+  },
+  {
+    id: 14n,
+    name: "Anastasios Spanos",
+    role: "QA Engineer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 14n,
+    category: "engineering",
+  },
+  {
+    id: 15n,
+    name: "Uroš Terzić",
+    role: "Back-end Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 15n,
+    category: "engineering",
+  },
+  {
+    id: 16n,
+    name: "Marija Veljković",
+    role: "Back-end Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 16n,
+    category: "engineering",
+  },
+  {
+    id: 17n,
+    name: "Milan Stanković",
+    role: "Frontend Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 17n,
+    category: "engineering",
+  },
+  {
+    id: 18n,
+    name: "Katarina Tonić",
+    role: "People Operations Manager",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 18n,
+    category: "operations",
+  },
+  {
+    id: 19n,
+    name: "Sara Milovanović",
+    role: "Backend developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 19n,
+    category: "engineering",
+  },
+  {
+    id: 20n,
+    name: "Marko Budiša",
+    role: "Back-end Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 20n,
+    category: "engineering",
+  },
+  {
+    id: 21n,
+    name: "Milica Prvulović",
+    role: "Frontend Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 21n,
+    category: "engineering",
+  },
+  {
+    id: 22n,
+    name: "Filip Stamenković",
+    role: "Full-stack Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 22n,
+    category: "engineering",
+  },
+  {
+    id: 23n,
+    name: "Marko Kostić",
+    role: "Back-end Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 23n,
+    category: "engineering",
+  },
+  {
+    id: 24n,
+    name: "Matea Milosavljević",
+    role: "Back-end Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 24n,
+    category: "engineering",
+  },
+  {
+    id: 25n,
+    name: "Slađan Milenović",
+    role: "IT Administrator",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 25n,
+    category: "operations",
+  },
+  {
+    id: 26n,
+    name: "Damjan Denić",
+    role: "Full-stack Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 26n,
+    category: "engineering",
+  },
+  {
+    id: 27n,
+    name: "Predrag Aleksov",
+    role: "Full-stack Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 27n,
+    category: "engineering",
+  },
+  {
+    id: 28n,
+    name: "Mihajlo Petrović",
+    role: "Client Manager",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 28n,
+    category: "operations",
+  },
+  {
+    id: 29n,
+    name: "Mila Teokarević",
+    role: "UX/UI Designer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 29n,
+    category: "creative",
+  },
+  {
+    id: 30n,
+    name: "Milena Radosavljević",
+    role: "Project Manager",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 30n,
+    category: "operations",
+  },
+  {
+    id: 31n,
+    name: "Andrija Đorđević",
+    role: "Full-stack Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 31n,
+    category: "engineering",
+  },
+  {
+    id: 32n,
+    name: "Andria Trojanović",
+    role: "Client Manager",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 32n,
+    category: "operations",
+  },
+  {
+    id: 33n,
+    name: "Milica Antonijević",
+    role: "Client Manager",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 33n,
+    category: "operations",
+  },
+  {
+    id: 34n,
+    name: "Jana Ristić",
+    role: "Business Development Representative",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 34n,
+    category: "operations",
+  },
+  {
+    id: 35n,
+    name: "Filip Minić",
+    role: "Full-stack Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 35n,
+    category: "engineering",
+  },
+  {
+    id: 36n,
+    name: "Dušan Ristić",
+    role: "Back-end Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 36n,
+    category: "engineering",
+  },
+  {
+    id: 37n,
+    name: "Teodora Velisavljević",
+    role: "Full-stack Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 37n,
+    category: "engineering",
+  },
+  {
+    id: 38n,
+    name: "Marko Spasić",
+    role: "Full-stack Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 38n,
+    category: "engineering",
+  },
+  {
+    id: 39n,
+    name: "Sara Novosel",
+    role: "Project Manager",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 39n,
+    category: "operations",
+  },
+  {
+    id: 40n,
+    name: "Irina Veličković",
+    role: "People Operations Assistant",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 40n,
+    category: "operations",
+  },
+  {
+    id: 41n,
+    name: "Milica Savić",
+    role: "Frontend Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 41n,
+    category: "engineering",
+  },
+  {
+    id: 42n,
+    name: "Dalibor Stanojević",
+    role: "Fullstack Developer",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 42n,
+    category: "engineering",
+  },
+  {
+    id: 43n,
+    name: "Miloš Videnović",
+    role: "Project Manager",
+    bio: "",
+    avatarUrl: "",
+    linkedinUrl: "",
+    sortOrder: 43n,
+    category: "operations",
   },
 ];
 function WaveDivider({
@@ -764,75 +1114,106 @@ function OfficesSection() {
 // ---------------------------------------------------------------------------
 // Team member card
 // ---------------------------------------------------------------------------
+interface TeamMemberCardProps {
+  member: TeamMember;
+  index: number;
+  variant?: "detailed" | "compact";
+}
+
 function TeamMemberCard({
   member,
   index,
-}: { member: TeamMember; index: number }) {
+  variant = "detailed",
+}: TeamMemberCardProps) {
   const initials = member.name
     .split(" ")
     .map((n) => n[0])
     .join("")
     .toUpperCase();
 
-  const radii = [
-    "24px 8px 24px 8px",
-    "8px 24px 8px 24px",
-    "20px 20px 6px 20px",
-    "6px 20px 20px 6px",
-    "24px 6px 6px 24px",
-    "6px 24px 24px 6px",
-  ];
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.09, duration: 0.5 }}
-      data-ocid={`about.team_member.${index + 1}`}
-      className="group relative overflow-hidden bg-card border border-border hover:border-primary/40 transition-smooth card-fluid h-full"
-      style={{ borderRadius: radii[index % radii.length] }}
-    >
-      <div
-        className="pointer-events-none absolute -bottom-12 -right-12 w-40 h-40 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-smooth"
-        aria-hidden="true"
-      />
-      <div className="relative p-6">
-        <div className="mb-5">
+  if (variant === "compact") {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: (index % 10) * 0.05 }}
+        className="group relative flex items-center gap-4 p-4 rounded-2xl bg-card border border-border/50 hover:border-primary/30 hover:bg-card/80 transition-smooth h-full"
+      >
+        <div className="shrink-0 w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
           {member.avatarUrl ? (
             <img
               src={member.avatarUrl}
               alt={member.name}
-              className="w-16 h-16 rounded-full object-cover border-2 border-primary/30"
+              className="w-full h-full object-cover"
             />
           ) : (
-            <div className="w-16 h-16 rounded-full bg-primary/20 border-2 border-primary/30 flex items-center justify-center float-subtle">
-              <span className="font-display font-bold text-primary text-lg">
+            <span className="font-display font-bold text-primary text-sm">
+              {initials}
+            </span>
+          )}
+        </div>
+        <div className="min-w-0">
+          <h4 className="font-display font-semibold text-foreground text-sm truncate group-hover:text-primary transition-colors">
+            {member.name}
+          </h4>
+          <p className="text-muted-foreground text-[10px] uppercase tracking-wider font-medium truncate">
+            {member.role}
+          </p>
+        </div>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group relative bg-card rounded-3xl border border-border/50 hover:border-primary/30 transition-smooth overflow-hidden h-full"
+      data-ocid={`about.team_card.${index + 1}`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
+
+      <div className="relative p-6 lg:p-8">
+        <div className="mb-6">
+          {member.avatarUrl ? (
+            <img
+              src={member.avatarUrl}
+              alt={member.name}
+              className="w-20 h-20 rounded-2xl object-cover border-2 border-primary/20 shadow-subtle"
+            />
+          ) : (
+            <div className="w-20 h-20 rounded-2xl bg-primary/10 border-2 border-primary/20 flex items-center justify-center float-subtle">
+              <span className="font-display font-bold text-primary text-2xl">
                 {initials}
               </span>
             </div>
           )}
         </div>
-        <h3 className="font-display font-semibold text-foreground text-lg leading-snug">
+        <h3 className="font-display font-bold text-foreground text-xl lg:text-2xl leading-tight mb-1">
           {member.name}
         </h3>
-        <p className="text-primary text-sm font-medium mt-0.5 mb-3">
+        <p className="text-primary font-medium text-sm lg:text-base mb-4">
           {member.role}
         </p>
-        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-4">
-          {member.bio}
-        </p>
+        {member.bio && (
+          <p className="text-muted-foreground text-sm lg:text-base leading-relaxed mb-6 line-clamp-4">
+            {member.bio}
+          </p>
+        )}
         {member.linkedinUrl && member.linkedinUrl !== "#" && (
           <a
             href={member.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${member.name} on LinkedIn`}
-            className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
             data-ocid={`about.team_linkedin.${index + 1}`}
           >
-            <FaLinkedinIn className="w-3.5 h-3.5" />
-            LinkedIn
+            <FaLinkedinIn className="w-4 h-4" />
+            <span className="font-medium">Connect</span>
           </a>
         )}
       </div>
@@ -843,10 +1224,29 @@ function TeamMemberCard({
 // ---------------------------------------------------------------------------
 // Team section
 // ---------------------------------------------------------------------------
+const CATEGORIES = [
+  { id: "all", label: "Global Roster" },
+  { id: "leadership", label: "Leadership" },
+  { id: "engineering", label: "Engineering" },
+  { id: "creative", label: "Creative" },
+  { id: "operations", label: "Operations" },
+];
+
 function TeamSection() {
   const { data: backendTeam, isLoading } = useTeam();
+  const [activeCategory, setActiveCategory] = useState("all");
+
   // Use real hardcoded members when backend returns empty
-  const team = backendTeam && backendTeam.length > 0 ? backendTeam : REAL_TEAM;
+  const allTeam = backendTeam && backendTeam.length > 0 ? backendTeam : REAL_TEAM;
+
+  const filteredTeam = useMemo(() => {
+    if (activeCategory === "all") return allTeam;
+    return allTeam.filter((m) => m.category === activeCategory);
+  }, [allTeam, activeCategory]);
+
+  const leadershipTeam = useMemo(() => {
+    return allTeam.filter((m) => m.category === "leadership");
+  }, [allTeam]);
 
   return (
     <>
@@ -864,7 +1264,7 @@ function TeamSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
             <Badge
               variant="outline"
@@ -876,43 +1276,79 @@ function TeamSection() {
               The People Behind the Work
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-              A diverse, globally distributed crew of builders, designers, and
-              strategists dedicated to your success.
+              A diverse, globally distributed crew of 40+ builders, designers,
+              and strategists dedicated to your success.
             </p>
           </motion.div>
 
-          {isLoading ? (
-            <div
-              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-              data-ocid="about.team.loading_state"
-            >
-              {(["a", "b", "c"] as const).map((key) => (
-                <div
-                  key={key}
-                  className="bg-background rounded-3xl p-6 space-y-4"
-                >
-                  <Skeleton className="w-16 h-16 rounded-full" />
-                  <Skeleton className="h-5 w-3/4" />
-                  <Skeleton className="h-4 w-1/2" />
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-5/6" />
-                </div>
+          {/* Tier 1: Leadership Spotlight */}
+          <div className="mb-24">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+              <h3 className="font-display text-lg font-bold text-primary uppercase tracking-widest">
+                Leadership
+              </h3>
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {leadershipTeam.map((member, i) => (
+                <TeamMemberCard key={String(member.id)} member={member} index={i} />
               ))}
             </div>
-          ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
-              {[...team]
-                .sort((a, b) => Number(a.sortOrder - b.sortOrder))
-                .map((member, i) => (
-                  <div
-                    key={String(member.id)}
-                    className={i === 0 ? "lg:row-span-2" : ""}
+          </div>
+
+          {/* Tier 2 & 3: Global Team with Filtering */}
+          <div className="space-y-12">
+            <div className="flex flex-col items-center gap-8">
+              <div className="flex items-center gap-4 w-full">
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+                <h3 className="font-display text-lg font-bold text-primary uppercase tracking-widest">
+                  Global Roster
+                </h3>
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+              </div>
+
+              {/* Filters */}
+              <div className="flex flex-wrap justify-center gap-3">
+                {CATEGORIES.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    className={`px-5 py-2 rounded-full text-sm font-medium transition-smooth border ${activeCategory === cat.id
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-background/40 text-muted-foreground border-border hover:border-primary/40"
+                      }`}
                   >
-                    <TeamMemberCard member={member} index={i} />
-                  </div>
+                    {cat.label}
+                  </button>
                 ))}
+              </div>
             </div>
-          )}
+
+            {isLoading ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {[...Array(8)].map((_, i) => (
+                  <div key={i} className="h-20 rounded-2xl bg-muted/20 animate-pulse" />
+                ))}
+              </div>
+            ) : (
+              <motion.div
+                layout
+                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+              >
+                {filteredTeam
+                  .filter((m) => activeCategory !== "all" || m.category !== "leadership")
+                  .map((member, i) => (
+                    <TeamMemberCard
+                      key={String(member.id)}
+                      member={member}
+                      index={i}
+                      variant="compact"
+                    />
+                  ))}
+              </motion.div>
+            )}
+          </div>
         </div>
       </section>
     </>

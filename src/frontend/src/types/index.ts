@@ -100,6 +100,7 @@ export interface TeamMember {
   avatarUrl: string;
   linkedinUrl: string;
   sortOrder: bigint;
+  category?: string;
 }
 
 export interface Partner {
