@@ -1193,6 +1193,7 @@ function TeamMemberCard({
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: (index % 10) * 0.05 }}
+        whileHover={{ y: -5, scale: 1.02 }}
         className="group relative flex items-center gap-4 p-4 rounded-3xl bg-card/40 backdrop-blur-sm border border-border/40 hover:border-primary/40 hover:bg-card/60 transition-all duration-500 h-full overflow-hidden"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -1226,23 +1227,24 @@ function TeamMemberCard({
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.21, 0.45, 0.32, 0.9] }}
-      className="group relative bg-card/30 backdrop-blur-md rounded-[2.5rem] border border-border/30 hover:border-primary/30 transition-all duration-700 overflow-hidden h-full"
+      transition={{ duration: 0.6, delay: index * 0.05, ease: [0.21, 0.45, 0.32, 0.9] }}
+      whileHover={{ y: -12, scale: 1.01 }}
+      className="group relative bg-card/30 backdrop-blur-md rounded-[2.5rem] border border-border/30 hover:border-primary/40 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 overflow-hidden h-full flex flex-col"
       data-ocid={`about.team_card.${index + 1}`}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-      <div className="relative p-8 lg:p-10 flex flex-col h-full">
+      <div className="relative p-8 lg:p-10 flex flex-col h-full flex-1">
         <div className="mb-8 relative inline-block">
           <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           {member.avatarUrl ? (
             <img
               src={member.avatarUrl}
               alt={member.name}
-              className="w-24 h-24 rounded-[2rem] object-cover border-2 border-primary/10 shadow-2xl relative z-10 group-hover:scale-105 transition-transform duration-700"
+              className="w-24 h-24 rounded-[2.5rem] object-cover border-2 border-primary/10 shadow-2xl relative z-10 group-hover:scale-110 group-hover:rotate-2 transition-all duration-500"
             />
           ) : (
-            <div className="w-24 h-24 rounded-[2rem] bg-primary/5 border-2 border-primary/10 flex items-center justify-center relative z-10">
+            <div className="w-24 h-24 rounded-[2.5rem] bg-primary/5 border-2 border-primary/10 flex items-center justify-center relative z-10">
               <span className="font-display font-bold text-primary text-3xl">
                 {initials}
               </span>
@@ -1265,7 +1267,7 @@ function TeamMemberCard({
           </p>
         )}
 
-        <div className="mt-auto">
+        <div className="mt-auto pt-4 border-t border-border/20">
           {member.linkedinUrl && member.linkedinUrl !== "#" ? (
             <a
               href={member.linkedinUrl}
@@ -1274,13 +1276,13 @@ function TeamMemberCard({
               className="inline-flex items-center gap-3 text-sm font-bold text-muted-foreground hover:text-primary transition-all duration-300 group/link"
               data-ocid={`about.team_linkedin.${index + 1}`}
             >
-              <div className="w-8 h-8 rounded-full bg-border/40 flex items-center justify-center group-hover/link:bg-primary/10 transition-colors">
-                <FaLinkedinIn className="w-3.5 h-3.5" />
+              <div className="w-9 h-9 rounded-xl bg-border/40 flex items-center justify-center group-hover/link:bg-primary/10 group-hover/link:rotate-12 transition-all duration-300">
+                <FaLinkedinIn className="w-4 h-4" />
               </div>
-              <span className="uppercase tracking-widest text-[10px]">Connect on LinkedIn</span>
+              <span className="uppercase tracking-widest text-[10px]">Professional Profile</span>
             </a>
           ) : (
-            <div className="h-8" />
+            <div className="h-9" />
           )}
         </div>
       </div>
@@ -1291,7 +1293,7 @@ function TeamMemberCard({
 // ---------------------------------------------------------------------------
 // Team carousel section
 // ---------------------------------------------------------------------------
-function TeamCarouselSection({ label, members, variant }: { label: string; members: TeamMember[]; variant: "detailed" | "compact" }) {
+function TeamCarouselSection({ label, members }: { label: string; members: TeamMember[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const descriptions: Record<string, string> = {
@@ -1307,7 +1309,7 @@ function TeamCarouselSection({ label, members, variant }: { label: string; membe
     if (scrollRef.current) {
       const firstChild = scrollRef.current.firstElementChild as HTMLElement;
       if (!firstChild) return;
-      const itemWidth = firstChild.offsetWidth + 24;
+      const itemWidth = firstChild.offsetWidth + 32; // width + gap-8 (32px)
       const scrollAmount = itemWidth * 2;
       scrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
@@ -1331,37 +1333,37 @@ function TeamCarouselSection({ label, members, variant }: { label: string; membe
             {descriptions[label] || `Driving excellence and innovation within our ${label.toLowerCase()} division.`}
           </p>
         </div>
-
-        {/* Navigation Arrows */}
-        {members.length > (variant === "detailed" ? 2 : 3) && (
-          <div className="flex items-center gap-4">
-            <Button
-              variant="outline"
-              size="icon"
-              className="rounded-full w-14 h-14 border-border/40 hover:border-primary/50 hover:text-primary transition-all duration-300 bg-card/50 backdrop-blur-sm group/btn"
-              onClick={() => scroll("left")}
-              aria-label={`Scroll ${label} left`}
-            >
-              <ChevronLeft className="w-6 h-6 group-hover/btn:-translate-x-0.5 transition-transform" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="rounded-full w-14 h-14 border-border/40 hover:border-primary/50 hover:text-primary transition-all duration-300 bg-card/50 backdrop-blur-sm group/btn"
-              onClick={() => scroll("right")}
-              aria-label={`Scroll ${label} right`}
-            >
-              <ChevronRight className="w-6 h-6 group-hover/btn:translate-x-0.5 transition-transform" />
-            </Button>
-          </div>
-        )}
       </div>
 
       {/* Carousel (Right) */}
-      <div className="lg:w-2/3 w-full relative min-w-0">
+      <div className="lg:w-2/3 w-full relative min-w-0 group/carousel">
+        {/* Navigation Arrows - Repositioned to overlay on carousel */}
+        {members.length > 2 && (
+          <>
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 z-30 rounded-full w-14 h-14 border-border/40 hover:border-primary/50 hover:text-primary transition-all duration-300 bg-card/90 backdrop-blur-md opacity-0 group-hover/carousel:opacity-100 hidden lg:flex shadow-xl"
+              onClick={() => scroll("left")}
+              aria-label={`Scroll ${label} left`}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute -right-6 top-1/2 -translate-y-1/2 z-30 rounded-full w-14 h-14 border-border/40 hover:border-primary/50 hover:text-primary transition-all duration-300 bg-card/90 backdrop-blur-md opacity-0 group-hover/carousel:opacity-100 hidden lg:flex shadow-xl"
+              onClick={() => scroll("right")}
+              aria-label={`Scroll ${label} right`}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </Button>
+          </>
+        )}
+
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 hide-scrollbar scroll-smooth"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-12 hide-scrollbar scroll-smooth"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           <style dangerouslySetInnerHTML={{
@@ -1371,20 +1373,15 @@ function TeamCarouselSection({ label, members, variant }: { label: string; membe
           {members.map((member, i) => (
             <div
               key={String(member.id)}
-              className={variant === "detailed"
-                ? "w-[85vw] md:w-[calc(50%-12px)] shrink-0 snap-start"
-                : "w-[85vw] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] shrink-0 snap-start"
-              }
+              className="w-[85vw] md:w-[calc(50%-16px)] lg:w-[calc(50%-20px)] shrink-0 snap-start"
             >
-              <TeamMemberCard member={member} index={i} variant={variant} />
+              <TeamMemberCard member={member} index={i} variant="detailed" />
             </div>
           ))}
-          {/* Spacer at the end for better scrolling feel */}
-          <div className="w-[10vw] shrink-0" />
+          <div className="w-[15vw] shrink-0" />
         </div>
 
-        {/* Visual Fade effect on the right for desktop */}
-        <div className="hidden lg:block absolute top-0 right-0 bottom-12 w-32 bg-gradient-to-l from-card/20 to-transparent pointer-events-none z-10" />
+        <div className="hidden lg:block absolute top-0 right-0 bottom-12 w-24 bg-gradient-to-l from-card/20 to-transparent pointer-events-none z-10" />
       </div>
     </div>
   );
@@ -1412,12 +1409,12 @@ function TeamSection() {
   );
 
   const sections = [
-    { id: "leadership", label: "Leadership", members: leadership, variant: "detailed" as const },
-    { id: "frontend", label: "Frontend Engineering", members: frontend, variant: "compact" as const },
-    { id: "backend", label: "Backend Engineering", members: backend, variant: "compact" as const },
-    { id: "fullstack", label: "Full-Stack & Core Engineering", members: fullstack, variant: "compact" as const },
-    { id: "creative", label: "Creative", members: creative, variant: "compact" as const },
-    { id: "operations", label: "Operations", members: operations, variant: "compact" as const },
+    { id: "leadership", label: "Leadership", members: leadership },
+    { id: "frontend", label: "Frontend Engineering", members: frontend },
+    { id: "backend", label: "Backend Engineering", members: backend },
+    { id: "fullstack", label: "Full-Stack & Core Engineering", members: fullstack },
+    { id: "creative", label: "Creative", members: creative },
+    { id: "operations", label: "Operations", members: operations },
   ].filter(s => s.members.length > 0);
 
   return (
@@ -1496,7 +1493,6 @@ function TeamSection() {
                   key={section.id}
                   label={section.label}
                   members={section.members}
-                  variant={section.variant}
                 />
               ))}
             </div>
