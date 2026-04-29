@@ -581,7 +581,7 @@ function ValuesSection() {
         bottomColor="oklch(0.22 0.05 270)"
       />
       <section
-        className="relative bg-card py-24 overflow-hidden"
+        className="relative bg-card py-32 overflow-hidden"
         data-ocid="about.values_section"
       >
         <BlobBackground />
@@ -591,7 +591,7 @@ function ValuesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="mb-24"
           >
             <Badge
               variant="outline"
@@ -599,51 +599,51 @@ function ValuesSection() {
             >
               Our Values
             </Badge>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              The Principles That{" "}
-              <span className="gradient-accent">Guide Our Work</span>
+            <h2 className="font-display text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] max-w-4xl">
+              The Principles That <br />
+              <span className="gradient-accent">Shape Our DNA</span>
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-              Five core values that shape every decision, every project, and
-              every client relationship at Shapetech Solutions.
-            </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="space-y-32 lg:space-y-56">
             {VALUES.map((value, i) => {
               const Icon = value.icon;
-              const radii = [
-                "24px 8px 24px 8px",
-                "8px 24px 8px 24px",
-                "20px 8px 20px 8px",
-                "8px 20px 8px 20px",
-                "24px 24px 8px 24px",
-              ];
+              const isEven = i % 2 === 0;
               return (
                 <motion.div
                   key={value.title}
-                  initial={{ opacity: 0, y: 28 }}
+                  initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  data-ocid={`about.value.${i + 1}`}
-                  className="group relative overflow-hidden card-fluid border border-border hover:border-primary/40 p-7"
-                  style={{ borderRadius: radii[i % radii.length] }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} gap-12 lg:gap-24 items-center`}
                 >
-                  <div
-                    className="pointer-events-none absolute -bottom-8 -right-8 w-28 h-28 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-smooth"
-                    aria-hidden="true"
-                  />
-                  <div className="relative">
-                    <div className="w-11 h-11 rounded-2xl bg-primary/15 flex items-center justify-center mb-4">
-                      <Icon className="w-5 h-5 text-primary" />
+                  {/* Number & Visual */}
+                  <div className="flex-1 relative w-full flex items-center justify-center">
+                    <span
+                      className={`absolute -top-10 font-display text-[12rem] lg:text-[18rem] font-bold text-primary/5 select-none leading-none ${
+                        isEven ? "left-0" : "right-0"
+                      }`}
+                    >
+                      {(i + 1).toString().padStart(2, "0")}
+                    </span>
+                    <div className="relative z-10 w-32 h-32 lg:w-56 lg:h-56 rounded-full bg-primary/5 flex items-center justify-center group">
+                      <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-smooth" />
+                      <Icon className="w-12 h-12 lg:w-24 lg:h-24 text-primary relative z-10 group-hover:scale-110 transition-smooth" />
                     </div>
-                    <h3 className="font-display font-semibold text-foreground text-lg mb-2">
+                  </div>
+
+                  {/* Content */}
+                  <div
+                    className={`flex-1 space-y-6 ${isEven ? "text-left" : "lg:text-right flex flex-col lg:items-end"}`}
+                  >
+                    <h3 className="font-display text-4xl lg:text-6xl font-bold text-foreground">
                       {value.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-lg lg:text-2xl leading-relaxed max-w-xl">
                       {value.description}
                     </p>
+                    <div className="h-1.5 w-24 bg-gradient-to-r from-primary to-transparent rounded-full" />
                   </div>
                 </motion.div>
               );
