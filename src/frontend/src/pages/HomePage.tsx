@@ -681,7 +681,7 @@ export default function HomePage() {
               />
               <p className="text-muted-foreground leading-relaxed mb-4 text-base">
                 {about?.body ??
-                  "ShapeTech Solutions is a boutique tech design and full-stack development firm with offices in Sarasota, Florida and Niš, Serbia. We are an international team of 50+ business consultants, developers, and designers who help companies leverage technology to transform their business."}
+                  "ShapeTech Solutions is a boutique tech design and full-stack development firm with offices in Sarasota, Florida, and Niš, Serbia. We are an international team of 50+ business consultants, developers, and designers who help companies leverage technology to transform their business."}
               </p>
               {about?.mission && (
                 <p className="text-muted-foreground leading-relaxed mb-6">
