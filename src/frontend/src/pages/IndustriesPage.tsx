@@ -100,160 +100,159 @@ function IndustryStackCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "0px 0px -100px 0px" }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="sticky top-20 md:top-24 w-full mb-20 md:mb-32 last:mb-0"
-      style={{
-        zIndex: index + 1,
-      }}
+      className="sticky top-20 md:top-24 w-full mb-20 md:mb-32 last:mb-0 pt-10"
+      style={{ zIndex: index + 1 }}
       data-ocid={`industries.stack_card.${index + 1}`}
     >
-      {/* Stacked Deck Effect — cards peeking from BEHIND at the top */}
-      {index < total - 2 && (
-        <div
-          className="absolute top-0 inset-x-0 pointer-events-none"
-          style={{ zIndex: -2 }}
-        >
+      {/* Inner wrapper — relative so peek strips and main card share the same stacking context */}
+      <div className="relative">
+        {/* Deck strip — third card back (deepest, most offset) */}
+        {index < total - 2 && (
           <div
-            className="absolute w-[92%] left-1/2 -translate-x-1/2 h-full"
+            className="absolute inset-x-[6%] inset-y-0 pointer-events-none rounded-[28px_8px_28px_8px]"
             style={{
-              background: "linear-gradient(135deg, oklch(0.16 0.04 265), oklch(0.12 0.03 262))",
-              borderRadius,
-              border: "1px solid oklch(0.75 0.12 195 / 0.08)",
-              transform: "translateY(-14px) scaleX(0.93)",
-              opacity: 0.45,
-            }}
-          />
-        </div>
-      )}
-      {index < total - 1 && (
-        <div
-          className="absolute top-0 inset-x-0 pointer-events-none"
-          style={{ zIndex: -1 }}
-        >
-          <div
-            className="absolute w-[96%] left-1/2 -translate-x-1/2 h-full"
-            style={{
-              background: "linear-gradient(135deg, oklch(0.19 0.05 267), oklch(0.15 0.06 264))",
+              top: -28,
+              background: "linear-gradient(135deg, oklch(0.14 0.035 265), oklch(0.11 0.025 262))",
               borderRadius,
               border: "1px solid oklch(0.75 0.12 195 / 0.12)",
-              transform: "translateY(-7px) scaleX(0.97)",
-              opacity: 0.6,
+              zIndex: 1,
+              opacity: 0.75,
+              boxShadow: "0 -4px 20px rgba(0,0,0,0.25)",
             }}
           />
-        </div>
-      )}
-      <div
-        className="relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] min-h-[480px] md:min-h-[450px] flex flex-col md:flex-row"
-        style={{
-          borderRadius,
-          background: "oklch(0.18 0.05 270)",
-          border: "1px solid oklch(0.75 0.12 195 / 0.15)",
-        }}
-      >
-        {/* Background Decorative Layer */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {/* Gradient */}
+        )}
+        {/* Deck strip — second card back (closer) */}
+        {index < total - 1 && (
           <div
-            className="absolute inset-0"
+            className="absolute inset-x-[3%] inset-y-0 pointer-events-none"
             style={{
-              background: `linear-gradient(135deg, ${isDirectSelling
-                ? "oklch(0.20 0.06 268) 0%, oklch(0.16 0.09 262) 100%"
-                : isEcommerce
-                  ? "oklch(0.18 0.05 270) 0%, oklch(0.22 0.08 260) 100%"
-                  : "oklch(0.18 0.05 270) 0%, oklch(0.14 0.04 265) 100%"
-                })`,
+              top: -14,
+              background: "linear-gradient(135deg, oklch(0.17 0.05 267), oklch(0.14 0.05 264))",
+              borderRadius,
+              border: "1px solid oklch(0.75 0.12 195 / 0.16)",
+              zIndex: 2,
+              opacity: 0.85,
+              boxShadow: "0 -4px 16px rgba(0,0,0,0.2)",
             }}
           />
-          {/* Subtle Grid / Texture */}
-          <div
-            className="absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(-45deg, oklch(0.75 0.12 195) 0 1px, transparent 1px 40px)",
-            }}
-          />
-          {/* Glow Blobs */}
-          <div
-            className="absolute -top-20 -right-20 w-80 h-80 rounded-full blur-[100px] opacity-[0.12]"
-            style={{
-              background: "radial-gradient(circle, oklch(0.75 0.12 195), transparent 70%)",
-            }}
-          />
-        </div>
+        )}
 
-        {/* Content Layout */}
-        <div className="relative z-10 flex flex-col md:flex-row w-full p-6 md:p-14 gap-8 md:gap-12 lg:gap-20">
-          {/* Left Column: Information */}
-          <div className="flex-1 flex flex-col">
-            <div className="flex items-center gap-4 mb-6 md:mb-8">
-              <div
-                className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center text-primary"
-                style={{
-                  background: "oklch(0.75 0.12 195 / 0.12)",
-                  borderRadius: "20px 6px 20px 6px",
-                  border: "1px solid oklch(0.75 0.12 195 / 0.25)",
-                }}
-              >
-                <IndustryIcon name={industry.iconName} className="size-5 md:size-6" />
-              </div>
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/70 block mb-0.5 md:mb-1">
-                  Industry Focus
-                </span>
-                <h3 className="font-display font-bold text-foreground text-xl md:text-2xl lg:text-3xl leading-tight">
-                  {industry.title}
-                </h3>
-              </div>
-            </div>
-
-            <p className="text-muted-foreground text-sm md:text-base lg:text-lg leading-relaxed mb-8 md:mb-10 max-w-xl">
-              {industry.description}
-            </p>
-
-            <div className="mt-auto mb-8 md:mb-0">
-              <Link to="/contact">
-                <Button className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold gap-2 transition-smooth shadow-[0_0_24px_oklch(0.75_0.12_195/0.3)] hover:shadow-[0_0_32px_oklch(0.75_0.12_195/0.45)]">
-                  Start a Project
-                  <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
-                </Button>
-              </Link>
-            </div>
+        {/* Main card — sits on top of the deck strips */}
+        <div
+          className="relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] min-h-[480px] md:min-h-[450px] flex flex-col md:flex-row"
+          style={{
+            borderRadius,
+            background: "oklch(0.18 0.05 270)",
+            border: "1px solid oklch(0.75 0.12 195 / 0.15)",
+            zIndex: 3,
+          }}
+        >
+          {/* Background Decorative Layer */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {/* Gradient */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(135deg, ${isDirectSelling
+                  ? "oklch(0.20 0.06 268) 0%, oklch(0.16 0.09 262) 100%"
+                  : isEcommerce
+                    ? "oklch(0.18 0.05 270) 0%, oklch(0.22 0.08 260) 100%"
+                    : "oklch(0.18 0.05 270) 0%, oklch(0.14 0.04 265) 100%"
+                  })`,
+              }}
+            />
+            {/* Subtle Grid / Texture */}
+            <div
+              className="absolute inset-0 opacity-[0.04]"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(-45deg, oklch(0.75 0.12 195) 0 1px, transparent 1px 40px)",
+              }}
+            />
+            {/* Glow Blobs */}
+            <div
+              className="absolute -top-20 -right-20 w-80 h-80 rounded-full blur-[100px] opacity-[0.12]"
+              style={{
+                background: "radial-gradient(circle, oklch(0.75 0.12 195), transparent 70%)",
+              }}
+            />
           </div>
 
-          {/* Right Column: Key Capabilities (Single Column as requested) */}
-          <div className="md:w-[320px] lg:w-[380px] shrink-0">
-            <div className="bg-background/20 backdrop-blur-md rounded-3xl border border-white/5 p-6 md:p-8 h-full relative">
-              <div className="flex items-center gap-3 mb-6 md:mb-8">
-                <Sparkles className="size-4 text-primary" />
-                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground/80">
-                  Key Capabilities
-                </span>
+          {/* Content Layout */}
+          <div className="relative z-10 flex flex-col md:flex-row w-full p-6 md:p-14 gap-8 md:gap-12 lg:gap-20">
+            {/* Left Column: Information */}
+            <div className="flex-1 flex flex-col">
+              <div className="flex items-center gap-4 mb-6 md:mb-8">
+                <div
+                  className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center text-primary"
+                  style={{
+                    background: "oklch(0.75 0.12 195 / 0.12)",
+                    borderRadius: "20px 6px 20px 6px",
+                    border: "1px solid oklch(0.75 0.12 195 / 0.25)",
+                  }}
+                >
+                  <IndustryIcon name={industry.iconName} className="size-5 md:size-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/70 block mb-0.5 md:mb-1">
+                    Industry Focus
+                  </span>
+                  <h3 className="font-display font-bold text-foreground text-xl md:text-2xl lg:text-3xl leading-tight">
+                    {industry.title}
+                  </h3>
+                </div>
               </div>
 
-              <ul className="space-y-3 md:space-y-4">
-                {(industry.highlights || []).map((feature, i) => (
-                  <motion.li
-                    key={feature}
-                    initial={{ opacity: 0, x: 10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.2 + i * 0.05 }}
-                    className="flex items-start gap-3 md:gap-4 group/item"
-                  >
-                    <div className="mt-1 size-4 md:size-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover/item:bg-primary/20 transition-colors">
-                      <CheckCircle2 className="size-2.5 md:size-3 text-primary" />
-                    </div>
-                    <span className="text-xs md:text-sm lg:text-base text-foreground/90 leading-tight">
-                      {feature}
-                    </span>
-                  </motion.li>
-                ))}
-              </ul>
+              <p className="text-muted-foreground text-sm md:text-base lg:text-lg leading-relaxed mb-8 md:mb-10 max-w-xl">
+                {industry.description}
+              </p>
 
-              {/* Counter for visual flair */}
-              <div className="absolute bottom-4 right-6 md:bottom-6 md:right-8 opacity-[0.05] select-none pointer-events-none">
-                <span className="font-display font-black text-6xl md:text-7xl lg:text-8xl">
-                  {(index + 1).toString().padStart(2, "0")}
-                </span>
+              <div className="mt-auto mb-8 md:mb-0">
+                <Link to="/contact">
+                  <Button className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold gap-2 transition-smooth shadow-[0_0_24px_oklch(0.75_0.12_195/0.3)] hover:shadow-[0_0_32px_oklch(0.75_0.12_195/0.45)]">
+                    Start a Project
+                    <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column: Key Capabilities (Single Column as requested) */}
+            <div className="md:w-[320px] lg:w-[380px] shrink-0">
+              <div className="bg-background/20 backdrop-blur-md rounded-3xl border border-white/5 p-6 md:p-8 h-full relative">
+                <div className="flex items-center gap-3 mb-6 md:mb-8">
+                  <Sparkles className="size-4 text-primary" />
+                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground/80">
+                    Key Capabilities
+                  </span>
+                </div>
+
+                <ul className="space-y-3 md:space-y-4">
+                  {(industry.highlights || []).map((feature, i) => (
+                    <motion.li
+                      key={feature}
+                      initial={{ opacity: 0, x: 10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.2 + i * 0.05 }}
+                      className="flex items-start gap-3 md:gap-4 group/item"
+                    >
+                      <div className="mt-1 size-4 md:size-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover/item:bg-primary/20 transition-colors">
+                        <CheckCircle2 className="size-2.5 md:size-3 text-primary" />
+                      </div>
+                      <span className="text-xs md:text-sm lg:text-base text-foreground/90 leading-tight">
+                        {feature}
+                      </span>
+                    </motion.li>
+                  ))}
+                </ul>
+
+                {/* Counter for visual flair */}
+                <div className="absolute bottom-4 right-6 md:bottom-6 md:right-8 opacity-[0.05] select-none pointer-events-none">
+                  <span className="font-display font-black text-6xl md:text-7xl lg:text-8xl">
+                    {(index + 1).toString().padStart(2, "0")}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
