@@ -92,7 +92,7 @@ function IndustryStackCard({
 }) {
   const isDirectSelling = industry.title.toLowerCase().includes("direct selling");
   const isHealthWellness = industry.title.toLowerCase().includes("health");
-  const isEcommerce = industry.title.toLowerCase().includes("e-commerce") || industry.title.toLowerCase().includes("retail");
+  const isDigitalProducts = industry.title.toLowerCase().includes("digital products");
 
   // Custom radii for the premium look
   const borderRadius = "28px 8px 28px 8px";
@@ -158,7 +158,7 @@ function IndustryStackCard({
               style={{
                 background: `linear-gradient(135deg, ${isDirectSelling
                   ? "oklch(0.20 0.06 268) 0%, oklch(0.16 0.09 262) 100%"
-                  : isEcommerce
+                  : isDigitalProducts
                     ? "oklch(0.18 0.05 270) 0%, oklch(0.22 0.08 260) 100%"
                     : "oklch(0.18 0.05 270) 0%, oklch(0.14 0.04 265) 100%"
                   })`,
@@ -388,52 +388,16 @@ export default function IndustriesPage() {
             </div>
           ) : (
             <div className="flex flex-col relative">
-              {/* Combine and sort for the stack */}
-              {(() => {
-                const ECOMMERCE_FALLBACK: Industry = {
-                  id: "ecommerce-fallback",
-                  title: "E-Commerce & Retail",
-                  description: "Scaling high-volume retail platforms with custom headless architectures, sophisticated inventory management, and integrated loyalty systems.",
-                  iconName: "ShoppingCart",
-                  highlights: [
-                    "Headless Commerce Architectures",
-                    "Multi-channel Inventory Sync",
-                    "Custom Loyalty & Rewards Engines",
-                    "High-Performance Checkout Flows",
-                    "Advanced Personalization Systems"
-                  ],
-                  featured: false
-                };
-
-                const allIndustries = industries || [];
-                const hasEcommerce = allIndustries.some(ind =>
-                  ind.title.toLowerCase().includes("e-commerce") ||
-                  ind.title.toLowerCase().includes("retail")
-                );
-                const displayIndustries = hasEcommerce ? allIndustries : [...allIndustries, ECOMMERCE_FALLBACK];
-
-                // Priority-based sorting
-                const getPriority = (title: string) => {
-                  const t = title.toLowerCase();
-                  if (t.includes("direct selling")) return 1;
-                  if (t.includes("e-commerce") || t.includes("retail")) return 2;
-                  if (t.includes("health")) return 3;
-                  return 99;
-                };
-
-                const sorted = [...displayIndustries].sort((a, b) =>
-                  getPriority(a.title) - getPriority(b.title)
-                );
-
-                return sorted.map((industry, i) => (
+              {(industries || [])
+                .sort((a, b) => Number(a.sortOrder - b.sortOrder))
+                .map((industry, i, arr) => (
                   <IndustryStackCard
                     key={String(industry.id)}
                     industry={industry}
                     index={i}
-                    total={sorted.length}
+                    total={arr.length}
                   />
-                ));
-              })()}
+                ))}
             </div>
           )}
         </div>

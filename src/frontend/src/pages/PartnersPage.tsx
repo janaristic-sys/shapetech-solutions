@@ -24,56 +24,56 @@ import { motion } from "motion/react";
 const FEATURED_PARTNERS: Partner[] = [
   {
     id: 1n,
-    name: "HubSpot",
-    logoUrl: "",
-    websiteUrl: "https://hubspot.com",
-    description:
-      "Certified HubSpot Solutions Partner. We design and implement CRM architectures, Marketing Hub automations, Sales pipelines and custom integrations — helping direct-selling companies unify their data and accelerate growth.",
-    sortOrder: 1n,
-  },
-  {
-    id: 2n,
     name: "Shopify",
     logoUrl: "",
     websiteUrl: "https://shopify.com",
     description:
       "Shopify Plus Partner with deep expertise in headless commerce, custom app development, and direct-selling storefronts. We build seamless shopping experiences that scale from startup to enterprise.",
+    sortOrder: 1n,
+  },
+  {
+    id: 2n,
+    name: "Medusa",
+    logoUrl: "",
+    websiteUrl: "https://medusajs.com",
+    description:
+      "Featured Medusa partner specializing in open-source composable commerce. We build scalable, highly customizable bespoke e-commerce architectures tailored exactly to complex enterprise requirements.",
     sortOrder: 2n,
   },
   {
     id: 3n,
-    name: "Microsoft Azure",
+    name: "Dotdigital",
     logoUrl: "",
-    websiteUrl: "https://azure.microsoft.com",
+    websiteUrl: "https://dotdigital.com",
     description:
-      "Microsoft Partner delivering cloud migrations, Azure DevOps pipelines, and enterprise application hosting. We leverage Azure's global infrastructure to build resilient, secure platforms.",
+      "Certified Dotdigital partner. We craft data-driven, cross-channel marketing automations that engage your audience and drive conversion at scale.",
     sortOrder: 3n,
   },
   {
     id: 4n,
-    name: "AWS",
+    name: "HubSpot",
     logoUrl: "",
-    websiteUrl: "https://aws.amazon.com",
+    websiteUrl: "https://hubspot.com",
     description:
-      "AWS Advanced Consulting Partner. From serverless architectures to managed databases, we help clients harness Amazon Web Services to reduce costs and improve reliability.",
+      "Certified HubSpot Solutions Partner. We design and implement CRM architectures, Marketing Hub automations, Sales pipelines and custom integrations — helping companies unify their data.",
     sortOrder: 4n,
   },
   {
     id: 5n,
-    name: "Salesforce",
+    name: "LPT",
     logoUrl: "",
-    websiteUrl: "https://salesforce.com",
+    websiteUrl: "#",
     description:
-      "Salesforce integration and customisation partner. We connect Salesforce CRM with back-office systems, commission engines, and distributor portals to create a single source of truth.",
+      "Featured partner integrating specialized platform solutions. We build powerful tooling to connect your backend operations directly to scalable front-end commerce.",
     sortOrder: 5n,
   },
   {
     id: 6n,
-    name: "Stripe",
+    name: "ByDesign",
     logoUrl: "",
-    websiteUrl: "https://stripe.com",
+    websiteUrl: "https://bydesign.com",
     description:
-      "Stripe Verified Partner specialising in payment orchestration, subscription billing, and commission payout systems for network-marketing and e-commerce businesses.",
+      "Specialized integration partner. We connect ByDesign commission engines and direct-selling platforms seamlessly with modern headless frontends to power distributor success.",
     sortOrder: 6n,
   },
 ];

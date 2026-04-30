@@ -12,8 +12,11 @@ import { Suspense, lazy } from "react";
 const HomePage = lazy(() => import("@/pages/HomePage"));
 const AboutPage = lazy(() => import("@/pages/AboutPage"));
 const IndustriesPage = lazy(() => import("@/pages/IndustriesPage"));
+const IndustryDetailPage = lazy(() => import("@/pages/IndustryDetailPage"));
 const ShapesPage = lazy(() => import("@/pages/ShapesPage"));
+const ShapeDetailPage = lazy(() => import("@/pages/ShapeDetailPage"));
 const SolutionsPage = lazy(() => import("@/pages/SolutionsPage"));
+const SolutionDetailPage = lazy(() => import("@/pages/SolutionDetailPage"));
 const PartnersPage = lazy(() => import("@/pages/PartnersPage"));
 const BlogPage = lazy(() => import("@/pages/BlogPage"));
 const ContactPage = lazy(() => import("@/pages/ContactPage"));
@@ -154,12 +157,51 @@ const adminRoute = createRoute({
   ),
 });
 
+const industryDetailRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/industries/$industryId",
+  component: () => (
+    <Layout>
+      <Suspense fallback={<PageFallback />}>
+        <IndustryDetailPage />
+      </Suspense>
+    </Layout>
+  ),
+});
+
+const shapeDetailRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/shapes/$shapeId",
+  component: () => (
+    <Layout>
+      <Suspense fallback={<PageFallback />}>
+        <ShapeDetailPage />
+      </Suspense>
+    </Layout>
+  ),
+});
+
+const solutionDetailRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/solutions/$solutionId",
+  component: () => (
+    <Layout>
+      <Suspense fallback={<PageFallback />}>
+        <SolutionDetailPage />
+      </Suspense>
+    </Layout>
+  ),
+});
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
   aboutRoute,
   industriesRoute,
+  industryDetailRoute,
   shapesRoute,
+  shapeDetailRoute,
   solutionsRoute,
+  solutionDetailRoute,
   partnersRoute,
   blogRoute,
   contactRoute,
