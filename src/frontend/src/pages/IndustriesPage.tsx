@@ -96,16 +96,41 @@ function IndustryStackCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="sticky top-20 md:top-24 w-full mb-8 md:mb-12 last:mb-0"
+      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+      className="sticky top-20 md:top-24 w-full mb-20 md:mb-32 last:mb-0"
       style={{
         zIndex: index + 1,
       }}
       data-ocid={`industries.stack_card.${index + 1}`}
     >
+      {/* Peek Effect Overlay - simulate cards waiting below */}
+      {index < total - 1 && (
+        <div
+          className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[96%] h-20 pointer-events-none opacity-40 blur-[2px]"
+          style={{
+            background: "linear-gradient(to bottom, oklch(0.20 0.06 268), oklch(0.16 0.09 262))",
+            borderRadius: "28px 8px 0 0",
+            border: "1px solid oklch(0.75 0.12 195 / 0.15)",
+            zIndex: -1,
+            transform: "translateY(100%) scaleX(0.98)"
+          }}
+        />
+      )}
+      {index < total - 2 && (
+        <div
+          className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[92%] h-20 pointer-events-none opacity-20 blur-[4px]"
+          style={{
+            background: "linear-gradient(to bottom, oklch(0.18 0.05 270), oklch(0.14 0.04 265))",
+            borderRadius: "28px 8px 0 0",
+            border: "1px solid oklch(0.75 0.12 195 / 0.1)",
+            zIndex: -2,
+            transform: "translateY(100%) scaleX(0.95)"
+          }}
+        />
+      )}
       <div
         className="relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-h-[480px] md:min-h-[450px] flex flex-col md:flex-row"
         style={{
@@ -121,10 +146,10 @@ function IndustryStackCard({
             className="absolute inset-0"
             style={{
               background: `linear-gradient(135deg, ${isDirectSelling
-                  ? "oklch(0.20 0.06 268) 0%, oklch(0.16 0.09 262) 100%"
-                  : isEcommerce
-                    ? "oklch(0.18 0.05 270) 0%, oklch(0.22 0.08 260) 100%"
-                    : "oklch(0.18 0.05 270) 0%, oklch(0.14 0.04 265) 100%"
+                ? "oklch(0.20 0.06 268) 0%, oklch(0.16 0.09 262) 100%"
+                : isEcommerce
+                  ? "oklch(0.18 0.05 270) 0%, oklch(0.22 0.08 260) 100%"
+                  : "oklch(0.18 0.05 270) 0%, oklch(0.14 0.04 265) 100%"
                 })`,
             }}
           />
@@ -176,9 +201,9 @@ function IndustryStackCard({
 
             <div className="mt-auto mb-8 md:mb-0">
               <Link to="/contact">
-                <Button className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 md:px-8 py-5 md:py-6 h-auto shadow-xl group/btn text-sm md:text-base">
-                  Transform Your Business
-                  <ArrowRight className="ml-2 size-4 transition-transform group-hover/btn:translate-x-1" />
+                <Button className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold gap-2 transition-smooth shadow-[0_0_24px_oklch(0.75_0.12_195/0.3)] hover:shadow-[0_0_32px_oklch(0.75_0.12_195/0.45)]">
+                  Start a Project
+                  <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
                 </Button>
               </Link>
             </div>
@@ -514,14 +539,14 @@ export default function IndustriesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" data-ocid="industries.cta_contact_button">
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold gap-2 px-8 transition-smooth rounded-xl shadow-elevated">
+                <Button className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold gap-2 px-8 transition-smooth shadow-[0_0_24px_oklch(0.75_0.12_195/0.3)] hover:shadow-[0_0_32px_oklch(0.75_0.12_195/0.45)]">
                   Discuss Your Project <ArrowRight className="size-4" />
                 </Button>
               </Link>
               <Link to="/solutions" data-ocid="industries.cta_solutions_button">
                 <Button
                   variant="outline"
-                  className="border-border text-foreground hover:bg-muted/60 font-semibold px-8 transition-smooth rounded-xl"
+                  className="rounded-full border-border/60 hover:border-primary/40 text-foreground hover:bg-primary/5 font-semibold px-8 transition-smooth"
                 >
                   View Our Solutions
                 </Button>
