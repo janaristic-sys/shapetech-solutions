@@ -76,228 +76,155 @@ function WaveDivider({
 }
 
 // ---------------------------------------------------------------------------
-// Featured Industry — full-width hero card (Direct Selling)
+// Industry Stack Card — New sophisticated stacking design
 // ---------------------------------------------------------------------------
-function FeaturedCard({ industry }: { industry: Industry }) {
-  const features = industry.highlights ?? [];
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.65 }}
-      data-ocid="industries.featured_card"
-      className="col-span-full relative overflow-hidden"
-      style={{ borderRadius: "28px 8px 28px 8px" }}
-    >
-      {/* Background gradient */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, oklch(0.20 0.06 268) 0%, oklch(0.16 0.09 262) 55%, oklch(0.20 0.06 268) 100%)",
-        }}
-        aria-hidden="true"
-      />
-      {/* Diagonal stripe texture */}
-      <div
-        className="absolute inset-0 opacity-[0.055]"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(-45deg, oklch(0.75 0.12 195) 0 3px, transparent 3px 26px)",
-        }}
-        aria-hidden="true"
-      />
-      {/* Glow blobs */}
-      <div
-        className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-[0.18] blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle, oklch(0.75 0.12 195), transparent 70%)",
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute bottom-0 left-1/4 w-72 h-72 rounded-full opacity-[0.10] blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle, oklch(0.75 0.12 195), transparent 70%)",
-        }}
-        aria-hidden="true"
-      />
-      {/* Border ring */}
-      <div
-        className="absolute inset-0 border border-primary/25 pointer-events-none"
-        style={{ borderRadius: "28px 8px 28px 8px" }}
-        aria-hidden="true"
-      />
-
-      <div className="relative p-8 md:p-14 grid md:grid-cols-2 gap-10 items-start">
-        {/* Left column */}
-        <div>
-          <div className="flex flex-wrap items-center gap-3 mb-7">
-            {/* Organic blob icon */}
-            <div
-              className="w-16 h-16 flex items-center justify-center text-primary"
-              style={{
-                background: "oklch(0.75 0.12 195 / 0.18)",
-                borderRadius: "60% 40% 70% 30% / 40% 60% 30% 70%",
-                border: "1px solid oklch(0.75 0.12 195 / 0.35)",
-              }}
-            >
-              <IndustryIcon name={industry.iconName} className="size-7" />
-            </div>
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-primary px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10">
-              <Star className="size-3" />
-              Core Specialty
-            </span>
-          </div>
-
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-foreground leading-[1.1] mb-5">
-            {industry.title}
-          </h2>
-          <p className="text-muted-foreground leading-relaxed mb-8 text-base max-w-lg">
-            {industry.description}
-          </p>
-
-          <Link to="/contact" data-ocid="industries.featured_cta">
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold gap-2 transition-smooth rounded-xl shadow-elevated">
-              Start a Project <ArrowRight className="size-4" />
-            </Button>
-          </Link>
-        </div>
-
-        {/* Right column — key features */}
-        {features.length > 0 && (
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-5">
-              Key Capabilities
-            </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {features.map((h, i) => (
-                <motion.li
-                  key={h}
-                  initial={{ opacity: 0, x: 12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: 0.3 + i * 0.06 }}
-                  className="flex items-start gap-2.5 text-sm text-foreground p-3 rounded-xl bg-background/25 border border-border/40"
-                >
-                  <CheckCircle2 className="size-4 text-primary flex-shrink-0 mt-0.5" />
-                  {h}
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    </motion.div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Standard Industry Card
-// ---------------------------------------------------------------------------
-
-// Alternating organic border-radius shapes
-const CARD_RADII = [
-  "8px 28px 8px 28px",
-  "28px 8px 28px 8px",
-  "20px 6px 20px 6px",
-  "6px 20px 6px 20px",
-  "18px 18px 4px 18px",
-  "4px 18px 18px 4px",
-];
-
-function IndustryCard({
+function IndustryStackCard({
   industry,
   index,
-}: { industry: Industry; index: number }) {
+  total,
+}: {
+  industry: Industry;
+  index: number;
+  total: number;
+}) {
+  const isDirectSelling = industry.title.toLowerCase().includes("direct selling");
+  const isHealthWellness = industry.title.toLowerCase().includes("health");
+  const isEcommerce = industry.title.toLowerCase().includes("e-commerce") || industry.title.toLowerCase().includes("retail");
+
+  // Custom radii for the premium look
+  const borderRadius = "28px 8px 28px 8px";
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.45, delay: index * 0.07 }}
-      data-ocid={`industries.item.${index + 1}`}
-      className="group relative overflow-hidden bg-card border border-border hover:border-primary/40 transition-smooth card-fluid flex flex-col"
-      style={{ borderRadius: CARD_RADII[index % CARD_RADII.length] }}
+      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="sticky top-20 md:top-24 w-full mb-8 md:mb-12 last:mb-0"
+      style={{
+        zIndex: index + 1,
+      }}
+      data-ocid={`industries.stack_card.${index + 1}`}
     >
-      {/* Hover gradient overlay */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-smooth"
+        className="relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-h-[480px] md:min-h-[450px] flex flex-col md:flex-row"
         style={{
-          background:
-            "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.07) 0%, transparent 60%)",
+          borderRadius,
+          background: "oklch(0.18 0.05 270)",
+          border: "1px solid oklch(0.75 0.12 195 / 0.15)",
         }}
-        aria-hidden="true"
-      />
-      {/* Top accent line on hover */}
-      <div
-        className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-smooth"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent, oklch(0.75 0.12 195 / 0.8), transparent)",
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="relative p-7 flex flex-col h-full">
-        {/* Blob icon */}
-        <div
-          className="w-12 h-12 flex items-center justify-center mb-5 text-primary group-hover:scale-110 transition-smooth"
-          style={{
-            background: "oklch(0.75 0.12 195 / 0.12)",
-            borderRadius: "60% 40% 70% 30% / 40% 60% 30% 70%",
-            border: "1px solid oklch(0.75 0.12 195 / 0.22)",
-          }}
-        >
-          <IndustryIcon name={industry.iconName} className="size-5" />
+      >
+        {/* Background Decorative Layer */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Gradient */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(135deg, ${isDirectSelling
+                  ? "oklch(0.20 0.06 268) 0%, oklch(0.16 0.09 262) 100%"
+                  : isEcommerce
+                    ? "oklch(0.18 0.05 270) 0%, oklch(0.22 0.08 260) 100%"
+                    : "oklch(0.18 0.05 270) 0%, oklch(0.14 0.04 265) 100%"
+                })`,
+            }}
+          />
+          {/* Subtle Grid / Texture */}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(-45deg, oklch(0.75 0.12 195) 0 1px, transparent 1px 40px)",
+            }}
+          />
+          {/* Glow Blobs */}
+          <div
+            className="absolute -top-20 -right-20 w-80 h-80 rounded-full blur-[100px] opacity-[0.12]"
+            style={{
+              background: "radial-gradient(circle, oklch(0.75 0.12 195), transparent 70%)",
+            }}
+          />
         </div>
 
-        <h3 className="font-display font-bold text-foreground text-lg mb-3 leading-snug">
-          {industry.title}
-        </h3>
-        <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1">
-          {industry.description}
-        </p>
-
-        {/* Tag chips */}
-        {industry.highlights && industry.highlights.length > 0 && (
-          <div className="flex flex-wrap gap-2 pt-4 border-t border-border/60">
-            {industry.highlights.slice(0, 3).map((h) => (
-              <span
-                key={h}
-                className="text-xs px-2.5 py-1 rounded-full bg-primary/[0.08] text-muted-foreground border border-primary/[0.15]"
+        {/* Content Layout */}
+        <div className="relative z-10 flex flex-col md:flex-row w-full p-6 md:p-14 gap-8 md:gap-12 lg:gap-20">
+          {/* Left Column: Information */}
+          <div className="flex-1 flex flex-col">
+            <div className="flex items-center gap-4 mb-6 md:mb-8">
+              <div
+                className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center text-primary"
+                style={{
+                  background: "oklch(0.75 0.12 195 / 0.12)",
+                  borderRadius: "20px 6px 20px 6px",
+                  border: "1px solid oklch(0.75 0.12 195 / 0.25)",
+                }}
               >
-                {h}
-              </span>
-            ))}
+                <IndustryIcon name={industry.iconName} className="size-5 md:size-6" />
+              </div>
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/70 block mb-0.5 md:mb-1">
+                  Industry Focus
+                </span>
+                <h3 className="font-display font-bold text-foreground text-xl md:text-2xl lg:text-3xl leading-tight">
+                  {industry.title}
+                </h3>
+              </div>
+            </div>
+
+            <p className="text-muted-foreground text-sm md:text-base lg:text-lg leading-relaxed mb-8 md:mb-10 max-w-xl">
+              {industry.description}
+            </p>
+
+            <div className="mt-auto mb-8 md:mb-0">
+              <Link to="/contact">
+                <Button className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 md:px-8 py-5 md:py-6 h-auto shadow-xl group/btn text-sm md:text-base">
+                  Transform Your Business
+                  <ArrowRight className="ml-2 size-4 transition-transform group-hover/btn:translate-x-1" />
+                </Button>
+              </Link>
+            </div>
           </div>
-        )}
+
+          {/* Right Column: Key Capabilities (Single Column as requested) */}
+          <div className="md:w-[320px] lg:w-[380px] shrink-0">
+            <div className="bg-background/20 backdrop-blur-md rounded-3xl border border-white/5 p-6 md:p-8 h-full relative">
+              <div className="flex items-center gap-3 mb-6 md:mb-8">
+                <Sparkles className="size-4 text-primary" />
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground/80">
+                  Key Capabilities
+                </span>
+              </div>
+
+              <ul className="space-y-3 md:space-y-4">
+                {(industry.highlights || []).map((feature, i) => (
+                  <motion.li
+                    key={feature}
+                    initial={{ opacity: 0, x: 10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.2 + i * 0.05 }}
+                    className="flex items-start gap-3 md:gap-4 group/item"
+                  >
+                    <div className="mt-1 size-4 md:size-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover/item:bg-primary/20 transition-colors">
+                      <CheckCircle2 className="size-2.5 md:size-3 text-primary" />
+                    </div>
+                    <span className="text-xs md:text-sm lg:text-base text-foreground/90 leading-tight">
+                      {feature}
+                    </span>
+                  </motion.li>
+                ))}
+              </ul>
+
+              {/* Counter for visual flair */}
+              <div className="absolute bottom-4 right-6 md:bottom-6 md:right-8 opacity-[0.05] select-none pointer-events-none">
+                <span className="font-display font-black text-6xl md:text-7xl lg:text-8xl">
+                  {(index + 1).toString().padStart(2, "0")}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </motion.div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Skeleton loading
-// ---------------------------------------------------------------------------
-function IndustriesSkeleton() {
-  return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {Array.from({ length: 6 }).map((_, i) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: skeleton
-        <div key={i} className="bg-card rounded-3xl border border-border p-7">
-          <Skeleton className="w-12 h-12 rounded-2xl mb-5" />
-          <Skeleton className="h-5 w-2/3 mb-3" />
-          <Skeleton className="h-4 w-full mb-1.5" />
-          <Skeleton className="h-4 w-4/5 mb-1.5" />
-          <Skeleton className="h-4 w-3/4" />
-        </div>
-      ))}
-    </div>
   );
 }
 
@@ -306,9 +233,6 @@ function IndustriesSkeleton() {
 // ---------------------------------------------------------------------------
 export default function IndustriesPage() {
   const { data: industries, isLoading } = useIndustries();
-
-  const featured = industries?.find((ind) => ind.featured);
-  const rest = industries?.filter((ind) => !ind.featured) ?? [];
 
   return (
     <div data-ocid="industries.page">
@@ -396,45 +320,83 @@ export default function IndustriesPage() {
         bottomColor="oklch(0.12 0.06 267)"
       />
 
-      {/* ── Industries Grid ── */}
+      {/* ── Industries Stack ── */}
       <section
-        className="bg-background py-16 md:py-20"
+        className="bg-background py-16 md:py-24"
         data-ocid="industries.list_section"
       >
-        <div className="container max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="container max-w-6xl mx-auto px-6 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-2xl mb-10"
+            className="max-w-2xl mb-20"
           >
-            <h2 className="font-display font-bold text-4xl lg:text-5xl text-foreground leading-tight mb-4">
-              Industries We've{" "}
+            <h2 className="font-display font-bold text-4xl lg:text-6xl text-foreground leading-tight mb-4">
+              Industries We've <br />
               <span className="gradient-accent">Transformed</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Deep expertise across sectors means we speak your language —
-              whether you're in network marketing, retail, professional
-              services, or beyond.
+              We bring deep domain expertise to every engagement, crafting tailored
+              technology solutions that address the unique challenges of your vertical.
             </p>
           </motion.div>
 
           {isLoading ? (
-            <IndustriesSkeleton />
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {/* Featured spans full width */}
-              {featured && <FeaturedCard industry={featured} />}
-
-              {/* Standard cards — responsive 1/2/3 columns */}
-              {rest.map((industry, i) => (
-                <IndustryCard
-                  key={String(industry.id)}
-                  industry={industry}
-                  index={i}
-                />
+            <div className="space-y-12">
+              {[1, 2, 3].map((i) => (
+                <Skeleton key={i} className="w-full h-[400px] rounded-[28px]" />
               ))}
+            </div>
+          ) : (
+            <div className="flex flex-col relative">
+              {/* Combine and sort for the stack */}
+              {(() => {
+                const ECOMMERCE_FALLBACK: Industry = {
+                  id: "ecommerce-fallback",
+                  title: "E-Commerce & Retail",
+                  description: "Scaling high-volume retail platforms with custom headless architectures, sophisticated inventory management, and integrated loyalty systems.",
+                  iconName: "ShoppingCart",
+                  highlights: [
+                    "Headless Commerce Architectures",
+                    "Multi-channel Inventory Sync",
+                    "Custom Loyalty & Rewards Engines",
+                    "High-Performance Checkout Flows",
+                    "Advanced Personalization Systems"
+                  ],
+                  featured: false
+                };
+
+                const allIndustries = industries || [];
+                const hasEcommerce = allIndustries.some(ind =>
+                  ind.title.toLowerCase().includes("e-commerce") ||
+                  ind.title.toLowerCase().includes("retail")
+                );
+                const displayIndustries = hasEcommerce ? allIndustries : [...allIndustries, ECOMMERCE_FALLBACK];
+
+                // Priority-based sorting
+                const getPriority = (title: string) => {
+                  const t = title.toLowerCase();
+                  if (t.includes("direct selling")) return 1;
+                  if (t.includes("e-commerce") || t.includes("retail")) return 2;
+                  if (t.includes("health")) return 3;
+                  return 99;
+                };
+
+                const sorted = [...displayIndustries].sort((a, b) =>
+                  getPriority(a.title) - getPriority(b.title)
+                );
+
+                return sorted.map((industry, i) => (
+                  <IndustryStackCard
+                    key={String(industry.id)}
+                    industry={industry}
+                    index={i}
+                    total={sorted.length}
+                  />
+                ));
+              })()}
             </div>
           )}
         </div>
