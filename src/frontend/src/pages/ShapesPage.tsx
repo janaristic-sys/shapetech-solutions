@@ -523,14 +523,9 @@ export default function ShapesPage() {
     <div data-ocid="shapes.page">
       {/* ── Hero ── */}
       <section
-        className="relative bg-card overflow-hidden"
+        className="relative overflow-hidden bg-card py-32 md:py-40"
         data-ocid="shapes.hero_section"
       >
-        {/* Atmospheric blobs */}
-        <div
-          className="pointer-events-none absolute -top-40 right-0 w-[700px] h-[700px] opacity-[0.09]"
-          style={{
-            background: `radial-gradient(circle, ${TEAL}, transparent 65%)`,
             borderRadius: "40% 60% 70% 30% / 50% 40% 60% 50%",
             animation: "flowing 12s ease-in-out infinite",
           }}

@@ -107,40 +107,8 @@ function IndustryStackCard({
       style={{ zIndex: index + 1 }}
       data-ocid={`industries.stack_card.${index + 1}`}
     >
-      {/* Inner wrapper — relative so peek strips and main card share the same stacking context */}
       <div className="relative">
-        {/* Deck strip — third card back (deepest, most offset) */}
-        {index < total - 2 && (
-          <div
-            className="absolute inset-x-[6%] inset-y-0 pointer-events-none rounded-[28px_8px_28px_8px]"
-            style={{
-              top: -28,
-              background: "linear-gradient(135deg, oklch(0.14 0.035 265), oklch(0.11 0.025 262))",
-              borderRadius,
-              border: "1px solid oklch(0.75 0.12 195 / 0.12)",
-              zIndex: 1,
-              opacity: 0.75,
-              boxShadow: "0 -4px 20px rgba(0,0,0,0.25)",
-            }}
-          />
-        )}
-        {/* Deck strip — second card back (closer) */}
-        {index < total - 1 && (
-          <div
-            className="absolute inset-x-[3%] inset-y-0 pointer-events-none"
-            style={{
-              top: -14,
-              background: "linear-gradient(135deg, oklch(0.17 0.05 267), oklch(0.14 0.05 264))",
-              borderRadius,
-              border: "1px solid oklch(0.75 0.12 195 / 0.16)",
-              zIndex: 2,
-              opacity: 0.85,
-              boxShadow: "0 -4px 16px rgba(0,0,0,0.2)",
-            }}
-          />
-        )}
-
-        {/* Main card — sits on top of the deck strips */}
+        {/* Main card — sits on top */}
         <div
           className="relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] min-h-[480px] md:min-h-[450px] flex flex-col md:flex-row"
           style={{
@@ -150,37 +118,6 @@ function IndustryStackCard({
             zIndex: 3,
           }}
         >
-          {/* Background Decorative Layer */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {/* Gradient */}
-            <div
-              className="absolute inset-0"
-              style={{
-                background: `linear-gradient(135deg, ${isDirectSelling
-                  ? "oklch(0.20 0.06 268) 0%, oklch(0.16 0.09 262) 100%"
-                  : isDigitalProducts
-                    ? "oklch(0.18 0.05 270) 0%, oklch(0.22 0.08 260) 100%"
-                    : "oklch(0.18 0.05 270) 0%, oklch(0.14 0.04 265) 100%"
-                  })`,
-              }}
-            />
-            {/* Subtle Grid / Texture */}
-            <div
-              className="absolute inset-0 opacity-[0.04]"
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(-45deg, oklch(0.75 0.12 195) 0 1px, transparent 1px 40px)",
-              }}
-            />
-            {/* Glow Blobs */}
-            <div
-              className="absolute -top-20 -right-20 w-80 h-80 rounded-full blur-[100px] opacity-[0.12]"
-              style={{
-                background: "radial-gradient(circle, oklch(0.75 0.12 195), transparent 70%)",
-              }}
-            />
-          </div>
-
           {/* Content Layout */}
           <div className="relative z-10 flex flex-col md:flex-row w-full p-6 md:p-14 gap-8 md:gap-12 lg:gap-20">
             {/* Left Column: Information */}
