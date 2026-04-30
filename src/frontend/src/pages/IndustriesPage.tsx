@@ -106,33 +106,43 @@ function IndustryStackCard({
       }}
       data-ocid={`industries.stack_card.${index + 1}`}
     >
-      {/* Peek Effect Overlay - simulate cards waiting below */}
-      {index < total - 1 && (
-        <div
-          className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[96%] h-20 pointer-events-none opacity-40 blur-[2px]"
-          style={{
-            background: "linear-gradient(to bottom, oklch(0.20 0.06 268), oklch(0.16 0.09 262))",
-            borderRadius: "28px 8px 0 0",
-            border: "1px solid oklch(0.75 0.12 195 / 0.15)",
-            zIndex: -1,
-            transform: "translateY(100%) scaleX(0.98)"
-          }}
-        />
-      )}
+      {/* Stacked Deck Effect — cards peeking from BEHIND at the top */}
       {index < total - 2 && (
         <div
-          className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[92%] h-20 pointer-events-none opacity-20 blur-[4px]"
-          style={{
-            background: "linear-gradient(to bottom, oklch(0.18 0.05 270), oklch(0.14 0.04 265))",
-            borderRadius: "28px 8px 0 0",
-            border: "1px solid oklch(0.75 0.12 195 / 0.1)",
-            zIndex: -2,
-            transform: "translateY(100%) scaleX(0.95)"
-          }}
-        />
+          className="absolute top-0 inset-x-0 pointer-events-none"
+          style={{ zIndex: -2 }}
+        >
+          <div
+            className="absolute w-[92%] left-1/2 -translate-x-1/2 h-full"
+            style={{
+              background: "linear-gradient(135deg, oklch(0.16 0.04 265), oklch(0.12 0.03 262))",
+              borderRadius,
+              border: "1px solid oklch(0.75 0.12 195 / 0.08)",
+              transform: "translateY(-14px) scaleX(0.93)",
+              opacity: 0.45,
+            }}
+          />
+        </div>
+      )}
+      {index < total - 1 && (
+        <div
+          className="absolute top-0 inset-x-0 pointer-events-none"
+          style={{ zIndex: -1 }}
+        >
+          <div
+            className="absolute w-[96%] left-1/2 -translate-x-1/2 h-full"
+            style={{
+              background: "linear-gradient(135deg, oklch(0.19 0.05 267), oklch(0.15 0.06 264))",
+              borderRadius,
+              border: "1px solid oklch(0.75 0.12 195 / 0.12)",
+              transform: "translateY(-7px) scaleX(0.97)",
+              opacity: 0.6,
+            }}
+          />
+        </div>
       )}
       <div
-        className="relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-h-[480px] md:min-h-[450px] flex flex-col md:flex-row"
+        className="relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] min-h-[480px] md:min-h-[450px] flex flex-col md:flex-row"
         style={{
           borderRadius,
           background: "oklch(0.18 0.05 270)",
