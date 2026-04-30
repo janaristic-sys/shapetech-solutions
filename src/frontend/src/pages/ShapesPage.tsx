@@ -178,7 +178,6 @@ const SHAPES = [
     id: 2,
     slug: "design",
     Icon: CircleIcon,
-    shapeLabel: "Circle",
     title: "Design",
     tagline: "Interfaces people love",
     description:
