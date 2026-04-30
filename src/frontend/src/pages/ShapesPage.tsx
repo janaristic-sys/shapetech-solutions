@@ -72,6 +72,7 @@ function CircleIcon({ color }: { color: string }) {
 function HexagonIcon({ color }: { color: string }) {
   return (
     <svg
+
       viewBox="0 0 64 64"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -80,6 +81,7 @@ function HexagonIcon({ color }: { color: string }) {
     >
       <title>Hexagon shape icon</title>
       <polygon
+        points="32,4 58,18 58,46 32,60 6,46 6,18"
         stroke={color}
         strokeWidth="2.5"
         fill={`${color}18`}
@@ -525,7 +527,10 @@ export default function ShapesPage() {
       <section
         className="relative overflow-hidden bg-card py-32 md:py-40"
         data-ocid="shapes.hero_section"
-      >
+      > <div
+          className="pointer-events-none absolute -top-24 -right-24 w-[600px] h-[600px] opacity-[0.08]"
+          style={{
+            background: `radial-gradient(circle, ${TEAL}, transparent 65%)`,
             borderRadius: "40% 60% 70% 30% / 50% 40% 60% 50%",
             animation: "flowing 12s ease-in-out infinite",
           }}
@@ -541,7 +546,7 @@ export default function ShapesPage() {
           aria-hidden="true"
         />
 
-        <div className="relative container max-w-7xl mx-auto px-6 lg:px-10 py-28 lg:py-40">
+        <div className="relative container mx-w-7xl mx-auto px-6 lg:px-10 py-28 lg:py-40">
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
@@ -686,11 +691,11 @@ export default function ShapesPage() {
           >
             {isLoading
               ? Array.from({ length: 5 }).map((_, i) => (
-                  <ShapeCardSkeleton key={`skeleton-${i + 1}`} index={i} />
-                ))
+                <ShapeCardSkeleton key={`skeleton-${i + 1}`} index={i} />
+              ))
               : shapes.map((shape, i) => (
-                  <ShapeCard key={shape.id} shape={shape} index={i} />
-                ))}
+                <ShapeCard key={shape.id} shape={shape} index={i} />
+              ))}
           </div>
         </div>
       </section>
