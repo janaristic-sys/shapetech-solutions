@@ -161,7 +161,6 @@ const SHAPES = [
     id: 1,
     slug: "strategy",
     Icon: TriangleIcon,
-    shapeLabel: "Triangle",
     title: "Strategy",
     tagline: "Clarity before code",
     description:
@@ -197,7 +196,6 @@ const SHAPES = [
     id: 3,
     slug: "development",
     Icon: HexagonIcon,
-    shapeLabel: "Hexagon",
     title: "Development",
     tagline: "Built to scale, built to last",
     description:
@@ -215,7 +213,6 @@ const SHAPES = [
     id: 4,
     slug: "integration",
     Icon: DiamondIcon,
-    shapeLabel: "Diamond",
     title: "Integration",
     tagline: "Your ecosystem, unified",
     description:
@@ -233,7 +230,6 @@ const SHAPES = [
     id: 5,
     slug: "optimization",
     Icon: StarIcon,
-    shapeLabel: "Star",
     title: "Optimization",
     tagline: "Always improving",
     description:
