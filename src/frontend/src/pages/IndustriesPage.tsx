@@ -7,7 +7,9 @@ import {
   ArrowRight,
   BookOpen,
   CheckCircle2,
+  Compass,
   CreditCard,
+  Cpu,
   GraduationCap,
   HeartPulse,
   Landmark,
@@ -15,6 +17,7 @@ import {
   ShoppingCart,
   Sparkles,
   Star,
+  TrendingUp,
   Users,
 } from "lucide-react";
 import { motion } from "motion/react";
@@ -470,32 +473,42 @@ export default function IndustriesPage() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {[
+            {([
               {
-                icon: "🧭",
+                Icon: Compass,
                 title: "Domain-First Discovery",
                 body: "Every engagement starts with a deep dive into your vertical — its workflows, compliance requirements, and growth dynamics.",
               },
               {
-                icon: "⚙️",
+                Icon: Cpu,
                 title: "Industry-Tuned Tech",
                 body: "We reuse battle-tested vertical components — commission engines, genealogy trees, compliance layers — so you ship faster.",
               },
               {
-                icon: "🚀",
+                Icon: TrendingUp,
                 title: "Proven Track Record",
                 body: "Over 150 projects across 7+ verticals. From startups to Fortune 500 companies — the patterns we've learned mean fewer surprises and faster ROI.",
               },
-            ].map((item, i) => (
+            ] as const).map((item, i) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="p-7 rounded-2xl bg-background/50 border border-border/60"
+                className="group p-7 rounded-2xl bg-background/50 border border-border/60 hover:border-primary/30 transition-all duration-300"
               >
-                <span className="text-3xl mb-4 block">{item.icon}</span>
+                {/* Blob-style icon container — matches site-wide pattern */}
+                <div
+                  className="w-12 h-12 flex items-center justify-center mb-6 text-primary"
+                  style={{
+                    background: "oklch(0.75 0.12 195 / 0.12)",
+                    borderRadius: "60% 40% 70% 30% / 40% 60% 30% 70%",
+                    border: "1px solid oklch(0.75 0.12 195 / 0.22)",
+                  }}
+                >
+                  <item.Icon className="size-5" />
+                </div>
                 <h3 className="font-display font-bold text-foreground text-lg mb-2">
                   {item.title}
                 </h3>
