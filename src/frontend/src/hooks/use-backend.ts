@@ -308,6 +308,14 @@ const defaultSolutions: Solution[] = [
       "Optimized database schemas",
     ],
     relatedShapeIds: [3n, 4n],
+    caseStudy: {
+      title: "Rapid MVP Launch",
+      description: "Deployed a full-scale distributor portal for a startup in 6 weeks using our core accelerator modules.",
+      metrics: [
+        { label: "Launch Time", value: "-60%" },
+        { label: "Cost Savings", value: "45%" },
+      ],
+    },
   },
   {
     id: 4n,
@@ -348,6 +356,14 @@ const defaultSolutions: Solution[] = [
       "Marketing attribution tracking",
     ],
     relatedShapeIds: [3n, 4n],
+    caseStudy: {
+      title: "HubSpot Data Bridge",
+      description: "Architected a custom object sync between a bespoke commission engine and HubSpot, enabling advanced marketing attribution for 50k distributors.",
+      metrics: [
+        { label: "Data Accuracy", value: "99.9%" },
+        { label: "Sales Ops", value: "+30% Efficiency" },
+      ],
+    },
   },
   {
     id: 6n,
@@ -364,6 +380,14 @@ const defaultSolutions: Solution[] = [
       "Cross-platform loyalty sync",
     ],
     relatedShapeIds: [2n, 3n, 5n],
+    caseStudy: {
+      title: "Gamified Retention Drive",
+      description: "Integrated Xtra Points into a mobile wellness app, introducing social leaderboards and dynamic perk redemption.",
+      metrics: [
+        { label: "Daily Active Users", value: "+18%" },
+        { label: "Retention", value: "+25%" },
+      ],
+    },
   },
 ];
 

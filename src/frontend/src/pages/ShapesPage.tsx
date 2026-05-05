@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Hexagon } from "lucide-react";
 import { motion } from "motion/react";
 import { useShapes } from "@/hooks/use-backend";
+import { Shape } from "@/types";
 
 // ---------------------------------------------------------------------------
 // Geometric SVG Icons — unique per shape pillar
@@ -205,7 +206,15 @@ function WaveDivider({
 // ---------------------------------------------------------------------------
 // Diagonal Accent Divider — large angled band between intro and cards
 // ---------------------------------------------------------------------------
-function DiagonalDivider() {
+function DiagonalDivider({ shapes }: { shapes: Shape[] }) {
+  const ICON_RESOLVER: Record<string, React.ElementType> = {
+    Triangle: TriangleIcon,
+    Circle: CircleIcon,
+    Hexagon: HexagonIcon,
+    Diamond: DiamondIcon,
+    Star: StarIcon,
+  };
+
   return (
     <div
       className="relative py-8 overflow-hidden"
@@ -230,28 +239,31 @@ function DiagonalDivider() {
       />
       {/* Pill row */}
       <div className="relative container max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-3 py-6">
-        {SHAPES.map((s, i) => (
-          <motion.div
-            key={s.id}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.08, duration: 0.4 }}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full border"
-            style={{
-              background: `${TEAL}12`,
-              borderColor: `${TEAL}35`,
-            }}
-          >
-            <s.Icon color={TEAL} />
-            <span
-              className="font-display font-semibold text-sm"
-              style={{ color: TEAL }}
+        {(shapes || []).map((s, i) => {
+          const Icon = ICON_RESOLVER[s.iconName] || TriangleIcon;
+          return (
+            <motion.div
+              key={String(s.id)}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.4 }}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full border"
+              style={{
+                background: `${TEAL}12`,
+                borderColor: `${TEAL}35`,
+              }}
             >
-              {s.title}
-            </span>
-          </motion.div>
-        ))}
+              <Icon color={TEAL} className="size-4" />
+              <span
+                className="font-display font-semibold text-sm"
+                style={{ color: TEAL }}
+              >
+                {s.title}
+              </span>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );
@@ -264,7 +276,7 @@ function ShapeCard({
   shape,
   index,
 }: {
-  shape: (typeof SHAPES)[0];
+  shape: Shape & { Icon: React.ElementType };
   index: number;
 }) {
   const blobRadius = BLOB_RADII[index % BLOB_RADII.length];
@@ -557,7 +569,7 @@ export default function ShapesPage() {
       </section>
 
       {/* ── Diagonal Divider Accent ── */}
-      <DiagonalDivider />
+      <DiagonalDivider shapes={shapes || []} />
 
       {/* ── Shape Cards Grid ── */}
       <section

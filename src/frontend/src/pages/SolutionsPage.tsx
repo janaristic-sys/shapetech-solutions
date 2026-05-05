@@ -193,9 +193,16 @@ function SolutionRow({
             viewport={{ once: true }}
             className="p-5 rounded-2xl bg-primary/5 border border-primary/20 backdrop-blur-sm"
           >
-            <p className="text-[10px] font-bold uppercase tracking-widest text-primary/70 mb-2">
-              Success Highlight
-            </p>
+            <div className="flex justify-between items-start mb-3">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-primary/70">
+                Success Highlight
+              </p>
+              <div className="flex gap-1.5">
+                {(solution.relatedShapeIds || []).slice(0, 2).map((sid) => (
+                  <div key={String(sid)} className="w-1.5 h-1.5 rounded-full bg-primary/40" title="Powered by Shape" />
+                ))}
+              </div>
+            </div>
             <p className="text-sm font-semibold text-foreground mb-3 leading-tight">
               {solution.caseStudy.title}
             </p>
