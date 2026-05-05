@@ -3,6 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Hexagon } from "lucide-react";
 import { motion } from "motion/react";
+import { useShapes } from "@/hooks/use-backend";
 
 // ---------------------------------------------------------------------------
 // Geometric SVG Icons — unique per shape pillar
@@ -153,96 +154,7 @@ function StarIcon({ color }: { color: string }) {
   );
 }
 
-// ---------------------------------------------------------------------------
-// Static shape data — The Shapetech Approach methodology pillars
-// ---------------------------------------------------------------------------
-const SHAPES = [
-  {
-    id: 1,
-    slug: "strategy",
-    Icon: TriangleIcon,
-    title: "Strategy",
-    tagline: "Clarity before code",
-    description:
-      "We start every engagement with deep discovery. We map your business model, understand your growth goals, and architect a technology roadmap aligned with your vision. Every decision is deliberate — grounded in data, shaped by experience.",
-    capabilities: [
-      "Business model mapping & discovery",
-      "Technology roadmap architecture",
-      "Competitive landscape assessment",
-      "Risk identification & mitigation",
-      "KPI definition & success metrics",
-      "Stakeholder alignment workshops",
-    ],
-  },
-  {
-    id: 2,
-    slug: "design",
-    Icon: CircleIcon,
-    title: "Design",
-    tagline: "Interfaces people love",
-    description:
-      "User experience is the heart of everything we build. From wireframes to polished interfaces, we create intuitive, beautiful digital experiences that delight users and drive measurable outcomes for your business.",
-    capabilities: [
-      "User experience (UX) research",
-      "UI design & interactive prototyping",
-      "Brand identity & visual guidelines",
-      "Responsive & accessible design",
-      "Design system creation",
-      "Conversion-focused interface patterns",
-    ],
-  },
-  {
-    id: 3,
-    slug: "development",
-    Icon: HexagonIcon,
-    title: "Development",
-    tagline: "Built to scale, built to last",
-    description:
-      "Our engineers build scalable, robust platforms using modern technology stacks. We prioritize code quality, security, and performance from day one — delivering full-stack solutions from MVPs to enterprise-grade systems.",
-    capabilities: [
-      "Full-stack web application development",
-      "Native & cross-platform mobile apps",
-      "API design & microservices architecture",
-      "Gaming & interactive experience development",
-      "Agile project management & sprint demos",
-      "Code reviews & quality assurance",
-    ],
-  },
-  {
-    id: 4,
-    slug: "integration",
-    Icon: DiamondIcon,
-    title: "Integration",
-    tagline: "Your ecosystem, unified",
-    description:
-      "We specialize in connecting your technology ecosystem. HubSpot, Shopify, payment processors, shipping providers — we make everything work together seamlessly through middleware, custom APIs, and event-driven pipelines.",
-    capabilities: [
-      "HubSpot, Salesforce & CRM integrations",
-      "Shopify & e-commerce platform connections",
-      "Commission engine & ERP connectivity",
-      "Payment gateway & financial API integrations",
-      "Custom middleware & ETL pipelines",
-      "Webhook infrastructure & event-driven sync",
-    ],
-  },
-  {
-    id: 5,
-    slug: "optimization",
-    Icon: StarIcon,
-    title: "Optimization",
-    tagline: "Always improving",
-    description:
-      "Technology is never finished. We continuously monitor, test, and improve your platform — A/B testing, performance tuning, conversion optimization — so your product keeps getting better long after launch day.",
-    capabilities: [
-      "Performance audits & Core Web Vitals",
-      "Analytics setup & conversion tracking",
-      "A/B testing & experimentation frameworks",
-      "SEO technical optimization",
-      "Scalability & infrastructure tuning",
-      "Post-launch monitoring & iteration",
-    ],
-  },
-];
+
 
 const TEAL = "oklch(0.75 0.12 195)";
 
@@ -419,7 +331,7 @@ function ShapeCard({
           </span>
         </div>
 
-        {/* Shape badge */}
+        {/* Shape badge — uses shape title as the label */}
         <div className="flex items-center gap-2 mb-3">
           <span
             className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest"
@@ -429,7 +341,7 @@ function ShapeCard({
               color: TEAL,
             }}
           >
-            {shape.shapeLabel}
+            {shape.title}
           </span>
         </div>
 
@@ -510,11 +422,19 @@ function ShapeCardSkeleton({ index }: { index: number }) {
 
 // ---------------------------------------------------------------------------
 // Page
+// -----------------------------------------------------------// ---------------------------------------------------------------------------
+// Page
 // ---------------------------------------------------------------------------
 export default function ShapesPage() {
-  // NOTE: static data is used here; swap with useShapes hook when available
-  const isLoading = false;
-  const shapes = SHAPES;
+  const { data: shapes, isLoading } = useShapes();
+
+  const ICON_RESOLVER: Record<string, React.ElementType> = {
+    Triangle: TriangleIcon,
+    Circle: CircleIcon,
+    Hexagon: HexagonIcon,
+    Diamond: DiamondIcon,
+    Star: StarIcon,
+  };
 
   return (
     <div data-ocid="shapes.page">
@@ -522,7 +442,8 @@ export default function ShapesPage() {
       <section
         className="relative overflow-hidden bg-card py-32 md:py-40"
         data-ocid="shapes.hero_section"
-      > <div
+      >
+        <div
           className="pointer-events-none absolute -top-24 -right-24 w-[600px] h-[600px] opacity-[0.08]"
           style={{
             background: `radial-gradient(circle, ${TEAL}, transparent 65%)`,
@@ -541,7 +462,7 @@ export default function ShapesPage() {
           aria-hidden="true"
         />
 
-        <div className="relative container mx-w-7xl mx-auto px-6 lg:px-10 py-28 lg:py-40">
+        <div className="relative container max-w-7xl mx-auto px-6 lg:px-10 py-28 lg:py-40">
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
@@ -561,15 +482,7 @@ export default function ShapesPage() {
             </span>
 
             <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
-              The{" "}
-              <span className="relative inline-block">
-                <span className="gradient-accent">Shapetech</span>
-                <span
-                  className="absolute -bottom-2 left-0 right-0 h-0.5 rounded-full"
-                  style={{ background: `${TEAL}40` }}
-                />
-              </span>{" "}
-              Approach
+              The <span className="gradient-accent">Shapetech</span> Approach
             </h1>
 
             <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto mb-10">
@@ -688,9 +601,16 @@ export default function ShapesPage() {
               ? Array.from({ length: 5 }).map((_, i) => (
                 <ShapeCardSkeleton key={`skeleton-${i + 1}`} index={i} />
               ))
-              : shapes.map((shape, i) => (
-                <ShapeCard key={shape.id} shape={shape} index={i} />
-              ))}
+              : (shapes || []).sort((a, b) => Number(a.sortOrder - b.sortOrder)).map((shape, i) => {
+                const IconComponent = ICON_RESOLVER[shape.iconName] || TriangleIcon;
+                return (
+                  <ShapeCard 
+                    key={String(shape.id)} 
+                    shape={{...shape, Icon: IconComponent}} 
+                    index={i} 
+                  />
+                );
+              })}
           </div>
         </div>
       </section>

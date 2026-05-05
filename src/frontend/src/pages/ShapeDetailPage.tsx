@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, ChevronRight, Puzzle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useShapes, useSolutions } from "@/hooks/use-backend";
+import { useShapes, useSolutionsByShape } from "@/hooks/use-backend";
 import {
   Compass,
   Palette,
@@ -43,9 +43,8 @@ function ShapeIcon({
 export default function ShapeDetailPage() {
   const { shapeId } = useParams({ strict: false }) as { shapeId: string };
   const { data: shapes } = useShapes();
-  const { data: solutions } = useSolutions();
-
   const shape = shapes?.find((s) => s.slug === shapeId);
+  const { data: relatedSolutions, isLoading: isSolutionsLoading } = useSolutionsByShape(shape?.id);
 
   const title = shape?.title ?? shapeId
     .split("-")
@@ -162,22 +161,29 @@ export default function ShapeDetailPage() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Mocked Related Solutions mapped from the hook */}
-            {(solutions || []).slice(0, 3).map((sol, index) => (
-              <Link key={String(sol.id)} to={`/solutions/${sol.slug}`} className="group block">
-                <div className="bg-card/50 hover:bg-card border border-border/50 hover:border-primary/30 rounded-3xl p-8 transition-smooth h-full flex flex-col relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
-                  <h3 className="font-display font-bold text-xl mb-3">{sol.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
-                    {sol.description}
-                  </p>
-                  <div className="flex items-center text-sm font-semibold text-primary mt-auto">
-                    View Solution
-                    <ChevronRight className="size-4 ml-1 transition-transform group-hover:translate-x-1" />
+            {isSolutionsLoading ? (
+              Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="bg-card/50 border border-border/50 rounded-3xl p-8 h-48 animate-pulse" />
+              ))
+            ) : relatedSolutions?.length ? (
+              relatedSolutions.map((sol) => (
+                <Link key={String(sol.id)} to={`/solutions/${sol.slug}`} className="group block">
+                  <div className="bg-card/50 hover:bg-card border border-border/50 hover:border-primary/30 rounded-3xl p-8 transition-smooth h-full flex flex-col relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
+                    <h3 className="font-display font-bold text-xl mb-3">{sol.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
+                      {sol.description}
+                    </p>
+                    <div className="flex items-center text-sm font-semibold text-primary mt-auto">
+                      View Solution
+                      <ChevronRight className="size-4 ml-1 transition-transform group-hover:translate-x-1" />
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))
+            ) : (
+              <p className="text-muted-foreground">No specific solutions currently mapped to this shape.</p>
+            )}
           </div>
         </div>
       </section>

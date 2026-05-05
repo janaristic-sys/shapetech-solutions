@@ -44,24 +44,35 @@ export interface Industry {
   sortOrder: bigint;
   highlights?: string[];
   featured?: boolean;
+  relatedSolutionIds?: bigint[];
 }
 
 export interface Shape {
   id: bigint;
   title: string;
+  tagline?: string;
   description: string;
   iconName: string;
   slug: string;
   sortOrder: bigint;
+  capabilities?: string[];
 }
 
 export interface Solution {
   id: bigint;
   title: string;
+  tagline?: string;
   description: string;
   iconName: string;
   slug: string;
   sortOrder: bigint;
+  features?: string[];
+  relatedShapeIds?: bigint[];
+  caseStudy?: {
+    title: string;
+    description: string;
+    metrics: { label: string; value: string }[];
+  };
 }
 
 export interface Testimonial {

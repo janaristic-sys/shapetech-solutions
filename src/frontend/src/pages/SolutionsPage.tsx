@@ -9,143 +9,51 @@ import {
   Code2,
   ShoppingBag,
   Users,
+  Zap,
+  RefreshCcw,
+  Rocket,
+  Star,
+  Smartphone,
+  Network,
 } from "lucide-react";
 import { motion } from "motion/react";
+import { useSolutions } from "@/hooks/use-backend";
+import { Solution } from "@/types";
 
 // ---------------------------------------------------------------------------
-// Types
+// Icon Mapping
 // ---------------------------------------------------------------------------
-interface Solution {
-  id: number;
-  slug: string;
-  icon: React.ElementType;
-  tag: string;
-  title: string;
-  tagline: string;
-  description: string;
-  features: string[];
-}
-
-// ---------------------------------------------------------------------------
-// Data — exact copy from requirements
-// ---------------------------------------------------------------------------
-const SOLUTIONS: Solution[] = [
-  {
-    id: 1,
-    slug: "direct-selling",
-    icon: Users,
-    tag: "Flagship Platform",
-    title: "Direct Selling Platform",
-    tagline: "The most comprehensive direct selling platform on the market.",
-    description:
-      "A fully integrated commission engine and back-office platform built specifically for direct selling, MLM, and network marketing companies. Supporting binary, unilevel, matrix, and hybrid compensation plans — everything your field needs in one place.",
-    features: [
-      "Multi-tier Commission Engine",
-      "Distributor Management Portal",
-      "Genealogy Tree Visualization",
-      "Autoship & Subscriptions",
-      "Global Payment Processing",
-      "Compliance & Tax Reporting",
-      "Mobile App for Distributors",
-      "API-first Architecture",
-    ],
-  },
-  {
-    id: 2,
-    slug: "hubspot-integration",
-    icon: BarChart2,
-    tag: "Marketing Automation",
-    title: "HubSpot Integration",
-    tagline: "Enterprise HubSpot implementations tailored for direct selling.",
-    description:
-      "Custom objects for distributors, commissions, and downlines. Marketing automation workflows, HubSpot and Shopify bi-directional sync, sales pipeline automation, and CRM data migration. Certified HubSpot Partner.",
-    features: [
-      "Custom CRM Objects",
-      "Data Migration & Cleanup",
-      "Marketing Automation",
-      "Bi-directional Shopify Sync",
-      "Pipeline & Deal Automation",
-      "Custom Dashboards & Reporting",
-      "HubSpot Training & Onboarding",
-    ],
-  },
-  {
-    id: 3,
-    slug: "shopify-integration",
-    icon: ShoppingBag,
-    tag: "E-Commerce",
-    title: "Shopify Integration",
-    tagline: "Custom Shopify storefronts built for direct selling businesses.",
-    description:
-      "Distributor-specific pricing and product catalogs, commission attribution at checkout, autoship subscription app integration, custom checkout flows, and headless commerce implementations. Shopify Partner status.",
-    features: [
-      "Custom Storefront Design",
-      "Distributor Pricing Tiers",
-      "Commission Attribution",
-      "Autoship Integration",
-      "Custom Checkout Flows",
-      "Headless Commerce",
-      "Shopify Plus Expertise",
-    ],
-  },
-  {
-    id: 4,
-    slug: "custom-development",
-    icon: Code2,
-    tag: "Engineering",
-    title: "Custom Development",
-    tagline: "Bespoke software solutions when off-the-shelf doesn't fit.",
-    description:
-      "Web applications, mobile apps, API integrations, legacy system modernization, and cloud migrations — delivered through an agile methodology with bi-weekly demos and full transparency into progress.",
-    features: [
-      "Web Application Development",
-      "Mobile App Development",
-      "API Design & Integration",
-      "Legacy System Modernization",
-      "Cloud Infrastructure",
-      "DevOps & CI/CD",
-      "Ongoing Support & Maintenance",
-    ],
-  },
-  {
-    id: 5,
-    slug: "tech-consulting",
-    icon: BarChart2,
-    tag: "Strategy",
-    title: "Technology Consulting",
-    tagline: "Strategic guidance for complex technical decisions.",
-    description:
-      "Architecture reviews, technology roadmap development, vendor selection, and digital transformation strategy. We help you build a durable technical foundation that aligns with your business goals.",
-    features: [
-      "Architecture Review",
-      "Tech Roadmap Development",
-      "Vendor Selection",
-      "Digital Transformation",
-      "Security Audits",
-      "Performance Optimization",
-      "Fractional CTO Services",
-    ],
-  },
-];
+const ICON_MAP: Record<string, React.ElementType> = {
+  Zap,
+  RefreshCcw,
+  Rocket,
+  ShoppingCart: ShoppingBag,
+  Users,
+  Star,
+  Smartphone,
+  Network,
+  BarChart2,
+  Code2,
+};
 
 // ---------------------------------------------------------------------------
 // Loading skeleton
 // ---------------------------------------------------------------------------
 function SolutionSkeleton() {
   return (
-    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center py-20">
       <div className="flex flex-col gap-5">
         <Skeleton className="h-6 w-32 rounded-full" />
         <Skeleton className="h-12 w-3/4" />
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-5/6" />
-        <div className="grid grid-cols-2 gap-2.5">
-          {["f1", "f2", "f3", "f4", "f5", "f6"].map((k) => (
-            <Skeleton key={k} className="h-6 w-full" />
+        <div className="grid grid-cols-2 gap-2.5 mt-4">
+          {[1, 2, 3, 4].map((k) => (
+            <Skeleton key={k} className="h-6 w-full rounded-lg" />
           ))}
         </div>
       </div>
-      <Skeleton className="h-64 w-full rounded-3xl" />
+      <Skeleton className="h-[400px] w-full rounded-[2.5rem]" />
     </div>
   );
 }
@@ -213,16 +121,12 @@ function PartnerBadge({ name, subtitle }: { name: string; subtitle: string }) {
 function SolutionRow({
   solution,
   index,
-  isLoading,
 }: {
   solution: Solution;
   index: number;
-  isLoading?: boolean;
 }) {
-  if (isLoading) return <SolutionSkeleton />;
-
-  const Icon = solution.icon;
-  const isEven = index % 2 !== 0; // even index = 0,2 → icon left; odd index = 1,3 → icon right
+  const Icon = ICON_MAP[solution.iconName] || Code2;
+  const isEven = index % 2 !== 0;
 
   return (
     <motion.div
@@ -232,17 +136,12 @@ function SolutionRow({
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
       data-ocid={`solutions.item.${index + 1}`}
-      className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center scroll-mt-32 ${isEven ? "lg:[&>*:first-child]:order-2" : ""}`}
+      className={`grid lg:grid-cols-2 gap-12 lg:gap-24 items-center scroll-mt-32 py-16 md:py-24 border-b border-border/40 last:border-0 ${
+        isEven ? "lg:[&>*:first-child]:order-2" : ""
+      }`}
     >
       {/* ── Text panel ── */}
-      <div
-        className="flex flex-col gap-6 relative"
-        style={{
-          borderLeft: "3px solid oklch(0.75 0.12 195 / 0.6)",
-          paddingLeft: "1.5rem",
-        }}
-      >
-        {/* tag */}
+      <div className="flex flex-col gap-6 relative">
         <div className="flex items-center gap-3">
           <div
             className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -257,11 +156,10 @@ function SolutionRow({
             variant="outline"
             className="text-primary border-primary/30 bg-primary/10 font-semibold text-xs tracking-widest uppercase px-3 py-1"
           >
-            {solution.tag}
+            {solution.tagline || "Technical Solution"}
           </Badge>
         </div>
 
-        {/* heading */}
         <div>
           <h3 className="font-display font-bold text-4xl sm:text-5xl text-foreground leading-tight mb-2">
             {solution.title}
@@ -271,14 +169,12 @@ function SolutionRow({
           </p>
         </div>
 
-        {/* description */}
-        <p className="text-muted-foreground text-base leading-relaxed">
+        <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
           {solution.description}
         </p>
 
-        {/* features */}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-          {solution.features.map((f) => (
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
+          {(solution.features || []).map((f) => (
             <li
               key={f}
               className="flex items-center gap-2.5 text-sm text-foreground/85"
@@ -289,14 +185,41 @@ function SolutionRow({
           ))}
         </ul>
 
-        {/* CTA */}
-        <div className="pt-1">
-          <Link to="/contact" data-ocid={`solutions.cta.${index + 1}`}>
+        {/* Case Study Concept Preview */}
+        {solution.caseStudy && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="p-5 rounded-2xl bg-primary/5 border border-primary/20 backdrop-blur-sm"
+          >
+            <p className="text-[10px] font-bold uppercase tracking-widest text-primary/70 mb-2">
+              Success Highlight
+            </p>
+            <p className="text-sm font-semibold text-foreground mb-3 leading-tight">
+              {solution.caseStudy.title}
+            </p>
+            <div className="flex gap-4">
+              {solution.caseStudy.metrics.map((m) => (
+                <div key={m.label} className="flex flex-col">
+                  <span className="text-lg font-display font-bold text-primary">
+                    {m.value}
+                  </span>
+                  <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                    {m.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        <div className="pt-2">
+          <Link to={`/solutions/${solution.slug}`} data-ocid={`solutions.cta.${index + 1}`}>
             <Button
-              size="sm"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold gap-2 rounded-xl transition-smooth h-10 px-5"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold gap-2 rounded-xl transition-smooth h-12 px-8 shadow-lg shadow-primary/20"
             >
-              Enquire About This Solution
+              View Solution Details
               <ArrowRight className="size-4" />
             </Button>
           </Link>
@@ -304,75 +227,49 @@ function SolutionRow({
       </div>
 
       {/* ── Visual panel ── */}
-      <div className="relative">
-        {/* glow */}
+      <div className="relative group">
         <div
           aria-hidden="true"
-          className="absolute inset-0 -m-6 rounded-[3rem] blur-3xl opacity-12 pointer-events-none"
+          className="absolute inset-0 -m-10 rounded-[4rem] blur-3xl opacity-10 pointer-events-none group-hover:opacity-15 transition-opacity duration-700"
           style={{
             background:
               "radial-gradient(circle, oklch(0.75 0.12 195) 0%, transparent 70%)",
           }}
         />
 
-        {/* gradient-border card */}
         <div
-          className="relative rounded-3xl p-px"
+          className="relative rounded-[2.5rem] p-px overflow-hidden shadow-2xl"
           style={{
             background:
-              "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.7), oklch(0.28 0.05 270 / 0.4), oklch(0.75 0.12 195 / 0.3))",
+              "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.5), oklch(0.28 0.05 270 / 0.2), oklch(0.75 0.12 195 / 0.2))",
           }}
         >
-          <div className="bg-card rounded-[calc(1.5rem-1px)] p-8 flex flex-col gap-5">
-            {/* big icon */}
-            <div
-              className="w-16 h-16 rounded-2xl flex items-center justify-center self-start"
-              style={{
-                background: "oklch(0.75 0.12 195 / 0.18)",
-                border: "1px solid oklch(0.75 0.12 195 / 0.4)",
-              }}
+          <div className="bg-card/90 backdrop-blur-md rounded-[calc(2.5rem-1px)] p-10 flex flex-col gap-8 min-h-[400px] justify-center items-center text-center">
+             <div
+              className="w-24 h-24 rounded-3xl flex items-center justify-center bg-primary/10 border border-primary/20 shadow-inner group-hover:scale-110 transition-smooth duration-500"
             >
-              <Icon className="size-9 text-primary" strokeWidth={1.5} />
+              <Icon className="size-12 text-primary" strokeWidth={1.5} />
             </div>
-
-            {/* number + divider */}
-            <div className="flex items-center gap-3">
-              <span className="font-display font-bold text-4xl text-primary opacity-40">
+            
+            <div className="max-w-xs">
+              <span className="font-display font-bold text-7xl text-primary/10 absolute top-10 right-10 select-none">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <div
-                className="h-px flex-1"
-                style={{ background: "oklch(0.75 0.12 195 / 0.25)" }}
-              />
-              <span
-                className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
-                style={{
-                  background: "oklch(0.75 0.12 195 / 0.15)",
-                  color: "oklch(0.75 0.12 195)",
-                  border: "1px solid oklch(0.75 0.12 195 / 0.35)",
-                }}
-              >
-                {solution.tag}
-              </span>
+              <h4 className="font-display font-bold text-2xl mb-4">{solution.title}</h4>
+              <div className="flex flex-wrap justify-center gap-2">
+                {(solution.features || []).slice(0, 4).map((f) => (
+                   <span key={f} className="px-3 py-1 rounded-full bg-background/50 border border-border/50 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+                    {f}
+                   </span>
+                ))}
+              </div>
             </div>
 
-            {/* feature pills */}
-            <div className="grid grid-cols-2 gap-2">
-              {solution.features.slice(0, 6).map((f, fi) => (
-                <motion.div
-                  key={f}
-                  initial={{ opacity: 0, scale: 0.92 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: fi * 0.06, duration: 0.3 }}
-                  className="flex items-center gap-2 rounded-xl bg-background/50 border border-border/50 px-3 py-2"
-                >
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-xs text-foreground/80 leading-tight">
-                    {f}
-                  </span>
-                </motion.div>
-              ))}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+            
+            <div className="flex items-center gap-4 text-xs font-semibold text-primary/70">
+              <CheckCircle2 className="size-4" />
+              Enterprise Ready Architecture
             </div>
           </div>
         </div>
@@ -385,18 +282,15 @@ function SolutionRow({
 // Page
 // ---------------------------------------------------------------------------
 export default function SolutionsPage() {
-  // Data is hardcoded per requirements; hook can replace when available
-  const solutions = SOLUTIONS;
-  const isLoading = false;
+  const { data: solutions, isLoading } = useSolutions();
 
   return (
     <div data-ocid="solutions.page">
       {/* ── Hero ── */}
       <section
-        className="relative bg-card overflow-hidden pt-16 pb-28 md:pt-32 md:pb-44"
+        className="relative bg-card overflow-hidden pt-24 pb-32 md:pt-36 md:pb-48"
         data-ocid="solutions.hero_section"
       >
-        {/* blobs */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -top-40 -right-40 w-[700px] h-[700px] opacity-15 blur-3xl"
@@ -416,24 +310,24 @@ export default function SolutionsPage() {
           }}
         />
 
-        <div className="relative container max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative container max-w-7xl mx-auto px-6 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
-            className="max-w-3xl"
+            className="max-w-4xl"
           >
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-6 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm">
               Our Solutions
             </span>
             <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
-              Comprehensive{" "}
-              <span className="gradient-accent">Technology Solutions</span>
+              Modular <br />
+              <span className="gradient-accent">Enterprise Tech</span>
             </h1>
             <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl">
-              Purpose-built technology for direct selling and e-commerce
-              organisations — from commission engines and distributor portals to
-              HubSpot, Shopify, and custom engineering.
+              We deliver purpose-built technology for direct selling and e-commerce
+              organisations — from core commission engines to unified ecosystem 
+              integrations.
             </p>
           </motion.div>
 
@@ -441,18 +335,18 @@ export default function SolutionsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.55 }}
-            className="mt-12 flex flex-wrap gap-10"
+            className="mt-12 flex flex-wrap gap-12"
           >
             {[
               { value: "150+", label: "Projects Delivered" },
               { value: "8+", label: "Years of Excellence" },
               { value: "98%", label: "Client Satisfaction" },
             ].map((stat) => (
-              <div key={stat.label} className="flex flex-col gap-0.5">
-                <span className="font-display font-bold text-4xl text-primary leading-none">
+              <div key={stat.label} className="flex flex-col gap-1">
+                <span className="font-display font-bold text-5xl text-primary leading-none">
                   {stat.value}
                 </span>
-                <span className="text-muted-foreground text-sm">
+                <span className="text-muted-foreground text-xs uppercase tracking-widest font-semibold opacity-70">
                   {stat.label}
                 </span>
               </div>
@@ -460,7 +354,6 @@ export default function SolutionsPage() {
           </motion.div>
         </div>
 
-        {/* bottom wave */}
         <div
           aria-hidden="true"
           className="absolute bottom-0 left-0 right-0 leading-none"
@@ -470,12 +363,12 @@ export default function SolutionsPage() {
             xmlns="http://www.w3.org/2000/svg"
             className="w-full block"
             preserveAspectRatio="none"
-            style={{ height: "80px" }}
+            style={{ height: "100px" }}
             aria-hidden="true"
           >
             <path
               d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,30 1440,60 L1440,120 L0,120 Z"
-              fill="oklch(0.15 0.07 267)"
+              fill="oklch(0.12 0.05 267)"
             />
           </svg>
         </div>
@@ -483,33 +376,17 @@ export default function SolutionsPage() {
 
       {/* ── Solutions list ── */}
       <section
-        className="bg-background py-16 md:py-24"
+        className="bg-background py-12 md:py-20"
         data-ocid="solutions.list_section"
       >
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-14"
-          >
-            <h2 className="font-display font-bold text-4xl sm:text-5xl text-foreground mb-4">
-              What We <span className="gradient-accent">Deliver</span>
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Each solution is built on years of direct selling and digital
-              commerce expertise, refined across 150+ client engagements.
-            </p>
-          </motion.div>
-
-          <div className="flex flex-col gap-20 md:gap-24">
+        <div className="container max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="flex flex-col">
             {isLoading
-              ? ["s1", "s2", "s3", "s4"].map((k) => (
+              ? [1, 2, 3].map((k) => (
                   <SolutionSkeleton key={k} />
                 ))
-              : solutions.map((sol, i) => (
-                  <SolutionRow key={sol.id} solution={sol} index={i} />
+              : (solutions || []).sort((a,b) => Number(a.sortOrder - b.sortOrder)).map((sol, i) => (
+                  <SolutionRow key={String(sol.id)} solution={sol} index={i} />
                 ))}
           </div>
         </div>
@@ -519,37 +396,41 @@ export default function SolutionsPage() {
 
       {/* ── Partner badges ── */}
       <section
-        className="bg-card py-16"
+        className="bg-card py-24"
         data-ocid="solutions.partners_section"
       >
-        <div className="container max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="container max-w-5xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="mb-14"
           >
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-4 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
-              Certified & Verified
+              Strategic Alliances
             </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-foreground mt-2 mb-3">
-              Official <span className="gradient-accent">Partner Status</span>
+            <h2 className="font-display font-bold text-4xl sm:text-5xl text-foreground mt-2 mb-4">
+              Certified <span className="gradient-accent">Partnerships</span>
             </h2>
-            <p className="text-muted-foreground text-base max-w-lg mx-auto">
-              Recognised certifications that demonstrate our expertise and
-              commitment to the highest implementation standards.
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+              Our solutions are built on world-class foundations. We maintain 
+              official partner status with the platforms that power modern commerce.
             </p>
           </motion.div>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-stretch max-w-xl mx-auto">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-stretch max-w-3xl mx-auto">
             <PartnerBadge
               name="HubSpot Certified Partner"
-              subtitle="CRM, automation & integrations"
+              subtitle="Specialising in direct selling custom objects & CRM automation."
             />
             <PartnerBadge
-              name="Shopify Partner"
-              subtitle="Storefronts, apps & custom builds"
+              name="Shopify Plus Partner"
+              subtitle="Expertise in high-volume headless storefronts & custom apps."
+            />
+            <PartnerBadge
+              name="Microsoft Cloud Partner"
+              subtitle="Azure-based enterprise architectures & scalable cloud infrastructure."
             />
           </div>
         </div>
@@ -559,73 +440,51 @@ export default function SolutionsPage() {
 
       {/* ── Bottom CTA ── */}
       <section
-        className="relative overflow-hidden py-20 md:py-28 bg-background"
+        className="relative overflow-hidden py-32 md:py-40 bg-background"
         data-ocid="solutions.cta_section"
       >
-        {/* diagonal accent */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 opacity-[0.03]"
+         <div
+          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] opacity-[0.08]"
           style={{
-            backgroundImage:
-              "repeating-linear-gradient(45deg, oklch(0.75 0.12 195) 0px, oklch(0.75 0.12 195) 2px, transparent 2px, transparent 40px)",
+            background: `radial-gradient(circle, oklch(0.75 0.12 195), transparent 70%)`,
+            borderRadius: "50% 50% 60% 40% / 40% 60% 40% 60%",
+            animation: "flowing 12s ease-in-out infinite",
           }}
-        />
-        {/* glow */}
-        <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 flex items-center justify-center"
-        >
-          <div
-            className="w-[600px] h-[300px] blur-3xl opacity-15"
-            style={{
-              background:
-                "radial-gradient(ellipse, oklch(0.75 0.12 195) 0%, transparent 70%)",
-              borderRadius: "50%",
-            }}
-          />
-        </div>
+        />
 
-        <div className="relative container max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <div className="relative container max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
           >
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-6 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
-              Get In Touch
-            </span>
-            <h2 className="font-display font-bold text-4xl sm:text-5xl text-foreground mb-5 leading-tight">
-              Not sure which solution fits?{" "}
-              <span className="gradient-accent">Let's talk.</span>
+            <h2 className="font-display font-bold text-4xl sm:text-6xl text-foreground mb-6 leading-tight">
+              Ready to architect <br />
+              <span className="gradient-accent">your next win?</span>
             </h2>
-            <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
-              Tell us about your challenge and we'll design the right solution
-              around your goals, timeline, and budget — no obligation.
+            <p className="text-muted-foreground text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+              Whether you need a full commission engine overhaul or a seamless 
+              CRM integration, our team is ready to map the solution to your goals.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/contact" data-ocid="solutions.contact_cta">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Link to="/contact">
                 <Button
                   size="lg"
-                  className="rounded-full font-semibold gap-2 px-8 h-12 transition-smooth"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, oklch(0.75 0.12 195), oklch(0.65 0.14 200))",
-                    boxShadow: "0 0 24px oklch(0.75 0.12 195 / 0.4)",
-                  }}
+                  className="rounded-2xl font-bold gap-2 px-10 h-14 bg-primary text-primary-foreground hover:scale-105 transition-all shadow-xl shadow-primary/20"
                 >
-                  Start the Conversation
-                  <ArrowRight className="size-4" />
+                  Start a Conversation
+                  <ArrowRight className="size-5" />
                 </Button>
               </Link>
-              <Link to="/about" data-ocid="solutions.about_link">
+              <Link to="/about">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full border-border/60 text-foreground hover:bg-card/60 font-semibold gap-2 px-8 h-12 transition-smooth"
+                  className="rounded-2xl border-border/60 text-foreground hover:bg-card/60 font-bold px-10 h-14"
                 >
-                  Meet the Team
+                  Learn About Us
                 </Button>
               </Link>
             </div>

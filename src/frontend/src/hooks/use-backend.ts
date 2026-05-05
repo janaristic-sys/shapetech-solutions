@@ -75,6 +75,7 @@ const defaultIndustries: Industry[] = [
     sortOrder: 1n,
     highlights: ["Digital Delivery", "Licensing", "Fast Checkout"],
     featured: false,
+    relatedSolutionIds: [1n, 3n],
   },
   {
     id: 2n,
@@ -86,6 +87,7 @@ const defaultIndustries: Industry[] = [
     sortOrder: 2n,
     highlights: ["Commission Engines", "Distributor Portals", "Genealogy Trees"],
     featured: true,
+    relatedSolutionIds: [1n, 2n, 4n, 5n, 6n],
   },
   {
     id: 3n,
@@ -97,6 +99,7 @@ const defaultIndustries: Industry[] = [
     sortOrder: 3n,
     highlights: ["Shopify Plus", "Variant Handling", "Headless Frontends"],
     featured: false,
+    relatedSolutionIds: [4n, 1n, 3n],
   },
   {
     id: 4n,
@@ -108,6 +111,7 @@ const defaultIndustries: Industry[] = [
     sortOrder: 4n,
     highlights: ["Product Catalogs", "Subscription Models", "Influencer Tools"],
     featured: false,
+    relatedSolutionIds: [2n, 4n, 6n],
   },
   {
     id: 5n,
@@ -119,6 +123,7 @@ const defaultIndustries: Industry[] = [
     sortOrder: 5n,
     highlights: ["Wellness Platforms", "Data Privacy", "Patient Portals"],
     featured: false,
+    relatedSolutionIds: [2n, 5n, 6n],
   },
   {
     id: 6n,
@@ -130,6 +135,7 @@ const defaultIndustries: Industry[] = [
     sortOrder: 6n,
     highlights: ["Compliance Focus", "Secure Architetures", "Public Portals"],
     featured: false,
+    relatedSolutionIds: [3n, 5n],
   },
   {
     id: 7n,
@@ -141,92 +147,223 @@ const defaultIndustries: Industry[] = [
     sortOrder: 7n,
     highlights: ["Donation Processing", "Campaign Tracking", "Donor Portals"],
     featured: false,
+    relatedSolutionIds: [3n, 5n],
   },
 ];
 
 const defaultShapes: Shape[] = [
   {
     id: 1n,
-    title: "Credits",
-    description: "Flexible, scalable currency systems and point management for modern applications and loyalty programs.",
-    iconName: "Zap",
-    slug: "credits",
+    slug: "strategy",
+    title: "Strategy",
+    tagline: "Clarity before code",
+    description:
+      "We start every engagement with deep discovery. We map your business model, understand your growth goals, and architect a technology roadmap aligned with your vision. Every decision is deliberate — grounded in data, shaped by experience.",
+    iconName: "Triangle",
     sortOrder: 1n,
+    capabilities: [
+      "Business model mapping & discovery",
+      "Technology roadmap architecture",
+      "Competitive landscape assessment",
+      "Risk identification & mitigation",
+      "KPI definition & success metrics",
+      "Stakeholder alignment workshops",
+    ],
   },
   {
     id: 2n,
-    title: "Subscriptions",
-    description: "Recurring revenue engines with advanced cohort management and flexible billing cycles.",
-    iconName: "RefreshCcw",
-    slug: "subscriptions",
+    slug: "design",
+    title: "Design",
+    tagline: "Interfaces people love",
+    description:
+      "User experience is the heart of everything we build. From wireframes to polished interfaces, we create intuitive, beautiful digital experiences that delight users and drive measurable outcomes for your business.",
+    iconName: "Circle",
     sortOrder: 2n,
+    capabilities: [
+      "User experience (UX) research",
+      "UI design & interactive prototyping",
+      "Brand identity & visual guidelines",
+      "Responsive & accessible design",
+      "Design system creation",
+      "Conversion-focused interface patterns",
+    ],
   },
   {
     id: 3n,
-    title: "Accelerators",
-    description: "Pre-built technical foundations that drastically reduce time-to-market for complex architectures.",
-    iconName: "Rocket",
-    slug: "accelerators",
+    slug: "development",
+    title: "Development",
+    tagline: "Built to scale, built to last",
+    description:
+      "Our engineers build scalable, robust platforms using modern technology stacks. We prioritize code quality, security, and performance from day one — delivering full-stack solutions from MVPs to enterprise-grade systems.",
+    iconName: "Hexagon",
     sortOrder: 3n,
+    capabilities: [
+      "Full-stack web application development",
+      "Native & cross-platform mobile apps",
+      "API design & microservices architecture",
+      "Gaming & interactive experience development",
+      "Agile project management & sprint demos",
+      "Code reviews & quality assurance",
+    ],
   },
   {
     id: 4n,
-    title: "Shopify Direct",
-    description: "Deep, two-way synchronisation between headless fronts, direct-selling engines, and Shopify plus.",
-    iconName: "ShoppingCart",
-    slug: "shopify-direct",
+    slug: "integration",
+    title: "Integration",
+    tagline: "Your ecosystem, unified",
+    description:
+      "We specialize in connecting your technology ecosystem. HubSpot, Shopify, payment processors, shipping providers — we make everything work together seamlessly through middleware, custom APIs, and event-driven pipelines.",
+    iconName: "Diamond",
     sortOrder: 4n,
+    capabilities: [
+      "HubSpot, Salesforce & CRM integrations",
+      "Shopify & e-commerce platform connections",
+      "Commission engine & ERP connectivity",
+      "Payment gateway & financial API integrations",
+      "Custom middleware & ETL pipelines",
+      "Webhook infrastructure & event-driven sync",
+    ],
   },
   {
     id: 5n,
-    title: "CRM Direct",
-    description: "Seamless bridging between bespoke operational data and enterprise CRMs like HubSpot.",
-    iconName: "Users",
-    slug: "crm-direct",
+    slug: "optimization",
+    title: "Optimization",
+    tagline: "Always improving",
+    description:
+      "Technology is never finished. We continuously monitor, test, and improve your platform — A/B testing, performance tuning, conversion optimization — so your product keeps getting better long after launch day.",
+    iconName: "Star",
     sortOrder: 5n,
+    capabilities: [
+      "Performance audits & Core Web Vitals",
+      "Analytics setup & conversion tracking",
+      "A/B testing & experimentation frameworks",
+      "SEO technical optimization",
+      "Scalability & infrastructure tuning",
+      "Post-launch monitoring & iteration",
+    ],
   },
 ];
 
 const defaultSolutions: Solution[] = [
   {
     id: 1n,
-    title: "Client Solutions",
-    description: "Bespoke, end-to-end commerce architectures and custom application development tailored for complex enterprise requirements.",
-    iconName: "Network",
-    slug: "client-solutions",
+    title: "Credits",
+    tagline: "Flexible Virtual Currency",
+    description: "Flexible, scalable currency systems and point management for modern applications and loyalty programs.",
+    iconName: "Zap",
+    slug: "credits",
     sortOrder: 1n,
+    features: [
+      "Multi-currency support",
+      "Real-time point calculation",
+      "Ledger-based transaction history",
+      "Automated tax & conversion",
+    ],
+    relatedShapeIds: [1n, 3n, 4n],
+    caseStudy: {
+      title: "Global Loyalty Transformation",
+      description: "Implemented a multi-currency credit system for a direct selling giant, handling over 1M transactions per month with sub-second latency.",
+      metrics: [
+        { label: "Processing Speed", value: "+400%" },
+        { label: "Support Tickets", value: "-65%" },
+      ],
+    },
   },
   {
     id: 2n,
-    title: "Channel Solutions",
-    description: "Purpose-built platforms for specialized sales channels, direct-to-patient environments, and unique go-to-market strategies.",
-    iconName: "Plug",
-    slug: "channel-solutions",
+    title: "Subscriptions",
+    tagline: "Recurring Revenue Engine",
+    description: "Recurring revenue engines with advanced cohort management and flexible billing cycles.",
+    iconName: "RefreshCcw",
+    slug: "subscriptions",
     sortOrder: 2n,
+    features: [
+      "Custom billing intervals",
+      "Automated dunning management",
+      "Churn analytics & reporting",
+      "Flexible product bundling",
+    ],
+    relatedShapeIds: [1n, 3n, 5n],
+    caseStudy: {
+      title: "Retention Engine Overhaul",
+      description: "Re-engineered the subscription pipeline for a skincare brand, introducing automated dunning and cohort-based billing logic.",
+      metrics: [
+        { label: "Churn Rate", value: "-22%" },
+        { label: "LTV Growth", value: "+35%" },
+      ],
+    },
   },
   {
     id: 3n,
-    title: "Xtra Points",
-    description: "A proprietary, fully managed loyalty and gamification engine designed to drive retention and lifetime value.",
-    iconName: "Star",
-    slug: "xtra-points",
+    title: "Accelerators",
+    tagline: "Speed to Market",
+    description: "Pre-built technical foundations that drastically reduce time-to-market for complex architectures.",
+    iconName: "Rocket",
+    slug: "accelerators",
     sortOrder: 3n,
+    features: [
+      "Pre-built Auth & Identity",
+      "Commission logic templates",
+      "Modular dashboard UI components",
+      "Optimized database schemas",
+    ],
+    relatedShapeIds: [3n, 4n],
   },
   {
     id: 4n,
-    title: "DMV POS",
-    description: "A specialized point-of-sale solution customized for government services, strict compliance, and complex operational flows.",
-    iconName: "Smartphone",
-    slug: "dmv-pos",
+    title: "Shopify Direct",
+    tagline: "Seamless E-Commerce",
+    description: "Deep, two-way synchronisation between headless fronts, direct-selling engines, and Shopify plus.",
+    iconName: "ShoppingCart",
+    slug: "shopify-direct",
     sortOrder: 4n,
+    features: [
+      "Real-time inventory sync",
+      "Distributor attribution logic",
+      "Custom Shopify checkout flows",
+      "Webhooks for event-driven updates",
+    ],
+    relatedShapeIds: [2n, 3n, 4n],
+    caseStudy: {
+      title: "Seamless Headless Sync",
+      description: "Connected a custom distributor back-office to Shopify Plus for a high-volume apparel brand, ensuring real-time inventory and commission sync.",
+      metrics: [
+        { label: "Sync Latency", value: "< 2s" },
+        { label: "Order Volume", value: "10x Scale" },
+      ],
+    },
   },
   {
     id: 5n,
-    title: "Explore Solutions",
-    description: "Discover our full catalog of successful implementations, case studies, and live client examples.",
-    iconName: "LineChart",
-    slug: "explore",
+    title: "CRM Direct",
+    tagline: "Unified Data Ecosystem",
+    description: "Seamless bridging between bespoke operational data and enterprise CRMs like HubSpot.",
+    iconName: "Users",
+    slug: "crm-direct",
     sortOrder: 5n,
+    features: [
+      "HubSpot custom object mapping",
+      "Two-way contact synchronization",
+      "Automated sales pipelines",
+      "Marketing attribution tracking",
+    ],
+    relatedShapeIds: [3n, 4n],
+  },
+  {
+    id: 6n,
+    title: "Xtra Points",
+    tagline: "Gamified Loyalty",
+    description: "A proprietary, fully managed loyalty and gamification engine designed to drive retention and lifetime value.",
+    iconName: "Star",
+    slug: "xtra-points",
+    sortOrder: 6n,
+    features: [
+      "Points-to-perks redemption",
+      "Interactive leaderboard engine",
+      "Engagement-based rewards",
+      "Cross-platform loyalty sync",
+    ],
+    relatedShapeIds: [2n, 3n, 5n],
   },
 ];
 
@@ -456,11 +593,27 @@ const defaultPartners: Partner[] = [
   },
   {
     id: 4n,
+    name: "ShopIQ",
+    logoUrl: "",
+    websiteUrl: "https://shopiq.io",
+    description: "Strategic systems integration partner for high-volume commerce.",
+    sortOrder: 4n,
+  },
+  {
+    id: 5n,
+    name: "HubSpot",
+    logoUrl: "",
+    websiteUrl: "https://hubspot.com",
+    description: "Platform partner for advanced CRM and marketing automation.",
+    sortOrder: 5n,
+  },
+  {
+    id: 6n,
     name: "Stripe",
     logoUrl: "",
     websiteUrl: "https://stripe.com",
     description: "Stripe Verified Partner for payments integration.",
-    sortOrder: 4n,
+    sortOrder: 6n,
   },
 ];
 
@@ -556,6 +709,50 @@ export function useSolutions() {
   return useQuery<Solution[]>({
     queryKey: ["solutions"],
     queryFn: async () => defaultSolutions,
+  });
+}
+
+export function useSolutionsByIndustry(industryId?: bigint) {
+  return useQuery<Solution[]>({
+    queryKey: ["solutions", "industry", industryId?.toString()],
+    queryFn: async () => {
+      if (!industryId) return [];
+      const industry = defaultIndustries.find((i) => i.id === industryId);
+      if (!industry || !industry.relatedSolutionIds) return [];
+      return defaultSolutions.filter((s) =>
+        industry.relatedSolutionIds?.includes(s.id)
+      );
+    },
+    enabled: !!industryId,
+  });
+}
+
+export function useSolutionsByShape(shapeId?: bigint) {
+  return useQuery<Solution[]>({
+    queryKey: ["solutions", "shape", shapeId?.toString()],
+    queryFn: async () => {
+      if (!shapeId) return [];
+      // This is a reverse lookup: find solutions that include this shapeId in their relatedShapeIds
+      return defaultSolutions.filter((s) =>
+        s.relatedShapeIds?.includes(shapeId)
+      );
+    },
+    enabled: !!shapeId,
+  });
+}
+
+export function useShapesBySolution(solutionId?: bigint) {
+  return useQuery<Shape[]>({
+    queryKey: ["shapes", "solution", solutionId?.toString()],
+    queryFn: async () => {
+      if (!solutionId) return [];
+      const solution = defaultSolutions.find((s) => s.id === solutionId);
+      if (!solution || !solution.relatedShapeIds) return [];
+      return defaultShapes.filter((sh) =>
+        solution.relatedShapeIds?.includes(sh.id)
+      );
+    },
+    enabled: !!solutionId,
   });
 }
 

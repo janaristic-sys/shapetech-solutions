@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, ChevronRight, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useSolutions, useShapes } from "@/hooks/use-backend";
+import { useSolutions, useShapesBySolution } from "@/hooks/use-backend";
 import {
   Network,
   Plug,
@@ -33,9 +33,8 @@ function SolutionIcon({
 export default function SolutionDetailPage() {
   const { solutionId } = useParams({ strict: false }) as { solutionId: string };
   const { data: solutions } = useSolutions();
-  const { data: shapes } = useShapes();
-
   const solution = solutions?.find((s) => s.slug === solutionId);
+  const { data: relatedShapes, isLoading: isShapesLoading } = useShapesBySolution(solution?.id);
 
   const title = solution?.title ?? solutionId
     .split("-")
@@ -152,25 +151,96 @@ export default function SolutionDetailPage() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Mocked Related Shapes mapped from the hook */}
-            {(shapes || []).slice(0, 3).map((shape, index) => (
-              <Link key={String(shape.id)} to={`/shapes/${shape.slug}`} className="group block">
-                <div className="bg-card/50 hover:bg-card border border-border/50 hover:border-primary/30 rounded-3xl p-8 transition-smooth h-full flex flex-col relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
-                  <h3 className="font-display font-bold text-xl mb-3">{shape.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
-                    {shape.description}
-                  </p>
-                  <div className="flex items-center text-sm font-semibold text-primary mt-auto">
-                    View Shape
-                    <ChevronRight className="size-4 ml-1 transition-transform group-hover:translate-x-1" />
+            {isShapesLoading ? (
+              Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="bg-card/50 border border-border/50 rounded-3xl p-8 h-48 animate-pulse" />
+              ))
+            ) : relatedShapes?.length ? (
+              relatedShapes.map((shape) => (
+                <Link key={String(shape.id)} to={`/shapes/${shape.slug}`} className="group block">
+                  <div className="bg-card/50 hover:bg-card border border-border/50 hover:border-primary/30 rounded-3xl p-8 transition-smooth h-full flex flex-col relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
+                    <h3 className="font-display font-bold text-xl mb-3">{shape.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
+                      {shape.description}
+                    </p>
+                    <div className="flex items-center text-sm font-semibold text-primary mt-auto">
+                      View Shape
+                      <ChevronRight className="size-4 ml-1 transition-transform group-hover:translate-x-1" />
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))
+            ) : (
+              <p className="text-muted-foreground">No methodology shapes associated with this solution.</p>
+            )}
           </div>
         </div>
       </section>
+
+      {/* ── Case Study Section ────────────────────────────────────────────── */}
+      {solution?.caseStudy && (
+        <section className="bg-card py-24 md:py-32 relative overflow-hidden">
+          {/* Background pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 2px 2px, oklch(0.75 0.12 195) 1px, transparent 0)",
+              backgroundSize: "40px 40px",
+            }}
+          />
+
+          <div className="container max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary mb-6 px-3 py-1.5 rounded-lg border border-primary/20 bg-primary/10">
+                  Success Story
+                </span>
+                <h2 className="font-display font-bold text-4xl md:text-5xl text-foreground mb-8 leading-tight">
+                  {solution.caseStudy.title}
+                </h2>
+                <p className="text-muted-foreground text-lg leading-relaxed mb-10">
+                  {solution.caseStudy.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-8">
+                  {solution.caseStudy.metrics.map((m, i) => (
+                    <motion.div
+                      key={m.label}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex flex-col"
+                    >
+                      <span className="text-4xl font-display font-bold text-primary mb-1">
+                        {m.value}
+                      </span>
+                      <span className="text-xs uppercase tracking-widest font-semibold text-muted-foreground">
+                        {m.label}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative">
+                <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full opacity-30" />
+                <div className="relative aspect-square sm:aspect-video lg:aspect-square bg-background/40 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 flex items-center justify-center shadow-3xl">
+                   <div className="text-center">
+                      <div className="w-20 h-20 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <Activity className="size-10 text-primary" />
+                      </div>
+                      <p className="text-xl font-display font-bold text-foreground">Verified Outcome</p>
+                      <p className="text-sm text-muted-foreground mt-2">Validated through real-world deployment.</p>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Global CTA ──────────────────────────────────────────────────────── */}
       <section className="py-24 relative overflow-hidden flex justify-center items-center">
