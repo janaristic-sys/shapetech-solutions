@@ -490,16 +490,15 @@ export default function ShapesPage() {
               }}
             >
               <Hexagon className="size-3.5" />
-              Our Methodology
+              Proprietary Technology
             </span>
 
             <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
-              The <span className="gradient-accent">Shapetech</span> Approach
+              Our <span className="gradient-accent">Commerce Engines</span>
             </h1>
 
             <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto mb-10">
-              How Shapetech shapes technology solutions — five interlocking
-              methodology pillars that define how we think, design, and deliver.
+              Shapes are our proprietary, modular commerce engines — production-ready building blocks engineered to solve the complex compensation, subscription, checkout, and CRM requirements of niche commerce.
             </p>
 
             {/* Stat pills */}
@@ -510,9 +509,9 @@ export default function ShapesPage() {
               className="flex flex-wrap justify-center gap-4"
             >
               {[
-                { label: "Core Shapes", value: "5" },
-                { label: "Years Refined", value: "8+" },
-                { label: "Projects Shaped", value: "150+" },
+                { label: "Core Shapes", value: "4" },
+                { label: "Years in Production", value: "8+" },
+                { label: "Client Implementations", value: "6+" },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -551,18 +550,14 @@ export default function ShapesPage() {
             className="text-center"
           >
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-foreground mb-5 leading-tight">
-              Shapes as a <span className="gradient-accent">Philosophy</span>
+              Built for <span className="gradient-accent">Niche Commerce</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-loose max-w-3xl mx-auto">
-              Shapetech Solutions takes a holistic, shape-driven approach to
-              technology. Each{" "}
+              We believe commerce is dominated by a near-endless series of niche use cases — and that the merchants serving those niches deserve purpose-built technology.{" "}
               <span className="text-foreground font-medium">
-                "shape" represents a core methodology pillar
+                Each Shape is a standalone product engine
               </span>{" "}
-              that defines how we think, design, and deliver. Together, these
-              five shapes form an interlocking framework — not a checklist, but
-              a philosophy built from over eight years of delivery excellence
-              across direct selling, SaaS, and enterprise platforms.
+              that solves a specific, recurring commerce complexity. They are modular by design — deployable individually or combined into a complete commerce stack tailored to your business model.
             </p>
           </motion.div>
         </div>
@@ -592,15 +587,13 @@ export default function ShapesPage() {
                 color: TEAL,
               }}
             >
-              Five Pillars
+              Four Engines
             </span>
             <h2 className="font-display font-bold text-4xl text-foreground mt-2">
-              The Five Shapes of Delivery
+              Our Four Commerce Shapes
             </h2>
             <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-              Every Shapetech engagement is built on these five interconnected
-              pillars — applied in sequence or in parallel, always with
-              intention.
+              Each Shape is a production-grade commerce engine. Deploy one or combine them into a full stack built for your specific niche.
             </p>
           </motion.div>
 
@@ -676,14 +669,12 @@ export default function ShapesPage() {
             </span>
 
             <h2 className="font-display font-bold text-4xl sm:text-5xl text-foreground mb-5 leading-tight">
-              Ready to start shaping <br className="hidden sm:block" />
-              <span className="gradient-accent">your technology?</span>
+              Ready to power your <br className="hidden sm:block" />
+              <span className="gradient-accent">commerce operation?</span>
             </h2>
 
             <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-              Every great product starts with the right shape. Tell us about
-              your project and we'll map the methodology pillars that will make
-              it exceptional.
+              Tell us about your commerce model and we'll identify which Shapes fit your niche — and how we build them together for the long term.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

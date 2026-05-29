@@ -533,48 +533,47 @@ module {
 
     // Hero
     hero.data := ?{
-      headline         = "Shaping the Future of Your Business";
-      subheading       = "A boutique technology design and full-stack development firm headquartered in Sarasota, FL and Niš, Serbia — delivering scalable software solutions for direct sellers, startups, and mid-market companies.";
-      ctaText          = "Get Started";
-      ctaLink          = "/contact";
-      secondaryCtaText = "Our Work";
-      secondaryCtaLink = "/solutions";
+      headline         = "Commerce Solutions That Power Global Volume";
+      subheading       = "We build and grow specialized commerce solutions for niche use cases, collectively powering $100s of Millions in annual volume across dozens of countries.";
+      ctaText          = "Explore Solutions";
+      ctaLink          = "/solutions";
+      secondaryCtaText = "Contact Us";
+      secondaryCtaLink = "/contact";
     };
 
     // About
     about.data := ?{
-      description = "Shapetech Solutions is a boutique technology company with offices in Sarasota, Florida and Niš, Serbia. We partner with direct selling organizations, high-growth startups, and mid-market companies to architect and build the digital products that drive their next stage of growth.";
-      mission     = "To deliver beautifully engineered software solutions that create measurable business value — combining deep technical expertise with strategic design thinking.";
-      vision      = "To be the trusted technology partner of choice for companies that refuse to settle for off-the-shelf answers to complex business challenges.";
+      description = "ShapeTech Solutions is an international team of specialists dedicated to building and integrating custom-built software solutions. Where standard software falls short, we step in. We engineer custom tools specifically designed to handle your most complex operational hurdles.";
+      mission     = "To build and grow specialized commerce solutions that solve our clients' complex commerce problems and scale their long-term growth.";
+      vision      = "To power the world's niche commerce use cases through robust, scalable, and beautifully designed technology products.";
     };
 
     // Clients
-    ignore addClient(clients, idCounter, { name = "USANA Health Sciences"; logoUrl = ""; websiteUrl = "https://usana.com"; sortOrder = 1 });
-    ignore addClient(clients, idCounter, { name = "4Life Research"; logoUrl = ""; websiteUrl = "https://4life.com"; sortOrder = 2 });
-    ignore addClient(clients, idCounter, { name = "Vivos Therapeutics"; logoUrl = ""; websiteUrl = "https://vivoslife.com"; sortOrder = 3 });
-    ignore addClient(clients, idCounter, { name = "Primerica"; logoUrl = ""; websiteUrl = "https://primerica.com"; sortOrder = 4 });
+    ignore addClient(clients, idCounter, { name = "Crunchi"; logoUrl = ""; websiteUrl = "https://crunchi.com"; sortOrder = 1 });
+    ignore addClient(clients, idCounter, { name = "IDLife"; logoUrl = ""; websiteUrl = "https://idlife.com"; sortOrder = 2 });
+    ignore addClient(clients, idCounter, { name = "Nuvita Global"; logoUrl = ""; websiteUrl = "https://nuvitaglobal.com"; sortOrder = 3 });
+    ignore addClient(clients, idCounter, { name = "Wine Shop at Home"; logoUrl = ""; websiteUrl = "https://wineshopathome.com"; sortOrder = 4 });
+    ignore addClient(clients, idCounter, { name = "Reliv International"; logoUrl = ""; websiteUrl = "https://reliv.com"; sortOrder = 5 });
+    ignore addClient(clients, idCounter, { name = "Sam Houston"; logoUrl = ""; websiteUrl = "https://samhouston.com"; sortOrder = 6 });
 
     // Industries
-    ignore addIndustry(industries, idCounter, { title = "Direct Selling"; description = "We have deep roots in direct sales — building distributor portals, compensation engines, and mobile apps that power multi-level organizations at scale."; iconName = "users"; sortOrder = 1 });
-    ignore addIndustry(industries, idCounter, { title = "Startups"; description = "From MVP to market-ready product, we help startups move fast without breaking things — providing architecture guidance, rapid development, and growth infrastructure."; iconName = "rocket"; sortOrder = 2 });
-    ignore addIndustry(industries, idCounter, { title = "Mid-Market Companies"; description = "We modernize legacy systems and build new platforms that give established companies the technological edge they need to compete in a digital-first world."; iconName = "building"; sortOrder = 3 });
-    ignore addIndustry(industries, idCounter, { title = "Platform Businesses"; description = "Marketplaces, SaaS platforms, and API-driven ecosystems — we design and build the infrastructure that connects buyers, sellers, and partners."; iconName = "grid"; sortOrder = 4 });
+    ignore addIndustry(industries, idCounter, { title = "Direct-Selling & Network Models"; description = "We construct distributor portals, commission engines, and mobile applications that power complex, high-volume multi-level marketing structures."; iconName = "users"; sortOrder = 1 });
+    ignore addIndustry(industries, idCounter, { title = "Subscription & Replenishment Commerce"; description = "Managing complex cohort billing, replenishment cycles, automated dunning, and bespoke product builders for recurring revenue e-commerce."; iconName = "refresh-ccw"; sortOrder = 2 });
+    ignore addIndustry(industries, idCounter, { title = "Health, Wellness, & Nutraceuticals"; description = "Compliance-focused, high-transaction platforms designed specifically for supplement brands and complex wellness distribution pathways."; iconName = "heart-pulse"; sortOrder = 3 });
 
-    // Shapes (brand pillars)
-    ignore addShape(shapes, idCounter, { title = "Strategy First"; description = "Every engagement begins with a deep discovery process. We map your business goals to a technology strategy before a single line of code is written."; icon = "map"; sortOrder = 1 });
-    ignore addShape(shapes, idCounter, { title = "Design-Led Engineering"; description = "Beautiful products are born from the intersection of thoughtful design and clean architecture. We hold both to the same high standard."; icon = "pen-tool"; sortOrder = 2 });
-    ignore addShape(shapes, idCounter, { title = "Full-Stack Ownership"; description = "From database schema to pixel-perfect UI, our teams own the full vertical — eliminating handoff friction and delivering cohesive products faster."; icon = "layers"; sortOrder = 3 });
-    ignore addShape(shapes, idCounter, { title = "Transparent Partnership"; description = "We operate as an extension of your team. Shared roadmaps, weekly syncs, and open communication mean you're never left wondering what's happening."; icon = "handshake"; sortOrder = 4 });
-    ignore addShape(shapes, idCounter, { title = "Scalable by Default"; description = "We architect for the business you're building, not just the one you have today — ensuring your platform grows with you without costly rewrites."; icon = "trending-up"; sortOrder = 5 });
+    // Shapes (our products)
+    ignore addShape(shapes, idCounter, { title = "Subscriptions"; description = "A bespoke subscription engine engineered for the unique needs of network models. We handle the complexity of recurring billing while ensuring genealogy and commission data stay perfectly synced."; icon = "refresh-ccw"; sortOrder = 1 });
+    ignore addShape(shapes, idCounter, { title = "Credits"; description = "This shape provides a robust framework for managing user credits, digital wallets, and internal currency exchanges. (In Development)"; icon = "wallet"; sortOrder = 2 });
+    ignore addShape(shapes, idCounter, { title = "Shopify Direct"; description = "An intelligent bridge that allows you to leverage Shopify’s world-class speed and reliability while maintaining your bespoke compensation model, replicated sites, and member enrollment flows. It protects your field with accurate commission tracking and link integrity."; icon = "shopping-cart"; sortOrder = 3 });
+    ignore addShape(shapes, idCounter, { title = "CRM Direct"; description = "Our integration acts as an automatic sync between your core Commission Engine and your marketing stack, transforming fractured data into actionable intelligence."; icon = "network"; sortOrder = 4 });
 
-    // Solutions
-    ignore addSolution(solutions, idCounter, { title = "System Architecture"; description = "We design robust, scalable system architectures that form the backbone of your digital products — from microservices to event-driven platforms."; icon = "cpu"; features = ["Cloud-native design", "Microservices & APIs", "Database architecture", "Security & compliance planning"]; sortOrder = 1 });
-    ignore addSolution(solutions, idCounter, { title = "Mobile & Native Apps"; description = "Cross-platform mobile applications built with modern frameworks, delivering native performance and a seamless user experience on iOS and Android."; icon = "smartphone"; features = ["React Native & Flutter", "iOS & Android native", "Offline-first architecture", "Push notifications & deep linking"]; sortOrder = 2 });
-    ignore addSolution(solutions, idCounter, { title = "Data-Driven Applications"; description = "Analytics dashboards, reporting engines, and data pipelines that turn raw numbers into actionable business intelligence."; icon = "bar-chart"; features = ["Real-time dashboards", "ETL & data pipelines", "Business intelligence tools", "Custom reporting"]; sortOrder = 3 });
-    ignore addSolution(solutions, idCounter, { title = "Website Development"; description = "High-performance marketing sites and web applications that make a strong first impression and convert visitors into customers."; icon = "globe"; features = ["Responsive design", "CMS integration", "Performance optimization", "SEO best practices"]; sortOrder = 4 });
-    ignore addSolution(solutions, idCounter, { title = "Multi-Platform Systems"; description = "Unified platforms that work seamlessly across web, mobile, and desktop — giving your users a consistent experience wherever they are."; icon = "monitor"; features = ["Progressive web apps", "Cross-platform desktop", "Synchronized state", "Unified design system"]; sortOrder = 5 });
-    ignore addSolution(solutions, idCounter, { title = "API Integrations"; description = "We connect your platforms to the tools your business relies on — payment processors, CRMs, ERPs, and third-party services."; icon = "link"; features = ["REST & GraphQL APIs", "Third-party integrations", "Webhook automation", "API security & rate limiting"]; sortOrder = 6 });
-    ignore addSolution(solutions, idCounter, { title = "UX/UI Design"; description = "User-centered design that balances aesthetics with usability — from wireframes and prototypes to polished, production-ready interfaces."; icon = "figma"; features = ["User research & personas", "Wireframing & prototyping", "Design systems", "Accessibility compliance"]; sortOrder = 7 });
+    // Solutions (individual implementations / case studies)
+    ignore addSolution(solutions, idCounter, { title = "Sam Houston"; description = "A custom fundraising platform with gamified donor loyalty powered by CRM Direct, enabling automated perks redemption and engagement leaderboards."; icon = "landmark"; features = ["Custom fundraising portal", "Gamified donor points", "Engagement leaderboards", "Perks redemption"]; sortOrder = 1 });
+    ignore addSolution(solutions, idCounter, { title = "Crunchi Storefront"; description = "High-conversion Shopify Plus build for premium skincare with a custom affiliate sales attribution engine."; icon = "sparkles"; features = ["Shopify Plus storefront", "Affiliate attribution", "Custom variant selection", "Optimized checkout"]; sortOrder = 2 });
+    ignore addSolution(solutions, idCounter, { title = "Nuvita Global"; description = "A custom distributor portal and real-time commission engine for nutraceutical sales networks, built on DMV."; icon = "heart-pulse"; features = ["Distributor portal", "Real-time commission logic", "Genealogy tree views", "Payout management"]; sortOrder = 3 });
+    ignore addSolution(solutions, idCounter, { title = "IDLife Subscriptions"; description = "Headless subscription box e-commerce engine built on Medusa, optimized for high-volume monthly replenishment orders."; icon = "refresh-ccw"; features = ["Headless Medusa core", "Subscription box builder", "Dunning automation", "Cohort churn tracking"]; sortOrder = 4 });
+    ignore addSolution(solutions, idCounter, { title = "Wine Shop at Home"; description = "A direct-selling platform with multi-tiered payout structures and replicated websites for thousands of independent consultants."; icon = "users"; features = ["MLM payout structures", "Replicated websites", "Consultant backend", "Resource library"]; sortOrder = 5 });
+    ignore addSolution(solutions, idCounter, { title = "Reliv International"; description = "Multi-country e-commerce platform with global points e-wallet redemption system powered by Credits."; icon = "globe"; features = ["Multi-country catalogs", "Points wallet system", "Headless Medusa integration", "Localization engine"]; sortOrder = 6 });
 
     // Testimonials
     ignore addTestimonial(testimonials, idCounter, { name = "Michael Torres"; title = "Chief Technology Officer"; company = "DirectPath International"; quote = "Shapetech rebuilt our entire distributor portal from the ground up. The new platform handles over 50,000 active distributors without breaking a sweat. Their team's technical depth is exceptional."; rating = 5; sortOrder = 1 });
@@ -604,40 +603,52 @@ module {
     ignore addTeamMember(team, idCounter, { name = "Dusan Mitrovic"; role = "Managing Partner"; photoUrl = ""; bio = "Dusan manages key client accounts and oversees project delivery. His hands-on approach and deep understanding of client industries ensure that every engagement delivers tangible, measurable results."; sortOrder = 5 });
 
     // Partners
-    ignore addPartner(partners, idCounter, { name = "Microsoft Azure"; logoUrl = ""; websiteUrl = "https://azure.microsoft.com"; description = "Our preferred cloud platform for enterprise-grade deployments — providing the infrastructure reliability and global scale our clients demand."; sortOrder = 1 });
-    ignore addPartner(partners, idCounter, { name = "Stripe"; logoUrl = ""; websiteUrl = "https://stripe.com"; description = "Powering payments across our client applications — from simple e-commerce checkouts to complex subscription billing and marketplace payouts."; sortOrder = 2 });
-    ignore addPartner(partners, idCounter, { name = "Salesforce"; logoUrl = ""; websiteUrl = "https://salesforce.com"; description = "We integrate Salesforce CRM into client workflows, building custom Lightning components and automation that connect sales, service, and data."; sortOrder = 3 });
-    ignore addPartner(partners, idCounter, { name = "AWS"; logoUrl = ""; websiteUrl = "https://aws.amazon.com"; description = "Amazon Web Services provides the serverless, container, and database infrastructure underlying many of our most performance-critical applications."; sortOrder = 4 });
+    ignore addPartner(partners, idCounter, { name = "Medusa"; logoUrl = ""; websiteUrl = "https://medusajs.com"; description = "We leverage the Medusa ecosystem to build high-performance, custom headless commerce engines, engineering custom middleware on top of it to handle specific commission tracking and referral models."; sortOrder = 1 });
+    ignore addPartner(partners, idCounter, { name = "LPT"; logoUrl = ""; websiteUrl = "#"; description = "As a featured partner, we specialize in building custom overlays and unique tools tailored specifically for the LPT environment to bridge the gap with your specific business strategy."; sortOrder = 2 });
+    ignore addPartner(partners, idCounter, { name = "Shopify"; logoUrl = ""; websiteUrl = "https://shopify.com"; description = "We act as the intelligent bridge between Shopify and your existing commission engine, protecting your field with accurate tracking and link integrity."; sortOrder = 3 });
+    ignore addPartner(partners, idCounter, { name = "HubSpot"; logoUrl = ""; websiteUrl = "https://hubspot.com"; description = "Our middleware establishes an automatic sync between your Commission Engine and HubSpot, transforming fractured data into real-time marketing power."; sortOrder = 4 });
+    ignore addPartner(partners, idCounter, { name = "ByDesign"; logoUrl = ""; websiteUrl = "https://bydesign.com"; description = "We specialize in personalizing and integrating best-in-class third-party applications to build a custom architecture around your existing ByDesign commission platform."; sortOrder = 5 });
+    ignore addPartner(partners, idCounter, { name = "Dotdigital"; logoUrl = ""; websiteUrl = "https://dotdigital.com"; description = "Integrating advanced marketing automation to trigger personalized celebratory messaging and performance tracking based on real-time data flow."; sortOrder = 6 });
 
     // Blog posts
     ignore addBlogPost(blog, idCounter, {
-      title     = "Why Direct Selling Companies Need Custom Technology";
-      slug      = "why-direct-selling-needs-custom-technology";
-      summary   = "Off-the-shelf software can't keep up with the unique demands of MLM and direct sales organizations. Here's why custom-built platforms deliver better ROI.";
-      content   = "The direct selling industry has unique technological requirements that generic software simply cannot address. Compensation plans with complex leg structures, real-time genealogy tracking, and multi-currency payouts for international distributors — these aren't features you find in an off-the-shelf CRM.\n\nAt Shapetech, we've spent years building platforms specifically for direct sales organizations, and the pattern is consistent: companies that invest in custom technology see faster distributor onboarding, higher retention rates, and significantly more data visibility into what's driving growth.\n\nThe key is not building everything from scratch. It's identifying the 20% of functionality that is genuinely unique to your business model and building that precisely, while integrating best-in-class tools for the other 80%. That's the Shapetech approach.";
-      date      = 1_713_600_000_000_000_000;
+      title     = "ShapeTech Solutions Launches \"Shopify Direct\" Integration for Global Markets.";
+      slug      = "shopify-direct-launch";
+      summary   = "A technical deep-dive into how our new middleware acts as an intelligent bridge.";
+      content   = "ShapeTech Solutions has officially launched Shopify Direct, an intelligent middleware integration that connects Shopify's enterprise storefronts with custom multi-level commission structures. This release solves the historical conflict between fast, modern checkout flows and complex genealogy attribution logic.";
+      date      = 1_778_803_200_000_000_000;
       author    = "Connor Hester";
-      tags      = ["Direct Selling", "Technology Strategy", "Custom Software"];
+      tags      = ["Product Launch", "Shopify Plus", "Integration"];
       published = true;
     });
     ignore addBlogPost(blog, idCounter, {
-      title     = "The Hidden Cost of Technical Debt in Growing Companies";
-      slug      = "hidden-cost-technical-debt-growing-companies";
-      summary   = "Every shortcut taken during rapid growth becomes a tax on your future velocity. Understanding and managing technical debt is one of the most important things a CTO can do.";
-      content   = "Technical debt is often misunderstood as a purely engineering problem. In reality, it's a business risk that compounds over time — much like financial debt. Every \"we'll fix it later\" decision made during a fast growth phase adds to a mounting balance that eventually demands repayment.\n\nThe symptoms are familiar: new features take longer than they should, bugs in one area cause unexpected failures elsewhere, and engineering velocity slows to a crawl even as the team grows. By the time leadership notices, the debt has usually become significant.\n\nAt Shapetech, our approach with mid-market clients often involves a structured modernization roadmap — prioritizing the highest-risk areas of the codebase first, while continuing to deliver new business value in parallel. The goal is never a complete rewrite (rarely worth it) but a systematic reduction of risk and a restoration of development speed.";
-      date      = 1_711_008_000_000_000_000;
+      title     = "Expanding the Global Footprint: New Strategic Operations in International Markets.";
+      slug      = "global-footprint-expansion";
+      summary   = "Solving for international complexity and data fragmentation across regional portals.";
+      content   = "To support client expansion across Europe and the Americas, ShapeTech Solutions is establishing dedicated multi-region hosting and automated data-residency compliance nodes. This expansion streamlines regional portal synchronizations and multi-currency transactions.";
+      date      = 1_776_643_200_000_000_000;
+      author    = "Sasa Velickovic";
+      tags      = ["Global Expansion", "Infrastructure", "Compliance"];
+      published = true;
+    });
+    ignore addBlogPost(blog, idCounter, {
+      title     = "The Future of Incentives: Introducing the \"Xtra Points\" Promotion Engine.";
+      slug      = "xtra-points-promotion-engine";
+      summary   = "A powerful engine supporting product bundles, coupon codes, and centralized performance dashboards.";
+      content   = "Our newly refined incentives shape, Xtra Points, provides a centralized hub to track loyalty points, custom bonuses, and product vouchers. Its robust transaction ledger allows merchants to configure flexible rewards programs without affecting core accounting data.";
+      date      = 1_773_100_800_000_000_000;
       author    = "Nenad Andrejevic";
-      tags      = ["Engineering", "Technical Debt", "Leadership"];
+      tags      = ["Incentives", "Loyalty", "Software Architecture"];
       published = true;
     });
     ignore addBlogPost(blog, idCounter, {
-      title     = "Designing for the Field: Mobile UX for Sales Teams";
-      slug      = "designing-mobile-ux-for-sales-teams";
-      summary   = "Sales professionals use apps in the real world — noisy, distracted, high-stakes moments. Designing for that reality requires a fundamentally different mindset.";
-      content   = "Most enterprise mobile applications are designed by people who will never actually use them in the field. The result is interfaces optimized for demos rather than daily reality — too many taps to complete a simple task, dense data tables that are unreadable in sunlight, and workflows that assume a reliable internet connection.\n\nWhen Shapetech designs mobile applications for sales teams, we start by shadowing actual users in their work environment. What does a home-based consultant's workspace look like? What information does a field rep need in the 30 seconds before walking into a client meeting? These questions shape every design decision.\n\nThe most successful sales mobile apps we've built share common characteristics: a single primary action per screen, offline capability for core workflows, and data visualizations that communicate at a glance. Simplicity, in this context, is not a design preference — it's a performance requirement.";
-      date      = 1_708_329_600_000_000_000;
-      author    = "Darko Milenkovic";
-      tags      = ["Mobile Design", "UX", "Sales Technology"];
+      title     = "Real-time data flow synchronization updates between HubSpot and major commission engines.";
+      slug      = "hubspot-commission-sync";
+      summary   = "Optimizing sub-second synchronization and data reconciliation for enterprise marketing pipelines.";
+      content   = "We have shipped sub-second data synchronization protocols for our CRM Direct bridge. Marketing teams can now access real-time distributor performance metrics, enrollment milestones, and compensation events directly inside their HubSpot automation flows.";
+      date      = 1_771_372_800_000_000_000;
+      author    = "Nenad Andrejevic";
+      tags      = ["CRM Direct", "HubSpot", "Data Sync"];
       published = true;
     });
   };

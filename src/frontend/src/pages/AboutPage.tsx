@@ -46,10 +46,10 @@ interface ValueItem {
 // Static data
 // ---------------------------------------------------------------------------
 const STATS: StatItem[] = [
-  { value: "50+", label: "International Team" },
-  { value: "50+", label: "Projects Delivered" },
-  { value: "2", label: "Global Offices" },
-  { value: "10+", label: "Years Tech Experience" },
+  { value: "$100M+", label: "Annual Volume Powered" },
+  { value: "Dozens", label: "Countries Served" },
+  { value: "6+", label: "Client Solutions" },
+  { value: "5", label: "Core Industries" },
 ];
 
 const OFFICES: Office[] = [
@@ -688,9 +688,8 @@ function PageHero() {
               About <span className="gradient-accent">Shapetech Solutions</span>
             </h1>
             <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl">
-              We empower direct selling businesses and growth-stage companies
-              with transformative technology — helping every client shape the
-              future of their business.
+              We build and grow specialized commerce solutions for niche use cases,
+              collectively powering $100s of Millions in annual volume across dozens of countries.
             </p>
           </motion.div>
         </div>
@@ -832,7 +831,7 @@ function MissionVisionSection() {
                 </h3>
                 <p className="text-muted-foreground leading-relaxed text-base">
                   {about?.mission ??
-                    "To empower direct selling companies and growth-stage businesses with cutting-edge technology platforms — turning complex operational challenges into competitive advantages through world-class engineering and strategic expertise."}
+                    "To build and grow specialized commerce solutions that solve our clients' complex commerce problems and scale their long-term growth."}
                 </p>
               </div>
             </motion.div>
@@ -868,7 +867,7 @@ function MissionVisionSection() {
                 </h3>
                 <p className="text-muted-foreground leading-relaxed text-base">
                   {about?.vision ??
-                    "To become the world's leading technology partner for direct selling organizations — recognized globally for delivering transformative platforms that help our clients grow, compete, and thrive in an ever-changing digital landscape."}
+                    "To power the world's niche commerce use cases through robust, scalable, and beautifully designed technology products."}
                 </p>
               </div>
             </motion.div>
@@ -936,37 +935,19 @@ function CompanyStorySection() {
             className="space-y-5"
           >
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Shapetech Solutions was founded with a single purpose: to bridge
-              the gap between direct selling businesses and modern technology.
-              We saw an industry underserved by generic software — companies
-              with complex compensation plans, global distributor networks, and
-              real operational challenges that off-the-shelf tools simply
-              couldn't solve.
+              ShapeTech Solutions was founded with a clear focus: to build and grow specialized commerce solutions for niche use cases. We believe commerce is dominated by a near endless series of niche use cases, and generic software often fails to deliver optimal long-term outcomes. We built our company to allow us to design, own, and iterate a customized solution over the long-term for each merchant.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Today we serve clients globally from our offices in{" "}
+              Today we power the commerce engines of individual merchants and entire industries, collectively facilitating $100s of Millions in annual transaction volume. From our offices in{" "}
               <span className="text-foreground font-medium">
                 Sarasota, Florida (USA)
               </span>{" "}
               and{" "}
-              <span className="text-foreground font-medium">Niš, Serbia</span>.
-              Our international team of 50+ business consultants, developers,
-              and designers combines US-based leadership and client
-              communication with a highly skilled engineering team — giving
-              every client the best of both worlds.
+              <span className="text-foreground font-medium">Niš, Serbia</span>,
+              our engineering teams manage robust platforms that support dozens of countries.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              From{" "}
-              <span className="text-primary font-semibold">
-                HubSpot integrations
-              </span>{" "}
-              and{" "}
-              <span className="text-primary font-semibold">
-                Shopify storefronts
-              </span>{" "}
-              to custom direct selling platforms and distributor back-offices,
-              we deliver technology that shapes the future of every business we
-              work with.
+              Whether running complex subscription billing cycles with our <span className="text-primary font-semibold">Subscriptions</span> engine, managing multi-currency digital wallets via <span className="text-primary font-semibold">Credits</span>, bridging Shopify to any commission model with <span className="text-primary font-semibold">Shopify Direct</span>, or syncing real-time field data into HubSpot through <span className="text-primary font-semibold">CRM Direct</span> — our focus is building solutions that last.
             </p>
           </motion.div>
         </div>

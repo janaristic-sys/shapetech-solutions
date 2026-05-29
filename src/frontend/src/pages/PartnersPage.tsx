@@ -337,10 +337,9 @@ export default function PartnersPage() {
               Our <span className="gradient-accent">Partners</span>
             </h1>
             <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl">
-              We work with the world's leading technology platforms to deliver
-              best-in-class solutions for our clients. Every partnership is
-              built on certification, shared values, and a commitment to
-              measurable outcomes.
+              We build on the world's leading commerce platforms — acting as the
+              engineering layer that connects them to your unique business model.
+              Each partnership enables deeper integrations, not just plug-and-play.
             </p>
           </motion.div>
         </div>

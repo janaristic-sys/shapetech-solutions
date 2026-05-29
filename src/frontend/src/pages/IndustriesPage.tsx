@@ -251,14 +251,10 @@ export default function IndustriesPage() {
               Industries We Serve
             </span>
             <h1 className="font-display font-bold text-5xl sm:text-6xl text-foreground leading-[1.05] mb-6">
-              Deep <span className="gradient-accent">Industry Expertise</span>{" "}
-              That Delivers
+              Commerce <span className="gradient-accent">Niches We Serve</span>
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
-              Shapetech Solutions has built mission-critical technology across
-              the most demanding sectors. Our deep domain knowledge means faster
-              delivery, fewer re-works, and better outcomes for your business —
-              no matter your industry.
+              We believe commerce is dominated by a near-endless series of niche use cases. ShapeTech Solutions builds and grows specialized commerce solutions for each niche — ensuring every merchant gets purpose-built technology, not a generic adaptation.
             </p>
           </motion.div>
 
@@ -270,8 +266,8 @@ export default function IndustriesPage() {
             className="flex flex-wrap gap-5 mt-12"
           >
             {[
-              { value: "7+", label: "Verticals mastered" },
-              { value: "150+", label: "Projects delivered" },
+              { value: "3+", label: "Core niche markets" },
+              { value: "$100M+", label: "Annual volume powered" },
             ].map((stat) => (
               <div
                 key={stat.label}
@@ -308,12 +304,11 @@ export default function IndustriesPage() {
             className="max-w-2xl mb-20"
           >
             <h2 className="font-display font-bold text-4xl lg:text-6xl text-foreground leading-tight mb-4">
-              Industries We've <br />
-              <span className="gradient-accent">Transformed</span>
+              Commerce Niches We've <br />
+              <span className="gradient-accent">Specialized In</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              We bring deep domain expertise to every engagement, crafting tailored
-              technology solutions that address the unique challenges of your vertical.
+              Each industry below represents a long-term commitment — we don't dabble. We build deep expertise in each niche and grow solutions specifically for those merchants.
             </p>
           </motion.div>
 

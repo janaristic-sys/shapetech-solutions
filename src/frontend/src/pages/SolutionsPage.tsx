@@ -1,70 +1,58 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
-  BarChart2,
   CheckCircle2,
   Code2,
-  ShoppingBag,
-  Users,
-  Zap,
-  RefreshCcw,
-  Rocket,
-  Star,
-  Smartphone,
+  Globe,
+  HeartPulse,
+  Landmark,
   Network,
+  RefreshCcw,
+  ShoppingCart,
+  Sparkles,
+  Star,
+  Users,
+  Search,
+  SlidersHorizontal,
+  X,
+  ChevronDown,
 } from "lucide-react";
-import { motion } from "motion/react";
-import { useSolutions } from "@/hooks/use-backend";
+import type { LucideIcon, LucideProps } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { useSolutions, useShapes, useIndustries } from "@/hooks/use-backend";
 import { Solution } from "@/types";
+import { useState, useMemo } from "react";
 
-// ---------------------------------------------------------------------------
-// Icon Mapping
-// ---------------------------------------------------------------------------
-const ICON_MAP: Record<string, React.ElementType> = {
-  Zap,
-  RefreshCcw,
-  Rocket,
-  ShoppingCart: ShoppingBag,
-  Users,
-  Star,
-  Smartphone,
+const ICON_MAP: Record<string, LucideIcon> = {
+  Landmark,
+  HeartPulse,
+  ShoppingCart,
   Network,
-  BarChart2,
   Code2,
+  Users,
+  Sparkles,
+  RefreshCcw,
+  Star,
+  Globe,
 };
 
-// ---------------------------------------------------------------------------
-// Loading skeleton
-// ---------------------------------------------------------------------------
-function SolutionSkeleton() {
-  return (
-    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center py-20">
-      <div className="flex flex-col gap-5">
-        <Skeleton className="h-6 w-32 rounded-full" />
-        <Skeleton className="h-12 w-3/4" />
-        <Skeleton className="h-4 w-full" />
-        <Skeleton className="h-4 w-5/6" />
-        <div className="grid grid-cols-2 gap-2.5 mt-4">
-          {[1, 2, 3, 4].map((k) => (
-            <Skeleton key={k} className="h-6 w-full rounded-lg" />
-          ))}
-        </div>
-      </div>
-      <Skeleton className="h-[400px] w-full rounded-[2.5rem]" />
-    </div>
-  );
+function DynamicIcon({ name, ...props }: { name: string } & LucideProps) {
+  const normalized = name
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join("");
+  const Icon = ICON_MAP[normalized] ?? ICON_MAP[name] ?? Code2;
+  return <Icon {...props} />;
 }
 
-// ---------------------------------------------------------------------------
-// Wave divider
-// ---------------------------------------------------------------------------
 function WaveDivider({ flip = false }: { flip?: boolean }) {
   return (
     <div
-      className="relative -my-px leading-none overflow-hidden"
+      className="relative -my-px leading-none overflow-hidden pointer-events-none"
       aria-hidden="true"
     >
       <svg
@@ -84,218 +72,94 @@ function WaveDivider({ flip = false }: { flip?: boolean }) {
   );
 }
 
-// ---------------------------------------------------------------------------
-// Partner badge
-// ---------------------------------------------------------------------------
-function PartnerBadge({ name, subtitle }: { name: string; subtitle: string }) {
+function SolutionSkeleton() {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
-      className="flex flex-col items-center gap-3 px-8 py-6 rounded-3xl border-2 border-primary/40 bg-primary/5 backdrop-blur-sm hover:border-primary/70 hover:bg-primary/10 transition-smooth"
-    >
-      <div
-        className="w-14 h-14 rounded-2xl flex items-center justify-center"
-        style={{
-          background: "oklch(0.75 0.12 195 / 0.15)",
-          border: "1px solid oklch(0.75 0.12 195 / 0.4)",
-        }}
-      >
-        <CheckCircle2 className="size-7 text-primary" />
+    <div className="card-fluid p-8 flex flex-col justify-between min-h-[380px]">
+      <div>
+        <div className="flex justify-between items-start mb-6">
+          <Skeleton className="w-12 h-12 rounded-xl" />
+          <Skeleton className="w-20 h-8" />
+        </div>
+        <Skeleton className="h-6 w-3/4 mb-3" />
+        <Skeleton className="h-4 w-1/2 mb-4" />
+        <Skeleton className="h-16 w-full mb-4" />
       </div>
-      <div className="text-center">
-        <p className="font-display font-bold text-foreground text-base">
-          {name}
-        </p>
-        <p className="text-muted-foreground text-sm mt-0.5">{subtitle}</p>
-      </div>
-    </motion.div>
+      <Skeleton className="h-10 w-28 rounded-full" />
+    </div>
   );
 }
 
-// ---------------------------------------------------------------------------
-// Solution row — alternating layout
-// ---------------------------------------------------------------------------
-function SolutionRow({
-  solution,
-  index,
-}: {
-  solution: Solution;
-  index: number;
-}) {
-  const Icon = ICON_MAP[solution.iconName] || Code2;
-  const isEven = index % 2 !== 0;
-
-  return (
-    <motion.div
-      id={solution.slug}
-      initial={{ opacity: 0, y: 48 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
-      data-ocid={`solutions.item.${index + 1}`}
-      className={`grid lg:grid-cols-2 gap-12 lg:gap-24 items-center scroll-mt-32 py-16 md:py-24 border-b border-border/40 last:border-0 ${
-        isEven ? "lg:[&>*:first-child]:order-2" : ""
-      }`}
-    >
-      {/* ── Text panel ── */}
-      <div className="flex flex-col gap-6 relative">
-        <div className="flex items-center gap-3">
-          <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-            style={{
-              background: "oklch(0.75 0.12 195 / 0.15)",
-              border: "1px solid oklch(0.75 0.12 195 / 0.35)",
-            }}
-          >
-            <Icon className="size-5 text-primary" />
-          </div>
-          <Badge
-            variant="outline"
-            className="text-primary border-primary/30 bg-primary/10 font-semibold text-xs tracking-widest uppercase px-3 py-1"
-          >
-            {solution.tagline || "Technical Solution"}
-          </Badge>
-        </div>
-
-        <div>
-          <h3 className="font-display font-bold text-4xl sm:text-5xl text-foreground leading-tight mb-2">
-            {solution.title}
-          </h3>
-          <p className="text-primary font-medium text-lg leading-snug">
-            {solution.tagline}
-          </p>
-        </div>
-
-        <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
-          {solution.description}
-        </p>
-
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
-          {(solution.features || []).map((f) => (
-            <li
-              key={f}
-              className="flex items-center gap-2.5 text-sm text-foreground/85"
-            >
-              <CheckCircle2 className="size-4 text-primary flex-shrink-0" />
-              <span>{f}</span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Case Study Concept Preview */}
-        {solution.caseStudy && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="p-5 rounded-2xl bg-primary/5 border border-primary/20 backdrop-blur-sm"
-          >
-            <div className="flex justify-between items-start mb-3">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-primary/70">
-                Success Highlight
-              </p>
-              <div className="flex gap-1.5">
-                {(solution.relatedShapeIds || []).slice(0, 2).map((sid) => (
-                  <div key={String(sid)} className="w-1.5 h-1.5 rounded-full bg-primary/40" title="Powered by Shape" />
-                ))}
-              </div>
-            </div>
-            <p className="text-sm font-semibold text-foreground mb-3 leading-tight">
-              {solution.caseStudy.title}
-            </p>
-            <div className="flex gap-4">
-              {solution.caseStudy.metrics.map((m) => (
-                <div key={m.label} className="flex flex-col">
-                  <span className="text-lg font-display font-bold text-primary">
-                    {m.value}
-                  </span>
-                  <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                    {m.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-
-        <div className="pt-2">
-          <Link to={`/solutions/${solution.slug}`} data-ocid={`solutions.cta.${index + 1}`}>
-            <Button
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold gap-2 rounded-xl transition-smooth h-12 px-8 shadow-lg shadow-primary/20"
-            >
-              View Solution Details
-              <ArrowRight className="size-4" />
-            </Button>
-          </Link>
-        </div>
-      </div>
-
-      {/* ── Visual panel ── */}
-      <div className="relative group">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -m-10 rounded-[4rem] blur-3xl opacity-10 pointer-events-none group-hover:opacity-15 transition-opacity duration-700"
-          style={{
-            background:
-              "radial-gradient(circle, oklch(0.75 0.12 195) 0%, transparent 70%)",
-          }}
-        />
-
-        <div
-          className="relative rounded-[2.5rem] p-px overflow-hidden shadow-2xl"
-          style={{
-            background:
-              "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.5), oklch(0.28 0.05 270 / 0.2), oklch(0.75 0.12 195 / 0.2))",
-          }}
-        >
-          <div className="bg-card/90 backdrop-blur-md rounded-[calc(2.5rem-1px)] p-10 flex flex-col gap-8 min-h-[400px] justify-center items-center text-center">
-             <div
-              className="w-24 h-24 rounded-3xl flex items-center justify-center bg-primary/10 border border-primary/20 shadow-inner group-hover:scale-110 transition-smooth duration-500"
-            >
-              <Icon className="size-12 text-primary" strokeWidth={1.5} />
-            </div>
-            
-            <div className="max-w-xs">
-              <span className="font-display font-bold text-7xl text-primary/10 absolute top-10 right-10 select-none">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h4 className="font-display font-bold text-2xl mb-4">{solution.title}</h4>
-              <div className="flex flex-wrap justify-center gap-2">
-                {(solution.features || []).slice(0, 4).map((f) => (
-                   <span key={f} className="px-3 py-1 rounded-full bg-background/50 border border-border/50 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                    {f}
-                   </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-            
-            <div className="flex items-center gap-4 text-xs font-semibold text-primary/70">
-              <CheckCircle2 className="size-4" />
-              Enterprise Ready Architecture
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Page
-// ---------------------------------------------------------------------------
 export default function SolutionsPage() {
-  const { data: solutions, isLoading } = useSolutions();
+  const { data: solutions = [], isLoading: solutionsLoading } = useSolutions();
+  const { data: shapes = [], isLoading: shapesLoading } = useShapes();
+  const { data: industries = [], isLoading: industriesLoading } = useIndustries();
+
+  // Filters State
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedIndustry, setSelectedIndustry] = useState<string>("all");
+  const [selectedShape, setSelectedShape] = useState<string>("all");
+  const [selectedTech, setSelectedTech] = useState<string>("all");
+
+  const techOptions = ["Shopify Plus", "Medusa", "Custom"];
+
+  // Filter Logic
+  const filteredSolutions = useMemo(() => {
+    return solutions.filter((sol) => {
+      // 1. Text Search Filter
+      const text = `${sol.title} ${sol.tagline} ${sol.description} ${sol.features.join(" ")}`.toLowerCase();
+      if (searchQuery && !text.includes(searchQuery.toLowerCase())) {
+        return false;
+      }
+
+      // 2. Industry Filter
+      if (selectedIndustry !== "all") {
+        const indId = BigInt(selectedIndustry);
+        const ind = industries.find((i) => i.id === indId);
+        if (ind && !ind.relatedSolutionIds.includes(sol.id)) {
+          return false;
+        }
+      }
+
+      // 3. Product (Shape) Filter
+      if (selectedShape !== "all") {
+        const shapeId = BigInt(selectedShape);
+        if (!sol.relatedShapeIds.includes(shapeId)) {
+          return false;
+        }
+      }
+
+      // 4. Technology Stack Filter
+      if (selectedTech !== "all") {
+        const textLower = text.toLowerCase();
+        if (selectedTech === "Shopify Plus" && !textLower.includes("shopify")) {
+          return false;
+        }
+        if (selectedTech === "Medusa" && !textLower.includes("medusa")) {
+          return false;
+        }
+        if (selectedTech === "Custom" && (textLower.includes("medusa") || textLower.includes("shopify"))) {
+          return false;
+        }
+      }
+
+      return true;
+    });
+  }, [solutions, searchQuery, selectedIndustry, selectedShape, selectedTech, industries]);
+
+  const clearAllFilters = () => {
+    setSearchQuery("");
+    setSelectedIndustry("all");
+    setSelectedShape("all");
+    setSelectedTech("all");
+  };
+
+  const hasActiveFilters = searchQuery !== "" || selectedIndustry !== "all" || selectedShape !== "all" || selectedTech !== "all";
 
   return (
     <div data-ocid="solutions.page">
-      {/* ── Hero ── */}
+      {/* ── Hero Section ── */}
       <section
-        className="relative bg-card overflow-hidden pt-24 pb-32 md:pt-36 md:pb-48"
+        className="relative bg-card overflow-hidden pt-24 pb-24 md:pt-36 md:pb-32"
         data-ocid="solutions.hero_section"
       >
         <div
@@ -307,15 +171,6 @@ export default function SolutionsPage() {
             borderRadius: "40% 60% 60% 40% / 50% 50% 70% 50%",
           }}
         />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-10 left-0 w-[500px] h-[400px] opacity-[0.08] blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle, oklch(0.75 0.12 195) 0%, transparent 70%)",
-            borderRadius: "60% 40% 40% 60% / 40% 60% 40% 60%",
-          }}
-        />
 
         <div className="relative container max-w-7xl mx-auto px-6 lg:px-10">
           <motion.div
@@ -325,39 +180,15 @@ export default function SolutionsPage() {
             className="max-w-4xl"
           >
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-6 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm">
-              Our Solutions
+              Implementations
             </span>
             <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
-              Modular <br />
-              <span className="gradient-accent">Enterprise Tech</span>
+              Client Solutions <br />
+              <span className="gradient-accent">Database</span>
             </h1>
             <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl">
-              We deliver purpose-built technology for direct selling and e-commerce
-              organisations — from core commission engines to unified ecosystem 
-              integrations.
+              Browse our portfolio of specialized commerce integrations, custom payout back-offices, and high-conversion storefront builds powering $100s of Millions in annual volume.
             </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.55 }}
-            className="mt-12 flex flex-wrap gap-12"
-          >
-            {[
-              { value: "150+", label: "Projects Delivered" },
-              { value: "8+", label: "Years of Excellence" },
-              { value: "98%", label: "Client Satisfaction" },
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col gap-1">
-                <span className="font-display font-bold text-5xl text-primary leading-none">
-                  {stat.value}
-                </span>
-                <span className="text-muted-foreground text-xs uppercase tracking-widest font-semibold opacity-70">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
           </motion.div>
         </div>
 
@@ -370,7 +201,7 @@ export default function SolutionsPage() {
             xmlns="http://www.w3.org/2000/svg"
             className="w-full block"
             preserveAspectRatio="none"
-            style={{ height: "100px" }}
+            style={{ height: "60px" }}
             aria-hidden="true"
           >
             <path
@@ -381,31 +212,272 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      {/* ── Solutions list ── */}
-      <section
-        className="bg-background py-12 md:py-20"
-        data-ocid="solutions.list_section"
-      >
-        <div className="container max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="flex flex-col">
-            {isLoading
-              ? [1, 2, 3].map((k) => (
-                  <SolutionSkeleton key={k} />
-                ))
-              : (solutions || []).sort((a,b) => Number(a.sortOrder - b.sortOrder)).map((sol, i) => (
-                  <SolutionRow key={String(sol.id)} solution={sol} index={i} />
-                ))}
+      {/* ── Filter Controls Section ── */}
+      <section className="bg-background border-b border-border/20 py-8 relative z-30" data-ocid="solutions.filter_section">
+        <div className="container max-w-7xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between">
+            
+            {/* Search Input */}
+            <div className="relative flex-1 max-w-md">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search implementations or features..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-card border border-border/60 focus:border-primary/50 text-foreground text-sm transition-smooth outline-none"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="size-4" />
+                </button>
+              )}
+            </div>
+
+            {/* Dropdown Filters */}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground mr-1">
+                <SlidersHorizontal className="size-3.5" />
+                <span>Filter By:</span>
+              </div>
+
+              {/* Industry Dropdown */}
+              <div className="relative">
+                <select
+                  value={selectedIndustry}
+                  onChange={(e) => setSelectedIndustry(e.target.value)}
+                  className="appearance-none pl-4 pr-10 py-2.5 rounded-xl bg-card border border-border/60 focus:border-primary/50 text-foreground text-sm transition-smooth outline-none cursor-pointer"
+                >
+                  <option value="all">All Industries</option>
+                  {industries.map((ind) => (
+                    <option key={String(ind.id)} value={String(ind.id)}>
+                      {ind.title}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
+              </div>
+
+              {/* Shape / Product Dropdown */}
+              <div className="relative">
+                <select
+                  value={selectedShape}
+                  onChange={(e) => setSelectedShape(e.target.value)}
+                  className="appearance-none pl-4 pr-10 py-2.5 rounded-xl bg-card border border-border/60 focus:border-primary/50 text-foreground text-sm transition-smooth outline-none cursor-pointer"
+                >
+                  <option value="all">All Products</option>
+                  {shapes.map((shape) => (
+                    <option key={String(shape.id)} value={String(shape.id)}>
+                      {shape.title}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
+              </div>
+
+              {/* Tech Stack Dropdown */}
+              <div className="relative">
+                <select
+                  value={selectedTech}
+                  onChange={(e) => setSelectedTech(e.target.value)}
+                  className="appearance-none pl-4 pr-10 py-2.5 rounded-xl bg-card border border-border/60 focus:border-primary/50 text-foreground text-sm transition-smooth outline-none cursor-pointer"
+                >
+                  <option value="all">All Stacks</option>
+                  {techOptions.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
+              </div>
+
+              {/* Clear Button */}
+              {hasActiveFilters && (
+                <Button
+                  variant="ghost"
+                  onClick={clearAllFilters}
+                  className="text-xs text-primary hover:text-primary-foreground hover:bg-primary/20 rounded-xl px-4 py-2"
+                >
+                  Clear Filters
+                </Button>
+              )}
+            </div>
           </div>
+
+          {/* Active Filter Tags */}
+          {hasActiveFilters && (
+            <div className="flex flex-wrap items-center gap-2 mt-4 pt-3 border-t border-border/10">
+              <span className="text-xs text-muted-foreground font-medium">Active:</span>
+              {searchQuery && (
+                <Badge variant="secondary" className="gap-1 px-3 py-1 rounded-full text-xs">
+                  Query: "{searchQuery}"
+                  <X className="size-3 cursor-pointer" onClick={() => setSearchQuery("")} />
+                </Badge>
+              )}
+              {selectedIndustry !== "all" && (
+                <Badge variant="secondary" className="gap-1 px-3 py-1 rounded-full text-xs">
+                  Industry: {industries.find((i) => String(i.id) === selectedIndustry)?.title}
+                  <X className="size-3 cursor-pointer" onClick={() => setSelectedIndustry("all")} />
+                </Badge>
+              )}
+              {selectedShape !== "all" && (
+                <Badge variant="secondary" className="gap-1 px-3 py-1 rounded-full text-xs">
+                  Product: {shapes.find((s) => String(s.id) === selectedShape)?.title}
+                  <X className="size-3 cursor-pointer" onClick={() => setSelectedShape("all")} />
+                </Badge>
+              )}
+              {selectedTech !== "all" && (
+                <Badge variant="secondary" className="gap-1 px-3 py-1 rounded-full text-xs">
+                  Stack: {selectedTech}
+                  <X className="size-3 cursor-pointer" onClick={() => setSelectedTech("all")} />
+                </Badge>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
-      <WaveDivider />
+      {/* ── Implementations Database Grid ── */}
+      <section className="bg-background py-16 min-h-[500px]" data-ocid="solutions.database_grid">
+        <div className="container max-w-7xl mx-auto px-6">
+          
+          {/* Results count info */}
+          <div className="mb-8 flex items-center justify-between">
+            <p className="text-sm text-muted-foreground">
+              Showing <span className="font-semibold text-foreground">{filteredSolutions.length}</span> of{" "}
+              <span className="font-semibold text-foreground">{solutions.length}</span> implementations
+            </p>
+          </div>
 
-      {/* ── Partner badges ── */}
-      <section
-        className="bg-card py-24"
-        data-ocid="solutions.partners_section"
-      >
+          {solutionsLoading || shapesLoading || industriesLoading ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <SolutionSkeleton key={i} />
+              ))}
+            </div>
+          ) : filteredSolutions.length === 0 ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex flex-col items-center justify-center py-20 text-center"
+            >
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                <SlidersHorizontal className="size-8 animate-pulse" />
+              </div>
+              <h3 className="font-display font-bold text-2xl text-foreground mb-2">No Implementations Found</h3>
+              <p className="text-muted-foreground max-w-md">
+                Try widening your search queries or clearing active filters to view all client solutions.
+              </p>
+              <Button onClick={clearAllFilters} className="mt-6 rounded-full bg-primary text-foreground">
+                Reset All Filters
+              </Button>
+            </motion.div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <AnimatePresence mode="popLayout">
+                {filteredSolutions.map((sol, index) => (
+                  <motion.div
+                    key={String(sol.id)}
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4 }}
+                    data-ocid={`solutions.item.${sol.slug}`}
+                    className="group card-fluid p-8 flex flex-col justify-between relative overflow-hidden h-full hover:border-primary/30 transition-smooth scroll-mt-24"
+                    id={sol.slug}
+                  >
+                    <div>
+                      {/* Top Action / Header */}
+                      <div className="flex justify-between items-start mb-6">
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center blob-accent group-hover:scale-105 transition-smooth">
+                          <DynamicIcon name={sol.iconName ?? "landmark"} className="size-6" />
+                        </div>
+                        {sol.caseStudy?.metrics?.[0] && (
+                          <div className="text-right">
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-primary block">
+                              {sol.caseStudy.metrics[0].label}
+                            </span>
+                            <span className="font-display font-black text-lg gradient-accent">
+                              {sol.caseStudy.metrics[0].value}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Brand & Tagline */}
+                      <h3 className="font-display font-bold text-2xl text-foreground mb-1 group-hover:text-primary transition-colors">
+                        {sol.title}
+                      </h3>
+                      <p className="text-xs text-primary font-semibold tracking-wide uppercase mb-3">
+                        {sol.tagline}
+                      </p>
+                      
+                      {/* Short Description */}
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                        {sol.description}
+                      </p>
+
+                      {/* Tech Features badges */}
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {sol.features.map((f) => (
+                          <span
+                            key={f}
+                            className="text-[10px] px-2.5 py-0.5 rounded-full bg-background border border-border/60 text-muted-foreground"
+                          >
+                            {f}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Footer / Dynamic Case Study Preview */}
+                    <div className="mt-auto pt-6 border-t border-border/20">
+                      {sol.caseStudy ? (
+                        <div className="mb-4">
+                          <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground mb-1">
+                            Performance Lift
+                          </p>
+                          <p className="text-xs text-foreground font-medium line-clamp-2 italic">
+                            "{sol.caseStudy.description}"
+                          </p>
+                          {sol.caseStudy.metrics.length > 1 && (
+                            <div className="flex gap-4 mt-2">
+                              {sol.caseStudy.metrics.slice(1).map((m) => (
+                                <div key={m.label} className="flex flex-col">
+                                  <span className="text-sm font-bold text-primary">{m.value}</span>
+                                  <span className="text-[9px] text-muted-foreground uppercase">{m.label}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ) : null}
+
+                      <Link
+                        to={`/solutions/${sol.slug}`}
+                        data-ocid={`solutions.detail_link.${sol.slug}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:text-primary-foreground group-hover:bg-primary/20 px-4 py-2 rounded-full transition-smooth"
+                      >
+                        View Full Case Study Details
+                        <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ── Partner Integrations Section ── */}
+      <WaveDivider />
+      <section className="bg-card py-20 md:py-24" data-ocid="solutions.partners_section">
         <div className="container max-w-5xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -415,47 +487,54 @@ export default function SolutionsPage() {
             className="mb-14"
           >
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-4 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
-              Strategic Alliances
+              Strategic Ecosystems
             </span>
             <h2 className="font-display font-bold text-4xl sm:text-5xl text-foreground mt-2 mb-4">
-              Certified <span className="gradient-accent">Partnerships</span>
+              Certified Integrations
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-              Our solutions are built on world-class foundations. We maintain 
-              official partner status with the platforms that power modern commerce.
+              We architect secure, enterprise-grade pipelines connecting your distributor back-offices to the world's leading commerce platforms.
             </p>
           </motion.div>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-stretch max-w-3xl mx-auto">
-            <PartnerBadge
-              name="HubSpot Certified Partner"
-              subtitle="Specialising in direct selling custom objects & CRM automation."
-            />
-            <PartnerBadge
-              name="Shopify Plus Partner"
-              subtitle="Expertise in high-volume headless storefronts & custom apps."
-            />
-            <PartnerBadge
-              name="Microsoft Cloud Partner"
-              subtitle="Azure-based enterprise architectures & scalable cloud infrastructure."
-            />
+            {[
+              { title: "Shopify Plus Expert", desc: "High-volume commerce storefront architectures." },
+              { title: "Medusa Headless Engine", desc: "Bespoke checkout & subscription box logic." },
+              { title: "HubSpot CRM Integrations", desc: "Genealogy maps and sync workflows." }
+            ].map((p, idx) => (
+              <motion.div
+                key={p.title}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                className="flex flex-col items-center gap-3 px-8 py-6 rounded-3xl border border-border bg-background/50 hover:border-primary/50 hover:bg-primary/5 transition-smooth flex-1"
+              >
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary/10 border border-primary/20">
+                  <CheckCircle2 className="size-6 text-primary" />
+                </div>
+                <div className="text-center">
+                  <h4 className="font-display font-bold text-foreground text-base">{p.title}</h4>
+                  <p className="text-muted-foreground text-xs mt-1 leading-normal">{p.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      <WaveDivider flip />
-
       {/* ── Bottom CTA ── */}
+      <WaveDivider flip />
       <section
-        className="relative overflow-hidden py-32 md:py-40 bg-background"
+        className="relative overflow-hidden py-24 md:py-32 bg-background"
         data-ocid="solutions.cta_section"
       >
-         <div
+        <div
           className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] opacity-[0.08]"
           style={{
             background: `radial-gradient(circle, oklch(0.75 0.12 195), transparent 70%)`,
             borderRadius: "50% 50% 60% 40% / 40% 60% 40% 60%",
-            animation: "flowing 12s ease-in-out infinite",
           }}
           aria-hidden="true"
         />
@@ -467,19 +546,17 @@ export default function SolutionsPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
           >
-            <h2 className="font-display font-bold text-4xl sm:text-6xl text-foreground mb-6 leading-tight">
-              Ready to architect <br />
-              <span className="gradient-accent">your next win?</span>
+            <h2 className="font-display font-bold text-4xl sm:text-5xl text-foreground mb-6 leading-tight">
+              Have a niche commerce problem?
             </h2>
-            <p className="text-muted-foreground text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-              Whether you need a full commission engine overhaul or a seamless 
-              CRM integration, our team is ready to map the solution to your goals.
+            <p className="text-muted-foreground text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+              We design custom loyalty wallets, replicated storefronts, and automated payout engines that grow with your brand. Let's build a solution.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/contact">
                 <Button
                   size="lg"
-                  className="rounded-2xl font-bold gap-2 px-10 h-14 bg-primary text-primary-foreground hover:scale-105 transition-all shadow-xl shadow-primary/20"
+                  className="rounded-full font-bold gap-2 px-10 h-14 bg-primary text-foreground hover:scale-105 transition-all shadow-xl shadow-primary/20"
                 >
                   Start a Conversation
                   <ArrowRight className="size-5" />
@@ -489,7 +566,7 @@ export default function SolutionsPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-2xl border-border/60 text-foreground hover:bg-card/60 font-bold px-10 h-14"
+                  className="rounded-full border-border/60 text-foreground hover:bg-card/60 font-bold px-10 h-14"
                 >
                   Learn About Us
                 </Button>
