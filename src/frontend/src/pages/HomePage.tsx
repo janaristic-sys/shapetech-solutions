@@ -359,7 +359,7 @@ export default function HomePage() {
                 </div>
 
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight tracking-tight text-foreground">
-                  Powering <span className="gradient-accent">Global Volume</span> at Scale.
+                  Powering <span className="gradient-accent">Global Volume</span> at Scale
                 </h1>
                 <p className="mt-6 text-muted-foreground text-lg max-w-xl leading-relaxed">
                   We build and grow specialized commerce solutions for niche use cases,
@@ -392,7 +392,7 @@ export default function HomePage() {
                   {[
                     { value: "$100M+", label: "Annual Volume" },
                     { value: "Dozens", label: "Countries Served" },
-                    { value: "6", label: "Client Solutions" },
+                    { value: "X", label: "Client Solutions" },
                   ].map((stat) => (
                     <div key={stat.label} className="flex flex-col items-start">
                       <span className="font-display font-bold text-3xl gradient-accent">
@@ -502,17 +502,17 @@ export default function HomePage() {
                   {
                     tier: "Tier 1",
                     title: "Innovative Startups",
-                    description: "Moving from idea to MVP.",
+                    description: "Moving from idea to MVP",
                   },
                   {
                     tier: "Tier 2",
                     title: "Mid-Sized / Growth Business",
-                    description: "Modernizing e-commerce operations.",
+                    description: "Modernizing e-commerce operations",
                   },
                   {
                     tier: "Tier 3",
                     title: "Evolving Enterprise",
-                    description: "Global e-commerce transformation.",
+                    description: "Global e-commerce transformation",
                   },
                 ].map((tier, i) => (
                   <motion.div
