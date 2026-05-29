@@ -432,24 +432,26 @@ export default function HomePage() {
         />
 
         {/* Client Logos ticker under Hero */}
-        <div className="w-full bg-background/50 border-y border-border/20 py-8 relative z-20">
-          <div className="container max-w-7xl mx-auto px-4">
-            <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground/60 mb-6">
-              Powering Leading Commerce Ecosystems
-            </p>
-            {clientsLoading ? (
-              <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Skeleton key={i} className="h-8 w-24 rounded-lg" />
-                ))}
-              </div>
-            ) : (
-              <LogoTicker clients={clients} />
-            )}
-          </div>
-        </div>
+
       </section>
 
+
+      <div className="w-full bg-background/50 border-y border-border/20 py-8 relative z-20">
+        <div className="container max-w-7xl mx-auto px-4">
+          <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground/60 mb-6">
+            Powering Leading Commerce Ecosystems
+          </p>
+          {clientsLoading ? (
+            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <Skeleton key={i} className="h-8 w-24 rounded-lg" />
+              ))}
+            </div>
+          ) : (
+            <LogoTicker clients={clients} />
+          )}
+        </div>
+      </div>
 
       {/* ─── Section 2: About ──────────────────────────────────────────────── */}
       <section
