@@ -430,28 +430,28 @@ export default function HomePage() {
           path="M0,33 C480,55 960,11 1440,33 L1440,50 L0,50 Z"
           height={50}
         />
+    </div>
+        </div >
+      </section >
 
-        {/* Client Logos ticker under Hero */}
-        <div className="w-full bg-background/50 border-y border-border/20 py-8 relative z-20">
-          <div className="container max-w-7xl mx-auto px-4">
-            <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground/60 mb-6">
-              Powering Leading Commerce Ecosystems
-            </p>
-            {clientsLoading ? (
-              <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Skeleton key={i} className="h-8 w-24 rounded-lg" />
-                ))}
-              </div>
-            ) : (
-              <LogoTicker clients={clients} />
-            )}
-          </div>
+
+    {/* ─── Section 2: About ──────────────────────────────────────────────── */ }
+  {/* Client Logos ticker under Hero */ }
+  <div className="w-full bg-background/50 border-y border-border/20 py-8 relative z-20">
+    <div className="container max-w-7xl mx-auto px-4">
+      <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground/60 mb-6">
+        Powering Leading Commerce Ecosystems
+      </p>
+      {clientsLoading ? (
+        <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <Skeleton key={i} className="h-8 w-24 rounded-lg" />
+          ))}
         </div>
-      </section>
+      ) : (
+        <LogoTicker clients={clients} />
+      )}
 
-
-      {/* ─── Section 2: About ──────────────────────────────────────────────── */}
       <section
         className="relative bg-card py-20 md:py-28"
         data-ocid="home.about_section"
@@ -859,5 +859,5 @@ export default function HomePage() {
         </div>
       </section>
     </div>
-  );
+    );
 }
