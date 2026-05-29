@@ -511,7 +511,7 @@ export default function ShapesPage() {
               {[
                 { label: "Core Shapes", value: "4" },
                 { label: "Years in Production", value: "8+" },
-                { label: "Client Implementations", value: "6+" },
+                { label: "Client Implementations", value: "X" },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -609,10 +609,10 @@ export default function ShapesPage() {
               : (shapes || []).sort((a, b) => Number(a.sortOrder - b.sortOrder)).map((shape, i) => {
                 const IconComponent = ICON_RESOLVER[shape.iconName] || TriangleIcon;
                 return (
-                  <ShapeCard 
-                    key={String(shape.id)} 
-                    shape={{...shape, Icon: IconComponent}} 
-                    index={i} 
+                  <ShapeCard
+                    key={String(shape.id)}
+                    shape={{ ...shape, Icon: IconComponent }}
+                    index={i}
                   />
                 );
               })}
