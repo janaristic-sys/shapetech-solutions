@@ -436,8 +436,8 @@ export default function HomePage() {
       </section>
 
 
-      <div className="w-full bg-background/50 border-y border-border/20 py-8 relative z-20">
-        <div className="container max-w-7xl mx-auto px-4">
+      <div className="w-full bg-background/50 border-y border-border/20 relative z-20">
+        <div className="w-full">
           <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground/60 mb-6">
             Powering Leading Commerce Ecosystems
           </p>
