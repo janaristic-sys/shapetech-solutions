@@ -478,7 +478,7 @@ export default function PartnersPage() {
                 Partner
               </h2>
               <p className="text-muted-foreground text-base leading-relaxed mb-6">
-                As a Certified HubSpot Solutions Partner, Shapetech designs and
+                As a Certified HubSpot Solutions Partner, ShapeTech designs and
                 implements end-to-end CRM ecosystems tailored for direct-selling
                 and network-marketing organizations. We don't just connect
                 systems — we architect growth engines.
@@ -611,7 +611,7 @@ export default function PartnersPage() {
                 Shopify <span className="gradient-accent">Plus</span> Partner
               </h2>
               <p className="text-muted-foreground text-base leading-relaxed mb-6">
-                Shapetech is a certified Shopify Partner with hands-on Shopify
+                ShapeTech is a certified Shopify Partner with hands-on Shopify
                 Plus expertise. We build storefronts, custom apps, and
                 integrations that transform your commerce operation — from a
                 standard Shopify store to an enterprise-grade direct-selling
@@ -684,7 +684,7 @@ export default function PartnersPage() {
               Partnership <span className="gradient-accent">Benefits</span>
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed">
-              When you work with Shapetech, you engage a network of certified
+              When you work with ShapeTech, you engage a network of certified
               platform experts — not just a dev shop.
             </p>
           </motion.div>

@@ -132,11 +132,11 @@ export function Footer() {
             <Link
               to="/"
               className="flex items-center w-fit group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
-              aria-label="Shapetech Solutions — home"
+              aria-label="ShapeTech Solutions — home"
             >
               <img
                 src="/assets/logo.png"
-                alt="Shapetech Solutions"
+                alt="ShapeTech Solutions"
                 className="h-10 w-auto object-contain transition-opacity duration-300 group-hover:opacity-90"
               />
             </Link>

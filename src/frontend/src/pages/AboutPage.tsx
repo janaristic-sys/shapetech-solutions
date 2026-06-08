@@ -685,7 +685,7 @@ function PageHero() {
               About Us
             </Badge>
             <h1 className="font-display text-5xl lg:text-7xl font-bold leading-[1.05] text-foreground mb-6">
-              About <span className="gradient-accent">Shapetech Solutions</span>
+              About <span className="gradient-accent">ShapeTech Solutions</span>
             </h1>
             <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl">
               We build and grow specialized commerce solutions for niche use cases,
@@ -723,16 +723,16 @@ function StatsSection() {
         <div className="flex flex-wrap justify-center items-end gap-6 lg:gap-0">
           {STATS.map((stat, i) => {
             const offsets = [
-              "translate-y-0",
-              "-translate-y-4",
-              "translate-y-6",
-              "-translate-y-2",
+              "lg:translate-y-0",
+              "lg:-translate-y-4",
+              "lg:translate-y-6",
+              "lg:-translate-y-2",
             ];
             const sizes = [
-              "text-7xl lg:text-8xl",
-              "text-6xl lg:text-7xl",
-              "text-8xl lg:text-9xl",
-              "text-6xl lg:text-7xl",
+              "text-5xl md:text-6xl lg:text-7xl",
+              "text-4xl md:text-5xl lg:text-6xl",
+              "text-6xl md:text-7xl lg:text-8xl",
+              "text-4xl md:text-5xl lg:text-6xl",
             ];
             return (
               <motion.div
@@ -1277,7 +1277,7 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const descriptions: Record<string, string> = {
-    "Leadership": "The visionary force steering Shapetech Solutions towards global innovation.",
+    "Leadership": "The visionary force steering ShapeTech Solutions towards global innovation.",
     "Frontend Engineering": "Crafting immersive, high-performance user interfaces with precision and flair.",
     "Backend Engineering": "Building the robust, scalable foundations that power our complex digital systems.",
     "Full-Stack & Core Engineering": "Bridging the gap between design and logic with versatile engineering expertise.",

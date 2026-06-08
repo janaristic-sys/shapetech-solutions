@@ -758,7 +758,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ── Why Work With Shapetech ───────────────────────────────────────── */}
+      {/* ── Why Work With ShapeTech ───────────────────────────────────────── */}
       <section
         className="relative py-16 md:py-20 overflow-hidden"
         data-ocid="contact.why_section"
@@ -789,7 +789,7 @@ export default function ContactPage() {
               Why Choose Us
             </span>
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-foreground">
-              Why Work with <span className="gradient-accent">Shapetech?</span>
+              Why Work with <span className="gradient-accent">ShapeTech?</span>
             </h2>
           </motion.div>
 

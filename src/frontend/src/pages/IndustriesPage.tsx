@@ -341,7 +341,7 @@ export default function IndustriesPage() {
         flip
       />
 
-      {/* ── Why Shapetech strip ── */}
+      {/* ── Why ShapeTech strip ── */}
       <section
         className="bg-card py-16"
         data-ocid="industries.why_section"

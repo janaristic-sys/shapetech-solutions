@@ -388,7 +388,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Scale Metrics */}
-                <div className="flex items-center gap-8 mt-12">
+                <div className="flex flex-wrap items-center gap-8 mt-12">
                   {[
                     { value: "$100M+", label: "Annual Volume" },
                     { value: "Dozens", label: "Countries Served" },

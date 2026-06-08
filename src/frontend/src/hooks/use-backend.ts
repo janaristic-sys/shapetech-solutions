@@ -21,7 +21,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 // ---------------------------------------------------------------------------
 
 const defaultSettings: SiteSettings = {
-  siteName: "Shapetech Solutions",
+  siteName: "ShapeTech Solutions",
   tagline: "Shaping the Future of Your Business",
   email: "hello@shapetechsolutions.com",
   phone: "+1 (941) 000-0000",

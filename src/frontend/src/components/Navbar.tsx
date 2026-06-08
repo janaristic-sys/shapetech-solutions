@@ -116,12 +116,12 @@ export function Navbar() {
           <Link
             to="/"
             className="flex items-center shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
-            aria-label="Shapetech Solutions — home"
+            aria-label="ShapeTech Solutions — home"
             data-ocid="nav.logo_link"
           >
             <img
               src="/assets/logo.png"
-              alt="Shapetech Solutions"
+              alt="ShapeTech Solutions"
               className="h-12 w-auto object-contain transition-all duration-300 group-hover:opacity-90 group-hover:scale-[1.02]"
             />
           </Link>
@@ -315,11 +315,11 @@ export function Navbar() {
             to="/"
             onClick={closeDrawer}
             className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
-            aria-label="Shapetech Solutions — home"
+            aria-label="ShapeTech Solutions — home"
           >
             <img
               src="/assets/logo.png"
-              alt="Shapetech Solutions"
+              alt="ShapeTech Solutions"
               className="h-10 w-auto object-contain"
             />
           </Link>

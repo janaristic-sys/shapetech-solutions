@@ -78,7 +78,7 @@ export default function AdminSettingsTab() {
               onChange={(e) =>
                 setForm((f) => ({ ...f, siteName: e.target.value }))
               }
-              placeholder="Shapetech Solutions"
+              placeholder="ShapeTech Solutions"
               className="bg-background border-input text-foreground"
               data-ocid="admin.settings_name_input"
             />
