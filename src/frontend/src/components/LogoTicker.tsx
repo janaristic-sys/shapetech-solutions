@@ -35,7 +35,7 @@ export default function LogoTicker({ clients = [] }: LogoTickerProps) {
       />
 
       <motion.div
-        className="flex items-center gap-16 md:gap-24 w-max py-5"
+        className="flex items-center gap-16 md:gap-24 w-max py-6"
         animate={{ x: ["0%", "-50%"] }}
         transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
       >
@@ -67,22 +67,11 @@ function TickerItem({ client }: { client: Client }) {
   return (
     <Link
       to={href}
-      className="group relative flex items-center justify-center min-w-[120px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
+      className="group flex items-center justify-center min-w-[120px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
       title={`See our work for ${client.name}`}
       data-ocid={`ticker.client.${client.name.toLowerCase().replace(/\s+/g, "-")}`}
     >
       {inner}
-      {/* Hover tooltip */}
-      <span
-        className="
-          absolute -bottom-7 left-1/2 -translate-x-1/2
-          whitespace-nowrap text-[10px] font-semibold uppercase tracking-widest
-          text-primary opacity-0 group-hover:opacity-100
-          transition-opacity duration-200 pointer-events-none
-        "
-      >
-        View Case Study →
-      </span>
     </Link>
   );
 }
@@ -111,7 +100,7 @@ function LogoImage({ client }: { client: Client }) {
       className="
         h-8 md:h-10 w-auto object-contain max-w-[160px]
         grayscale opacity-35
-        group-hover:grayscale-0 group-hover:opacity-100
+        group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105
         transition-all duration-300
       "
       onError={() => setError(true)}
