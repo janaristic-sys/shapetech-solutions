@@ -436,21 +436,23 @@ export default function HomePage() {
       </section>
 
 
-      <div className="w-full bg-background/50 border-y border-border/20 py-4 relative z-20">
-        <div className="w-full">
-          <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground/60 mb-4">
-            Powering Leading Commerce Ecosystems
-          </p>
-          {clientsLoading ? (
-            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <Skeleton key={i} className="h-8 w-24 rounded-lg" />
-              ))}
-            </div>
-          ) : (
-            <LogoTicker clients={clients} />
-          )}
-        </div>
+      <div
+        className="w-full relative z-20 overflow-hidden pb-6"
+        style={{ background: "oklch(0.13 0.05 267)" }}
+        data-ocid="home.clients_ticker"
+      >
+        <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground/50 pt-6 pb-4">
+          Powering Leading Commerce Ecosystems
+        </p>
+        {clientsLoading ? (
+          <div className="flex justify-center gap-x-10 py-4 px-6">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <Skeleton key={i} className="h-8 w-24 rounded-lg" />
+            ))}
+          </div>
+        ) : (
+          <LogoTicker clients={clients} />
+        )}
       </div>
 
       {/* ─── Section 2: About ──────────────────────────────────────────────── */}

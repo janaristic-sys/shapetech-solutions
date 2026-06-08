@@ -51,12 +51,12 @@ const defaultAbout: AboutContent = {
 };
 
 const defaultClients: Client[] = [
-  { id: 1n, name: "Crunchi", logoUrl: "https://logo.clearbit.com/crunchi.com", websiteUrl: "https://crunchi.com", sortOrder: 1n },
-  { id: 2n, name: "IDLife", logoUrl: "https://logo.clearbit.com/idlife.com", websiteUrl: "https://idlife.com", sortOrder: 2n },
-  { id: 3n, name: "Nuvita Global", logoUrl: "https://logo.clearbit.com/nuvitaglobal.com", websiteUrl: "https://nuvitaglobal.com", sortOrder: 3n },
-  { id: 4n, name: "Wine Shop at Home", logoUrl: "https://logo.clearbit.com/wineshopathome.com", websiteUrl: "https://wineshopathome.com", sortOrder: 4n },
-  { id: 5n, name: "Reliv International", logoUrl: "https://logo.clearbit.com/reliv.com", websiteUrl: "https://reliv.com", sortOrder: 5n },
-  { id: 6n, name: "Sam Houston", logoUrl: "", websiteUrl: "https://samhouston.com", sortOrder: 6n },
+  { id: 1n, name: "Crunchi", logoUrl: "https://logo.clearbit.com/crunchi.com", websiteUrl: "https://crunchi.com", sortOrder: 1n, solutionSlug: "crunchi-storefront" },
+  { id: 2n, name: "IDLife", logoUrl: "https://logo.clearbit.com/idlife.com", websiteUrl: "https://idlife.com", sortOrder: 2n, solutionSlug: "idlife-subscriptions" },
+  { id: 3n, name: "Nuvita Global", logoUrl: "https://logo.clearbit.com/nuvitaglobal.com", websiteUrl: "https://nuvitaglobal.com", sortOrder: 3n, solutionSlug: "nuvita-global" },
+  { id: 4n, name: "Wine Shop at Home", logoUrl: "https://logo.clearbit.com/wineshopathome.com", websiteUrl: "https://wineshopathome.com", sortOrder: 4n, solutionSlug: "wine-shop-at-home" },
+  { id: 5n, name: "Reliv International", logoUrl: "https://logo.clearbit.com/reliv.com", websiteUrl: "https://reliv.com", sortOrder: 5n, solutionSlug: "reliv-international" },
+  { id: 6n, name: "Sam Houston", logoUrl: "", websiteUrl: "https://samhouston.com", sortOrder: 6n, solutionSlug: "sam-houston" },
 ];
 
 const defaultIndustries: Industry[] = [

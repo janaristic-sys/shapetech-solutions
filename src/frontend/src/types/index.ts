@@ -33,6 +33,8 @@ export interface Client {
   logoUrl: string;
   websiteUrl: string;
   sortOrder: bigint;
+  solutionSlug?: string;
+  shapeSlug?: string;
 }
 
 export interface Industry {
