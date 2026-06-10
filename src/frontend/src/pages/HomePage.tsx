@@ -324,14 +324,25 @@ function HeroBlobs() {
 function HeroAnimation() {
   return (
     <div className="relative w-full h-full flex items-center justify-center">
+      {/* Outermost halo ring */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          className="w-[560px] h-[560px] rounded-full border border-primary/5"
+          style={{
+            background: "conic-gradient(from 0deg, transparent 80%, oklch(0.75 0.12 195 / 0.08) 100%)",
+          }}
+        />
+      </div>
       {/* Outer glow ring */}
       <div className="absolute inset-0 flex items-center justify-center">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          className="w-[340px] h-[340px] rounded-full border border-primary/10"
+          className="w-[440px] h-[440px] rounded-full border border-primary/10"
           style={{
-            background: "conic-gradient(from 0deg, transparent 70%, oklch(0.75 0.12 195 / 0.15) 100%)",
+            background: "conic-gradient(from 0deg, transparent 70%, oklch(0.75 0.12 195 / 0.18) 100%)",
           }}
         />
       </div>
@@ -339,9 +350,9 @@ function HeroAnimation() {
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 14, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          className="w-[240px] h-[240px] rounded-full border border-primary/15"
+          className="w-[310px] h-[310px] rounded-full border border-primary/15"
           style={{
-            background: "conic-gradient(from 180deg, transparent 60%, oklch(0.75 0.12 195 / 0.12) 100%)",
+            background: "conic-gradient(from 180deg, transparent 60%, oklch(0.75 0.12 195 / 0.14) 100%)",
           }}
         />
       </div>
@@ -351,15 +362,15 @@ function HeroAnimation() {
         animate={{
           scale: [1, 1.06, 1],
           boxShadow: [
-            "0 0 40px oklch(0.75 0.12 195 / 0.3)",
-            "0 0 80px oklch(0.75 0.12 195 / 0.5)",
-            "0 0 40px oklch(0.75 0.12 195 / 0.3)",
+            "0 0 60px oklch(0.75 0.12 195 / 0.35)",
+            "0 0 120px oklch(0.75 0.12 195 / 0.55)",
+            "0 0 60px oklch(0.75 0.12 195 / 0.35)",
           ],
         }}
         transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-        className="relative w-28 h-28 rounded-full bg-gradient-to-br from-primary/60 to-primary/20 flex items-center justify-center z-10"
+        className="relative w-44 h-44 rounded-full bg-gradient-to-br from-primary/60 to-primary/20 flex items-center justify-center z-10"
       >
-        <ShoppingCart className="size-10 text-primary-foreground" />
+        <ShoppingCart className="size-16 text-primary-foreground" />
       </motion.div>
 
       {/* Orbiting dots */}
@@ -372,23 +383,23 @@ function HeroAnimation() {
             repeat: Number.POSITIVE_INFINITY,
             ease: "linear",
           }}
-          className="absolute w-[280px] h-[280px] flex items-start justify-center"
+          className="absolute w-[380px] h-[380px] flex items-start justify-center"
           style={{ transform: `rotate(${deg}deg)` }}
         >
           <motion.div
-            animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+            animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2 + i * 0.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-            className="w-2.5 h-2.5 rounded-full bg-primary mt-2"
+            className="w-3.5 h-3.5 rounded-full bg-primary mt-2"
           />
         </motion.div>
       ))}
 
       {/* Floating labels */}
       {[
-        { label: "Commerce", angle: -40, radius: 170 },
-        { label: "Scale", angle: 50, radius: 165 },
-        { label: "Growth", angle: 140, radius: 160 },
-        { label: "Ecommerce", angle: -130, radius: 168 },
+        { label: "Commerce", angle: -40, radius: 265 },
+        { label: "Scale", angle: 50, radius: 258 },
+        { label: "Growth", angle: 140, radius: 252 },
+        { label: "Ecommerce", angle: -130, radius: 262 },
       ].map(({ label, angle, radius }) => {
         const rad = (angle * Math.PI) / 180;
         const x = Math.cos(rad) * radius;
@@ -496,7 +507,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.2, delay: 0.2 }}
-                className="hidden lg:flex flex-1 relative w-full h-[350px] sm:h-[450px] lg:h-[600px] z-10 overflow-visible"
+                className="hidden lg:flex flex-1 relative w-full h-[500px] sm:h-[580px] lg:h-[700px] z-10 overflow-visible"
               >
                 <div className="absolute inset-0 bg-primary/10 rounded-full blur-[120px] opacity-20 pointer-events-none" />
                 <HeroAnimation />
