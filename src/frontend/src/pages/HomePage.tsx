@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,7 +5,6 @@ import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
 import { Spotlight } from "@/components/ui/spotlight";
-import { SplineScene } from "@/components/ui/splite";
 import LogoTicker from "@/components/LogoTicker";
 import {
   useAbout,
@@ -31,6 +29,7 @@ import {
   Star,
   Users,
   Compass,
+  Package,
 } from "lucide-react";
 import type { LucideIcon, LucideProps } from "lucide-react";
 import { motion } from "motion/react";
@@ -48,6 +47,7 @@ const ICON_MAP: Record<string, LucideIcon> = {
   Star,
   Globe,
   Compass,
+  Package,
 };
 
 function DynamicIcon({ name, ...props }: { name: string } & LucideProps) {
@@ -320,6 +320,96 @@ function HeroBlobs() {
   );
 }
 
+// ─── Hero Placeholder Animation ────────────────────────────────────────────────
+function HeroAnimation() {
+  return (
+    <div className="relative w-full h-full flex items-center justify-center">
+      {/* Outer glow ring */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          className="w-[340px] h-[340px] rounded-full border border-primary/10"
+          style={{
+            background: "conic-gradient(from 0deg, transparent 70%, oklch(0.75 0.12 195 / 0.15) 100%)",
+          }}
+        />
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 14, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          className="w-[240px] h-[240px] rounded-full border border-primary/15"
+          style={{
+            background: "conic-gradient(from 180deg, transparent 60%, oklch(0.75 0.12 195 / 0.12) 100%)",
+          }}
+        />
+      </div>
+
+      {/* Center orb */}
+      <motion.div
+        animate={{
+          scale: [1, 1.06, 1],
+          boxShadow: [
+            "0 0 40px oklch(0.75 0.12 195 / 0.3)",
+            "0 0 80px oklch(0.75 0.12 195 / 0.5)",
+            "0 0 40px oklch(0.75 0.12 195 / 0.3)",
+          ],
+        }}
+        transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+        className="relative w-28 h-28 rounded-full bg-gradient-to-br from-primary/60 to-primary/20 flex items-center justify-center z-10"
+      >
+        <ShoppingCart className="size-10 text-primary-foreground" />
+      </motion.div>
+
+      {/* Orbiting dots */}
+      {[0, 60, 120, 180, 240, 300].map((deg, i) => (
+        <motion.div
+          key={deg}
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 12 + i * 2,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
+          className="absolute w-[280px] h-[280px] flex items-start justify-center"
+          style={{ transform: `rotate(${deg}deg)` }}
+        >
+          <motion.div
+            animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2 + i * 0.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+            className="w-2.5 h-2.5 rounded-full bg-primary mt-2"
+          />
+        </motion.div>
+      ))}
+
+      {/* Floating labels */}
+      {[
+        { label: "Commerce", angle: -40, radius: 170 },
+        { label: "Scale", angle: 50, radius: 165 },
+        { label: "Growth", angle: 140, radius: 160 },
+        { label: "Ecommerce", angle: -130, radius: 168 },
+      ].map(({ label, angle, radius }) => {
+        const rad = (angle * Math.PI) / 180;
+        const x = Math.cos(rad) * radius;
+        const y = Math.sin(rad) * radius;
+        return (
+          <motion.div
+            key={label}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.8 }}
+            className="absolute px-3 py-1 rounded-full bg-card border border-border/60 text-xs font-semibold text-muted-foreground"
+            style={{ transform: `translate(${x}px, ${y}px)` }}
+          >
+            {label}
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function HomePage() {
   const { data: about } = useAbout();
   const { data: clients = [], isLoading: clientsLoading } = useClients();
@@ -351,19 +441,14 @@ export default function HomePage() {
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="flex-1 p-8 md:p-16 relative z-20 flex flex-col justify-center overflow-visible"
               >
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="h-px w-10 bg-gradient-to-r from-transparent to-primary" />
-                  <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-                    Commerce Solutions
-                  </span>
-                </div>
-
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight tracking-tight text-foreground">
-                  Powering <span className="gradient-accent">Global Volume</span> at Scale
+                  Shaping the{" "}
+                  <span className="gradient-accent">Future of Commerce</span>
                 </h1>
                 <p className="mt-6 text-muted-foreground text-lg max-w-xl leading-relaxed">
-                  We build and grow specialized commerce solutions for niche use cases,
-                  collectively powering $100s of Millions in annual volume across dozens of countries.
+                  We do ecommerce. We've been doing it for a long time, and we're
+                  good at it. From custom platforms to direct selling infrastructure,
+                  this is what we build.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4 mt-10">
@@ -392,7 +477,7 @@ export default function HomePage() {
                   {[
                     { value: "$100M+", label: "Annual Volume" },
                     { value: "Dozens", label: "Countries Served" },
-                    { value: "X", label: "Client Solutions" },
+                    { value: "8+", label: "Client Solutions" },
                   ].map((stat) => (
                     <div key={stat.label} className="flex flex-col items-start">
                       <span className="font-display font-bold text-3xl gradient-accent">
@@ -406,7 +491,7 @@ export default function HomePage() {
                 </div>
               </motion.div>
 
-              {/* Right content - Spline Scene */}
+              {/* Right content - Hero animation placeholder */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -414,35 +499,27 @@ export default function HomePage() {
                 className="hidden lg:flex flex-1 relative w-full h-[350px] sm:h-[450px] lg:h-[600px] z-10 overflow-visible"
               >
                 <div className="absolute inset-0 bg-primary/10 rounded-full blur-[120px] opacity-20 pointer-events-none" />
-                <SplineScene
-                  scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                  className="w-full h-full transform lg:scale-[1.4] origin-center"
-                />
+                <HeroAnimation />
               </motion.div>
             </div>
           </Card>
         </div>
-
-
 
         <WaveDivider
           fill="oklch(0.18 0.05 270)"
           path="M0,33 C480,55 960,11 1440,33 L1440,50 L0,50 Z"
           height={50}
         />
-
-        {/* Client Logos ticker under Hero */}
-
       </section>
 
-
+      {/* ─── Client Logos Ticker ────────────────────────────────────────────── */}
       <div
         className="w-full relative z-20 overflow-hidden pb-6"
         style={{ background: "oklch(0.13 0.05 267)" }}
         data-ocid="home.clients_ticker"
       >
         <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground/50 pt-6 pb-4">
-          Powering Leading Commerce Ecosystems
+          Trusted by Commerce Teams
         </p>
         {clientsLoading ? (
           <div className="flex justify-center gap-x-10 py-4 px-6">
@@ -455,7 +532,7 @@ export default function HomePage() {
         )}
       </div>
 
-      {/* ─── Section 2: About ──────────────────────────────────────────────── */}
+      {/* ─── Section 2: Our Approach ─────────────────────────────────────────── */}
       <section
         className="relative bg-card py-20 md:py-28"
         data-ocid="home.about_section"
@@ -471,7 +548,7 @@ export default function HomePage() {
         />
 
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-16 items-center">
+          <div className="max-w-2xl">
             <motion.div
               initial={{ opacity: 0, x: -32 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -479,67 +556,22 @@ export default function HomePage() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <SectionHeading
-                eyebrow="Our Philosophy"
-                title={about?.title ?? "Your Engineering Team for the Long Haul"}
+                eyebrow="Our Approach"
+                title="We build. We solve. We deliver."
                 align="left"
               />
               <p className="text-muted-foreground leading-relaxed mb-6 text-base md:text-lg">
-                {about?.body ??
-                  "ShapeTech Solutions is an international team of specialists dedicated to building and integrating custom-built software solutions. Where standard software falls short, we step in. We engineer custom tools specifically designed to handle your most complex operational hurdles."}
+                ShapeTech is a team of commerce specialists. We don't spread ourselves thin — ecommerce is what we do, and we've been doing it long enough to know what works and what doesn't.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-8 text-base">
-                Our ultimate goal is to build long-term technology engines that solve our clients' complex commerce problems. Solutions are the individual implementations of our technology for a specific merchant.
+                We build the technology engines that power our clients' businesses — from distributor back-offices to custom storefronts to subscription platforms. Every solution is built to fit the problem, not the other way around.
               </p>
               <Link to="/about" data-ocid="home.about_cta">
                 <Button className="rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 gap-2 transition-smooth hover:-translate-y-0.5">
-                  About Our Approach <ArrowRight className="size-4" />
+                  Learn More About Us <ArrowRight className="size-4" />
                 </Button>
               </Link>
             </motion.div>
-
-            {/* Market Tiers Component */}
-            <div className="relative">
-              <div className="flex flex-col gap-4">
-                {[
-                  {
-                    tier: "Tier 1",
-                    title: "Innovative Startups",
-                    description: "Moving from idea to MVP",
-                  },
-                  {
-                    tier: "Tier 2",
-                    title: "Mid-Sized / Growth Business",
-                    description: "Modernizing e-commerce operations",
-                  },
-                  {
-                    tier: "Tier 3",
-                    title: "Evolving Enterprise",
-                    description: "Global e-commerce transformation",
-                  },
-                ].map((tier, i) => (
-                  <motion.div
-                    key={tier.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="card-fluid p-6 flex gap-5 items-center relative overflow-hidden group hover:border-primary/30 transition-smooth"
-                  >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-display font-bold text-sm tracking-wider group-hover:bg-primary/20 group-hover:scale-105 transition-smooth">
-                      {tier.tier}
-                    </div>
-                    <div>
-                      <h4 className="font-display font-bold text-foreground text-base group-hover:text-primary transition-colors">
-                        {tier.title}
-                      </h4>
-                      <p className="text-xs text-muted-foreground mt-1 block">
-                        {tier.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 
@@ -549,185 +581,16 @@ export default function HomePage() {
         />
       </section>
 
-      {/* ─── Section 3: Shapes (Proprietary Products) ────────────────────────── */}
-      <section
-        className="relative bg-background py-20 md:py-28"
-        data-ocid="home.shapes_section"
-      >
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <SectionHeading
-            eyebrow="Proprietary Technology"
-            title="Our Shapes"
-            subtitle="Shapes are our proprietary commerce engines — modular, production-ready building blocks engineered to solve the complex compensation, subscription, checkout, and CRM requirements of niche commerce."
-            gradient
-          />
-
-          {shapesLoading ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[1, 2, 3, 4].map((i) => (
-                <CardSkeleton key={i} />
-              ))}
-            </div>
-          ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {shapes.map((shape, i) => (
-                <motion.div
-                  key={String(shape.id)}
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: i * 0.1 }}
-                  data-ocid={`home.shape.${i + 1}`}
-                  className="group card-fluid p-8 flex flex-col relative overflow-hidden h-full"
-                >
-                  <div
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-smooth"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.12) 0%, transparent 60%)",
-                    }}
-                  />
-                  <div className="relative z-10 flex flex-col h-full">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-smooth blob-accent">
-                      <DynamicIcon name={shape.iconName ?? "star"} className="size-7" />
-                    </div>
-                    <h3 className="font-display font-bold text-foreground text-xl mb-3 group-hover:text-primary transition-colors">
-                      {shape.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
-                      {shape.description}
-                    </p>
-                    {shape.capabilities && shape.capabilities.length > 0 && (
-                      <div className="border-t border-border/40 pt-4 mt-auto">
-                        <p className="text-xs font-semibold text-foreground uppercase tracking-widest mb-3">
-                          Key Capabilities
-                        </p>
-                        <ul className="space-y-2">
-                          {shape.capabilities.slice(0, 4).map((cap, idx) => (
-                            <li key={idx} className="flex items-center gap-2 text-xs text-muted-foreground">
-                              <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
-                              {cap}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <WaveDivider
-          fill="oklch(0.18 0.05 270)"
-          path="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z"
-          height={60}
-        />
-      </section>
-
-      {/* ─── Section 4: Client Solutions (Case Studies) ────────────────────────── */}
-      <section
-        className="relative bg-card py-20 md:py-28"
-        data-ocid="home.solutions_section"
-      >
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <SectionHeading
-            eyebrow="Case Studies"
-            title="Specialized Client Solutions"
-            subtitle="Explore our implementations across niche e-commerce, gamified loyalty, and distributor platforms."
-            gradient
-          />
-
-          {solutionsLoading ? (
-            <div className="grid md:grid-cols-3 gap-6">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <CardSkeleton key={i} />
-              ))}
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {solutions.map((sol, i) => (
-                <motion.div
-                  key={String(sol.id)}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  data-ocid={`home.solution.${i + 1}`}
-                  className="group card-fluid p-8 flex flex-col justify-between relative overflow-hidden h-full hover:border-primary/30 transition-smooth"
-                >
-                  <div>
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-6">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary blob-accent group-hover:scale-105 transition-smooth">
-                        <DynamicIcon name={sol.iconName ?? "landmark"} className="size-6" />
-                      </div>
-                      {sol.caseStudy?.metrics?.[0] && (
-                        <div className="text-right">
-                          <span className="text-xs font-bold uppercase tracking-widest text-primary block">
-                            {sol.caseStudy.metrics[0].label}
-                          </span>
-                          <span className="font-display font-black text-lg gradient-accent">
-                            {sol.caseStudy.metrics[0].value}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-
-                    <h3 className="font-display font-bold text-foreground text-xl mb-1 group-hover:text-primary transition-colors">
-                      {sol.title}
-                    </h3>
-                    <p className="text-xs text-primary/80 font-semibold mb-3">
-                      {sol.tagline}
-                    </p>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                      {sol.description}
-                    </p>
-
-                    {/* Features list */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
-                      {sol.features.slice(0, 3).map((f) => (
-                        <span
-                          key={f}
-                          className="text-[10px] px-2.5 py-0.5 rounded-full bg-background border border-border/60 text-muted-foreground"
-                        >
-                          {f}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <Link
-                    to={`/solutions#${sol.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:text-primary-foreground group-hover:bg-primary/20 px-3 py-1.5 rounded-full self-start transition-smooth"
-                  >
-                    View Details
-                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <WaveDivider
-          fill="oklch(0.13 0.05 267)"
-          path="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z"
-          height={60}
-        />
-      </section>
-
-      {/* ─── Section 5: Industries ────────────────────────────────────────── */}
+      {/* ─── Section 3: Industries We Power ───────────────────────────────────── */}
       <section
         className="relative bg-background py-20 md:py-28"
         data-ocid="home.industries_section"
       >
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <SectionHeading
-            eyebrow="Vertically Focused"
-            title="Industries We Power"
-            subtitle="Tailored modules designed to align with vertical requirements, compliance mandates, and merchant dynamics."
+            eyebrow="Industries"
+            title="Industries We Work In"
+            subtitle="We focus on the parts of commerce that others find complicated. These are the spaces we know best."
           />
 
           {industriesLoading ? (
@@ -793,6 +656,170 @@ export default function HomePage() {
         />
       </section>
 
+      {/* ─── Section 4: Shapes (Products) ─────────────────────────────────────── */}
+      <section
+        className="relative bg-card py-20 md:py-28"
+        data-ocid="home.shapes_section"
+      >
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <SectionHeading
+            eyebrow="Our Products"
+            title="What We've Built"
+            subtitle="These are the platforms and tools we've developed in-house. Each one solves a specific problem we kept seeing across our clients."
+            gradient
+          />
+
+          {shapesLoading ? (
+            <div className="grid sm:grid-cols-2 gap-6">
+              {[1, 2, 3, 4].map((i) => (
+                <CardSkeleton key={i} />
+              ))}
+            </div>
+          ) : (
+            <div className="grid sm:grid-cols-2 gap-6">
+              {shapes.map((shape, i) => (
+                <motion.div
+                  key={String(shape.id)}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: i * 0.1 }}
+                  data-ocid={`home.shape.${i + 1}`}
+                  className="group card-fluid relative overflow-hidden flex flex-col"
+                >
+                  {/* Image placeholder area */}
+                  <div className="relative h-48 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent overflow-hidden flex items-center justify-center border-b border-border/30">
+                    <div className="absolute inset-0 bg-gradient-to-br from-background/20 to-transparent" />
+                    <motion.div
+                      animate={{ scale: [1, 1.04, 1] }}
+                      transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: i * 0.5 }}
+                      className="relative z-10 flex flex-col items-center gap-3"
+                    >
+                      <div className="w-16 h-16 rounded-2xl bg-primary/15 text-primary flex items-center justify-center group-hover:bg-primary/25 transition-smooth">
+                        <DynamicIcon name={shape.iconName ?? "star"} className="size-8" />
+                      </div>
+                      <span className="text-xs font-semibold uppercase tracking-widest text-primary/60">
+                        {shape.tagline}
+                      </span>
+                    </motion.div>
+                    {/* Decorative accent */}
+                    <div className="absolute top-4 right-4 w-20 h-20 rounded-full bg-primary/5 blur-xl" />
+                    <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-8 flex flex-col flex-1">
+                    <h3 className="font-display font-bold text-foreground text-2xl mb-3 group-hover:text-primary transition-colors">
+                      {shape.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
+                      {shape.description}
+                    </p>
+                    {shape.capabilities && shape.capabilities.length > 0 && (
+                      <div className="border-t border-border/40 pt-4 mt-auto">
+                        <ul className="grid grid-cols-2 gap-2">
+                          {shape.capabilities.slice(0, 4).map((cap, idx) => (
+                            <li key={idx} className="flex items-center gap-2 text-xs text-muted-foreground">
+                              <span className="w-1.5 h-1.5 rounded-full bg-primary/60 flex-shrink-0" />
+                              {cap}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Hover overlay */}
+                  <div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-smooth pointer-events-none"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.04) 0%, transparent 60%)",
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <WaveDivider
+          fill="oklch(0.13 0.05 267)"
+          path="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z"
+          height={60}
+        />
+      </section>
+
+      {/* ─── Section 5: Client Solutions ──────────────────────────────────────── */}
+      <section
+        className="relative bg-background py-20 md:py-28"
+        data-ocid="home.solutions_section"
+      >
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <SectionHeading
+            eyebrow="Client Solutions"
+            title="Who We Work With"
+            subtitle="A look at the clients we've built for. Each one came to us with a specific problem, and we built what they needed."
+            gradient
+          />
+
+          {solutionsLoading ? (
+            <div className="grid md:grid-cols-3 gap-6">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <CardSkeleton key={i} />
+              ))}
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {solutions.map((sol, i) => (
+                <motion.div
+                  key={String(sol.id)}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  data-ocid={`home.solution.${i + 1}`}
+                  className="group card-fluid p-8 flex flex-col justify-between relative overflow-hidden h-full hover:border-primary/30 transition-smooth"
+                >
+                  <div>
+                    {/* Icon only — no metrics */}
+                    <div className="mb-6">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary blob-accent group-hover:scale-105 transition-smooth">
+                        <DynamicIcon name={sol.iconName ?? "landmark"} className="size-6" />
+                      </div>
+                    </div>
+
+                    <h3 className="font-display font-bold text-foreground text-xl mb-1 group-hover:text-primary transition-colors">
+                      {sol.title}
+                    </h3>
+                    <p className="text-xs text-primary/80 font-semibold mb-3">
+                      {sol.tagline}
+                    </p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {sol.description}
+                    </p>
+                  </div>
+
+                  <Link
+                    to={`/solutions#${sol.slug}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:text-primary-foreground group-hover:bg-primary/20 px-3 py-1.5 rounded-full self-start transition-smooth mt-6"
+                  >
+                    View Details
+                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <WaveDivider
+          fill="oklch(0.18 0.05 270)"
+          path="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z"
+          height={60}
+        />
+      </section>
+
       {/* ─── Section 6: Contact ───────────────────────────────────────────── */}
       <section
         className="relative bg-card py-20 md:py-28 overflow-hidden"
@@ -817,16 +844,16 @@ export default function HomePage() {
             >
               <SectionHeading
                 eyebrow="Contact Us"
-                title="Let's Solve Your Commerce Problem"
-                subtitle="Tell us about your requirements. A solutions architect will reach out within 24 hours."
+                title="Let's Talk"
+                subtitle="Have a project in mind? Tell us what you're working on and we'll get back to you within 24 hours."
                 align="left"
               />
               <ul className="flex flex-col gap-4 mt-6">
                 {[
-                  "Discuss your custom commission or MLM comp plan logic",
-                  "Scope headless Shopify or Medusa migrations",
-                  "Design a credits/wallet system using our Credits engine",
-                  "Direct integration with HubSpot CRM or custom ERPs",
+                  "Commission and compensation plan engineering",
+                  "Headless Shopify or Medusa builds",
+                  "Distributor back-office and portal development",
+                  "Subscription and recurring billing platforms",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center mt-0.5">
