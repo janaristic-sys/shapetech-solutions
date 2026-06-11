@@ -37,7 +37,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon, LucideProps } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { type FormEvent, useEffect, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -342,10 +342,9 @@ function HeroAnimation() {
       ))}
       {/* Floating labels */}
       {[
-        { label: "Commerce",  angle: -40,  radius: 265 },
-        { label: "Scale",     angle:  50,  radius: 258 },
-        { label: "Growth",    angle:  140, radius: 252 },
-        { label: "Ecommerce", angle: -130, radius: 262 },
+        { label: "Commerce", angle: -40,  radius: 265 },
+        { label: "Scale",    angle:  50,  radius: 258 },
+        { label: "Growth",   angle:  140, radius: 252 },
       ].map(({ label, angle, radius }) => {
         const rad = (angle * Math.PI) / 180;
         return (
@@ -551,6 +550,128 @@ function IndustryRow({ ind, index }: { ind: Industry; index: number }) {
   );
 }
 
+// ─── Solutions Carousel ───────────────────────────────────────────────────────
+function SolutionsCarousel({
+  solutions,
+  isLoading,
+}: {
+  solutions: Solution[];
+  isLoading: boolean;
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  // Card width + gap in px — must match the inline style below
+  const CARD_W  = 320;
+  const GAP     = 20;
+  const STEP    = CARD_W + GAP;
+
+  const total = solutions.length;
+
+  const scrollTo = (idx: number) => {
+    const clamped = Math.max(0, Math.min(idx, total - 1));
+    setActiveIdx(clamped);
+    trackRef.current?.scrollTo({ left: clamped * STEP, behavior: "smooth" });
+  };
+
+  // Keep dot indicator in sync when user drags/scrolls manually
+  const onScroll = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    const idx = Math.round(el.scrollLeft / STEP);
+    setActiveIdx(Math.max(0, Math.min(idx, total - 1)));
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex gap-5">
+        {[1, 2, 3].map((i) => <CardSkeleton key={i} />)}
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative">
+      {/* Left / Right fade masks */}
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10" />
+
+      {/* Scrollable track */}
+      <div
+        ref={trackRef}
+        onScroll={onScroll}
+        className="flex gap-5 overflow-x-auto pb-4 scroll-smooth"
+        style={{
+          scrollSnapType: "x mandatory",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
+        {/* Leading spacer so first card isn't flush to edge */}
+        <div className="flex-shrink-0 w-4" />
+        {solutions.map((sol, i) => (
+          <div
+            key={String(sol.id)}
+            className="flex-shrink-0"
+            style={{ width: CARD_W, scrollSnapAlign: "start" }}
+          >
+            <SolutionCard sol={sol} index={i} />
+          </div>
+        ))}
+        {/* Trailing spacer */}
+        <div className="flex-shrink-0 w-4" />
+      </div>
+
+      {/* Controls row */}
+      <div className="flex items-center justify-between mt-6 px-2">
+        {/* Prev / Next arrows */}
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => scrollTo(activeIdx - 1)}
+            disabled={activeIdx === 0}
+            className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:border-primary/40 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-smooth"
+            aria-label="Previous solution"
+          >
+            <ArrowRight className="size-4 rotate-180" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollTo(activeIdx + 1)}
+            disabled={activeIdx >= total - 1}
+            className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:border-primary/40 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-smooth"
+            aria-label="Next solution"
+          >
+            <ArrowRight className="size-4" />
+          </button>
+        </div>
+
+        {/* Dot indicators */}
+        <div className="flex items-center gap-1.5">
+          {solutions.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => scrollTo(i)}
+              aria-label={`Go to solution ${i + 1}`}
+              className={`rounded-full transition-all duration-300 ${
+                i === activeIdx
+                  ? "w-6 h-2 bg-primary"
+                  : "w-2 h-2 bg-border hover:bg-primary/40"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Counter */}
+        <span className="text-xs text-muted-foreground tabular-nums">
+          {activeIdx + 1} / {total}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function HomePage() {
   const { data: clients = [],    isLoading: clientsLoading    } = useClients();
@@ -590,16 +711,16 @@ export default function HomePage() {
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="flex-1 p-8 md:p-16 relative z-20 flex flex-col justify-center"
               >
-                {/* Cycling headline */}
-                <div className="h-[13rem] md:h-[11rem] lg:h-[12rem] overflow-hidden flex items-start">
+                {/* Cycling headline — absolute positioned so long lines never clip */}
+                <div className="relative w-full" style={{ minHeight: "clamp(9rem, 18vw, 14rem)" }}>
                   <AnimatePresence mode="wait">
                     <motion.h1
                       key={headlineIdx}
-                      initial={{ opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 32 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -30 }}
+                      exit={{ opacity: 0, y: -32 }}
                       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                      className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight tracking-tight text-foreground"
+                      className="absolute top-0 left-0 right-0 text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight tracking-tight text-foreground"
                     >
                       {(() => {
                         const words = HERO_HEADLINES[headlineIdx].split(" ");
@@ -827,7 +948,7 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════════════════════════════════
           Section 5 · Solutions
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="relative bg-background py-20 md:py-28" data-ocid="home.solutions_section">
+      <section className="relative bg-background py-20 md:py-28 overflow-hidden" data-ocid="home.solutions_section">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <SectionHeading
             eyebrow="Solutions"
@@ -836,17 +957,7 @@ export default function HomePage() {
             gradient
           />
 
-          {solutionsLoading ? (
-            <div className="grid md:grid-cols-3 gap-6">
-              {[1, 2, 3, 4, 5, 6].map((i) => <CardSkeleton key={i} />)}
-            </div>
-          ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {solutions.map((sol, i) => (
-                <SolutionCard key={String(sol.id)} sol={sol} index={i} />
-              ))}
-            </div>
-          )}
+          <SolutionsCarousel solutions={solutions} isLoading={solutionsLoading} />
         </div>
 
         <WaveDivider fill="oklch(0.18 0.05 270)" path="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" height={60} />
