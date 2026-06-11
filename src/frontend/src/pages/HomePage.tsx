@@ -344,7 +344,6 @@ function HeroAnimation() {
       {[
         { label: "Commerce", angle: -40,  radius: 265 },
         { label: "Scale",    angle:  50,  radius: 258 },
-        { label: "Growth",   angle:  140, radius: 252 },
       ].map(({ label, angle, radius }) => {
         const rad = (angle * Math.PI) / 180;
         return (
