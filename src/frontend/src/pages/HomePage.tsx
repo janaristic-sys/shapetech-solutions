@@ -31,6 +31,7 @@ import {
   Smartphone,
   Sparkles,
   Star,
+  TrendingUp,
   Users,
   Compass,
   Wallet,
@@ -276,87 +277,129 @@ function HeroBlobs() {
   );
 }
 
-// ─── Hero Animation Placeholder ───────────────────────────────────────────────
+// ─── Hero Animation ───────────────────────────────────────────────────────────
 function HeroAnimation() {
+  // Helper: renders one orbital ring of icons
+  function OrbitRing({
+    icons,
+    radius,
+    duration,
+    dir = 1,
+  }: {
+    icons: { Icon: LucideIcon; angle: number }[];
+    radius: number;
+    duration: number;
+    dir?: 1 | -1;
+  }) {
+    return (
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center"
+        animate={{ rotate: dir * 360 }}
+        transition={{ duration, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+      >
+        {icons.map(({ Icon, angle }) => {
+          const rad = (angle * Math.PI) / 180;
+          const x   = Math.cos(rad) * radius;
+          const y   = Math.sin(rad) * radius;
+          return (
+            <div
+              key={angle}
+              className="absolute"
+              style={{ transform: `translate(${x}px, ${y}px) translate(-50%, -50%)` }}
+            >
+              {/* Counter-rotate so the icon stays upright */}
+              <motion.div
+                animate={{ rotate: -dir * 360 }}
+                transition={{ duration, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                className="w-12 h-12 rounded-2xl bg-card/90 border border-border/50 flex items-center justify-center backdrop-blur-sm"
+                style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.45)" }}
+              >
+                <Icon className="size-6 text-primary/80" />
+              </motion.div>
+            </div>
+          );
+        })}
+      </motion.div>
+    );
+  }
+
   return (
     <div className="relative w-full h-full flex items-center justify-center">
-      {/* Outermost halo */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          className="w-[560px] h-[560px] rounded-full border border-primary/5"
-          style={{ background: "conic-gradient(from 0deg, transparent 80%, oklch(0.75 0.12 195 / 0.08) 100%)" }}
-        />
-      </div>
-      {/* Outer ring */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          className="w-[440px] h-[440px] rounded-full border border-primary/10"
-          style={{ background: "conic-gradient(from 0deg, transparent 70%, oklch(0.75 0.12 195 / 0.18) 100%)" }}
-        />
-      </div>
-      {/* Inner ring */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 14, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          className="w-[310px] h-[310px] rounded-full border border-primary/15"
-          style={{ background: "conic-gradient(from 180deg, transparent 60%, oklch(0.75 0.12 195 / 0.14) 100%)" }}
-        />
-      </div>
-      {/* Center orb */}
+      {/* ── Static ring outlines ── */}
+      <div className="absolute w-[300px] h-[300px] rounded-full border border-primary/10 pointer-events-none" />
+      <div className="absolute w-[492px] h-[492px] rounded-full border border-primary/6 pointer-events-none" />
+
+      {/* ── Conic-gradient sweep on inner ring (clockwise) ── */}
+      <motion.div
+        className="absolute w-[300px] h-[300px] rounded-full pointer-events-none"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 14, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        style={{ background: "conic-gradient(from 0deg, transparent 62%, oklch(0.75 0.12 195 / 0.22) 100%)" }}
+      />
+
+      {/* ── Conic-gradient sweep on outer ring (counter-clockwise) ── */}
+      <motion.div
+        className="absolute w-[492px] h-[492px] rounded-full pointer-events-none"
+        animate={{ rotate: -360 }}
+        transition={{ duration: 24, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        style={{ background: "conic-gradient(from 0deg, transparent 78%, oklch(0.75 0.12 195 / 0.12) 100%)" }}
+      />
+
+      {/* ── Inner orbit: core commerce actions ── */}
+      <OrbitRing
+        icons={[
+          { Icon: ShoppingCart, angle: -90 },
+          { Icon: CreditCard,   angle:  30 },
+          { Icon: Package,      angle: 150 },
+        ]}
+        radius={150}
+        duration={14}
+        dir={1}
+      />
+
+      {/* ── Outer orbit: ecosystem (counter-clockwise) ── */}
+      <OrbitRing
+        icons={[
+          { Icon: Smartphone,  angle: -90 },
+          { Icon: Users,       angle:   0 },
+          { Icon: TrendingUp,  angle:  90 },
+          { Icon: Globe,       angle: 180 },
+        ]}
+        radius={246}
+        duration={24}
+        dir={-1}
+      />
+
+      {/* ── Ambient background glow ── */}
+      <div className="absolute w-[200px] h-[200px] rounded-full bg-primary/8 blur-[60px] pointer-events-none" />
+
+      {/* ── Central hub ── */}
       <motion.div
         animate={{
           scale: [1, 1.06, 1],
           boxShadow: [
-            "0 0 60px oklch(0.75 0.12 195 / 0.35)",
-            "0 0 120px oklch(0.75 0.12 195 / 0.55)",
-            "0 0 60px oklch(0.75 0.12 195 / 0.35)",
+            "0 0 40px oklch(0.75 0.12 195 / 0.35), 0 0 80px oklch(0.75 0.12 195 / 0.12)",
+            "0 0 70px oklch(0.75 0.12 195 / 0.55), 0 0 140px oklch(0.75 0.12 195 / 0.22)",
+            "0 0 40px oklch(0.75 0.12 195 / 0.35), 0 0 80px oklch(0.75 0.12 195 / 0.12)",
           ],
         }}
-        transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-        className="relative w-44 h-44 rounded-full bg-gradient-to-br from-primary/60 to-primary/20 flex items-center justify-center z-10"
+        transition={{ duration: 3.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+        className="relative z-20 w-28 h-28 rounded-3xl bg-gradient-to-br from-primary/50 to-primary/15 border border-primary/40 flex items-center justify-center"
       >
-        <ShoppingCart className="size-16 text-primary-foreground" />
+        {/* Inner glow layer */}
+        <div className="absolute inset-0 rounded-3xl bg-primary/15 blur-xl" />
+        <Network className="relative size-12 text-primary" />
       </motion.div>
-      {/* Orbiting dots */}
-      {[0, 60, 120, 180, 240, 300].map((deg, i) => (
+
+      {/* ── Pulse waves radiating from hub ── */}
+      {[0, 1.2, 2.4].map((delay) => (
         <motion.div
-          key={deg}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 12 + i * 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          className="absolute w-[380px] h-[380px] flex items-start justify-center"
-          style={{ transform: `rotate(${deg}deg)` }}
-        >
-          <motion.div
-            animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2 + i * 0.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-            className="w-3.5 h-3.5 rounded-full bg-primary mt-2"
-          />
-        </motion.div>
+          key={delay}
+          animate={{ scale: [1, 3.2], opacity: [0.4, 0] }}
+          transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeOut", delay }}
+          className="absolute w-28 h-28 rounded-3xl border border-primary/50 pointer-events-none"
+        />
       ))}
-      {/* Floating labels */}
-      {[
-        { label: "Commerce", angle: -40,  radius: 265 },
-        { label: "Scale",    angle:  50,  radius: 258 },
-      ].map(({ label, angle, radius }) => {
-        const rad = (angle * Math.PI) / 180;
-        return (
-          <motion.div
-            key={label}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.8 }}
-            className="absolute px-3 py-1.5 rounded-full bg-card border border-border/60 text-xs font-semibold text-muted-foreground shadow-sm"
-            style={{ transform: `translate(${Math.cos(rad) * radius}px, ${Math.sin(rad) * radius}px)` }}
-          >
-            {label}
-          </motion.div>
-        );
-      })}
     </div>
   );
 }
@@ -490,7 +533,7 @@ function ShapeCard({ shape, index }: { shape: Shape; index: number }) {
   );
 }
 
-// ─── Industries Focus Carousel ────────────────────────────────────────────────
+// ─── Industries Stacked Deck ──────────────────────────────────────────────────
 function IndustriesFocusCarousel({
   industries,
   isLoading,
@@ -501,102 +544,134 @@ function IndustriesFocusCarousel({
   const [active, setActive] = useState(0);
   const total = industries.length;
 
-  const prev = () => setActive((i) => Math.max(0, i - 1));
-  const next = () => setActive((i) => Math.min(total - 1, i + 1));
+  const PEEK   = 14; // px each card peeks below the one in front
+  const MAX_BG = 3;  // max cards visible in the stack behind active
 
   if (isLoading) {
     return (
-      <div className="flex gap-4">
-        {[1, 2].map((i) => <Skeleton key={i} className="h-64 w-full rounded-2xl" />)}
+      <div className="mt-10 space-y-3">
+        {[1, 2, 3].map((i) => <Skeleton key={i} className="h-24 w-full rounded-2xl" />)}
       </div>
     );
   }
 
   return (
-    <div className="relative mt-10">
-      {/* Track — overflow hidden to clip peeking card */}
-      <div className="overflow-hidden">
-        <motion.div
-          animate={{ x: `calc(${-active * 100}% - ${active * 24}px)` }}
-          transition={{ type: "spring", damping: 32, stiffness: 280 }}
-          className="flex gap-6"
-        >
-          {industries.map((ind, i) => {
-            const isActive = i === active;
-            return (
+    <div className="mt-10">
+      {/* Stack — padding-bottom reserves room for peeking cards */}
+      <div
+        className="relative w-full"
+        style={{ paddingBottom: `${Math.min(total - 1, MAX_BG) * PEEK}px` }}
+      >
+        {industries.map((ind, i) => {
+          const behind  = i - active;   // 0 = active, 1 = next, negative = past
+          if (behind < 0) return null;  // already-viewed cards removed from stack
+          const depth   = Math.min(behind, MAX_BG);
+          const isActive = behind === 0;
+
+          return (
+            <motion.div
+              key={String(ind.id)}
+              data-ocid={`home.industry.${i + 1}`}
+              animate={{
+                y:       depth * PEEK,
+                scale:   1 - depth * 0.025,
+                opacity: isActive ? 1 : Math.max(1 - depth * 0.22, 0.15),
+                zIndex:  total - behind,
+              }}
+              transition={{ type: "spring", damping: 30, stiffness: 280 }}
+              className="absolute inset-x-0 top-0"
+            >
               <div
-                key={String(ind.id)}
-                data-ocid={`home.industry.${i + 1}`}
-                onClick={() => !isActive && setActive(i)}
-                className="flex-shrink-0 cursor-pointer"
-                style={{ width: "calc(75% - 12px)" }}
+                className={`relative rounded-2xl border overflow-hidden ${
+                  isActive ? "border-primary/30 bg-card" : "border-border/25 bg-card/80"
+                }`}
               >
-                <motion.div
-                  animate={{ opacity: isActive ? 1 : 0.45, scale: isActive ? 1 : 0.97 }}
-                  transition={{ duration: 0.35 }}
-                  className={`relative rounded-2xl border p-8 md:p-12 overflow-hidden transition-smooth ${
-                    isActive
-                      ? "border-primary/30 bg-card"
-                      : "border-border/30 bg-card/60 select-none"
-                  }`}
-                >
-                  {/* Background accent for active */}
-                  {isActive && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] to-transparent pointer-events-none" />
-                  )}
+                {isActive && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] to-transparent pointer-events-none" />
+                )}
 
-                  <div className="relative z-10 flex flex-col md:flex-row md:items-start gap-8">
-                    {/* Icon + number */}
-                    <div className="flex-shrink-0 flex items-center gap-5">
-                      <span className="font-display font-black text-6xl md:text-8xl leading-none gradient-accent opacity-20 tabular-nums select-none">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-primary transition-smooth ${
-                        isActive ? "bg-primary/15" : "bg-primary/6"
-                      }`}>
-                        <DynamicIcon name={ind.iconName ?? "compass"} className="size-7" />
-                      </div>
-                    </div>
+                <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 p-8 md:p-10">
+                  {/* Large gradient number */}
+                  <span
+                    className="font-display font-black leading-none tabular-nums select-none flex-shrink-0"
+                    style={{
+                      fontSize: "clamp(3rem, 6vw, 5rem)",
+                      background: isActive
+                        ? "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.55), oklch(0.65 0.14 220 / 0.35))"
+                        : "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.12), oklch(0.65 0.14 220 / 0.08))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
 
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-3">
-                        {ind.title}
-                      </h3>
-                      <p className="text-muted-foreground leading-relaxed mb-6">
-                        {ind.description}
-                      </p>
-                      {isActive && (
-                        <Link to="/solutions">
-                          <Button
-                            size="sm"
-                            className="rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 gap-1.5 transition-smooth"
-                          >
-                            See Solutions <ArrowRight className="size-3.5" />
-                          </Button>
-                        </Link>
-                      )}
-                    </div>
+                  {/* Icon */}
+                  <div
+                    className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-primary transition-smooth ${
+                      isActive ? "bg-primary/15" : "bg-primary/6"
+                    }`}
+                  >
+                    <DynamicIcon name={ind.iconName ?? "compass"} className="size-6" />
                   </div>
-                </motion.div>
+
+                  {/* Title + expandable body */}
+                  <div className="flex-1 min-w-0">
+                    <h3
+                      className={`font-display font-bold text-xl md:text-2xl mb-2 transition-colors ${
+                        isActive ? "text-foreground" : "text-muted-foreground/70"
+                      }`}
+                    >
+                      {ind.title}
+                    </h3>
+
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-muted-foreground leading-relaxed mb-4 text-sm md:text-base">
+                            {ind.description}
+                          </p>
+                          <Link to="/solutions">
+                            <Button
+                              size="sm"
+                              className="rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 gap-1.5 transition-smooth"
+                            >
+                              See Solutions <ArrowRight className="size-3.5" />
+                            </Button>
+                          </Link>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
               </div>
-            );
-          })}
-        </motion.div>
+            </motion.div>
+          );
+        })}
       </div>
 
-      {/* Controls */}
-      <div className="flex items-center justify-between mt-6">
+      {/* Nav row */}
+      <div className="flex items-center justify-between mt-8">
         <div className="flex items-center gap-2">
           <button
-            type="button" onClick={prev} disabled={active === 0}
+            type="button"
+            onClick={() => setActive((i) => Math.max(0, i - 1))}
+            disabled={active === 0}
             className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:border-primary/40 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-smooth"
             aria-label="Previous industry"
           >
             <ArrowRight className="size-4 rotate-180" />
           </button>
           <button
-            type="button" onClick={next} disabled={active >= total - 1}
+            type="button"
+            onClick={() => setActive((i) => Math.min(total - 1, i + 1))}
+            disabled={active >= total - 1}
             className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:border-primary/40 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-smooth"
             aria-label="Next industry"
           >
