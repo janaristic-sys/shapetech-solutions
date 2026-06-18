@@ -451,7 +451,8 @@ function SolutionCard({ sol, index }: { sol: Solution; index: number }) {
         </p>
         <div className="mt-auto">
           <Link
-            to={`/solutions#${sol.slug}`}
+            to="/solutions"
+            hash={sol.slug}
             className="inline-flex items-center gap-1.5 text-xs font-bold text-primary border border-primary/25 hover:border-primary/50 hover:bg-primary/5 px-3 py-1.5 rounded-full transition-smooth"
           >
             View Details

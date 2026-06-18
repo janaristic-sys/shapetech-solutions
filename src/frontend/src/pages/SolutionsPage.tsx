@@ -106,7 +106,7 @@ export default function SolutionsPage() {
   const filteredSolutions = useMemo(() => {
     return solutions.filter((sol) => {
       // 1. Text Search Filter
-      const text = `${sol.title} ${sol.tagline} ${sol.description} ${sol.features.join(" ")}`.toLowerCase();
+      const text = `${sol.title} ${sol.tagline} ${sol.description} ${sol.features?.join(" ") || ""}`.toLowerCase();
       if (searchQuery && !text.includes(searchQuery.toLowerCase())) {
         return false;
       }
@@ -115,7 +115,7 @@ export default function SolutionsPage() {
       if (selectedIndustry !== "all") {
         const indId = BigInt(selectedIndustry);
         const ind = industries.find((i) => i.id === indId);
-        if (ind && !ind.relatedSolutionIds.includes(sol.id)) {
+        if (ind && !ind.relatedSolutionIds?.includes(sol.id)) {
           return false;
         }
       }
@@ -123,7 +123,7 @@ export default function SolutionsPage() {
       // 3. Product (Shape) Filter
       if (selectedShape !== "all") {
         const shapeId = BigInt(selectedShape);
-        if (!sol.relatedShapeIds.includes(shapeId)) {
+        if (!sol.relatedShapeIds?.includes(shapeId)) {
           return false;
         }
       }
@@ -424,7 +424,7 @@ export default function SolutionsPage() {
 
                       {/* Tech Features badges */}
                       <div className="flex flex-wrap gap-1.5 mb-6">
-                        {sol.features.map((f) => (
+                        {sol.features?.map((f) => (
                           <span
                             key={f}
                             className="text-[10px] px-2.5 py-0.5 rounded-full bg-background border border-border/60 text-muted-foreground"
@@ -459,7 +459,8 @@ export default function SolutionsPage() {
                       ) : null}
 
                       <Link
-                        to={`/solutions/${sol.slug}`}
+                        to="/solutions/$solutionId"
+                        params={{ solutionId: sol.slug }}
                         data-ocid={`solutions.detail_link.${sol.slug}`}
                         className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:text-primary-foreground group-hover:bg-primary/20 px-4 py-2 rounded-full transition-smooth"
                       >

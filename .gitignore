@@ -1,0 +1,7 @@
+node_modules/
+bin/
+package/
+dist/
+.env
+.DS_Store
+*.log

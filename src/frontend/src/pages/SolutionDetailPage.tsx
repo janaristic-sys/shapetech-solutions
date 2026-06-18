@@ -157,7 +157,7 @@ export default function SolutionDetailPage() {
               ))
             ) : relatedShapes?.length ? (
               relatedShapes.map((shape) => (
-                <Link key={String(shape.id)} to={`/shapes/${shape.slug}`} className="group block">
+                <Link key={String(shape.id)} to="/shapes/$shapeId" params={{ shapeId: shape.slug }} className="group block">
                   <div className="bg-card/50 hover:bg-card border border-border/50 hover:border-primary/30 rounded-3xl p-8 transition-smooth h-full flex flex-col relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
                     <h3 className="font-display font-bold text-xl mb-3">{shape.title}</h3>

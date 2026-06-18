@@ -167,7 +167,7 @@ export default function ShapeDetailPage() {
               ))
             ) : relatedSolutions?.length ? (
               relatedSolutions.map((sol) => (
-                <Link key={String(sol.id)} to={`/solutions/${sol.slug}`} className="group block">
+                <Link key={String(sol.id)} to="/solutions/$solutionId" params={{ solutionId: sol.slug }} className="group block">
                   <div className="bg-card/50 hover:bg-card border border-border/50 hover:border-primary/30 rounded-3xl p-8 transition-smooth h-full flex flex-col relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
                     <h3 className="font-display font-bold text-xl mb-3">{sol.title}</h3>

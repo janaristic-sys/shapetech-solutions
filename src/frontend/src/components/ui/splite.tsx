@@ -7,10 +7,12 @@ interface SplineSceneProps {
   className?: string
 }
 
-declare global {
+import React from 'react'
+
+declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      'spline-viewer': any
+      'spline-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & { url?: string }, HTMLElement>
     }
   }
 }

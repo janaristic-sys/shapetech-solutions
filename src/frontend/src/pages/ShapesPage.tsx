@@ -370,7 +370,7 @@ function ShapeCard({
 
         {/* Capabilities */}
         <ul className="space-y-2 mb-6">
-          {shape.capabilities.map((cap) => (
+          {shape.capabilities?.map((cap) => (
             <li
               key={cap}
               className="flex items-start gap-2.5 text-sm text-foreground/75"
