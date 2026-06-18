@@ -66,16 +66,16 @@ const HERO_HEADLINES = [
   "Shaping the Future of Commerce",
 ] as const;
 
-// Lookup for client website URLs used for screenshot thumbnails
-const SOLUTION_URLS: Record<string, string> = {
-  crunchi:           "https://crunchi.com",
-  newulife:          "https://newulife.com",
-  nuvita:            "https://nuvitaglobal.com",
-  "faster-way":      "https://fasterwaytoweightloss.com",
-  "wine-shop-at-home": "https://wineshopathome.com",
-  reliv:             "https://reliv.com",
-  sannavita:         "https://sannavita.com",
-  "li-bri":          "https://libri.com",
+// Clearbit logo URLs per solution slug
+const SOLUTION_LOGO_URLS: Record<string, string> = {
+  crunchi:             "https://logo.clearbit.com/crunchi.com",
+  newulife:            "https://logo.clearbit.com/newulife.com",
+  nuvita:              "https://logo.clearbit.com/nuvitaglobal.com",
+  "faster-way":        "https://logo.clearbit.com/fasterwaytoweightloss.com",
+  "wine-shop-at-home": "https://logo.clearbit.com/wineshopathome.com",
+  reliv:               "https://logo.clearbit.com/reliv.com",
+  sannavita:           "https://logo.clearbit.com/sannavita.com",
+  "li-bri":            "https://logo.clearbit.com/libri.com",
 };
 
 // Per-shape accent colours (index 0-3)
@@ -97,10 +97,8 @@ function DynamicIcon({ name, ...props }: { name: string } & LucideProps) {
   return <Icon {...props} />;
 }
 
-function screenshotUrl(slug: string) {
-  const url = SOLUTION_URLS[slug];
-  if (!url) return "";
-  return `https://image.thum.io/get/width/600/crop/380/npa/${url}`;
+function clientLogoUrl(slug: string) {
+  return SOLUTION_LOGO_URLS[slug] ?? "";
 }
 
 // ─── Wave Divider ─────────────────────────────────────────────────────────────
@@ -363,10 +361,10 @@ function HeroAnimation() {
   );
 }
 
-// ─── Solution Image Card ───────────────────────────────────────────────────────
+// ─── Solution Logo Card ────────────────────────────────────────────────────────
 function SolutionCard({ sol, index }: { sol: Solution; index: number }) {
   const [imgError, setImgError] = useState(false);
-  const imgSrc = screenshotUrl(sol.slug);
+  const logoSrc = clientLogoUrl(sol.slug);
 
   return (
     <motion.div
@@ -377,27 +375,27 @@ function SolutionCard({ sol, index }: { sol: Solution; index: number }) {
       data-ocid={`home.solution.${index + 1}`}
       className="group card-fluid overflow-hidden flex flex-col h-full hover:border-primary/30 transition-smooth"
     >
-      {/* Screenshot / image area */}
-      <div className="relative h-52 overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-transparent flex-shrink-0">
-        {imgSrc && !imgError ? (
+      {/* Logo area — consistent frosted dark panel */}
+      <div className="relative h-44 flex-shrink-0 flex items-center justify-center border-b border-border/30"
+        style={{ background: "oklch(0.16 0.04 270 / 0.9)" }}
+      >
+        {/* Subtle radial glow behind logo */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-32 h-32 rounded-full bg-primary/6 blur-2xl" />
+        </div>
+        {logoSrc && !imgError ? (
           <img
-            src={imgSrc}
-            alt={`${sol.title} website`}
-            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+            src={logoSrc}
+            alt={`${sol.title} logo`}
+            className="relative z-10 max-h-14 max-w-[160px] object-contain"
+            style={{ filter: "brightness(0) invert(1)", opacity: 0.65 }}
             onError={() => setImgError(true)}
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <DynamicIcon name={sol.iconName ?? "landmark"} className="size-16 text-primary/15" />
+          <div className="relative z-10 w-16 h-16 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center">
+            <DynamicIcon name={sol.iconName ?? "landmark"} className="size-8 text-primary/60" />
           </div>
         )}
-        {/* Bottom fade + icon badge */}
-        <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/10 to-transparent pointer-events-none" />
-        <div className="absolute bottom-4 left-4">
-          <div className="w-9 h-9 rounded-xl bg-card/90 backdrop-blur-sm border border-border/60 flex items-center justify-center text-primary shadow-sm">
-            <DynamicIcon name={sol.iconName ?? "landmark"} className="size-4" />
-          </div>
-        </div>
       </div>
 
       {/* Content */}
@@ -405,7 +403,7 @@ function SolutionCard({ sol, index }: { sol: Solution; index: number }) {
         <h3 className="font-display font-bold text-foreground text-lg mb-1 group-hover:text-primary transition-colors">
           {sol.title}
         </h3>
-        <p className="text-xs text-primary/80 font-semibold mb-5 uppercase tracking-wide">
+        <p className="text-xs text-primary/70 font-semibold mb-5 uppercase tracking-wide">
           {sol.tagline}
         </p>
         <div className="mt-auto">
@@ -492,60 +490,135 @@ function ShapeCard({ shape, index }: { shape: Shape; index: number }) {
   );
 }
 
-// ─── Industry Row ──────────────────────────────────────────────────────────────
-function IndustryRow({ ind, index }: { ind: Industry; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      data-ocid={`home.industry.${index + 1}`}
-      className="group relative border-b border-border/40 transition-smooth hover:bg-primary/[0.02]"
-    >
-      <div className="container max-w-7xl mx-auto py-6 lg:py-8 relative z-10 flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-12">
-        {/* Number + icon */}
-        <div className="flex items-center gap-5 lg:min-w-[220px]">
-          <span className="font-display font-bold text-4xl lg:text-5xl text-primary/10 group-hover:text-primary/25 transition-smooth tabular-nums">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <div className="w-12 h-12 rounded-xl bg-primary/5 text-primary flex items-center justify-center group-hover:scale-105 group-hover:bg-primary/15 transition-smooth">
-            <DynamicIcon name={ind.iconName ?? "compass"} className="size-6" />
-          </div>
-        </div>
+// ─── Industries Focus Carousel ────────────────────────────────────────────────
+function IndustriesFocusCarousel({
+  industries,
+  isLoading,
+}: {
+  industries: Industry[];
+  isLoading: boolean;
+}) {
+  const [active, setActive] = useState(0);
+  const total = industries.length;
 
-        {/* Title */}
-        <div className="flex-1 min-w-0">
-          <h3 className="font-display font-bold text-xl lg:text-2xl text-foreground group-hover:text-primary transition-smooth">
-            {ind.title}
-          </h3>
-          {/* Description visible on mobile always, desktop on hover */}
-          <div className="lg:hidden mt-2">
-            <p className="text-muted-foreground text-sm leading-relaxed">{ind.description}</p>
-          </div>
-        </div>
+  const prev = () => setActive((i) => Math.max(0, i - 1));
+  const next = () => setActive((i) => Math.min(total - 1, i + 1));
 
-        {/* Description – desktop hover reveal */}
-        <div className="hidden lg:block flex-[1.4] max-w-xl opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-smooth delay-75">
-          <p className="text-muted-foreground text-base leading-relaxed">{ind.description}</p>
-        </div>
-
-        {/* CTA button */}
-        <div className="lg:ml-auto flex-shrink-0">
-          <Link to="/solutions">
-            <Button
-              size="sm"
-              variant="outline"
-              className="rounded-full border-border/50 hover:border-primary/40 hover:bg-primary/5 text-sm gap-1.5 text-foreground transition-smooth opacity-60 group-hover:opacity-100"
-            >
-              See Solutions
-              <ArrowRight className="size-3.5" />
-            </Button>
-          </Link>
-        </div>
+  if (isLoading) {
+    return (
+      <div className="flex gap-4">
+        {[1, 2].map((i) => <Skeleton key={i} className="h-64 w-full rounded-2xl" />)}
       </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-smooth pointer-events-none" />
-    </motion.div>
+    );
+  }
+
+  return (
+    <div className="relative mt-10">
+      {/* Track — overflow hidden to clip peeking card */}
+      <div className="overflow-hidden">
+        <motion.div
+          animate={{ x: `calc(${-active * 100}% - ${active * 24}px)` }}
+          transition={{ type: "spring", damping: 32, stiffness: 280 }}
+          className="flex gap-6"
+        >
+          {industries.map((ind, i) => {
+            const isActive = i === active;
+            return (
+              <div
+                key={String(ind.id)}
+                data-ocid={`home.industry.${i + 1}`}
+                onClick={() => !isActive && setActive(i)}
+                className="flex-shrink-0 cursor-pointer"
+                style={{ width: "calc(75% - 12px)" }}
+              >
+                <motion.div
+                  animate={{ opacity: isActive ? 1 : 0.45, scale: isActive ? 1 : 0.97 }}
+                  transition={{ duration: 0.35 }}
+                  className={`relative rounded-2xl border p-8 md:p-12 overflow-hidden transition-smooth ${
+                    isActive
+                      ? "border-primary/30 bg-card"
+                      : "border-border/30 bg-card/60 select-none"
+                  }`}
+                >
+                  {/* Background accent for active */}
+                  {isActive && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] to-transparent pointer-events-none" />
+                  )}
+
+                  <div className="relative z-10 flex flex-col md:flex-row md:items-start gap-8">
+                    {/* Icon + number */}
+                    <div className="flex-shrink-0 flex items-center gap-5">
+                      <span className="font-display font-black text-6xl md:text-8xl leading-none gradient-accent opacity-20 tabular-nums select-none">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-primary transition-smooth ${
+                        isActive ? "bg-primary/15" : "bg-primary/6"
+                      }`}>
+                        <DynamicIcon name={ind.iconName ?? "compass"} className="size-7" />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-3">
+                        {ind.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed mb-6">
+                        {ind.description}
+                      </p>
+                      {isActive && (
+                        <Link to="/solutions">
+                          <Button
+                            size="sm"
+                            className="rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 gap-1.5 transition-smooth"
+                          >
+                            See Solutions <ArrowRight className="size-3.5" />
+                          </Button>
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            );
+          })}
+        </motion.div>
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center justify-between mt-6">
+        <div className="flex items-center gap-2">
+          <button
+            type="button" onClick={prev} disabled={active === 0}
+            className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:border-primary/40 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-smooth"
+            aria-label="Previous industry"
+          >
+            <ArrowRight className="size-4 rotate-180" />
+          </button>
+          <button
+            type="button" onClick={next} disabled={active >= total - 1}
+            className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:border-primary/40 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-smooth"
+            aria-label="Next industry"
+          >
+            <ArrowRight className="size-4" />
+          </button>
+        </div>
+
+        <div className="flex items-center gap-1.5">
+          {industries.map((_, i) => (
+            <button
+              key={i} type="button" onClick={() => setActive(i)}
+              aria-label={`Go to industry ${i + 1}`}
+              className={`rounded-full transition-all duration-300 ${
+                i === active ? "w-6 h-2 bg-primary" : "w-2 h-2 bg-border hover:bg-primary/40"
+              }`}
+            />
+          ))}
+        </div>
+
+        <span className="text-xs text-muted-foreground tabular-nums">{active + 1} / {total}</span>
+      </div>
+    </div>
   );
 }
 
@@ -848,24 +921,28 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Capability list */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 my-10 max-w-3xl">
+            {/* Capability list — editorial numbered two-column */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-0 my-12 max-w-3xl">
               {[
-                { icon: "ShoppingCart", label: "E-Commerce Sites"             },
-                { icon: "Smartphone",   label: "Commerce-Focused Mobile Apps" },
-                { icon: "RefreshCcw",   label: "Subscription Engines"         },
-                { icon: "CreditCard",   label: "Point-of-Sale Systems"        },
-                { icon: "Package",      label: "Order Management Systems"     },
-                { icon: "Wallet",       label: "Alternative Payment Methods"  },
-              ].map(({ icon, label }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-3 px-4 py-3.5 rounded-xl bg-background/60 border border-border/40 hover:border-primary/30 hover:bg-primary/[0.03] transition-smooth"
-                >
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                    <DynamicIcon name={icon} className="size-4" />
-                  </div>
-                  <span className="text-sm font-medium text-foreground leading-tight">{label}</span>
+                "E-Commerce Sites",
+                "Commerce-Focused Mobile Apps",
+                "Subscription Engines",
+                "Point-of-Sale Systems",
+                "Order Management Systems",
+                "Alternative Payment Methods",
+              ].map((label, i) => (
+                <div key={label} className="py-5 border-b border-border/30">
+                  <span
+                    className="block font-display font-black text-4xl leading-none mb-2 tabular-nums select-none"
+                    style={{
+                      background: "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.25), oklch(0.65 0.14 220 / 0.15))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-foreground font-semibold text-sm leading-tight">{label}</span>
                 </div>
               ))}
             </div>
@@ -900,17 +977,7 @@ export default function HomePage() {
             subtitle="We set out to reshape commerce inside the industries we work in."
           />
 
-          {industriesLoading ? (
-            <div className="flex flex-col gap-4">
-              {[1, 2, 3, 4].map((i) => <Skeleton key={i} className="h-24 w-full rounded-2xl" />)}
-            </div>
-          ) : (
-            <div className="flex flex-col border-t border-border/40 mt-10">
-              {industries.map((ind, i) => (
-                <IndustryRow key={String(ind.id)} ind={ind} index={i} />
-              ))}
-            </div>
-          )}
+          <IndustriesFocusCarousel industries={industries} isLoading={industriesLoading} />
         </div>
 
         <WaveDivider fill="oklch(0.18 0.05 270)" path="M0,0 C480,70 960,0 1440,50 L1440,70 L0,70 Z" />
