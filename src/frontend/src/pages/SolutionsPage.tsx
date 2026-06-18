@@ -427,7 +427,7 @@ export default function SolutionsPage() {
                         {sol.features?.map((f) => (
                           <span
                             key={f}
-                            className="text-[10px] px-2.5 py-0.5 rounded-full bg-background border border-border/60 text-muted-foreground"
+                            className="text-[10px] px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold"
                           >
                             {f}
                           </span>

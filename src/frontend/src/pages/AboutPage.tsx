@@ -113,7 +113,8 @@ const REAL_TEAM: TeamMember[] = [
     name: "Gordon Hester",
     role: "Co-Founder & Chairman of the Board",
     bio: 'Gordon is a 30+ year veteran of direct selling with experience on both the field and operations side of the business. He co-founded ShapeTech Solutions in 2018 to provide transformative technology solutions for direct selling businesses worldwide. He is the author of "Positioned Right: The Forces Shaping the Future of Direct Selling and Network Marketing" and sits on the DSA/DSEF Board.',
-    avatarUrl: "",
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Gordon-512x491.png",
     linkedinUrl: "",
     sortOrder: 0n,
     category: "leadership",
@@ -553,7 +554,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "People Operations Assistant",
     bio: "",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2026/03/Irina-Veli\u0107kovi\u0107-ST-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2026/03/Irina-Veli\u010dkovi\u0107-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 40n,
     category: "operations",

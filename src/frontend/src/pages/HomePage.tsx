@@ -921,63 +921,109 @@ export default function HomePage() {
         />
 
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <SectionHeading eyebrow="Our Approach" title="We build. We solve. We deliver." align="left" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left Column: Narrative */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-5 flex flex-col justify-center lg:sticky lg:top-28"
+            >
+              <SectionHeading eyebrow="Our Approach" title="We build. We solve. We deliver." align="left" />
 
-            <div className="max-w-3xl">
-              <p className="text-muted-foreground leading-relaxed text-base md:text-lg mb-6">
+              <p className="text-foreground/90 font-medium leading-relaxed text-lg md:text-xl mb-6 -mt-6">
                 ShapeTech Solutions is a team of Commerce specialists. We set out each day to redefine
                 the marketing, selling, and distribution of products &amp; services for both individual
-                clients and entire industries. We have created commerce-focused experiences and
-                applications in almost every shape &amp; form.
+                clients and entire industries.
               </p>
-            </div>
 
-            {/* Capability list — editorial numbered two-column */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-0 my-12 max-w-3xl">
-              {[
-                "E-Commerce Sites",
-                "Commerce-Focused Mobile Apps",
-                "Subscription Engines",
-                "Point-of-Sale Systems",
-                "Order Management Systems",
-                "Alternative Payment Methods",
-              ].map((label, i) => (
-                <div key={label} className="py-5 border-b border-border/30">
-                  <span
-                    className="block font-display font-black text-4xl leading-none mb-2 tabular-nums select-none"
-                    style={{
-                      background: "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.25), oklch(0.65 0.14 220 / 0.15))",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-foreground font-semibold text-sm leading-tight">{label}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="max-w-3xl">
-              <p className="text-muted-foreground leading-relaxed text-base mb-8">
+              <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-8">
                 What has evolved over 7+ years of business is an ever-growing portfolio of Commerce
                 solutions that are shaping an entirely new future for commerce, all created and supported
                 by our team of experts. We design, develop, and grow our solutions in tandem with clients
                 and industries over the course of years.
               </p>
-              <Link to="/about" data-ocid="home.about_cta">
-                <Button className="rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 gap-2 transition-smooth hover:-translate-y-0.5">
-                  Learn More About Us <ArrowRight className="size-4" />
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
+
+              <div>
+                <Link to="/about" data-ocid="home.about_cta">
+                  <Button className="rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 gap-2 transition-smooth hover:-translate-y-0.5">
+                    Learn More About Us <ArrowRight className="size-4" />
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Column: Capability Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4"
+            >
+              {[
+                {
+                  label: "E-Commerce Sites",
+                  description: "High-converting, bespoke digital storefronts tailored to your brand.",
+                  icon: ShoppingCart,
+                },
+                {
+                  label: "Commerce-Focused Mobile Apps",
+                  description: "Immersive, native mobile shopping experiences designed for retention.",
+                  icon: Smartphone,
+                },
+                {
+                  label: "Subscription Engines",
+                  description: "Flexible recurring billing models and automated subscription management.",
+                  icon: RefreshCcw,
+                },
+                {
+                  label: "Point-of-Sale Systems",
+                  description: "Seamless omnichannel retail transactions and unified checkout systems.",
+                  icon: CreditCard,
+                },
+                {
+                  label: "Order Management Systems",
+                  description: "Intelligent inventory routing, order tracking, and warehouse workflows.",
+                  icon: Package,
+                },
+                {
+                  label: "Alternative Payment Methods",
+                  description: "Global payment processing, multi-currency support, and modern wallets.",
+                  icon: Wallet,
+                },
+              ].map((cap, i) => {
+                const IconComponent = cap.icon;
+                return (
+                  <div
+                    key={cap.label}
+                    className="relative overflow-hidden rounded-2xl bg-card/30 border border-border/40 p-6 flex flex-col justify-between group hover:border-primary/30 hover:bg-card/60 transition-all duration-300 backdrop-blur-sm"
+                  >
+                    {/* Index Watermark */}
+                    <span className="absolute top-4 right-4 text-3xl font-black font-display text-muted-foreground/5 group-hover:text-primary/10 transition-colors duration-300 select-none">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+
+                    <div>
+                      {/* Icon container */}
+                      <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="size-5" />
+                      </div>
+
+                      {/* Content */}
+                      <h4 className="text-foreground font-semibold text-base mb-2 group-hover:text-primary transition-colors duration-300">
+                        {cap.label}
+                      </h4>
+                      <p className="text-muted-foreground text-xs leading-relaxed">
+                        {cap.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </motion.div>
+          </div>
         </div>
 
         <WaveDivider fill="oklch(0.13 0.05 267)" path="M0,35 C720,70 1080,0 1440,35 L1440,70 L0,70 Z" />
