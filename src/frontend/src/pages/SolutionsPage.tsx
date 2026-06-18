@@ -49,6 +49,21 @@ function DynamicIcon({ name, ...props }: { name: string } & LucideProps) {
   return <Icon {...props} />;
 }
 
+const SOLUTION_LOGO_URLS: Record<string, string> = {
+  crunchi:             "https://logo.clearbit.com/crunchi.com",
+  newulife:            "https://logo.clearbit.com/newulife.com",
+  nuvita:              "https://logo.clearbit.com/nuvitaglobal.com",
+  "faster-way":        "https://logo.clearbit.com/fasterwaytoweightloss.com",
+  "wine-shop-at-home": "https://logo.clearbit.com/wineshopathome.com",
+  reliv:               "https://logo.clearbit.com/reliv.com",
+  "sana-vita":         "/images/sana-vita-logo.png",
+  "li-bri":            "https://logo.clearbit.com/libri.com",
+};
+
+function clientLogoUrl(slug: string) {
+  return SOLUTION_LOGO_URLS[slug] ?? "";
+}
+
 function WaveDivider({ flip = false }: { flip?: boolean }) {
   return (
     <div
@@ -379,97 +394,122 @@ export default function SolutionsPage() {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <AnimatePresence mode="popLayout">
-                {filteredSolutions.map((sol, index) => (
-                  <motion.div
-                    key={String(sol.id)}
-                    layout
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.4 }}
-                    data-ocid={`solutions.item.${sol.slug}`}
-                    className="group card-fluid p-8 flex flex-col justify-between relative overflow-hidden h-full hover:border-primary/30 transition-smooth scroll-mt-24"
-                    id={sol.slug}
-                  >
-                    <div>
-                      {/* Top Action / Header */}
-                      <div className="flex justify-between items-start mb-6">
-                        <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center blob-accent group-hover:scale-105 transition-smooth">
-                          <DynamicIcon name={sol.iconName ?? "landmark"} className="size-6" />
-                        </div>
-                        {sol.caseStudy?.metrics?.[0] && (
-                          <div className="text-right">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-primary block">
-                              {sol.caseStudy.metrics[0].label}
-                            </span>
-                            <span className="font-display font-black text-lg gradient-accent">
-                              {sol.caseStudy.metrics[0].value}
-                            </span>
+                {filteredSolutions.map((sol, index) => {
+                  const logoSrc = clientLogoUrl(sol.slug);
+                  return (
+                    <motion.div
+                      key={String(sol.id)}
+                      layout
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.4 }}
+                      data-ocid={`solutions.item.${sol.slug}`}
+                      className="group card-fluid p-0 flex flex-col justify-between relative overflow-hidden h-full hover:border-primary/30 transition-smooth scroll-mt-24"
+                      id={sol.slug}
+                    >
+                      <div>
+                        {/* Logo area — consistent frosted dark panel */}
+                        <div className="relative h-44 flex-shrink-0 flex items-center justify-center border-b border-border/30 overflow-hidden"
+                          style={{ background: "oklch(0.16 0.04 270 / 0.9)" }}
+                        >
+                          {/* Subtle radial glow behind logo */}
+                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="w-32 h-32 rounded-full bg-primary/6 blur-2xl" />
                           </div>
-                        )}
-                      </div>
+                          {logoSrc ? (
+                            <img
+                              src={logoSrc}
+                              alt={`${sol.title} logo`}
+                              className="relative z-10 max-h-14 max-w-[160px] object-contain"
+                              style={{ filter: "brightness(0) invert(1)", opacity: 0.65 }}
+                            />
+                          ) : (
+                            <div className="relative z-10 w-16 h-16 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center">
+                              <DynamicIcon name={sol.iconName ?? "landmark"} className="size-8 text-primary/60" />
+                            </div>
+                          )}
 
-                      {/* Brand & Tagline */}
-                      <h3 className="font-display font-bold text-2xl text-foreground mb-1 group-hover:text-primary transition-colors">
-                        {sol.title}
-                      </h3>
-                      <p className="text-xs text-primary font-semibold tracking-wide uppercase mb-3">
-                        {sol.tagline}
-                      </p>
-                      
-                      {/* Short Description */}
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                        {sol.description}
-                      </p>
-
-                      {/* Tech Features badges */}
-                      <div className="flex flex-wrap gap-1.5 mb-6">
-                        {sol.features?.map((f) => (
-                          <span
-                            key={f}
-                            className="text-[10px] px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold"
-                          >
-                            {f}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Footer / Dynamic Case Study Preview */}
-                    <div className="mt-auto pt-6 border-t border-border/20">
-                      {sol.caseStudy ? (
-                        <div className="mb-4">
-                          <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground mb-1">
-                            Performance Lift
-                          </p>
-                          <p className="text-xs text-foreground font-medium line-clamp-2 italic">
-                            "{sol.caseStudy.description}"
-                          </p>
-                          {sol.caseStudy.metrics.length > 1 && (
-                            <div className="flex gap-4 mt-2">
-                              {sol.caseStudy.metrics.slice(1).map((m) => (
-                                <div key={m.label} className="flex flex-col">
-                                  <span className="text-sm font-bold text-primary">{m.value}</span>
-                                  <span className="text-[9px] text-muted-foreground uppercase">{m.label}</span>
-                                </div>
-                              ))}
+                          {/* Top-right metrics badge in logo area */}
+                          {sol.caseStudy?.metrics?.[0] && (
+                            <div className="absolute top-4 right-6 text-right z-20">
+                              <span className="text-[10px] font-bold uppercase tracking-widest text-primary/70 block">
+                                {sol.caseStudy.metrics[0].label}
+                              </span>
+                              <span className="font-display font-black text-lg gradient-accent">
+                                {sol.caseStudy.metrics[0].value}
+                              </span>
                             </div>
                           )}
                         </div>
-                      ) : null}
 
-                      <Link
-                        to="/solutions/$solutionId"
-                        params={{ solutionId: sol.slug }}
-                        data-ocid={`solutions.detail_link.${sol.slug}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:text-primary-foreground group-hover:bg-primary/20 px-4 py-2 rounded-full transition-smooth"
-                      >
-                        View Full Case Study Details
-                        <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    </div>
-                  </motion.div>
-                ))}
+                        {/* Content Area */}
+                        <div className="p-8 pb-0">
+                          {/* Brand & Tagline */}
+                          <h3 className="font-display font-bold text-2xl text-foreground mb-1 group-hover:text-primary transition-colors">
+                            {sol.title}
+                          </h3>
+                          <p className="text-xs text-primary font-semibold tracking-wide uppercase mb-3">
+                            {sol.tagline}
+                          </p>
+                          
+                          {/* Short Description */}
+                          <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                            {sol.description}
+                          </p>
+
+                          {/* Tech Features badges */}
+                          <div className="flex flex-wrap gap-1.5 mb-6">
+                            {sol.features?.map((f) => (
+                              <span
+                                key={f}
+                                className="text-[10px] px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold"
+                              >
+                                {f}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Footer / Dynamic Case Study Preview */}
+                      <div className="p-8 pt-0 mt-auto">
+                        <div className="pt-6 border-t border-border/20">
+                          {sol.caseStudy ? (
+                            <div className="mb-4">
+                              <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground mb-1">
+                                Performance Lift
+                              </p>
+                              <p className="text-xs text-foreground font-medium line-clamp-2 italic">
+                                "{sol.caseStudy.description}"
+                              </p>
+                              {sol.caseStudy.metrics.length > 1 && (
+                                <div className="flex gap-4 mt-2">
+                                  {sol.caseStudy.metrics.slice(1).map((m) => (
+                                    <div key={m.label} className="flex flex-col">
+                                      <span className="text-sm font-bold text-primary">{m.value}</span>
+                                      <span className="text-[9px] text-muted-foreground uppercase">{m.label}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          ) : null}
+
+                          <Link
+                            to="/solutions/$solutionId"
+                            params={{ solutionId: sol.slug }}
+                            data-ocid={`solutions.detail_link.${sol.slug}`}
+                            className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:text-primary-foreground group-hover:bg-primary/20 px-4 py-2 rounded-full transition-smooth"
+                          >
+                            View Full Case Study Details
+                            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                          </Link>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </AnimatePresence>
             </div>
           )}

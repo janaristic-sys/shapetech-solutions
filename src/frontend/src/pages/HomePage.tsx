@@ -7,6 +7,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Spotlight } from "@/components/ui/spotlight";
 import LogoTicker from "@/components/LogoTicker";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import {
   useClients,
   useIndustries,
   useShapes,
@@ -38,7 +44,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon, LucideProps } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { type FormEvent, useEffect, useRef, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState, useMemo } from "react";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -75,7 +81,7 @@ const SOLUTION_LOGO_URLS: Record<string, string> = {
   "faster-way":        "https://logo.clearbit.com/fasterwaytoweightloss.com",
   "wine-shop-at-home": "https://logo.clearbit.com/wineshopathome.com",
   reliv:               "https://logo.clearbit.com/reliv.com",
-  sannavita:           "https://logo.clearbit.com/sannavita.com",
+  "sana-vita":         "/images/sana-vita-logo.png",
   "li-bri":            "https://logo.clearbit.com/libri.com",
 };
 
@@ -775,6 +781,56 @@ export default function HomePage() {
     return () => clearInterval(id);
   }, []);
 
+  // Solutions interactive tabs state
+  const [solutionsTab, setSolutionsTab] = useState<"all" | "direct-selling" | "headless" | "subscriptions">("all");
+
+  const filteredSolutions = useMemo(() => {
+    if (solutionsTab === "all") return solutions;
+    if (solutionsTab === "direct-selling") {
+      return solutions.filter((sol) =>
+        ["newulife", "nuvita", "wine-shop-at-home", "li-bri"].includes(sol.slug)
+      );
+    }
+    if (solutionsTab === "headless") {
+      return solutions.filter((sol) =>
+        ["crunchi", "reliv", "li-bri"].includes(sol.slug)
+      );
+    }
+    if (solutionsTab === "subscriptions") {
+      return solutions.filter((sol) =>
+        ["faster-way", "sana-vita"].includes(sol.slug)
+      );
+    }
+    return solutions;
+  }, [solutions, solutionsTab]);
+
+  // Solutions Carousel API state
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    const updateState = () => {
+      setCount(carouselApi.scrollSnapList().length);
+      setCurrent(carouselApi.selectedScrollSnap() + 1);
+      setCanScrollPrev(carouselApi.canScrollPrev());
+      setCanScrollNext(carouselApi.canScrollNext());
+    };
+
+    updateState();
+    carouselApi.on("select", updateState);
+    carouselApi.on("reInit", updateState);
+
+    return () => {
+      carouselApi.off("select", updateState);
+      carouselApi.off("reInit", updateState);
+    };
+  }, [carouselApi, filteredSolutions]);
+
   return (
     <div data-ocid="home.page">
 
@@ -801,7 +857,7 @@ export default function HomePage() {
                 className="flex-1 p-8 md:p-16 relative z-20 flex flex-col justify-center"
               >
                 {/* Cycling headline — absolute positioned so long lines never clip */}
-                <div className="relative w-full" style={{ minHeight: "clamp(9rem, 18vw, 14rem)" }}>
+                <div className="relative w-full" style={{ minHeight: "clamp(12rem, 18vw, 15rem)" }}>
                   <AnimatePresence mode="wait">
                     <motion.h1
                       key={headlineIdx}
@@ -1086,7 +1142,183 @@ export default function HomePage() {
             gradient
           />
 
-          <SolutionsCarousel solutions={solutions} isLoading={solutionsLoading} />
+          {/* Interactive tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+            {[
+              { id: "all", label: "All Cases" },
+              { id: "direct-selling", label: "Direct Selling & Affiliate" },
+              { id: "headless", label: "Headless E-Commerce" },
+              { id: "subscriptions", label: "Subscription Platforms" },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setSolutionsTab(tab.id as any)}
+                className={`px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-300 border ${
+                  solutionsTab === tab.id
+                    ? "bg-primary border-primary text-background shadow-[0_0_20px_oklch(var(--primary)/0.3)] scale-105"
+                    : "bg-card/40 border-border/40 text-muted-foreground hover:text-foreground hover:bg-card/70"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {solutionsLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => <CardSkeleton key={i} />)}
+            </div>
+          ) : (
+            <Carousel
+              setApi={setCarouselApi}
+              opts={{
+                align: "start",
+                loop: false,
+              }}
+              className="w-full mt-4"
+            >
+              <CarouselContent className="-ml-6">
+                {filteredSolutions.map((sol, index) => {
+                  const logoSrc = clientLogoUrl(sol.slug);
+                  return (
+                    <CarouselItem
+                      key={String(sol.id)}
+                      className="pl-6 md:basis-1/2 lg:basis-1/3"
+                    >
+                      <div
+                        data-ocid={`home.solution.${sol.slug}`}
+                        className="group card-fluid p-0 flex flex-col justify-between relative overflow-hidden h-full hover:border-primary/30 transition-smooth"
+                      >
+                        <div>
+                          {/* Logo header */}
+                          <div className="relative h-44 flex-shrink-0 flex items-center justify-center border-b border-border/30 overflow-hidden"
+                            style={{ background: "oklch(0.16 0.04 270 / 0.9)" }}
+                          >
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                              <div className="w-32 h-32 rounded-full bg-primary/6 blur-2xl" />
+                            </div>
+                            {logoSrc ? (
+                              <img
+                                src={logoSrc}
+                                alt={`${sol.title} logo`}
+                                className="relative z-10 max-h-14 max-w-[160px] object-contain"
+                                style={{ filter: "brightness(0) invert(1)", opacity: 0.65 }}
+                              />
+                            ) : (
+                              <div className="relative z-10 w-16 h-16 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center">
+                                <DynamicIcon name={sol.iconName ?? "landmark"} className="size-8 text-primary/60" />
+                              </div>
+                            )}
+                            
+                            {/* Industry badge overlay */}
+                            {sol.industryName && (
+                              <span className="absolute bottom-3 left-4 text-[9px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full bg-background/80 border border-border/40 text-muted-foreground backdrop-blur-sm z-20">
+                                {sol.industryName}
+                              </span>
+                            )}
+                          </div>
+
+                          {/* Content */}
+                          <div className="p-6">
+                            <h3 className="font-display font-bold text-xl text-foreground mb-1 group-hover:text-primary transition-colors">
+                              {sol.title}
+                            </h3>
+                            <p className="text-[10px] text-primary font-semibold uppercase tracking-wider mb-4">
+                              {sol.tagline}
+                            </p>
+                            
+                            <p className="text-muted-foreground text-xs leading-relaxed mb-5">
+                              {sol.description}
+                            </p>
+
+                            {/* Bullet points */}
+                            <div className="space-y-2 mb-5">
+                              {sol.features?.slice(0, 3).map((f) => (
+                                <div key={f} className="flex items-center gap-2">
+                                  <CheckCircle2 className="size-3 text-primary/70 flex-shrink-0" />
+                                  <span className="text-[11px] text-foreground/80 font-medium">{f}</span>
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Tech tags */}
+                            {sol.technologies && sol.technologies.length > 0 && (
+                              <div className="flex flex-wrap gap-1 mt-4 pt-4 border-t border-border/20">
+                                {sol.technologies.map((t) => (
+                                  <span key={t} className="text-[9px] font-semibold px-2 py-0.5 rounded bg-zinc-800/60 border border-zinc-700/40 text-zinc-300">
+                                    {t}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Footer link */}
+                        <div className="p-6 pt-0 mt-auto">
+                          <Link
+                            to="/solutions/$solutionId"
+                            params={{ solutionId: sol.slug }}
+                            className="inline-flex items-center gap-1 text-[11px] font-bold text-primary group-hover:text-primary-foreground group-hover:bg-primary/20 px-3.5 py-1.5 rounded-full transition-smooth border border-primary/20"
+                          >
+                            View Case Study
+                            <ArrowRight className="size-3 transition-transform group-hover:translate-x-1" />
+                          </Link>
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+
+              {/* Controls footer row */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 px-2">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => carouselApi?.scrollPrev()}
+                    disabled={!canScrollPrev}
+                    className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:border-primary/40 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-smooth"
+                    aria-label="Previous solution"
+                  >
+                    <ArrowRight className="size-4 rotate-180" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => carouselApi?.scrollNext()}
+                    disabled={!canScrollNext}
+                    className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:border-primary/40 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-smooth"
+                    aria-label="Next solution"
+                  >
+                    <ArrowRight className="size-4" />
+                  </button>
+                </div>
+
+                {/* Dot indicators */}
+                <div className="flex items-center gap-1.5">
+                  {Array.from({ length: count }).map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => carouselApi?.scrollTo(i)}
+                      aria-label={`Go to slide ${i + 1}`}
+                      className={`rounded-full transition-all duration-300 ${
+                        i === current - 1
+                          ? "w-6 h-2 bg-primary"
+                          : "w-2 h-2 bg-border hover:bg-primary/40"
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                {/* Counter */}
+                <span className="text-xs text-muted-foreground font-semibold tabular-nums min-w-[3rem] text-right">
+                  {current} / {count}
+                </span>
+              </div>
+            </Carousel>
+          )}
         </div>
 
         <WaveDivider fill="oklch(0.18 0.05 270)" path="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" height={60} />

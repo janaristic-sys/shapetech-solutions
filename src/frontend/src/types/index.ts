@@ -75,6 +75,8 @@ export interface Solution {
     description: string;
     metrics: { label: string; value: string }[];
   };
+  technologies?: string[];
+  industryName?: string;
 }
 
 export interface Testimonial {
