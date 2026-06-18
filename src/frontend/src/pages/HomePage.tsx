@@ -533,7 +533,7 @@ function ShapeCard({ shape, index }: { shape: Shape; index: number }) {
   );
 }
 
-// ─── Industries Stacked Deck ──────────────────────────────────────────────────
+// ─── Industries Accordion ─────────────────────────────────────────────────────
 function IndustriesFocusCarousel({
   industries,
   isLoading,
@@ -541,158 +541,99 @@ function IndustriesFocusCarousel({
   industries: Industry[];
   isLoading: boolean;
 }) {
-  const [active, setActive] = useState(0);
-  const total = industries.length;
-
-  const PEEK   = 14; // px each card peeks below the one in front
-  const MAX_BG = 3;  // max cards visible in the stack behind active
+  const [open, setOpen] = useState(0);
 
   if (isLoading) {
     return (
-      <div className="mt-10 space-y-3">
-        {[1, 2, 3].map((i) => <Skeleton key={i} className="h-24 w-full rounded-2xl" />)}
+      <div className="mt-10 space-y-px">
+        {[1, 2, 3, 4].map((i) => <Skeleton key={i} className="h-20 w-full" />)}
       </div>
     );
   }
 
   return (
-    <div className="mt-10">
-      {/* Stack — padding-bottom reserves room for peeking cards */}
-      <div
-        className="relative w-full"
-        style={{ paddingBottom: `${Math.min(total - 1, MAX_BG) * PEEK}px` }}
-      >
-        {industries.map((ind, i) => {
-          const behind  = i - active;   // 0 = active, 1 = next, negative = past
-          if (behind < 0) return null;  // already-viewed cards removed from stack
-          const depth   = Math.min(behind, MAX_BG);
-          const isActive = behind === 0;
-
-          return (
-            <motion.div
-              key={String(ind.id)}
-              data-ocid={`home.industry.${i + 1}`}
-              animate={{
-                y:       depth * PEEK,
-                scale:   1 - depth * 0.025,
-                opacity: isActive ? 1 : Math.max(1 - depth * 0.22, 0.15),
-                zIndex:  total - behind,
-              }}
-              transition={{ type: "spring", damping: 30, stiffness: 280 }}
-              className="absolute inset-x-0 top-0"
+    <div className="mt-10 border-t border-border/40">
+      {industries.map((ind, i) => {
+        const isOpen = i === open;
+        return (
+          <div key={String(ind.id)} data-ocid={`home.industry.${i + 1}`} className="border-b border-border/40">
+            {/* ── Header row — always visible ── */}
+            <button
+              type="button"
+              onClick={() => setOpen(i)}
+              className="w-full flex items-center gap-5 py-6 text-left group"
             >
+              {/* Number */}
+              <span
+                className="flex-shrink-0 font-display font-black text-3xl tabular-nums select-none w-14 transition-all duration-300"
+                style={{
+                  background: isOpen
+                    ? "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.8), oklch(0.65 0.14 220 / 0.6))"
+                    : "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.2), oklch(0.65 0.14 220 / 0.12))",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+
+              {/* Icon */}
               <div
-                className={`relative rounded-2xl border overflow-hidden ${
-                  isActive ? "border-primary/30 bg-card" : "border-border/25 bg-card/80"
+                className={`flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center text-primary transition-smooth ${
+                  isOpen ? "bg-primary/15 scale-110" : "bg-primary/6 group-hover:bg-primary/10"
                 }`}
               >
-                {isActive && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] to-transparent pointer-events-none" />
-                )}
-
-                <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 p-8 md:p-10">
-                  {/* Large gradient number */}
-                  <span
-                    className="font-display font-black leading-none tabular-nums select-none flex-shrink-0"
-                    style={{
-                      fontSize: "clamp(3rem, 6vw, 5rem)",
-                      background: isActive
-                        ? "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.55), oklch(0.65 0.14 220 / 0.35))"
-                        : "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.12), oklch(0.65 0.14 220 / 0.08))",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-
-                  {/* Icon */}
-                  <div
-                    className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-primary transition-smooth ${
-                      isActive ? "bg-primary/15" : "bg-primary/6"
-                    }`}
-                  >
-                    <DynamicIcon name={ind.iconName ?? "compass"} className="size-6" />
-                  </div>
-
-                  {/* Title + expandable body */}
-                  <div className="flex-1 min-w-0">
-                    <h3
-                      className={`font-display font-bold text-xl md:text-2xl mb-2 transition-colors ${
-                        isActive ? "text-foreground" : "text-muted-foreground/70"
-                      }`}
-                    >
-                      {ind.title}
-                    </h3>
-
-                    <AnimatePresence>
-                      {isActive && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                          className="overflow-hidden"
-                        >
-                          <p className="text-muted-foreground leading-relaxed mb-4 text-sm md:text-base">
-                            {ind.description}
-                          </p>
-                          <Link to="/solutions">
-                            <Button
-                              size="sm"
-                              className="rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 gap-1.5 transition-smooth"
-                            >
-                              See Solutions <ArrowRight className="size-3.5" />
-                            </Button>
-                          </Link>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </div>
+                <DynamicIcon name={ind.iconName ?? "compass"} className="size-5" />
               </div>
-            </motion.div>
-          );
-        })}
-      </div>
 
-      {/* Nav row */}
-      <div className="flex items-center justify-between mt-8">
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => setActive((i) => Math.max(0, i - 1))}
-            disabled={active === 0}
-            className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:border-primary/40 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-smooth"
-            aria-label="Previous industry"
-          >
-            <ArrowRight className="size-4 rotate-180" />
-          </button>
-          <button
-            type="button"
-            onClick={() => setActive((i) => Math.min(total - 1, i + 1))}
-            disabled={active >= total - 1}
-            className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:border-primary/40 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-smooth"
-            aria-label="Next industry"
-          >
-            <ArrowRight className="size-4" />
-          </button>
-        </div>
+              {/* Title */}
+              <h3
+                className={`flex-1 font-display font-bold text-lg md:text-xl transition-colors ${
+                  isOpen ? "text-primary" : "text-foreground group-hover:text-primary/80"
+                }`}
+              >
+                {ind.title}
+              </h3>
 
-        <div className="flex items-center gap-1.5">
-          {industries.map((_, i) => (
-            <button
-              key={i} type="button" onClick={() => setActive(i)}
-              aria-label={`Go to industry ${i + 1}`}
-              className={`rounded-full transition-all duration-300 ${
-                i === active ? "w-6 h-2 bg-primary" : "w-2 h-2 bg-border hover:bg-primary/40"
-              }`}
-            />
-          ))}
-        </div>
+              {/* Expand chevron */}
+              <motion.div
+                animate={{ rotate: isOpen ? 90 : 0 }}
+                transition={{ duration: 0.25 }}
+                className="flex-shrink-0 text-muted-foreground"
+              >
+                <ArrowRight className="size-4" />
+              </motion.div>
+            </button>
 
-        <span className="text-xs text-muted-foreground tabular-nums">{active + 1} / {total}</span>
-      </div>
+            {/* ── Expandable body ── */}
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="pb-8 pl-[4.75rem] md:pr-16">
+                    <p className="text-muted-foreground leading-relaxed mb-5 text-sm md:text-base max-w-2xl">
+                      {ind.description}
+                    </p>
+                    <Link to="/solutions">
+                      <Button
+                        size="sm"
+                        className="rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 gap-1.5 transition-smooth"
+                      >
+                        See Solutions <ArrowRight className="size-3.5" />
+                      </Button>
+                    </Link>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
     </div>
   );
 }
