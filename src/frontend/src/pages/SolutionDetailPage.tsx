@@ -10,7 +10,8 @@ import {
   ShoppingCart,
   Smartphone,
   LineChart,
-  Star
+  Star,
+  CheckCircle2
 } from "lucide-react";
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -121,7 +122,7 @@ export default function SolutionDetailPage() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-background/40 backdrop-blur-xl rounded-[28px_8px_28px_8px] border border-white/10 p-8 shadow-2xl relative overflow-hidden"
+              className="bg-background/40 backdrop-blur-xl rounded-[28px_8px_28px_8px] border border-white/10 p-8 shadow-2xl relative overflow-hidden flex flex-col"
             >
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div
@@ -129,14 +130,76 @@ export default function SolutionDetailPage() {
                   style={{ background: "oklch(0.55 0.15 250)" }}
                 />
               </div>
-              <h3 className="font-display font-bold text-xl mb-4 relative z-10">Technical Overview</h3>
-              <p className="text-muted-foreground leading-relaxed relative z-10">
-                This solution is engineered to handle complex requirements seamlessly. It acts as the connective tissue between your strategic goals and the foundational Shapes that drive the architecture.
-              </p>
+              <h3 className="font-display font-bold text-xl mb-4 relative z-10">Overview</h3>
+              <div className="relative z-10 space-y-6 flex-1">
+                {solution?.industryName && (
+                  <div>
+                    <span className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Industry</span>
+                    <p className="text-foreground font-medium mt-1">{solution.industryName}</p>
+                  </div>
+                )}
+                {solution?.technologies && solution.technologies.length > 0 && (
+                  <div>
+                    <span className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Technologies</span>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {solution.technologies.map(tech => (
+                        <span key={tech} className="px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 text-xs font-semibold text-primary">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {(!solution?.industryName && (!solution?.technologies || solution.technologies.length === 0)) && (
+                  <p className="text-muted-foreground leading-relaxed">
+                    This solution is engineered to handle complex requirements seamlessly. It acts as the connective tissue between your strategic goals and the foundational Shapes that drive the architecture.
+                  </p>
+                )}
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
+
+      {/* ── Project Highlights Section ─────────────────────────────────────── */}
+      {(solution?.bulletPoints && solution.bulletPoints.length > 0) && (
+        <section className="bg-card py-24 border-t border-border/40 relative overflow-hidden">
+          <div className="container max-w-7xl mx-auto px-6 lg:px-10">
+            <h2 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-12">
+              Project Highlights
+            </h2>
+            <ul className="grid md:grid-cols-2 gap-6">
+              {solution.bulletPoints.map((point, i) => (
+                <li key={i} className="flex gap-4 p-6 rounded-2xl bg-background/50 border border-border/50 hover:border-primary/30 transition-smooth group">
+                  <div className="flex-shrink-0 mt-1 w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                    <CheckCircle2 className="size-4" />
+                  </div>
+                  <p className="text-foreground/90 leading-relaxed font-medium">{point}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* ── Gallery Section ────────────────────────────────────────────── */}
+      {(solution?.gallery && solution.gallery.length > 0) && (
+        <section className="bg-background py-24 border-t border-border/40 relative overflow-hidden">
+          <div className="container max-w-7xl mx-auto px-6 lg:px-10">
+            <h2 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-12">
+              Implementation Details
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {solution.gallery.map((img, i) => (
+                <div key={i} className="aspect-video rounded-3xl overflow-hidden border border-border/50 bg-card/50 flex items-center justify-center relative group">
+                  <img src={img} alt={`Gallery image ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100" />
+                  <div className="absolute inset-0 border border-white/5 rounded-3xl pointer-events-none" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Powered By Shapes Section ─────────────────────────────────────── */}
       <section className="bg-background py-24 border-t border-border/40 relative overflow-hidden">

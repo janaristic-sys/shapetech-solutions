@@ -77,6 +77,8 @@ export interface Solution {
   };
   technologies?: string[];
   industryName?: string;
+  bulletPoints?: string[];
+  gallery?: string[];
 }
 
 export interface Testimonial {

@@ -410,65 +410,6 @@ function HeroAnimation() {
   );
 }
 
-// ─── Solution Logo Card ────────────────────────────────────────────────────────
-function SolutionCard({ sol, index }: { sol: Solution; index: number }) {
-  const [imgError, setImgError] = useState(false);
-  const logoSrc = clientLogoUrl(sol.slug);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.07 }}
-      data-ocid={`home.solution.${index + 1}`}
-      className="group card-fluid overflow-hidden flex flex-col h-full hover:border-primary/30 transition-smooth"
-    >
-      {/* Logo area — consistent frosted dark panel */}
-      <div className="relative h-44 flex-shrink-0 flex items-center justify-center border-b border-border/30"
-        style={{ background: "oklch(0.16 0.04 270 / 0.9)" }}
-      >
-        {/* Subtle radial glow behind logo */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-32 h-32 rounded-full bg-primary/6 blur-2xl" />
-        </div>
-        {logoSrc && !imgError ? (
-          <img
-            src={logoSrc}
-            alt={`${sol.title} logo`}
-            className="relative z-10 max-h-14 max-w-[160px] object-contain"
-            style={{ filter: "brightness(0) invert(1)", opacity: 0.65 }}
-            onError={() => setImgError(true)}
-          />
-        ) : (
-          <div className="relative z-10 w-16 h-16 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center">
-            <DynamicIcon name={sol.iconName ?? "landmark"} className="size-8 text-primary/60" />
-          </div>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="p-6 flex flex-col flex-1">
-        <h3 className="font-display font-bold text-foreground text-lg mb-1 group-hover:text-primary transition-colors">
-          {sol.title}
-        </h3>
-        <p className="text-xs text-primary/70 font-semibold mb-5 uppercase tracking-wide">
-          {sol.tagline}
-        </p>
-        <div className="mt-auto">
-          <Link
-            to="/solutions"
-            hash={sol.slug}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-primary border border-primary/25 hover:border-primary/50 hover:bg-primary/5 px-3 py-1.5 rounded-full transition-smooth"
-          >
-            View Details
-            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
 
 // ─── Shape Visual Card ─────────────────────────────────────────────────────────
 function ShapeCard({ shape, index }: { shape: Shape; index: number }) {
@@ -645,127 +586,6 @@ function IndustriesFocusCarousel({
   );
 }
 
-// ─── Solutions Carousel ───────────────────────────────────────────────────────
-function SolutionsCarousel({
-  solutions,
-  isLoading,
-}: {
-  solutions: Solution[];
-  isLoading: boolean;
-}) {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [activeIdx, setActiveIdx] = useState(0);
-
-  // Card width + gap in px — must match the inline style below
-  const CARD_W  = 320;
-  const GAP     = 20;
-  const STEP    = CARD_W + GAP;
-
-  const total = solutions.length;
-
-  const scrollTo = (idx: number) => {
-    const clamped = Math.max(0, Math.min(idx, total - 1));
-    setActiveIdx(clamped);
-    trackRef.current?.scrollTo({ left: clamped * STEP, behavior: "smooth" });
-  };
-
-  // Keep dot indicator in sync when user drags/scrolls manually
-  const onScroll = () => {
-    const el = trackRef.current;
-    if (!el) return;
-    const idx = Math.round(el.scrollLeft / STEP);
-    setActiveIdx(Math.max(0, Math.min(idx, total - 1)));
-  };
-
-  if (isLoading) {
-    return (
-      <div className="flex gap-5">
-        {[1, 2, 3].map((i) => <CardSkeleton key={i} />)}
-      </div>
-    );
-  }
-
-  return (
-    <div className="relative">
-      {/* Left / Right fade masks */}
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10" />
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10" />
-
-      {/* Scrollable track */}
-      <div
-        ref={trackRef}
-        onScroll={onScroll}
-        className="flex gap-5 overflow-x-auto pb-4 scroll-smooth"
-        style={{
-          scrollSnapType: "x mandatory",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-      >
-        {/* Leading spacer so first card isn't flush to edge */}
-        <div className="flex-shrink-0 w-4" />
-        {solutions.map((sol, i) => (
-          <div
-            key={String(sol.id)}
-            className="flex-shrink-0"
-            style={{ width: CARD_W, scrollSnapAlign: "start" }}
-          >
-            <SolutionCard sol={sol} index={i} />
-          </div>
-        ))}
-        {/* Trailing spacer */}
-        <div className="flex-shrink-0 w-4" />
-      </div>
-
-      {/* Controls row */}
-      <div className="flex items-center justify-between mt-6 px-2">
-        {/* Prev / Next arrows */}
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => scrollTo(activeIdx - 1)}
-            disabled={activeIdx === 0}
-            className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:border-primary/40 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-smooth"
-            aria-label="Previous solution"
-          >
-            <ArrowRight className="size-4 rotate-180" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollTo(activeIdx + 1)}
-            disabled={activeIdx >= total - 1}
-            className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:border-primary/40 hover:text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-smooth"
-            aria-label="Next solution"
-          >
-            <ArrowRight className="size-4" />
-          </button>
-        </div>
-
-        {/* Dot indicators */}
-        <div className="flex items-center gap-1.5">
-          {solutions.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => scrollTo(i)}
-              aria-label={`Go to solution ${i + 1}`}
-              className={`rounded-full transition-all duration-300 ${
-                i === activeIdx
-                  ? "w-6 h-2 bg-primary"
-                  : "w-2 h-2 bg-border hover:bg-primary/40"
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* Counter */}
-        <span className="text-xs text-muted-foreground tabular-nums">
-          {activeIdx + 1} / {total}
-        </span>
-      </div>
-    </div>
-  );
-}
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function HomePage() {
@@ -938,30 +758,21 @@ export default function HomePage() {
               </motion.div>
             </div>
           </Card>
+
+          {/* Seamless Client Logos Ticker */}
+          <div className="mt-16 w-full relative z-20 overflow-hidden">
+            {clientsLoading ? (
+              <div className="flex justify-center gap-x-10 py-4 px-6">
+                {[1, 2, 3, 4, 5].map((i) => <Skeleton key={i} className="h-8 w-24 rounded-lg" />)}
+              </div>
+            ) : (
+              <LogoTicker clients={clients} />
+            )}
+          </div>
         </div>
 
         <WaveDivider fill="oklch(0.18 0.05 270)" path="M0,33 C480,55 960,11 1440,33 L1440,50 L0,50 Z" height={50} />
       </section>
-
-      {/* ══════════════════════════════════════════════════════════════════════
-          Client Logos Ticker
-      ══════════════════════════════════════════════════════════════════════ */}
-      <div
-        className="w-full relative z-20 overflow-hidden pb-6"
-        style={{ background: "oklch(0.13 0.05 267)" }}
-        data-ocid="home.clients_ticker"
-      >
-        <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground/50 pt-6 pb-4">
-          Trusted by Commerce Teams
-        </p>
-        {clientsLoading ? (
-          <div className="flex justify-center gap-x-10 py-4 px-6">
-            {[1, 2, 3, 4, 5].map((i) => <Skeleton key={i} className="h-8 w-24 rounded-lg" />)}
-          </div>
-        ) : (
-          <LogoTicker clients={clients} />
-        )}
-      </div>
 
       {/* ══════════════════════════════════════════════════════════════════════
           Section 2 · Our Approach
@@ -1213,7 +1024,7 @@ export default function HomePage() {
                             
                             {/* Industry badge overlay */}
                             {sol.industryName && (
-                              <span className="absolute bottom-3 left-4 text-[9px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full bg-background/80 border border-border/40 text-muted-foreground backdrop-blur-sm z-20">
+                              <span className="absolute bottom-3 left-4 text-[9px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full bg-background/80 border border-border/40 text-foreground/90 backdrop-blur-sm z-20">
                                 {sol.industryName}
                               </span>
                             )}
@@ -1228,7 +1039,7 @@ export default function HomePage() {
                               {sol.tagline}
                             </p>
                             
-                            <p className="text-muted-foreground text-xs leading-relaxed mb-5">
+                            <p className="text-foreground/90 text-xs leading-relaxed mb-5">
                               {sol.description}
                             </p>
 
@@ -1237,7 +1048,7 @@ export default function HomePage() {
                               {sol.features?.slice(0, 3).map((f) => (
                                 <div key={f} className="flex items-center gap-2">
                                   <CheckCircle2 className="size-3 text-primary/70 flex-shrink-0" />
-                                  <span className="text-[11px] text-foreground/80 font-medium">{f}</span>
+                                  <span className="text-[11px] text-foreground font-medium">{f}</span>
                                 </div>
                               ))}
                             </div>
@@ -1246,7 +1057,7 @@ export default function HomePage() {
                             {sol.technologies && sol.technologies.length > 0 && (
                               <div className="flex flex-wrap gap-1 mt-4 pt-4 border-t border-border/20">
                                 {sol.technologies.map((t) => (
-                                  <span key={t} className="text-[9px] font-semibold px-2 py-0.5 rounded bg-zinc-800/60 border border-zinc-700/40 text-zinc-300">
+                                  <span key={t} className="text-[9px] font-semibold px-2 py-0.5 rounded bg-zinc-800/60 border border-zinc-700/40 text-zinc-100">
                                     {t}
                                   </span>
                                 ))}
@@ -1368,7 +1179,10 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
               className="card-fluid p-8 relative"
-              style={{ boxShadow: "0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px oklch(0.28 0.05 270 / 0.6)" }}
+              style={{
+                boxShadow: "0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px oklch(0.28 0.05 270 / 0.6)",
+                background: "oklch(0.23 0.04 270 / 0.9)", // Lighter shade to stand out from the bg-card section background
+              }}
             >
               <div className="absolute top-0 right-0 w-32 h-32 overflow-hidden rounded-tr-2xl pointer-events-none" aria-hidden>
                 <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-primary/10 blur-xl" />

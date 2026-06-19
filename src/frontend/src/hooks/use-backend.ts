@@ -200,19 +200,36 @@ const defaultSolutions: Solution[] = [
     id: 2n,
     title: "NewULife",
     tagline: "Replicated Storefronts & Integrations",
-    description: "We engineered and deployed high-performance replicated distributor websites and customer storefronts for NewULife's global network. We did nothing with their commission engine or back-office system outside of integrating our storefronts with their existing APIs to sync user tracking and sales data. This system delivers a modern, fast shopping experience while maintaining accurate affiliate credit.",
+    description: "ShapeTech has partnered with the NewULife team to develop and power NewULife’s Shopify implementation. Together, Shapetech and NewUlife proudly support $100+ million in annual sales, running through 50,000+ replicated sites, all across 13 markets.",
     iconName: "Users",
     slug: "newulife",
     sortOrder: 2n,
     features: ["Replicated distributor sites", "Seamless API integrations", "Customer storefronts", "Data synchronization"],
-    relatedShapeIds: [],
+    relatedShapeIds: [4n],
     caseStudy: {
       title: "Replicated Websites & Integrations",
       description: "Integrated custom replicated marketing storefronts with NewULife's direct selling back-office APIs.",
       metrics: [],
     },
-    technologies: ["Replicated Websites", "React", "Node.js", "API Integrations"],
-    industryName: "Health & Wellness",
+    technologies: ["Shopify", "ByDesign Technology"],
+    industryName: "Direct-Selling, Health & Wellness",
+    bulletPoints: [
+      "Launched 13 markets, supporting localization of content, produces, promotions, and business rules, while still supporting NewUlife’s cross-market shopping and sponsoring activities",
+      "Implemented enterprise-grade, custom middleware integration between Shopify and client’s commission engine",
+      "Developed replicated sites and MLM-based attribution logic on Shopify storefronts",
+      "Developed share cart system with unique logic for product swapping between markets",
+      "Created search for rep system on corporate site",
+      "Created complex bundle + subscribe & save logic",
+      "Created promotion system, enabling NewULife marketing and sales team to build volume-based promotions ad-hoc",
+      "Developed shop on behalf flow, allowing reps to create and place orders for both reps and customers in their organization"
+    ],
+    gallery: [
+      "/images/placeholder-shop-home.png",
+      "/images/placeholder-bundle-pdp.png",
+      "/images/placeholder-share-cart.png",
+      "/images/placeholder-multi-market.png",
+      "/images/placeholder-shop-on-behalf.png"
+    ]
   },
   {
     id: 3n,

@@ -454,7 +454,7 @@ export default function SolutionsPage() {
                           </p>
                           
                           {/* Short Description */}
-                          <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                          <p className="text-foreground/90 text-sm leading-relaxed mb-6">
                             {sol.description}
                           </p>
 
@@ -463,7 +463,7 @@ export default function SolutionsPage() {
                             {sol.features?.map((f) => (
                               <span
                                 key={f}
-                                className="text-[10px] px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold"
+                                className="text-[10px] px-2.5 py-0.5 rounded-full bg-primary/20 border border-primary/45 text-foreground font-semibold shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
                               >
                                 {f}
                               </span>
@@ -477,10 +477,10 @@ export default function SolutionsPage() {
                         <div className="pt-6 border-t border-border/20">
                           {sol.caseStudy ? (
                             <div className="mb-4">
-                              <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground mb-1">
+                              <p className="text-[10px] uppercase font-bold tracking-widest text-foreground/80 mb-1">
                                 Performance Lift
                               </p>
-                              <p className="text-xs text-foreground font-medium line-clamp-2 italic">
+                              <p className="text-xs text-foreground/95 font-medium line-clamp-2 italic">
                                 "{sol.caseStudy.description}"
                               </p>
                               {sol.caseStudy.metrics.length > 1 && (
@@ -488,7 +488,7 @@ export default function SolutionsPage() {
                                   {sol.caseStudy.metrics.slice(1).map((m) => (
                                     <div key={m.label} className="flex flex-col">
                                       <span className="text-sm font-bold text-primary">{m.value}</span>
-                                      <span className="text-[9px] text-muted-foreground uppercase">{m.label}</span>
+                                      <span className="text-[9px] text-foreground/70 uppercase font-semibold">{m.label}</span>
                                     </div>
                                   ))}
                                 </div>
