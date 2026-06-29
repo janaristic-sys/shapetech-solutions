@@ -23,10 +23,10 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 const defaultSettings: SiteSettings = {
   siteName: "ShapeTech Solutions",
   tagline: "Shaping the Future of Your Business",
-  email: "hello@shapetechsolutions.com",
+  email: "support@shapetechsolutions.com",
   phone: "+1 (941) 000-0000",
   address: "Sarasota, Florida, USA & Niš, Serbia",
-  linkedinUrl: "https://linkedin.com/company/shapetechsolutions",
+  linkedinUrl: "https://www.linkedin.com/company/shapetech-solutions/?viewAsMember=true",
   twitterUrl: "https://twitter.com/shapetechsol",
 };const defaultHero: HeroContent = {
   headline: "Commerce Solutions That Power Global Volume",
@@ -53,12 +53,12 @@ const defaultAbout: AboutContent = {
 const defaultClients: Client[] = [
   { id: 1n, name: "Crunchi", logoUrl: "https://crunchi.com/cdn/shop/files/Crunchi_Logo-Smart.Conscious.Beautiful_Black-R.png?v=1694524794&width=668", websiteUrl: "https://crunchi.com", sortOrder: 1n, solutionSlug: "crunchi" },
   { id: 2n, name: "NewULife", logoUrl: "https://images.ctfassets.net/vo9jqxsi4s22/6nNPoImVIqxreY8ZITs3Du/a394129266d0ce656f9195b9522dddb9/new-u-life-logo-2025.svg", websiteUrl: "https://newulife.com", sortOrder: 2n, solutionSlug: "newulife" },
-  { id: 3n, name: "Nuvita", logoUrl: "https://logo.clearbit.com/nuvitaglobal.com", websiteUrl: "https://nuvitaglobal.com", sortOrder: 3n, solutionSlug: "nuvita" },
+  { id: 3n, name: "Nuvita", logoUrl: "", websiteUrl: "https://nuvitaglobal.com", sortOrder: 3n, solutionSlug: "nuvita" },
   { id: 4n, name: "FASTer Way to Fat Loss", logoUrl: "https://www.fasterway.com/cdn/shop/files/FW-Logo-White.png?v=1761871213&width=500", websiteUrl: "https://www.fasterway.com", sortOrder: 4n, solutionSlug: "faster-way" },
-  { id: 5n, name: "Wine Shop at Home", logoUrl: "https://logo.clearbit.com/wineshopathome.com", websiteUrl: "https://wineshopathome.com", sortOrder: 5n, solutionSlug: "wine-shop-at-home" },
+  { id: 5n, name: "Wine Shop at Home", logoUrl: "", websiteUrl: "https://wineshopathome.com", sortOrder: 5n, solutionSlug: "wine-shop-at-home" },
   { id: 6n, name: "Reliv", logoUrl: "https://cdn.worldvectorlogo.com/logos/reliv.svg", websiteUrl: "https://reliv.com", sortOrder: 6n, solutionSlug: "reliv" },
   { id: 7n, name: "Sana Vita", logoUrl: "https://sanavita.hk/cdn/shop/files/Sana_Vita_Wide_Logo.jpg?v=1639039993", websiteUrl: "https://sanavita.hk", sortOrder: 7n, solutionSlug: "sana-vita" },
-  { id: 8n, name: "L'BRI", logoUrl: "https://logo.clearbit.com/libri.com", websiteUrl: "https://lbri.com", sortOrder: 8n, solutionSlug: "li-bri" },
+  { id: 8n, name: "L'BRI", logoUrl: "", websiteUrl: "https://lbri.com", sortOrder: 8n, solutionSlug: "li-bri" },
 ];
 
 const defaultIndustries: Industry[] = [

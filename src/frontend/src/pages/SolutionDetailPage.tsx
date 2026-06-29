@@ -49,20 +49,9 @@ export default function SolutionDetailPage() {
     <div data-ocid="solution_detail.page">
       {/* ── Hero Section ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-card pt-24 md:pt-32 pb-16 md:pb-24 min-h-[70vh] flex flex-col justify-center">
-        {/* Abstract 3D Render Image Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-card/70 backdrop-blur-sm z-10" />
-          <img 
-            src="/images/solution_abstract.png" 
-            alt="" 
-            className="w-full h-full object-cover object-center opacity-40 mix-blend-screen"
-            aria-hidden="true"
-          />
-        </div>
-
-        {/* Organic animated blobs */}
+        {/* Organic animated blobs (keeping subtle ambient glow) */}
         <div
-          className="pointer-events-none absolute -bottom-40 -right-40 w-[600px] h-[600px] opacity-[0.2]"
+          className="pointer-events-none absolute -bottom-40 -right-40 w-[600px] h-[600px] opacity-[0.15]"
           style={{
             background:
               "radial-gradient(circle, oklch(0.55 0.15 250), transparent 65%)",
@@ -74,88 +63,55 @@ export default function SolutionDetailPage() {
 
         <div className="relative z-20 container max-w-7xl mx-auto px-6 lg:px-10">
           <Link to="/solutions">
-            <Button variant="ghost" className="mb-10 gap-2 text-muted-foreground hover:text-foreground">
+            <Button variant="ghost" className="mb-12 gap-2 text-muted-foreground hover:text-foreground">
               <ArrowLeft className="size-4" />
               Back to Solutions
             </Button>
           </Link>
           
-          <div className="grid lg:grid-cols-[1fr_400px] gap-12 items-center">
+          <div className="flex flex-col items-start max-w-5xl">
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="max-w-4xl"
+              className="w-full"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div
-                  className="w-14 h-14 flex items-center justify-center text-primary"
-                  style={{
-                    background: "oklch(0.55 0.15 250 / 0.12)",
-                    borderRadius: "20px 6px 20px 6px",
-                    border: "1px solid oklch(0.55 0.15 250 / 0.25)",
-                    backdropFilter: "blur(12px)"
-                  }}
-                >
+              <div className="flex flex-wrap items-center gap-4 mb-8">
+                <div className="w-14 h-14 flex items-center justify-center text-primary bg-primary/10 rounded-2xl border border-primary/20">
                   <SolutionIcon name={iconName} className="size-6" />
                 </div>
-                <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary/90">
-                  Our Solution
-                </span>
+                {solution?.industryName && (
+                  <span className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-foreground/80 bg-background/60 px-5 py-2.5 rounded-full border border-border/50 backdrop-blur-md">
+                    {solution.industryName}
+                  </span>
+                )}
               </div>
-              <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
+              <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-8 tracking-tight">
                 {title}
               </h1>
-              <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl mb-10">
+              <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed mb-12 max-w-3xl">
                 {description}
               </p>
+              
+              {solution?.technologies && solution.technologies.length > 0 && (
+                <div className="mb-14">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-primary/80 mb-4">Core Technologies</p>
+                  <div className="flex flex-wrap gap-3">
+                    {solution.technologies.map(tech => (
+                      <span key={tech} className="px-5 py-2.5 rounded-full bg-card/60 border border-border/40 text-sm font-medium text-foreground backdrop-blur-sm shadow-sm hover:border-primary/30 transition-colors">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <Link to="/contact">
-                <Button className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold gap-2 transition-smooth shadow-[0_0_24px_oklch(0.75_0.12_195/0.3)] hover:shadow-[0_0_32px_oklch(0.75_0.12_195/0.45)] h-12 px-8">
+                <Button className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold gap-3 transition-all shadow-[0_8px_30px_oklch(0.75_0.12_195/0.25)] hover:shadow-[0_8px_40px_oklch(0.75_0.12_195/0.4)] h-14 px-10 text-base hover:-translate-y-1">
                   Discuss a Project
-                  <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
+                  <ArrowRight className="size-5" />
                 </Button>
               </Link>
-            </motion.div>
-
-            {/* Technical Overview Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-background/40 backdrop-blur-xl rounded-[28px_8px_28px_8px] border border-white/10 p-8 shadow-2xl relative overflow-hidden flex flex-col"
-            >
-              <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div
-                  className="absolute -top-20 -right-20 w-60 h-60 rounded-full blur-[80px] opacity-[0.15]"
-                  style={{ background: "oklch(0.55 0.15 250)" }}
-                />
-              </div>
-              <h3 className="font-display font-bold text-xl mb-4 relative z-10">Overview</h3>
-              <div className="relative z-10 space-y-6 flex-1">
-                {solution?.industryName && (
-                  <div>
-                    <span className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Industry</span>
-                    <p className="text-foreground font-medium mt-1">{solution.industryName}</p>
-                  </div>
-                )}
-                {solution?.technologies && solution.technologies.length > 0 && (
-                  <div>
-                    <span className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Technologies</span>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {solution.technologies.map(tech => (
-                        <span key={tech} className="px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 text-xs font-semibold text-primary">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {(!solution?.industryName && (!solution?.technologies || solution.technologies.length === 0)) && (
-                  <p className="text-muted-foreground leading-relaxed">
-                    This solution is engineered to handle complex requirements seamlessly. It acts as the connective tissue between your strategic goals and the foundational Shapes that drive the architecture.
-                  </p>
-                )}
-              </div>
             </motion.div>
           </div>
         </div>
@@ -163,38 +119,50 @@ export default function SolutionDetailPage() {
 
       {/* ── Project Highlights Section ─────────────────────────────────────── */}
       {(solution?.bulletPoints && solution.bulletPoints.length > 0) && (
-        <section className="bg-card py-24 border-t border-border/40 relative overflow-hidden">
-          <div className="container max-w-7xl mx-auto px-6 lg:px-10">
-            <h2 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-12">
+        <section className="bg-background py-24 relative overflow-hidden">
+          <div className="container max-w-5xl mx-auto px-6 lg:px-10">
+            <h2 className="font-display font-bold text-3xl md:text-5xl text-foreground mb-16 text-center">
               Project Highlights
             </h2>
-            <ul className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-12">
               {solution.bulletPoints.map((point, i) => (
-                <li key={i} className="flex gap-4 p-6 rounded-2xl bg-background/50 border border-border/50 hover:border-primary/30 transition-smooth group">
-                  <div className="flex-shrink-0 mt-1 w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                    <CheckCircle2 className="size-4" />
+                <div key={i} className="flex gap-6 items-start group">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-sm border border-primary/20">
+                    <CheckCircle2 className="size-6" />
                   </div>
-                  <p className="text-foreground/90 leading-relaxed font-medium">{point}</p>
-                </li>
+                  <p className="text-foreground/90 text-lg md:text-xl leading-relaxed font-medium pt-2">{point}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </section>
       )}
 
       {/* ── Gallery Section ────────────────────────────────────────────── */}
       {(solution?.gallery && solution.gallery.length > 0) && (
-        <section className="bg-background py-24 border-t border-border/40 relative overflow-hidden">
+        <section className="bg-card py-32 relative overflow-hidden">
           <div className="container max-w-7xl mx-auto px-6 lg:px-10">
-            <h2 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-12">
-              Implementation Details
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+              <div className="max-w-2xl">
+                <h2 className="font-display font-bold text-3xl md:text-5xl text-foreground mb-4">
+                  Inside the Implementation
+                </h2>
+                <p className="text-muted-foreground text-lg">Key workflows and custom interfaces built for {title}.</p>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {solution.gallery.map((img, i) => (
-                <div key={i} className="aspect-video rounded-3xl overflow-hidden border border-border/50 bg-card/50 flex items-center justify-center relative group">
-                  <img src={img} alt={`Gallery image ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100" />
-                  <div className="absolute inset-0 border border-white/5 rounded-3xl pointer-events-none" />
-                </div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  key={i} 
+                  className={`aspect-[4/3] rounded-[2rem] overflow-hidden bg-background/50 flex items-center justify-center relative group ${i === 0 ? 'md:col-span-2 lg:col-span-2 aspect-video' : ''}`}
+                >
+                  <img src={img} alt={`Gallery view ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                </motion.div>
               ))}
             </div>
           </div>
