@@ -72,34 +72,16 @@ function TickerItem({ client }: { client: Client }) {
 }
 
 function LogoImage({ client }: { client: Client }) {
-  const [error, setError] = useState(false);
-
-  if (error || !client.logoUrl) {
-    return (
-      <span
-        className="
-          font-display font-bold text-xl md:text-2xl tracking-tight
-          text-muted-foreground/30 group-hover:text-primary
-          transition-colors duration-300
-        "
-      >
-        {client.name}
-      </span>
-    );
-  }
-
+  // Always force text fallback until safe transparent logos are provided
   return (
-    <img
-      src={client.logoUrl}
-      alt={client.name}
+    <span
       className="
-        h-8 md:h-10 w-auto object-contain max-w-[160px]
-        brightness-0 invert opacity-45
-        group-hover:opacity-100 group-hover:scale-105
-        transition-all duration-300
+        font-display font-bold text-xl md:text-2xl tracking-tight
+        text-muted-foreground/30 group-hover:text-primary
+        transition-colors duration-300
       "
-      onError={() => setError(true)}
-      draggable={false}
-    />
+    >
+      {client.name}
+    </span>
   );
 }
