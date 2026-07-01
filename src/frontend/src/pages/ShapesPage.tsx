@@ -1,161 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Hexagon } from "lucide-react";
+import { ArrowRight, Hexagon, RefreshCcw, Wallet, ShoppingCart, Network, Activity } from "lucide-react";
 import { motion } from "motion/react";
 import { useShapes } from "@/hooks/use-backend";
 import { Shape } from "@/types";
 
-// ---------------------------------------------------------------------------
-// Geometric SVG Icons — unique per shape pillar
-// ---------------------------------------------------------------------------
-function TriangleIcon({ color }: { color: string }) {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-12 h-12"
-      aria-label="Triangle shape icon"
-    >
-      <title>Triangle shape icon</title>
-      <polygon
-        points="32,8 58,52 6,52"
-        stroke={color}
-        strokeWidth="2.5"
-        fill={`${color}18`}
-        strokeLinejoin="round"
-      />
-      <polygon
-        points="32,18 48,44 16,44"
-        stroke={color}
-        strokeWidth="1.5"
-        fill="none"
-        opacity="0.45"
-        strokeLinejoin="round"
-      />
-      <circle cx="32" cy="32" r="3" fill={color} opacity="0.8" />
-    </svg>
-  );
-}
-
-function CircleIcon({ color }: { color: string }) {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-12 h-12"
-      aria-label="Circle shape icon"
-    >
-      <title>Circle shape icon</title>
-      <circle
-        cx="32"
-        cy="32"
-        r="22"
-        stroke={color}
-        strokeWidth="2.5"
-        fill={`${color}18`}
-      />
-      <circle
-        cx="32"
-        cy="32"
-        r="13"
-        stroke={color}
-        strokeWidth="1.5"
-        fill="none"
-        opacity="0.45"
-      />
-      <circle cx="32" cy="32" r="4.5" fill={color} opacity="0.8" />
-    </svg>
-  );
-}
-
-function HexagonIcon({ color }: { color: string }) {
-  return (
-    <svg
-
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-12 h-12"
-      aria-label="Hexagon shape icon"
-    >
-      <title>Hexagon shape icon</title>
-      <polygon
-        points="32,4 58,18 58,46 32,60 6,46 6,18"
-        stroke={color}
-        strokeWidth="2.5"
-        fill={`${color}18`}
-        strokeLinejoin="round"
-      />
-      <polygon
-        points="32,16 46,24 46,40 32,48 18,40 18,24"
-        stroke={color}
-        strokeWidth="1.5"
-        fill="none"
-        opacity="0.45"
-        strokeLinejoin="round"
-      />
-      <circle cx="32" cy="32" r="3" fill={color} opacity="0.8" />
-    </svg>
-  );
-}
-
-function DiamondIcon({ color }: { color: string }) {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-12 h-12"
-      aria-label="Diamond shape icon"
-    >
-      <title>Diamond shape icon</title>
-      <polygon
-        points="32,6 58,32 32,58 6,32"
-        stroke={color}
-        strokeWidth="2.5"
-        fill={`${color}18`}
-        strokeLinejoin="round"
-      />
-      <polygon
-        points="32,16 48,32 32,48 16,32"
-        stroke={color}
-        strokeWidth="1.5"
-        fill="none"
-        opacity="0.45"
-        strokeLinejoin="round"
-      />
-      <circle cx="32" cy="32" r="3" fill={color} opacity="0.8" />
-    </svg>
-  );
-}
-
-function StarIcon({ color }: { color: string }) {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-12 h-12"
-      aria-label="Star shape icon"
-    >
-      <title>Star shape icon</title>
-      <polygon
-        points="32,6 38,24 57,24 43,35 48,54 32,43 16,54 21,35 7,24 26,24"
-        stroke={color}
-        strokeWidth="2.5"
-        fill={`${color}18`}
-        strokeLinejoin="round"
-        strokeLinecap="round"
-      />
-      <circle cx="32" cy="32" r="4" fill={color} opacity="0.75" />
-    </svg>
-  );
-}
-
-
+const ICON_RESOLVER: Record<string, React.ElementType> = {
+  "refresh-ccw": RefreshCcw,
+  wallet: Wallet,
+  "shopping-cart": ShoppingCart,
+  network: Network,
+};
 
 const TEAL = "oklch(0.75 0.12 195)";
 
@@ -207,14 +63,6 @@ function WaveDivider({
 // Diagonal Accent Divider — large angled band between intro and cards
 // ---------------------------------------------------------------------------
 function DiagonalDivider({ shapes }: { shapes: Shape[] }) {
-  const ICON_RESOLVER: Record<string, React.ElementType> = {
-    Triangle: TriangleIcon,
-    Circle: CircleIcon,
-    Hexagon: HexagonIcon,
-    Diamond: DiamondIcon,
-    Star: StarIcon,
-  };
-
   return (
     <div
       className="relative py-8 overflow-hidden"
@@ -240,7 +88,7 @@ function DiagonalDivider({ shapes }: { shapes: Shape[] }) {
       {/* Pill row */}
       <div className="relative container max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-3 py-6">
         {(shapes || []).map((s, i) => {
-          const Icon = ICON_RESOLVER[s.iconName] || TriangleIcon;
+          const Icon = ICON_RESOLVER[s.iconName || (s as any).icon] || Activity;
           return (
             <motion.div
               key={String(s.id)}
@@ -392,14 +240,6 @@ function ShapeCard({
           ))}
         </ul>
 
-        {/* Divider */}
-        <div className="divider-fluid mb-4" />
-
-        {/* Footer link */}
-        <div className="flex items-center gap-2 text-primary font-medium text-sm">
-          <span>Explore {shape.title}</span>
-          <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform duration-200" />
-        </div>
       </div>
     </motion.div>
   );
@@ -439,14 +279,6 @@ function ShapeCardSkeleton({ index }: { index: number }) {
 // ---------------------------------------------------------------------------
 export default function ShapesPage() {
   const { data: shapes, isLoading } = useShapes();
-
-  const ICON_RESOLVER: Record<string, React.ElementType> = {
-    Triangle: TriangleIcon,
-    Circle: CircleIcon,
-    Hexagon: HexagonIcon,
-    Diamond: DiamondIcon,
-    Star: StarIcon,
-  };
 
   return (
     <div data-ocid="shapes.page">
@@ -538,7 +370,7 @@ export default function ShapesPage() {
 
       {/* ── Intro paragraph ── */}
       <section
-        className="bg-background py-16 lg:py-20"
+        className="bg-background py-10 lg:py-14"
         data-ocid="shapes.intro_section"
       >
         <div className="container max-w-4xl mx-auto px-6">
@@ -607,7 +439,7 @@ export default function ShapesPage() {
                 <ShapeCardSkeleton key={`skeleton-${i + 1}`} index={i} />
               ))
               : (shapes || []).sort((a, b) => Number(a.sortOrder - b.sortOrder)).map((shape, i) => {
-                const IconComponent = ICON_RESOLVER[shape.iconName] || TriangleIcon;
+                const IconComponent = ICON_RESOLVER[shape.iconName || (shape as any).icon] || Activity;
                 return (
                   <ShapeCard
                     key={String(shape.id)}
