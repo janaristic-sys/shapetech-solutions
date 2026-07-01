@@ -326,19 +326,7 @@ function ShapeCard({
 
       <div className="relative z-10 flex flex-col h-full p-8">
         {/* Header row */}
-        <div className="flex items-start justify-between mb-6">
-          {/* Icon with blob background */}
-          <div
-            className="flex items-center justify-center w-20 h-20 group-hover:scale-110 transition-smooth flex-shrink-0"
-            style={{
-              background: `${TEAL}14`,
-              borderRadius: blobRadius,
-              border: `1.5px solid ${TEAL}35`,
-            }}
-          >
-            <shape.Icon color={TEAL} />
-          </div>
-
+        <div className="flex items-start justify-end mb-6">
           {/* Ghost number */}
           <span
             className="font-display font-bold text-7xl leading-none select-none"
@@ -396,15 +384,6 @@ function ShapeCard({
             </li>
           ))}
         </ul>
-
-        {/* Divider */}
-        <div className="divider-fluid mb-4" />
-
-        {/* Footer link */}
-        <div className="flex items-center gap-2 text-primary font-medium text-sm">
-          <span>Explore {shape.title}</span>
-          <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform duration-200" />
-        </div>
         </div>
         </div>
       </div>
