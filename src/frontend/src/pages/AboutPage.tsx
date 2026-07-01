@@ -1358,7 +1358,7 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
             {label}
           </h3>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-sm">
-            {descriptions[label] || Driving excellence and innovation within our  division.}
+            {descriptions[label] || `Driving excellence and innovation within our ${label.toLowerCase()} division.`}
           </p>
         </div>
       </div>
@@ -1373,7 +1373,7 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
               size="icon"
               className="absolute -left-6 top-1/2 -translate-y-1/2 z-30 rounded-full w-14 h-14 border-border/40 hover:border-primary/50 hover:text-primary transition-all duration-300 bg-card/90 backdrop-blur-md opacity-0 group-hover/carousel:opacity-100 hidden lg:flex shadow-xl"
               onClick={() => scroll("left")}
-              aria-label={Scroll  left}
+              aria-label={`Scroll ${label} left`}
             >
               <ChevronLeft className="w-6 h-6" />
             </Button>
@@ -1382,7 +1382,7 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
               size="icon"
               className="absolute -right-6 top-1/2 -translate-y-1/2 z-30 rounded-full w-14 h-14 border-border/40 hover:border-primary/50 hover:text-primary transition-all duration-300 bg-card/90 backdrop-blur-md opacity-0 group-hover/carousel:opacity-100 hidden lg:flex shadow-xl"
               onClick={() => scroll("right")}
-              aria-label={Scroll  right}
+              aria-label={`Scroll ${label} right`}
             >
               <ChevronRight className="w-6 h-6" />
             </Button>
@@ -1395,9 +1395,9 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           <style dangerouslySetInnerHTML={{
-            __html: 
+            __html: `
             .hide-scrollbar::-webkit-scrollbar { display: none; }
-          }} />
+          `}} />
           {members.map((member, i) => (
             <div
               key={String(member.id)}
