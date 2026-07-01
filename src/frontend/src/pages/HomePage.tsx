@@ -465,7 +465,7 @@ function ShapeCard({ shape, index }: { shape: Shape; index: number }) {
         </p>
         {shape.capabilities && shape.capabilities.length > 0 && (
           <div className="flex flex-wrap gap-2">
-            {shape.capabilities.slice(0, 4).map((cap, idx) => (
+            {shape.capabilities?.slice(0, 4).map((cap, idx) => (
               <span
                 key={idx}
                 className="text-[11px] px-2.5 py-1 rounded-full bg-primary/8 border border-primary/15 text-primary/80 font-medium"
@@ -1055,7 +1055,7 @@ export default function HomePage() {
                             {/* Tech tags */}
                             {sol.technologies && sol.technologies.length > 0 && (
                               <div className="flex flex-wrap gap-1 mt-4 pt-4 border-t border-border/20">
-                                {sol.technologies.map((t) => (
+                                {sol.technologies?.map((t) => (
                                   <span key={t} className="text-[9px] font-semibold px-2 py-0.5 rounded bg-zinc-800/60 border border-zinc-700/40 text-zinc-100">
                                     {t}
                                   </span>

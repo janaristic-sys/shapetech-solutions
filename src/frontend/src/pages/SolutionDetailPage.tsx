@@ -104,7 +104,7 @@ export default function SolutionDetailPage() {
                 <div className="mb-14">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-primary/80 mb-4">Core Technologies</p>
                   <div className="flex flex-wrap gap-3">
-                    {solution.technologies.map(tech => (
+                    {solution.technologies?.map(tech => (
                       <span key={tech} className="px-5 py-2.5 rounded-full bg-card/60 border border-border/40 text-sm font-medium text-foreground backdrop-blur-sm shadow-sm hover:border-primary/30 transition-colors">
                         {tech}
                       </span>
@@ -243,14 +243,14 @@ export default function SolutionDetailPage() {
                   Success Story
                 </span>
                 <h2 className="font-display font-bold text-4xl md:text-5xl text-foreground mb-8 leading-tight">
-                  {solution.caseStudy.title}
+                  {solution.caseStudy?.title}
                 </h2>
                 <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-                  {solution.caseStudy.description}
+                  {solution.caseStudy?.description}
                 </p>
                 
                 <div className="flex flex-wrap gap-8">
-                  {solution.caseStudy.metrics.map((m, i) => (
+                  {solution.caseStudy?.metrics.map((m, i) => (
                     <motion.div
                       key={m.label}
                       initial={{ opacity: 0, scale: 0.9 }}
