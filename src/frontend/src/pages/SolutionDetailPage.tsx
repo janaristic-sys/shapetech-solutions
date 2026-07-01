@@ -13,6 +13,13 @@ import {
   Star,
   CheckCircle2
 } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Network,
@@ -150,20 +157,27 @@ export default function SolutionDetailPage() {
                 <p className="text-muted-foreground text-lg">Key workflows and custom interfaces built for {title}.</p>
               </div>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {solution.gallery.map((img, i) => (
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  key={i} 
-                  className={`aspect-[4/3] rounded-[2rem] overflow-hidden bg-background/50 flex items-center justify-center relative group ${i === 0 ? 'md:col-span-2 lg:col-span-2 aspect-video' : ''}`}
-                >
-                  <img src={img} alt={`Gallery view ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                </motion.div>
-              ))}
+            <div className="relative max-w-6xl mx-auto md:px-12">
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-6">
+                  {solution.gallery.map((img, i) => (
+                    <CarouselItem key={i} className="pl-6 md:basis-4/5 lg:basis-[85%]">
+                      <div className="aspect-video rounded-[2rem] overflow-hidden bg-background/50 flex items-center justify-center relative group shadow-xl border border-border/50">
+                        <img src={img} alt={`Gallery view ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="hidden md:flex -left-6 lg:-left-12 size-14 border-primary/20 hover:border-primary/50 text-foreground hover:text-primary transition-colors" />
+                <CarouselNext className="hidden md:flex -right-6 lg:-right-12 size-14 border-primary/20 hover:border-primary/50 text-foreground hover:text-primary transition-colors" />
+              </Carousel>
             </div>
           </div>
         </section>
