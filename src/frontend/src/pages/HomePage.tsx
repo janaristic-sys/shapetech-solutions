@@ -990,6 +990,7 @@ export default function HomePage() {
             >
               <CarouselContent className="-ml-6">
                 {filteredSolutions.map((sol, index) => {
+                  const logoSrc = clientLogoUrl(sol.slug);
                   return (
                     <CarouselItem
                       key={String(sol.id)}
@@ -1007,9 +1008,18 @@ export default function HomePage() {
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                               <div className="w-32 h-32 rounded-full bg-primary/6 blur-2xl" />
                             </div>
-                            <div className="relative z-10 w-16 h-16 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center">
-                              <DynamicIcon name={sol.iconName ?? "landmark"} className="size-8 text-primary/60" />
-                            </div>
+                            {logoSrc ? (
+                              <img
+                                src={logoSrc}
+                                alt={`${sol.title} logo`}
+                                className="relative z-10 max-h-14 max-w-[160px] object-contain"
+                                style={{ filter: "brightness(0) invert(1)", opacity: 0.65 }}
+                              />
+                            ) : (
+                              <div className="relative z-10 w-16 h-16 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center">
+                                <DynamicIcon name={sol.iconName ?? "landmark"} className="size-8 text-primary/60" />
+                              </div>
+                            )}
                             
                             {/* Industry badge overlay */}
                             {sol.industryName && (
