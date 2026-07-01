@@ -662,7 +662,7 @@ export default function HomePage() {
       >
         <HeroBlobs />
 
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-20 pb-16 md:pt-24 md:pb-24 relative z-10">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-20 pb-16 md:pt-24 md:pb-12 relative z-10">
           <Card className="w-full min-h-[600px] bg-background/5 border-none relative rounded-3xl backdrop-blur-sm overflow-visible">
             <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="oklch(var(--primary))" />
 
@@ -757,17 +757,17 @@ export default function HomePage() {
               </motion.div>
             </div>
           </Card>
+        </div>
 
-          {/* Seamless Client Logos Ticker */}
-          <div className="mt-16 w-full relative z-20 overflow-hidden">
-            {clientsLoading ? (
-              <div className="flex justify-center gap-x-10 py-4 px-6">
-                {[1, 2, 3, 4, 5].map((i) => <Skeleton key={i} className="h-8 w-24 rounded-lg" />)}
-              </div>
-            ) : (
-              <LogoTicker clients={clients} />
-            )}
-          </div>
+        {/* Seamless Client Logos Ticker */}
+        <div className="w-full relative z-20 overflow-hidden pb-24">
+          {clientsLoading ? (
+            <div className="flex justify-center gap-x-10 py-4 px-6">
+              {[1, 2, 3, 4, 5].map((i) => <Skeleton key={i} className="h-8 w-24 rounded-lg" />)}
+            </div>
+          ) : (
+            <LogoTicker clients={clients} />
+          )}
         </div>
 
         <WaveDivider fill="oklch(0.18 0.05 270)" path="M0,33 C480,55 960,11 1440,33 L1440,50 L0,50 Z" height={50} />
