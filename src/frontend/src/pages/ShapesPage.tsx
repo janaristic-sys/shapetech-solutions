@@ -254,7 +254,6 @@ function DiagonalDivider({ shapes }: { shapes: Shape[] }) {
                 borderColor: `${TEAL}35`,
               }}
             >
-              <Icon color={TEAL} className="size-4" />
               <span
                 className="font-display font-semibold text-sm"
                 style={{ color: TEAL }}
