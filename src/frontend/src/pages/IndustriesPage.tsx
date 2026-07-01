@@ -5,10 +5,8 @@ import type { Industry } from "@/types";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
-  BookOpen,
   CheckCircle2,
   Compass,
-  CreditCard,
   Cpu,
   GraduationCap,
   HeartPulse,
@@ -16,7 +14,6 @@ import {
   Network,
   ShoppingCart,
   Sparkles,
-  Star,
   TrendingUp,
   Users,
 } from "lucide-react";
@@ -90,9 +87,7 @@ function IndustryStackCard({
   index: number;
   total: number;
 }) {
-  const isDirectSelling = industry.title.toLowerCase().includes("direct selling");
-  const isHealthWellness = industry.title.toLowerCase().includes("health");
-  const isDigitalProducts = industry.title.toLowerCase().includes("digital products");
+
 
   // Custom radii for the premium look
   const borderRadius = "28px 8px 28px 8px";
