@@ -657,7 +657,7 @@ export default function HomePage() {
           Section 1 · Hero
       ══════════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative min-h-[100svh] flex items-center overflow-hidden bg-background"
+        className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden bg-background"
         data-ocid="home.hero_section"
       >
         <HeroBlobs />
