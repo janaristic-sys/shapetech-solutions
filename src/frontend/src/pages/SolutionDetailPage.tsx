@@ -132,7 +132,7 @@ export default function SolutionDetailPage() {
               Project Highlights
             </h2>
             <div className="space-y-6">
-              {solution.bulletPoints.map((point, i) => (
+              {solution.bulletPoints?.map((point, i) => (
                 <div key={i} className="flex gap-5 items-start group">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-sm border border-primary/20 mt-1">
                     <CheckCircle2 className="size-5" />
@@ -166,7 +166,7 @@ export default function SolutionDetailPage() {
                 className="w-full"
               >
                 <CarouselContent className="-ml-6">
-                  {solution.gallery.map((img, i) => (
+                  {solution.gallery?.map((img, i) => (
                     <CarouselItem key={i} className="pl-6 md:basis-4/5 lg:basis-[85%]">
                       <div className="aspect-video rounded-[2rem] overflow-hidden bg-background/50 flex items-center justify-center relative group shadow-xl border border-border/50">
                         <img src={img} alt={`Gallery view ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" />
