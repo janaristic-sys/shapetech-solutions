@@ -72,7 +72,17 @@ function TickerItem({ client }: { client: Client }) {
 }
 
 function LogoImage({ client }: { client: Client }) {
-  // Always force text fallback until safe transparent logos are provided
+  if (client.logoUrl) {
+    return (
+      <img
+        src={client.logoUrl}
+        alt={client.name}
+        className="max-h-10 max-w-[140px] object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-300 filter brightness-0 invert"
+      />
+    );
+  }
+
+  // Fallback to text if no logo URL
   return (
     <span
       className="

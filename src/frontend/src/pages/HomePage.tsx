@@ -73,16 +73,15 @@ const HERO_HEADLINES = [
   "Shaping the Future of Commerce",
 ] as const;
 
-// Clearbit logo URLs per solution slug
-const SOLUTION_LOGO_URLS: Record<string, string> = {
-  crunchi:             "https://crunchi.com/cdn/shop/files/Crunchi_Logo-Smart.Conscious.Beautiful_Black-R.png?v=1694524794&width=668",
-  newulife:            "https://images.ctfassets.net/vo9jqxsi4s22/6nNPoImVIqxreY8ZITs3Du/a394129266d0ce656f9195b9522dddb9/new-u-life-logo-2025.svg",
-  nuvita:              "https://logo.clearbit.com/nuvitaglobal.com",
-  "faster-way":        "https://www.fasterway.com/cdn/shop/files/FW-Logo-White.png?v=1761871213&width=500",
-  "wine-shop-at-home": "https://logo.clearbit.com/wineshopathome.com",
-  reliv:               "https://cdn.worldvectorlogo.com/logos/reliv.svg",
-  "sana-vita":         "https://sanavita.hk/cdn/shop/files/Sana_Vita_Wide_Logo.jpg?v=1639039993",
-  "li-bri":            "https://logo.clearbit.com/libri.com",
+const CLIENT_LOGOS: Record<string, string> = {
+  crunchi:             "/assets/logos/crunchi.png",
+  nuvita:              "/assets/logos/nuvita.png",
+  "faster-way":        "/assets/logos/faster-way.png",
+  "wine-shop-at-home": "/assets/logos/wine-shop-at-home.png",
+  reliv:               "/assets/logos/reliv.png",
+  "sana-vita":         "/assets/logos/sana-vita.png",
+  "li-bri":            "/assets/logos/li-bri.png",
+  newulife:            "/assets/logos/newulife.png",
 };
 
 // Unified primary shape accents so they don't break the site's aesthetic

@@ -51,14 +51,14 @@ const defaultAbout: AboutContent = {
 };
 
 const defaultClients: Client[] = [
-  { id: 1n, name: "Crunchi", logoUrl: "", websiteUrl: "https://crunchi.com", sortOrder: 1n, solutionSlug: "crunchi" },
-  { id: 2n, name: "NewULife", logoUrl: "", websiteUrl: "https://newulife.com", sortOrder: 2n, solutionSlug: "newulife" },
-  { id: 3n, name: "Nuvita", logoUrl: "", websiteUrl: "https://nuvitaglobal.com", sortOrder: 3n, solutionSlug: "nuvita" },
-  { id: 4n, name: "FASTer Way to Fat Loss", logoUrl: "", websiteUrl: "https://www.fasterway.com", sortOrder: 4n, solutionSlug: "faster-way" },
-  { id: 5n, name: "Wine Shop at Home", logoUrl: "", websiteUrl: "https://wineshopathome.com", sortOrder: 5n, solutionSlug: "wine-shop-at-home" },
-  { id: 6n, name: "Reliv", logoUrl: "", websiteUrl: "https://reliv.com", sortOrder: 6n, solutionSlug: "reliv" },
-  { id: 7n, name: "Sana Vita", logoUrl: "", websiteUrl: "https://sanavita.hk", sortOrder: 7n, solutionSlug: "sana-vita" },
-  { id: 8n, name: "L'BRI", logoUrl: "", websiteUrl: "https://lbri.com", sortOrder: 8n, solutionSlug: "li-bri" },
+  { id: 1n, name: "Crunchi", logoUrl: "/assets/logos/crunchi.png", websiteUrl: "https://crunchi.com", sortOrder: 1n, solutionSlug: "crunchi" },
+  { id: 2n, name: "NewULife", logoUrl: "/assets/logos/newulife.png", websiteUrl: "https://newulife.com", sortOrder: 2n, solutionSlug: "newulife" },
+  { id: 3n, name: "Nuvita", logoUrl: "/assets/logos/nuvita.png", websiteUrl: "https://nuvitaglobal.com", sortOrder: 3n, solutionSlug: "nuvita" },
+  { id: 4n, name: "FASTer Way to Fat Loss", logoUrl: "/assets/logos/faster-way.png", websiteUrl: "https://www.fasterway.com", sortOrder: 4n, solutionSlug: "faster-way" },
+  { id: 5n, name: "Wine Shop at Home", logoUrl: "/assets/logos/wine-shop-at-home.png", websiteUrl: "https://wineshopathome.com", sortOrder: 5n, solutionSlug: "wine-shop-at-home" },
+  { id: 6n, name: "Reliv", logoUrl: "/assets/logos/reliv.png", websiteUrl: "https://reliv.com", sortOrder: 6n, solutionSlug: "reliv" },
+  { id: 7n, name: "Sana Vita", logoUrl: "/assets/logos/sana-vita.png", websiteUrl: "https://sanavita.hk", sortOrder: 7n, solutionSlug: "sana-vita" },
+  { id: 8n, name: "L'BRI", logoUrl: "/assets/logos/li-bri.png", websiteUrl: "https://lbri.com", sortOrder: 8n, solutionSlug: "li-bri" },
 ];
 
 const defaultIndustries: Industry[] = [
