@@ -721,19 +721,19 @@ function StatsSection() {
         }}
       />
       <div className="relative max-w-6xl mx-auto px-6">
-        <div className="flex flex-wrap justify-center items-end gap-6 lg:gap-0">
+        <div className="flex flex-wrap justify-center items-end gap-10 lg:gap-12">
           {STATS.map((stat, i) => {
             const offsets = [
               "lg:translate-y-0",
-              "lg:-translate-y-4",
-              "lg:translate-y-6",
               "lg:-translate-y-2",
+              "lg:translate-y-3",
+              "lg:-translate-y-1",
             ];
             const sizes = [
-              "text-5xl md:text-6xl lg:text-7xl",
-              "text-4xl md:text-5xl lg:text-6xl",
-              "text-6xl md:text-7xl lg:text-8xl",
-              "text-4xl md:text-5xl lg:text-6xl",
+              "text-5xl md:text-6xl lg:text-6xl",
+              "text-4xl md:text-5xl lg:text-5xl",
+              "text-6xl md:text-6xl lg:text-7xl",
+              "text-4xl md:text-5xl lg:text-5xl",
             ];
             return (
               <motion.div
@@ -1210,31 +1210,31 @@ function TeamMemberCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.05, ease: [0.21, 0.45, 0.32, 0.9] }}
-      className="group relative bg-card/30 backdrop-blur-md rounded-[2.5rem] border border-border/30 hover:border-primary/40 transition-all duration-500 overflow-hidden h-full flex flex-col"
+      className="group relative bg-card/30 backdrop-blur-md rounded-[2rem] border border-border/30 hover:border-primary/40 transition-all duration-500 overflow-hidden h-full flex flex-col"
       data-ocid={`about.team_card.${index + 1}`}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-      <div className="relative p-6 lg:p-10 flex flex-col h-full flex-1">
-        <div className="mb-8 relative inline-block">
+      <div className="relative p-6 lg:p-8 flex flex-col h-full flex-1">
+        <div className="mb-6 relative inline-block">
           <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           {member.avatarUrl ? (
             <img
               src={member.avatarUrl}
               alt={member.name}
-              className="w-24 h-24 rounded-[2.5rem] object-cover border-2 border-primary/10 shadow-2xl relative z-10 transition-all duration-500"
+              className="w-16 h-16 rounded-2xl object-cover border-2 border-primary/10 shadow-2xl relative z-10 transition-all duration-500"
             />
           ) : (
-            <div className="w-24 h-24 rounded-[2.5rem] bg-primary/5 border-2 border-primary/10 flex items-center justify-center relative z-10">
-              <span className="font-display font-bold text-primary text-3xl">
+            <div className="w-16 h-16 rounded-2xl bg-primary/5 border-2 border-primary/10 flex items-center justify-center relative z-10">
+              <span className="font-display font-bold text-primary text-2xl">
                 {initials}
               </span>
             </div>
           )}
         </div>
 
-        <div className="mb-6">
-          <h3 className="font-display font-bold text-foreground text-2xl lg:text-3xl leading-[1.1] mb-2 transition-colors duration-300">
+        <div className="mb-5">
+          <h3 className="font-display font-bold text-foreground text-xl lg:text-2xl leading-[1.1] mb-2 transition-colors duration-300">
             {member.name}
           </h3>
           <Badge variant="outline" className="bg-primary/5 border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
@@ -1243,7 +1243,7 @@ function TeamMemberCard({
         </div>
 
         {member.bio && (
-          <p className="text-muted-foreground text-base leading-relaxed mb-8 line-clamp-4 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+          <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
             {member.bio}
           </p>
         )}
@@ -1344,7 +1344,7 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
 
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-8 hide-scrollbar scroll-smooth"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar scroll-smooth"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           <style dangerouslySetInnerHTML={{
@@ -1453,7 +1453,7 @@ function TeamSection() {
           </motion.div>
 
           {isLoading ? (
-            <div className="space-y-32">
+            <div className="space-y-16">
               {[1, 2].map((s) => (
                 <div key={s} className="flex flex-col lg:flex-row gap-12">
                   <div className="lg:w-1/3 space-y-6">
@@ -1463,14 +1463,14 @@ function TeamSection() {
                   </div>
                   <div className="lg:w-2/3 flex gap-6 overflow-hidden">
                     {[1, 2].map((i) => (
-                      <Skeleton key={i} className="h-[400px] w-[300px] shrink-0 rounded-[2.5rem]" />
+                      <Skeleton key={i} className="h-[280px] w-[300px] shrink-0 rounded-[2rem]" />
                     ))}
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="space-y-16 lg:space-y-20">
+            <div className="space-y-10 lg:space-y-12">
               {sections.map((section) => (
                 <TeamCarouselSection
                   key={section.id}

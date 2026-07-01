@@ -88,7 +88,6 @@ function DiagonalDivider({ shapes }: { shapes: Shape[] }) {
       {/* Pill row */}
       <div className="relative container max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-3 py-6">
         {(shapes || []).map((s, i) => {
-          const Icon = ICON_RESOLVER[s.iconName || (s as any).icon] || Activity;
           return (
             <motion.div
               key={String(s.id)}
@@ -96,15 +95,14 @@ function DiagonalDivider({ shapes }: { shapes: Shape[] }) {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.4 }}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full border"
+              className="flex items-center justify-center px-8 py-3 rounded-full border shadow-sm hover:scale-105 transition-transform"
               style={{
                 background: `${TEAL}12`,
-                borderColor: `${TEAL}35`,
+                borderColor: `${TEAL}40`,
               }}
             >
-              <Icon color={TEAL} className="size-4" />
               <span
-                className="font-display font-semibold text-sm"
+                className="font-display font-bold text-base md:text-lg tracking-wide uppercase"
                 style={{ color: TEAL }}
               >
                 {s.title}
@@ -118,128 +116,107 @@ function DiagonalDivider({ shapes }: { shapes: Shape[] }) {
 }
 
 // ---------------------------------------------------------------------------
-// Shape Card
+// Shape Stack Card (Mirroring Industries Page Layout)
 // ---------------------------------------------------------------------------
-function ShapeCard({
+function ShapeStackCard({
   shape,
   index,
 }: {
   shape: Shape & { Icon: React.ElementType };
   index: number;
 }) {
-  const blobRadius = BLOB_RADII[index % BLOB_RADII.length];
+  const borderRadius = "28px 8px 28px 8px";
 
   return (
     <motion.div
-      data-ocid={`shapes.card.${index + 1}`}
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative flex flex-col card-fluid border border-border hover:border-primary/40 overflow-hidden"
-      style={{ borderRadius: "20px" }}
+      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+      className="sticky top-20 md:top-24 w-full mb-20 md:mb-32 last:mb-0 pt-10"
+      style={{ zIndex: index + 1 }}
+      data-ocid={`shapes.stack_card.${index + 1}`}
     >
-      {/* Organic blob background accent */}
-      <div
-        className="pointer-events-none absolute -top-12 -right-12 w-56 h-56 opacity-[0.08] group-hover:opacity-[0.15] transition-smooth"
-        aria-hidden="true"
-        style={{
-          background: `radial-gradient(circle, ${TEAL}, transparent 70%)`,
-          borderRadius: blobRadius,
-        }}
-      />
-      <div
-        className="pointer-events-none absolute -bottom-16 -left-10 w-48 h-48 opacity-[0.05] group-hover:opacity-[0.10] transition-smooth"
-        aria-hidden="true"
-        style={{
-          background: `radial-gradient(circle, ${TEAL}, transparent 70%)`,
-          borderRadius: BLOB_RADII[(index + 2) % BLOB_RADII.length],
-        }}
-      />
-
-      {/* Hover gradient overlay */}
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-smooth pointer-events-none"
-        aria-hidden="true"
-        style={{
-          background: `linear-gradient(135deg, ${TEAL}0d 0%, transparent 60%)`,
-          borderRadius: "20px",
-        }}
-      />
-
-      <div className="relative z-10 flex flex-col h-full p-8">
-        {/* Header row */}
-        <div className="flex items-start justify-between mb-6">
-          {/* Icon with blob background */}
-          <div
-            className="flex items-center justify-center w-20 h-20 group-hover:scale-110 transition-smooth flex-shrink-0"
-            style={{
-              background: `${TEAL}14`,
-              borderRadius: blobRadius,
-              border: `1.5px solid ${TEAL}35`,
-            }}
-          >
-            <shape.Icon color={TEAL} />
-          </div>
-
-          {/* Ghost number */}
-          <span
-            className="font-display font-bold text-7xl leading-none select-none"
-            style={{ color: `${TEAL}18` }}
-          >
-            {String(index + 1).padStart(2, "0")}
-          </span>
-        </div>
-
-        {/* Shape badge — uses shape title as the label */}
-        <div className="flex items-center gap-2 mb-3">
-          <span
-            className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest"
-            style={{
-              background: `${TEAL}14`,
-              border: `1px solid ${TEAL}35`,
-              color: TEAL,
-            }}
-          >
-            {shape.title}
-          </span>
-        </div>
-
-        {/* Title & tagline */}
-        <h3 className="font-display font-bold text-2xl text-foreground mb-1 leading-tight">
-          {shape.title}
-        </h3>
-        <p className="text-primary font-medium text-sm mb-4">{shape.tagline}</p>
-
-        {/* Description */}
-        <p className="text-muted-foreground text-base leading-relaxed mb-6 flex-1">
-          {shape.description}
-        </p>
-
-        {/* Capabilities */}
-        <ul className="space-y-2 mb-6">
-          {shape.capabilities?.map((cap) => (
-            <li
-              key={cap}
-              className="flex items-start gap-2.5 text-sm text-foreground/75"
-            >
-              <div
-                className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                style={{
-                  background: `${TEAL}18`,
-                  border: `1px solid ${TEAL}35`,
-                }}
-              >
+      <div className="relative">
+        {/* Main card — sits on top */}
+        <div
+          className="relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] min-h-[480px] md:min-h-[450px] flex flex-col md:flex-row"
+          style={{
+            borderRadius,
+            background: "oklch(0.18 0.05 270)",
+            border: `1px solid ${TEAL}25`,
+            zIndex: 3,
+          }}
+        >
+          {/* Content Layout */}
+          <div className="relative z-10 flex flex-col md:flex-row w-full p-6 md:p-14 gap-8 md:gap-12 lg:gap-20">
+            {/* Left Column: Information */}
+            <div className="flex-1 flex flex-col">
+              <div className="flex items-center gap-4 mb-6 md:mb-8">
                 <div
-                  className="w-1.5 h-1.5 rounded-full"
-                  style={{ background: TEAL }}
-                />
+                  className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center text-primary"
+                  style={{
+                    background: `${TEAL}12`,
+                    borderRadius: "20px 6px 20px 6px",
+                    border: `1px solid ${TEAL}40`,
+                  }}
+                >
+                  <shape.Icon color={TEAL} className="size-5 md:size-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] block mb-0.5 md:mb-1" style={{ color: TEAL }}>
+                    Commerce Engine
+                  </span>
+                  <h3 className="font-display font-bold text-foreground text-xl md:text-2xl lg:text-3xl leading-tight">
+                    {shape.title}
+                  </h3>
+                </div>
               </div>
-              <span>{cap}</span>
-            </li>
-          ))}
-        </ul>
 
+              <p className="text-muted-foreground text-sm md:text-base lg:text-lg leading-relaxed mb-8 md:mb-10 max-w-xl">
+                {shape.description}
+              </p>
+            </div>
+
+            {/* Right Column: Key Capabilities */}
+            <div className="md:w-[320px] lg:w-[380px] shrink-0">
+              <div className="bg-background/20 backdrop-blur-md rounded-3xl border border-white/5 p-6 md:p-8 h-full relative">
+                <div className="flex items-center gap-3 mb-6 md:mb-8">
+                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground/80">
+                    Capabilities
+                  </span>
+                </div>
+
+                <ul className="space-y-3 md:space-y-4">
+                  {(shape.capabilities || []).map((cap, i) => (
+                    <motion.li
+                      key={cap}
+                      initial={{ opacity: 0, x: 10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.2 + i * 0.05 }}
+                      className="flex items-start gap-3 md:gap-4 group/item"
+                    >
+                      <div className="mt-1 size-4 md:size-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                        <div className="size-1.5 md:size-2 rounded-full" style={{ background: TEAL }} />
+                      </div>
+                      <span className="text-xs md:text-sm lg:text-base text-foreground/90 leading-tight">
+                        {cap}
+                      </span>
+                    </motion.li>
+                  ))}
+                </ul>
+
+                {/* Counter for visual flair */}
+                <div className="absolute bottom-4 right-6 md:bottom-6 md:right-8 opacity-[0.05] select-none pointer-events-none">
+                  <span className="font-display font-black text-6xl md:text-7xl lg:text-8xl">
+                    {(index + 1).toString().padStart(2, "0")}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </motion.div>
   );
@@ -248,26 +225,13 @@ function ShapeCard({
 // ---------------------------------------------------------------------------
 // Skeleton Card (loading state)
 // ---------------------------------------------------------------------------
-function ShapeCardSkeleton({ index }: { index: number }) {
+function ShapeStackCardSkeleton({ index }: { index: number }) {
   return (
     <div
       data-ocid={`shapes.loading_state.${index + 1}`}
-      className="card-fluid border border-border p-8"
-      style={{ borderRadius: "20px" }}
+      className="w-full mb-12"
     >
-      <div className="flex items-start justify-between mb-6">
-        <Skeleton className="w-20 h-20 rounded-2xl" />
-        <Skeleton className="w-16 h-14 rounded-lg" />
-      </div>
-      <Skeleton className="w-20 h-5 rounded-full mb-3" />
-      <Skeleton className="w-2/3 h-7 rounded mb-2" />
-      <Skeleton className="w-1/3 h-4 rounded mb-4" />
-      <Skeleton className="w-full h-20 rounded mb-6" />
-      <div className="space-y-2">
-        {[1, 2, 3].map((j) => (
-          <Skeleton key={j} className="w-full h-4 rounded" />
-        ))}
-      </div>
+      <Skeleton className="w-full h-[450px]" style={{ borderRadius: "28px 8px 28px 8px" }} />
     </div>
   );
 }
@@ -429,19 +393,19 @@ export default function ShapesPage() {
             </p>
           </motion.div>
 
-          {/* Responsive grid: 1 col → 2 col → 3 col */}
+          {/* Stacked Layout */}
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+            className="flex flex-col relative"
             data-ocid="shapes.cards_list"
           >
             {isLoading
-              ? Array.from({ length: 5 }).map((_, i) => (
-                <ShapeCardSkeleton key={`skeleton-${i + 1}`} index={i} />
+              ? Array.from({ length: 4 }).map((_, i) => (
+                <ShapeStackCardSkeleton key={`skeleton-${i + 1}`} index={i} />
               ))
               : (shapes || []).sort((a, b) => Number(a.sortOrder - b.sortOrder)).map((shape, i) => {
                 const IconComponent = ICON_RESOLVER[shape.iconName || (shape as any).icon] || Activity;
                 return (
-                  <ShapeCard
+                  <ShapeStackCard
                     key={String(shape.id)}
                     shape={{ ...shape, Icon: IconComponent }}
                     index={i}
