@@ -50,14 +50,14 @@ function DynamicIcon({ name, ...props }: { name: string } & LucideProps) {
 }
 
 const SOLUTION_LOGO_URLS: Record<string, string> = {
-  crunchi:             "/assets/images/logos/crunchi_logo_1781787000997.png",
-  newulife:            "/assets/images/logos/newulife_logo_1781787013482.png",
-  nuvita:              "/assets/images/logos/nuvita_logo_1781787027343.png",
-  "faster-way":        "https://www.fasterway.com/cdn/shop/files/FW-Logo-White.png?v=1761871213&width=500",
-  "wine-shop-at-home": "https://logo.clearbit.com/wineshopathome.com",
-  reliv:               "https://cdn.worldvectorlogo.com/logos/reliv.svg",
-  "sana-vita":         "/assets/images/logos/sana_vita_logo_1781785629359.png",
-  "l-bri":             "https://logo.clearbit.com/lbri.com",
+  crunchi:             "/assets/logos/crunchi.png",
+  nuvita:              "/assets/logos/nuvita.png",
+  "faster-way":        "/assets/logos/faster-way.png",
+  "wine-shop-at-home": "/assets/logos/wine-shop-at-home.png",
+  reliv:               "/assets/logos/reliv.png",
+  "sana-vita":         "/assets/logos/sana-vita.png",
+  "l-bri":             "/assets/logos/l-bri.png",
+  newulife:            "/assets/logos/newulife.png",
 };
 
 function clientLogoUrl(slug: string) {
