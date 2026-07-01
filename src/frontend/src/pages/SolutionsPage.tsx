@@ -418,12 +418,13 @@ export default function SolutionsPage() {
                             <div className="w-32 h-32 rounded-full bg-primary/6 blur-2xl" />
                           </div>
                           {logoSrc ? (
-                            <img
-                              src={logoSrc}
-                              alt={`${sol.title} logo`}
-                              className="relative z-10 max-h-14 max-w-[160px] object-contain"
-                              style={{ opacity: 0.9 }}
-                            />
+                            <div className="relative z-10 bg-white p-3 rounded-xl shadow-xl flex items-center justify-center min-w-[120px] max-w-[160px] h-16">
+                              <img
+                                src={logoSrc}
+                                alt={`${sol.title} logo`}
+                                className="max-h-full max-w-full object-contain"
+                              />
+                            </div>
                           ) : (
                             <div className="relative z-10 w-16 h-16 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center">
                               <DynamicIcon name={sol.iconName ?? "landmark"} className="size-8 text-primary/60" />

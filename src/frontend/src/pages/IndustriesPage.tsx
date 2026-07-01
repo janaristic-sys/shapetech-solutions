@@ -6,15 +6,12 @@ import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   CheckCircle2,
-  Compass,
-  Cpu,
   GraduationCap,
   HeartPulse,
   Landmark,
   Network,
   ShoppingCart,
   Sparkles,
-  TrendingUp,
   Users,
 } from "lucide-react";
 import { motion } from "motion/react";
@@ -102,8 +99,40 @@ function IndustryStackCard({
       style={{ zIndex: index + 1 }}
       data-ocid={`industries.stack_card.${index + 1}`}
     >
+      {/* Inner wrapper — relative so peek strips and main card share the same stacking context */}
       <div className="relative">
-        {/* Main card — sits on top */}
+        {/* Deck strip — third card back (deepest, most offset) */}
+        {index < total - 2 && (
+          <div
+            className="absolute inset-x-[6%] inset-y-0 pointer-events-none rounded-[28px_8px_28px_8px]"
+            style={{
+              top: -28,
+              background: "linear-gradient(135deg, oklch(0.14 0.035 265), oklch(0.11 0.025 262))",
+              borderRadius,
+              border: "1px solid oklch(0.75 0.12 195 / 0.12)",
+              zIndex: 1,
+              opacity: 0.75,
+              boxShadow: "0 -4px 20px rgba(0,0,0,0.25)",
+            }}
+          />
+        )}
+        {/* Deck strip — second card back (closer) */}
+        {index < total - 1 && (
+          <div
+            className="absolute inset-x-[3%] inset-y-0 pointer-events-none"
+            style={{
+              top: -14,
+              background: "linear-gradient(135deg, oklch(0.17 0.05 267), oklch(0.14 0.05 264))",
+              borderRadius,
+              border: "1px solid oklch(0.75 0.12 195 / 0.16)",
+              zIndex: 2,
+              opacity: 0.85,
+              boxShadow: "0 -4px 16px rgba(0,0,0,0.2)",
+            }}
+          />
+        )}
+
+        {/* Main card — sits on top of the deck strips */}
         <div
           className="relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] min-h-[480px] md:min-h-[450px] flex flex-col md:flex-row"
           style={{
@@ -113,6 +142,37 @@ function IndustryStackCard({
             zIndex: 3,
           }}
         >
+          {/* Background Decorative Layer */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {/* Gradient */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(135deg, ${isDirectSelling
+                  ? "oklch(0.20 0.06 268) 0%, oklch(0.16 0.09 262) 100%"
+                  : isEcommerce
+                    ? "oklch(0.18 0.05 270) 0%, oklch(0.22 0.08 260) 100%"
+                    : "oklch(0.18 0.05 270) 0%, oklch(0.14 0.04 265) 100%"
+                  })`,
+              }}
+            />
+            {/* Subtle Grid / Texture */}
+            <div
+              className="absolute inset-0 opacity-[0.04]"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(-45deg, oklch(0.75 0.12 195) 0 1px, transparent 1px 40px)",
+              }}
+            />
+            {/* Glow Blobs */}
+            <div
+              className="absolute -top-20 -right-20 w-80 h-80 rounded-full blur-[100px] opacity-[0.12]"
+              style={{
+                background: "radial-gradient(circle, oklch(0.75 0.12 195), transparent 70%)",
+              }}
+            />
+          </div>
+
           {/* Content Layout */}
           <div className="relative z-10 flex flex-col md:flex-row w-full p-6 md:p-14 gap-8 md:gap-12 lg:gap-20">
             {/* Left Column: Information */}
@@ -246,10 +306,14 @@ export default function IndustriesPage() {
               Industries We Serve
             </span>
             <h1 className="font-display font-bold text-5xl sm:text-6xl text-foreground leading-[1.05] mb-6">
-              Commerce <span className="gradient-accent">Niches We Serve</span>
+              Deep <span className="gradient-accent">Industry Expertise</span>{" "}
+              That Delivers
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
-              We believe commerce is dominated by a near-endless series of niche use cases. ShapeTech Solutions builds and grows specialized commerce solutions for each niche — ensuring every merchant gets purpose-built technology, not a generic adaptation.
+              Shapetech Solutions has built mission-critical technology across
+              the most demanding sectors. Our deep domain knowledge means faster
+              delivery, fewer re-works, and better outcomes for your business —
+              no matter your industry.
             </p>
           </motion.div>
 
@@ -261,8 +325,8 @@ export default function IndustriesPage() {
             className="flex flex-wrap gap-5 mt-12"
           >
             {[
-              { value: "3+", label: "Core niche markets" },
-              { value: "$100M+", label: "Annual volume powered" },
+              { value: "7+", label: "Verticals mastered" },
+              { value: "150+", label: "Projects delivered" },
             ].map((stat) => (
               <div
                 key={stat.label}
@@ -299,11 +363,12 @@ export default function IndustriesPage() {
             className="max-w-2xl mb-20"
           >
             <h2 className="font-display font-bold text-4xl lg:text-6xl text-foreground leading-tight mb-4">
-              Commerce Niches We've <br />
-              <span className="gradient-accent">Specialized In</span>
+              Industries We've <br />
+              <span className="gradient-accent">Transformed</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Each industry below represents a long-term commitment — we don't dabble. We build deep expertise in each niche and grow solutions specifically for those merchants.
+              We bring deep domain expertise to every engagement, crafting tailored
+              technology solutions that address the unique challenges of your vertical.
             </p>
           </motion.div>
 
@@ -315,16 +380,52 @@ export default function IndustriesPage() {
             </div>
           ) : (
             <div className="flex flex-col relative">
-              {(industries || [])
-                .sort((a, b) => Number(a.sortOrder - b.sortOrder))
-                .map((industry, i, arr) => (
+              {/* Combine and sort for the stack */}
+              {(() => {
+                const ECOMMERCE_FALLBACK: Industry = {
+                  id: "ecommerce-fallback",
+                  title: "E-Commerce & Retail",
+                  description: "Scaling high-volume retail platforms with custom headless architectures, sophisticated inventory management, and integrated loyalty systems.",
+                  iconName: "ShoppingCart",
+                  highlights: [
+                    "Headless Commerce Architectures",
+                    "Multi-channel Inventory Sync",
+                    "Custom Loyalty & Rewards Engines",
+                    "High-Performance Checkout Flows",
+                    "Advanced Personalization Systems"
+                  ],
+                  featured: false
+                };
+
+                const allIndustries = industries || [];
+                const hasEcommerce = allIndustries.some(ind =>
+                  ind.title.toLowerCase().includes("e-commerce") ||
+                  ind.title.toLowerCase().includes("retail")
+                );
+                const displayIndustries = hasEcommerce ? allIndustries : [...allIndustries, ECOMMERCE_FALLBACK];
+
+                // Priority-based sorting
+                const getPriority = (title: string) => {
+                  const t = title.toLowerCase();
+                  if (t.includes("direct selling")) return 1;
+                  if (t.includes("e-commerce") || t.includes("retail")) return 2;
+                  if (t.includes("health")) return 3;
+                  return 99;
+                };
+
+                const sorted = [...displayIndustries].sort((a, b) =>
+                  getPriority(a.title) - getPriority(b.title)
+                );
+
+                return sorted.map((industry, i) => (
                   <IndustryStackCard
                     key={String(industry.id)}
                     industry={industry}
                     index={i}
-                    total={arr.length}
+                    total={sorted.length}
                   />
-                ))}
+                ));
+              })()}
             </div>
           )}
         </div>
@@ -336,7 +437,7 @@ export default function IndustriesPage() {
         flip
       />
 
-      {/* ── Why ShapeTech strip ── */}
+      {/* ── Why Shapetech strip ── */}
       <section
         className="bg-card py-16"
         data-ocid="industries.why_section"
@@ -364,42 +465,32 @@ export default function IndustriesPage() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {([
+            {[
               {
-                Icon: Compass,
+                icon: "🧭",
                 title: "Domain-First Discovery",
                 body: "Every engagement starts with a deep dive into your vertical — its workflows, compliance requirements, and growth dynamics.",
               },
               {
-                Icon: Cpu,
+                icon: "⚙️",
                 title: "Industry-Tuned Tech",
                 body: "We reuse battle-tested vertical components — commission engines, genealogy trees, compliance layers — so you ship faster.",
               },
               {
-                Icon: TrendingUp,
+                icon: "🚀",
                 title: "Proven Track Record",
                 body: "Over 150 projects across 7+ verticals. From startups to Fortune 500 companies — the patterns we've learned mean fewer surprises and faster ROI.",
               },
-            ] as const).map((item, i) => (
+            ].map((item, i) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="group p-7 rounded-2xl bg-background/50 border border-border/60 hover:border-primary/30 transition-all duration-300"
+                className="p-7 rounded-2xl bg-background/50 border border-border/60"
               >
-                {/* Blob-style icon container — matches site-wide pattern */}
-                <div
-                  className="w-12 h-12 flex items-center justify-center mb-6 text-primary"
-                  style={{
-                    background: "oklch(0.75 0.12 195 / 0.12)",
-                    borderRadius: "60% 40% 70% 30% / 40% 60% 30% 70%",
-                    border: "1px solid oklch(0.75 0.12 195 / 0.22)",
-                  }}
-                >
-                  <item.Icon className="size-5" />
-                </div>
+                <span className="text-3xl mb-4 block">{item.icon}</span>
                 <h3 className="font-display font-bold text-foreground text-lg mb-2">
                   {item.title}
                 </h3>

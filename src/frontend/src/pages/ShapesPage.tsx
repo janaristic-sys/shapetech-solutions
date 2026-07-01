@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Hexagon } from "lucide-react";
 import { motion } from "motion/react";
 import { useShapes } from "@/hooks/use-backend";
 import { Shape } from "@/types";
@@ -284,13 +284,18 @@ function ShapeCard({
   return (
     <motion.div
       data-ocid={`shapes.card.${index + 1}`}
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative flex flex-col card-fluid border border-border hover:border-primary/40 overflow-hidden"
-      style={{ borderRadius: "20px" }}
+      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+      className="sticky top-20 md:top-24 w-full mb-20 md:mb-32 last:mb-0 pt-10"
+      style={{ zIndex: index + 1 }}
     >
+      <div className="relative">
+        <div
+          className="group relative flex flex-col card-fluid border border-border hover:border-primary/40 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] min-h-[480px] md:min-h-[450px]"
+          style={{ borderRadius: "20px", background: "oklch(0.14 0.04 265)" }}
+        >
       {/* Organic blob background accent */}
       <div
         className="pointer-events-none absolute -top-12 -right-12 w-56 h-56 opacity-[0.08] group-hover:opacity-[0.15] transition-smooth"
@@ -399,6 +404,7 @@ function ShapeCard({
         <div className="flex items-center gap-2 text-primary font-medium text-sm">
           <span>Explore {shape.title}</span>
           <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform duration-200" />
+        </div>
         </div>
       </div>
     </motion.div>
@@ -597,9 +603,9 @@ export default function ShapesPage() {
             </p>
           </motion.div>
 
-          {/* Responsive grid: 1 col → 2 col → 3 col */}
+          {/* Stacked Cards Container */}
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+            className="flex flex-col relative"
             data-ocid="shapes.cards_list"
           >
             {isLoading
