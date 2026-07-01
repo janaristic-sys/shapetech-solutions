@@ -50,14 +50,14 @@ function DynamicIcon({ name, ...props }: { name: string } & LucideProps) {
 }
 
 const SOLUTION_LOGO_URLS: Record<string, string> = {
-  crunchi:             "https://crunchi.com/cdn/shop/files/Crunchi_Logo-Smart.Conscious.Beautiful_Black-R.png?v=1694524794&width=668",
-  newulife:            "https://images.ctfassets.net/vo9jqxsi4s22/6nNPoImVIqxreY8ZITs3Du/a394129266d0ce656f9195b9522dddb9/new-u-life-logo-2025.svg",
-  nuvita:              "https://logo.clearbit.com/nuvitaglobal.com",
+  crunchi:             "/assets/images/logos/crunchi_logo_1781787000997.png",
+  newulife:            "/assets/images/logos/newulife_logo_1781787013482.png",
+  nuvita:              "/assets/images/logos/nuvita_logo_1781787027343.png",
   "faster-way":        "https://www.fasterway.com/cdn/shop/files/FW-Logo-White.png?v=1761871213&width=500",
   "wine-shop-at-home": "https://logo.clearbit.com/wineshopathome.com",
   reliv:               "https://cdn.worldvectorlogo.com/logos/reliv.svg",
-  "sana-vita":         "https://sanavita.hk/cdn/shop/files/Sana_Vita_Wide_Logo.jpg?v=1639039993",
-  "l-bri":             "https://logo.clearbit.com/libri.com",
+  "sana-vita":         "/assets/images/logos/sana_vita_logo_1781785629359.png",
+  "l-bri":             "https://logo.clearbit.com/lbri.com",
 };
 
 function clientLogoUrl(slug: string) {
@@ -422,7 +422,7 @@ export default function SolutionsPage() {
                               src={logoSrc}
                               alt={`${sol.title} logo`}
                               className="relative z-10 max-h-14 max-w-[160px] object-contain"
-                              style={{ filter: "brightness(0) invert(1)", opacity: 0.65 }}
+                              style={{ opacity: 0.9 }}
                             />
                           ) : (
                             <div className="relative z-10 w-16 h-16 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center">

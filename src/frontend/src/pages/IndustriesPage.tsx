@@ -295,16 +295,16 @@ export default function IndustriesPage() {
         className="bg-background py-16 md:py-24"
         data-ocid="industries.list_section"
       >
-        <div className="container max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="container max-w-6xl mx-auto px-6 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-4xl relative z-10 mb-16 md:mb-20"
+            className="max-w-2xl mb-20"
           >
-            <h2 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl text-foreground leading-tight mb-4">
-              Industries We Accelerate <br />
+            <h2 className="font-display font-bold text-4xl lg:text-6xl text-foreground leading-tight mb-4">
+              Commerce Niches We've <br />
               <span className="gradient-accent">Specialized In</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">

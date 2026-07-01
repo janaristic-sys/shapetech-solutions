@@ -1,17 +1,161 @@
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Hexagon, RefreshCcw, Wallet, ShoppingCart, Network, Activity } from "lucide-react";
+import { ArrowRight, Hexagon } from "lucide-react";
 import { motion } from "motion/react";
 import { useShapes } from "@/hooks/use-backend";
 import { Shape } from "@/types";
 
-const ICON_RESOLVER: Record<string, React.ElementType> = {
-  "refresh-ccw": RefreshCcw,
-  wallet: Wallet,
-  "shopping-cart": ShoppingCart,
-  network: Network,
-};
+// ---------------------------------------------------------------------------
+// Geometric SVG Icons — unique per shape pillar
+// ---------------------------------------------------------------------------
+function TriangleIcon({ color }: { color: string }) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-12 h-12"
+      aria-label="Triangle shape icon"
+    >
+      <title>Triangle shape icon</title>
+      <polygon
+        points="32,8 58,52 6,52"
+        stroke={color}
+        strokeWidth="2.5"
+        fill={`${color}18`}
+        strokeLinejoin="round"
+      />
+      <polygon
+        points="32,18 48,44 16,44"
+        stroke={color}
+        strokeWidth="1.5"
+        fill="none"
+        opacity="0.45"
+        strokeLinejoin="round"
+      />
+      <circle cx="32" cy="32" r="3" fill={color} opacity="0.8" />
+    </svg>
+  );
+}
+
+function CircleIcon({ color }: { color: string }) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-12 h-12"
+      aria-label="Circle shape icon"
+    >
+      <title>Circle shape icon</title>
+      <circle
+        cx="32"
+        cy="32"
+        r="22"
+        stroke={color}
+        strokeWidth="2.5"
+        fill={`${color}18`}
+      />
+      <circle
+        cx="32"
+        cy="32"
+        r="13"
+        stroke={color}
+        strokeWidth="1.5"
+        fill="none"
+        opacity="0.45"
+      />
+      <circle cx="32" cy="32" r="4.5" fill={color} opacity="0.8" />
+    </svg>
+  );
+}
+
+function HexagonIcon({ color }: { color: string }) {
+  return (
+    <svg
+
+      viewBox="0 0 64 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-12 h-12"
+      aria-label="Hexagon shape icon"
+    >
+      <title>Hexagon shape icon</title>
+      <polygon
+        points="32,4 58,18 58,46 32,60 6,46 6,18"
+        stroke={color}
+        strokeWidth="2.5"
+        fill={`${color}18`}
+        strokeLinejoin="round"
+      />
+      <polygon
+        points="32,16 46,24 46,40 32,48 18,40 18,24"
+        stroke={color}
+        strokeWidth="1.5"
+        fill="none"
+        opacity="0.45"
+        strokeLinejoin="round"
+      />
+      <circle cx="32" cy="32" r="3" fill={color} opacity="0.8" />
+    </svg>
+  );
+}
+
+function DiamondIcon({ color }: { color: string }) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-12 h-12"
+      aria-label="Diamond shape icon"
+    >
+      <title>Diamond shape icon</title>
+      <polygon
+        points="32,6 58,32 32,58 6,32"
+        stroke={color}
+        strokeWidth="2.5"
+        fill={`${color}18`}
+        strokeLinejoin="round"
+      />
+      <polygon
+        points="32,16 48,32 32,48 16,32"
+        stroke={color}
+        strokeWidth="1.5"
+        fill="none"
+        opacity="0.45"
+        strokeLinejoin="round"
+      />
+      <circle cx="32" cy="32" r="3" fill={color} opacity="0.8" />
+    </svg>
+  );
+}
+
+function StarIcon({ color }: { color: string }) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-12 h-12"
+      aria-label="Star shape icon"
+    >
+      <title>Star shape icon</title>
+      <polygon
+        points="32,6 38,24 57,24 43,35 48,54 32,43 16,54 21,35 7,24 26,24"
+        stroke={color}
+        strokeWidth="2.5"
+        fill={`${color}18`}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+      <circle cx="32" cy="32" r="4" fill={color} opacity="0.75" />
+    </svg>
+  );
+}
+
+
 
 const TEAL = "oklch(0.75 0.12 195)";
 
@@ -63,6 +207,14 @@ function WaveDivider({
 // Diagonal Accent Divider — large angled band between intro and cards
 // ---------------------------------------------------------------------------
 function DiagonalDivider({ shapes }: { shapes: Shape[] }) {
+  const ICON_RESOLVER: Record<string, React.ElementType> = {
+    Triangle: TriangleIcon,
+    Circle: CircleIcon,
+    Hexagon: HexagonIcon,
+    Diamond: DiamondIcon,
+    Star: StarIcon,
+  };
+
   return (
     <div
       className="relative py-8 overflow-hidden"
@@ -88,6 +240,7 @@ function DiagonalDivider({ shapes }: { shapes: Shape[] }) {
       {/* Pill row */}
       <div className="relative container max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-3 py-6">
         {(shapes || []).map((s, i) => {
+          const Icon = ICON_RESOLVER[s.iconName] || TriangleIcon;
           return (
             <motion.div
               key={String(s.id)}
@@ -95,14 +248,15 @@ function DiagonalDivider({ shapes }: { shapes: Shape[] }) {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.4 }}
-              className="flex items-center justify-center px-8 py-3 rounded-full border shadow-sm hover:scale-105 transition-transform"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full border"
               style={{
                 background: `${TEAL}12`,
-                borderColor: `${TEAL}40`,
+                borderColor: `${TEAL}35`,
               }}
             >
+              <Icon color={TEAL} className="size-4" />
               <span
-                className="font-display font-bold text-base md:text-lg tracking-wide uppercase"
+                className="font-display font-semibold text-sm"
                 style={{ color: TEAL }}
               >
                 {s.title}
@@ -116,106 +270,135 @@ function DiagonalDivider({ shapes }: { shapes: Shape[] }) {
 }
 
 // ---------------------------------------------------------------------------
-// Shape Stack Card (Mirroring Industries Page Layout)
+// Shape Card
 // ---------------------------------------------------------------------------
-function ShapeStackCard({
+function ShapeCard({
   shape,
   index,
 }: {
   shape: Shape & { Icon: React.ElementType };
   index: number;
 }) {
-  const borderRadius = "28px 8px 28px 8px";
+  const blobRadius = BLOB_RADII[index % BLOB_RADII.length];
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 100 }}
+      data-ocid={`shapes.card.${index + 1}`}
+      initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="sticky top-20 md:top-24 w-full mb-20 md:mb-32 last:mb-0 pt-10"
-      style={{ zIndex: index + 1 }}
-      data-ocid={`shapes.stack_card.${index + 1}`}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group relative flex flex-col card-fluid border border-border hover:border-primary/40 overflow-hidden"
+      style={{ borderRadius: "20px" }}
     >
-      <div className="relative">
-        {/* Main card — sits on top */}
-        <div
-          className="relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] min-h-[480px] md:min-h-[450px] flex flex-col md:flex-row"
-          style={{
-            borderRadius,
-            background: "oklch(0.18 0.05 270)",
-            border: `1px solid ${TEAL}25`,
-            zIndex: 3,
-          }}
-        >
-          {/* Content Layout */}
-          <div className="relative z-10 flex flex-col md:flex-row w-full p-6 md:p-14 gap-8 md:gap-12 lg:gap-20">
-            {/* Left Column: Information */}
-            <div className="flex-1 flex flex-col">
-              <div className="flex items-center gap-4 mb-6 md:mb-8">
-                <div
-                  className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center text-primary"
-                  style={{
-                    background: `${TEAL}12`,
-                    borderRadius: "20px 6px 20px 6px",
-                    border: `1px solid ${TEAL}40`,
-                  }}
-                >
-                  <shape.Icon color={TEAL} className="size-5 md:size-6" />
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] block mb-0.5 md:mb-1" style={{ color: TEAL }}>
-                    Commerce Engine
-                  </span>
-                  <h3 className="font-display font-bold text-foreground text-xl md:text-2xl lg:text-3xl leading-tight">
-                    {shape.title}
-                  </h3>
-                </div>
-              </div>
+      {/* Organic blob background accent */}
+      <div
+        className="pointer-events-none absolute -top-12 -right-12 w-56 h-56 opacity-[0.08] group-hover:opacity-[0.15] transition-smooth"
+        aria-hidden="true"
+        style={{
+          background: `radial-gradient(circle, ${TEAL}, transparent 70%)`,
+          borderRadius: blobRadius,
+        }}
+      />
+      <div
+        className="pointer-events-none absolute -bottom-16 -left-10 w-48 h-48 opacity-[0.05] group-hover:opacity-[0.10] transition-smooth"
+        aria-hidden="true"
+        style={{
+          background: `radial-gradient(circle, ${TEAL}, transparent 70%)`,
+          borderRadius: BLOB_RADII[(index + 2) % BLOB_RADII.length],
+        }}
+      />
 
-              <p className="text-muted-foreground text-sm md:text-base lg:text-lg leading-relaxed mb-8 md:mb-10 max-w-xl">
-                {shape.description}
-              </p>
-            </div>
+      {/* Hover gradient overlay */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-smooth pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: `linear-gradient(135deg, ${TEAL}0d 0%, transparent 60%)`,
+          borderRadius: "20px",
+        }}
+      />
 
-            {/* Right Column: Key Capabilities */}
-            <div className="md:w-[320px] lg:w-[380px] shrink-0">
-              <div className="bg-background/20 backdrop-blur-md rounded-3xl border border-white/5 p-6 md:p-8 h-full relative">
-                <div className="flex items-center gap-3 mb-6 md:mb-8">
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground/80">
-                    Capabilities
-                  </span>
-                </div>
-
-                <ul className="space-y-3 md:space-y-4">
-                  {(shape.capabilities || []).map((cap, i) => (
-                    <motion.li
-                      key={cap}
-                      initial={{ opacity: 0, x: 10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.2 + i * 0.05 }}
-                      className="flex items-start gap-3 md:gap-4 group/item"
-                    >
-                      <div className="mt-1 size-4 md:size-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                        <div className="size-1.5 md:size-2 rounded-full" style={{ background: TEAL }} />
-                      </div>
-                      <span className="text-xs md:text-sm lg:text-base text-foreground/90 leading-tight">
-                        {cap}
-                      </span>
-                    </motion.li>
-                  ))}
-                </ul>
-
-                {/* Counter for visual flair */}
-                <div className="absolute bottom-4 right-6 md:bottom-6 md:right-8 opacity-[0.05] select-none pointer-events-none">
-                  <span className="font-display font-black text-6xl md:text-7xl lg:text-8xl">
-                    {(index + 1).toString().padStart(2, "0")}
-                  </span>
-                </div>
-              </div>
-            </div>
+      <div className="relative z-10 flex flex-col h-full p-8">
+        {/* Header row */}
+        <div className="flex items-start justify-between mb-6">
+          {/* Icon with blob background */}
+          <div
+            className="flex items-center justify-center w-20 h-20 group-hover:scale-110 transition-smooth flex-shrink-0"
+            style={{
+              background: `${TEAL}14`,
+              borderRadius: blobRadius,
+              border: `1.5px solid ${TEAL}35`,
+            }}
+          >
+            <shape.Icon color={TEAL} />
           </div>
+
+          {/* Ghost number */}
+          <span
+            className="font-display font-bold text-7xl leading-none select-none"
+            style={{ color: `${TEAL}18` }}
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        </div>
+
+        {/* Shape badge — uses shape title as the label */}
+        <div className="flex items-center gap-2 mb-3">
+          <span
+            className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest"
+            style={{
+              background: `${TEAL}14`,
+              border: `1px solid ${TEAL}35`,
+              color: TEAL,
+            }}
+          >
+            {shape.title}
+          </span>
+        </div>
+
+        {/* Title & tagline */}
+        <h3 className="font-display font-bold text-2xl text-foreground mb-1 leading-tight">
+          {shape.title}
+        </h3>
+        <p className="text-primary font-medium text-sm mb-4">{shape.tagline}</p>
+
+        {/* Description */}
+        <p className="text-muted-foreground text-base leading-relaxed mb-6 flex-1">
+          {shape.description}
+        </p>
+
+        {/* Capabilities */}
+        <ul className="space-y-2 mb-6">
+          {shape.capabilities.map((cap) => (
+            <li
+              key={cap}
+              className="flex items-start gap-2.5 text-sm text-foreground/75"
+            >
+              <div
+                className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                style={{
+                  background: `${TEAL}18`,
+                  border: `1px solid ${TEAL}35`,
+                }}
+              >
+                <div
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ background: TEAL }}
+                />
+              </div>
+              <span>{cap}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Divider */}
+        <div className="divider-fluid mb-4" />
+
+        {/* Footer link */}
+        <div className="flex items-center gap-2 text-primary font-medium text-sm">
+          <span>Explore {shape.title}</span>
+          <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform duration-200" />
         </div>
       </div>
     </motion.div>
@@ -225,13 +408,26 @@ function ShapeStackCard({
 // ---------------------------------------------------------------------------
 // Skeleton Card (loading state)
 // ---------------------------------------------------------------------------
-function ShapeStackCardSkeleton({ index }: { index: number }) {
+function ShapeCardSkeleton({ index }: { index: number }) {
   return (
     <div
       data-ocid={`shapes.loading_state.${index + 1}`}
-      className="w-full mb-12"
+      className="card-fluid border border-border p-8"
+      style={{ borderRadius: "20px" }}
     >
-      <Skeleton className="w-full h-[450px]" style={{ borderRadius: "28px 8px 28px 8px" }} />
+      <div className="flex items-start justify-between mb-6">
+        <Skeleton className="w-20 h-20 rounded-2xl" />
+        <Skeleton className="w-16 h-14 rounded-lg" />
+      </div>
+      <Skeleton className="w-20 h-5 rounded-full mb-3" />
+      <Skeleton className="w-2/3 h-7 rounded mb-2" />
+      <Skeleton className="w-1/3 h-4 rounded mb-4" />
+      <Skeleton className="w-full h-20 rounded mb-6" />
+      <div className="space-y-2">
+        {[1, 2, 3].map((j) => (
+          <Skeleton key={j} className="w-full h-4 rounded" />
+        ))}
+      </div>
     </div>
   );
 }
@@ -243,6 +439,14 @@ function ShapeStackCardSkeleton({ index }: { index: number }) {
 // ---------------------------------------------------------------------------
 export default function ShapesPage() {
   const { data: shapes, isLoading } = useShapes();
+
+  const ICON_RESOLVER: Record<string, React.ElementType> = {
+    Triangle: TriangleIcon,
+    Circle: CircleIcon,
+    Hexagon: HexagonIcon,
+    Diamond: DiamondIcon,
+    Star: StarIcon,
+  };
 
   return (
     <div data-ocid="shapes.page">
@@ -289,7 +493,7 @@ export default function ShapesPage() {
               Proprietary Technology
             </span>
 
-            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
+            <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
               Our <span className="gradient-accent">Commerce Engines</span>
             </h1>
 
@@ -334,7 +538,7 @@ export default function ShapesPage() {
 
       {/* ── Intro paragraph ── */}
       <section
-        className="bg-background py-10 lg:py-14"
+        className="bg-background py-16 lg:py-20"
         data-ocid="shapes.intro_section"
       >
         <div className="container max-w-4xl mx-auto px-6">
@@ -393,19 +597,19 @@ export default function ShapesPage() {
             </p>
           </motion.div>
 
-          {/* Stacked Layout */}
+          {/* Responsive grid: 1 col → 2 col → 3 col */}
           <div
-            className="flex flex-col relative"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
             data-ocid="shapes.cards_list"
           >
             {isLoading
-              ? Array.from({ length: 4 }).map((_, i) => (
-                <ShapeStackCardSkeleton key={`skeleton-${i + 1}`} index={i} />
+              ? Array.from({ length: 5 }).map((_, i) => (
+                <ShapeCardSkeleton key={`skeleton-${i + 1}`} index={i} />
               ))
               : (shapes || []).sort((a, b) => Number(a.sortOrder - b.sortOrder)).map((shape, i) => {
-                const IconComponent = ICON_RESOLVER[shape.iconName || (shape as any).icon] || Activity;
+                const IconComponent = ICON_RESOLVER[shape.iconName] || TriangleIcon;
                 return (
-                  <ShapeStackCard
+                  <ShapeCard
                     key={String(shape.id)}
                     shape={{ ...shape, Icon: IconComponent }}
                     index={i}

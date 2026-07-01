@@ -1317,19 +1317,99 @@ function TeamMemberCard({
 }
 
 // ---------------------------------------------------------------------------
-// Team Grid Section (Compact layout for org chart)
+// Team carousel section
 // ---------------------------------------------------------------------------
-function TeamGridSection({ label, members }: { label: string; members: TeamMember[] }) {
+function TeamCarouselSection({ label, members }: { label: string; members: TeamMember[] }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const descriptions: Record<string, string> = {
+    "Board": "The visionary force steering ShapeTech Solutions towards global innovation.",
+    "Management Department": "Ensuring our teams, clients, and projects run seamlessly and efficiently.",
+    "Production Department": "Building the robust, scalable foundations that power our complex digital systems.",
+    "Operations Department": "The engine room of our success, ensuring seamless delivery and client satisfaction.",
+    "Sales Department": "Driving growth and expanding our footprint across global commerce niches.",
+    "IT Support": "Maintaining our internal infrastructure securely and reliably."
+  };
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const firstChild = scrollRef.current.firstElementChild as HTMLElement;
+      if (!firstChild) return;
+      const itemWidth = firstChild.offsetWidth + 32; // width + gap-8 (32px)
+      const scrollAmount = itemWidth * (window.innerWidth >= 1024 ? 3 : 1);
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   if (members.length === 0) return null;
+
   return (
-    <div className="space-y-6">
-      <h3 className="font-display text-2xl lg:text-3xl font-bold text-foreground leading-[1.1]">
-        {label}
-      </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-        {members.map((member, i) => (
-          <TeamMemberCard key={String(member.id)} member={member} index={i} variant="compact" />
-        ))}
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+      {/* Category Info (Left) */}
+      <div className="lg:w-1/3 lg:sticky lg:top-32 space-y-8 z-20">
+        <div className="space-y-6">
+          <Badge variant="outline" className="bg-primary/5 border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
+            Department
+          </Badge>
+          <h3 className="font-display text-4xl lg:text-5xl font-bold text-foreground leading-[1.1]">
+            {label}
+          </h3>
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-sm">
+            {descriptions[label] || Driving excellence and innovation within our  division.}
+          </p>
+        </div>
+      </div>
+
+      {/* Carousel (Right) */}
+      <div className="lg:w-2/3 w-full relative min-w-0 group/carousel">
+        {/* Navigation Arrows - Repositioned to overlay on carousel */}
+        {members.length > 2 && (
+          <>
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 z-30 rounded-full w-14 h-14 border-border/40 hover:border-primary/50 hover:text-primary transition-all duration-300 bg-card/90 backdrop-blur-md opacity-0 group-hover/carousel:opacity-100 hidden lg:flex shadow-xl"
+              onClick={() => scroll("left")}
+              aria-label={Scroll  left}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute -right-6 top-1/2 -translate-y-1/2 z-30 rounded-full w-14 h-14 border-border/40 hover:border-primary/50 hover:text-primary transition-all duration-300 bg-card/90 backdrop-blur-md opacity-0 group-hover/carousel:opacity-100 hidden lg:flex shadow-xl"
+              onClick={() => scroll("right")}
+              aria-label={Scroll  right}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </Button>
+          </>
+        )}
+
+        <div
+          ref={scrollRef}
+          className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar scroll-smooth w-full max-w-full"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          <style dangerouslySetInnerHTML={{
+            __html: 
+            .hide-scrollbar::-webkit-scrollbar { display: none; }
+          }} />
+          {members.map((member, i) => (
+            <div
+              key={String(member.id)}
+              className="w-[80vw] md:w-[calc(50%-16px)] lg:w-[calc(33.33%-22px)] shrink-0 snap-start"
+            >
+              <TeamMemberCard member={member} index={i} variant="detailed" />
+            </div>
+          ))}
+          <div className="w-[20vw] shrink-0" />
+        </div>
+
+        <div className="hidden lg:block absolute top-0 right-0 bottom-12 w-24 bg-gradient-to-l from-card/20 to-transparent pointer-events-none z-10" />
       </div>
     </div>
   );
@@ -1354,25 +1434,19 @@ function TeamSection() {
 
   const board = getMembers("Board");
   const operations = getMembers("Operations Department");
-  
-  // Production
-  const prodTeam1 = getMembers("Production Department", "Team 1");
-  const prodTeam2 = getMembers("Production Department", "Team 2");
-  const prodTeam3 = getMembers("Production Department", "Team 3");
-  const prodTeam4 = getMembers("Production Department", "Team 4");
-  const prodTeam5 = getMembers("Production Department", "Team 5");
-  const design = getMembers("Production Department", "Design Department");
-  const qa = getMembers("Production Department", "Quality Assurance");
-  const devops = getMembers("Production Department", "DevOps Team");
-
-  // Management
-  const mgtProject = getMembers("Management Department", "Project Management");
-  const mgtClient = getMembers("Management Department", "Client Management");
-  const mgtPeople = getMembers("Management Department", "People Operations");
-  const mgtOffice = getMembers("Management Department", "Office Management");
-
+  const production = getMembers("Production Department");
+  const management = getMembers("Management Department");
   const itSupport = getMembers("IT Support");
   const sales = getMembers("Sales Department");
+
+  const sections = [
+    { id: "board", label: "Board", members: board },
+    { id: "management", label: "Management Department", members: management },
+    { id: "production", label: "Production Department", members: production },
+    { id: "operations", label: "Operations Department", members: operations },
+    { id: "sales", label: "Sales Department", members: sales },
+    { id: "it", label: "IT Support", members: itSupport },
+  ].filter(s => s.members.length > 0);
 
   return (
     <>
@@ -1387,6 +1461,15 @@ function TeamSection() {
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full" />
           <div className="absolute bottom-1/4 -left-20 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-full" />
+          
+          <div className="absolute -top-10 left-10 lg:left-20 opacity-[0.03] select-none">
+            <span className="font-display font-black text-[25vw] lg:text-[22rem] leading-none text-primary block tracking-tighter">
+              50+
+            </span>
+            <span className="font-display font-black text-[12vw] lg:text-[10rem] leading-none text-primary block -mt-10 lg:-mt-20 ml-12 lg:ml-24 tracking-[0.2em]">
+              EXPERTS
+            </span>
+          </div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
@@ -1395,138 +1478,54 @@ function TeamSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mb-16"
+            className="mb-16 lg:mb-24"
           >
-            <Badge
-              variant="outline"
-              className="mb-6 border-primary/30 text-primary uppercase tracking-[0.3em] text-[10px] font-bold px-4 py-1.5 rounded-full"
-            >
-              Our People
-            </Badge>
-            <h2 className="font-display text-5xl lg:text-7xl font-bold text-foreground mb-8 leading-[1.05]">
-              The Talent Behind <br />
-              <span className="gradient-accent">ShapeTech</span>
-            </h2>
-            <p className="text-muted-foreground text-xl leading-relaxed max-w-xl">
-              A globally distributed team of designers, engineers, and strategists
-              committed to transforming businesses through technology.
-            </p>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+              <div className="max-w-2xl">
+                <Badge
+                  variant="outline"
+                  className="mb-6 border-primary/30 text-primary uppercase tracking-[0.3em] text-[10px] font-bold px-4 py-1.5 rounded-full"
+                >
+                  Our People
+                </Badge>
+                <h2 className="font-display text-5xl lg:text-7xl font-bold text-foreground mb-8 leading-[1.05]">
+                  The Talent Behind <br />
+                  <span className="gradient-accent">ShapeTech</span>
+                </h2>
+                <p className="text-muted-foreground text-xl leading-relaxed max-w-xl">
+                  A globally distributed team of designers, engineers, and strategists
+                  committed to transforming businesses through technology.
+                </p>
+              </div>
+            </div>
           </motion.div>
 
           {isLoading ? (
             <div className="space-y-16">
-              {[1, 2, 3].map((s) => (
-                <div key={s} className="space-y-6">
-                  <Skeleton className="h-10 w-48" />
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                    {[1, 2, 3].map((i) => (
-                      <Skeleton key={i} className="h-20 w-full rounded-3xl" />
+              {[1, 2].map((s) => (
+                <div key={s} className="flex flex-col lg:flex-row gap-12">
+                  <div className="lg:w-1/3 space-y-6">
+                    <Skeleton className="h-6 w-24 rounded-full" />
+                    <Skeleton className="h-12 w-48" />
+                    <Skeleton className="h-20 w-full" />
+                  </div>
+                  <div className="lg:w-2/3 flex gap-6 overflow-hidden">
+                    {[1, 2].map((i) => (
+                      <Skeleton key={i} className="h-[280px] w-[300px] shrink-0 rounded-[2rem]" />
                     ))}
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="space-y-16">
-              <TeamGridSection label="Board" members={board} />
-              <TeamGridSection label="Operations Department" members={operations} />
-              
-              <div className="space-y-6">
-                <h3 className="font-display text-2xl lg:text-3xl font-bold text-foreground leading-[1.1]">
-                  Production Department
-                </h3>
-                <Tabs defaultValue="team1" className="w-full">
-                  <TabsList className="flex flex-wrap gap-2 h-auto p-1 bg-background/50 backdrop-blur-md mb-8 justify-start">
-                    <TabsTrigger value="team1" className="text-xs lg:text-sm px-4 py-2 rounded-xl">Team 1</TabsTrigger>
-                    <TabsTrigger value="team2" className="text-xs lg:text-sm px-4 py-2 rounded-xl">Team 2</TabsTrigger>
-                    <TabsTrigger value="team3" className="text-xs lg:text-sm px-4 py-2 rounded-xl">Team 3</TabsTrigger>
-                    <TabsTrigger value="team4" className="text-xs lg:text-sm px-4 py-2 rounded-xl">Team 4</TabsTrigger>
-                    <TabsTrigger value="team5" className="text-xs lg:text-sm px-4 py-2 rounded-xl">Team 5</TabsTrigger>
-                    <TabsTrigger value="design" className="text-xs lg:text-sm px-4 py-2 rounded-xl">Design</TabsTrigger>
-                    <TabsTrigger value="qa" className="text-xs lg:text-sm px-4 py-2 rounded-xl">QA</TabsTrigger>
-                    <TabsTrigger value="devops" className="text-xs lg:text-sm px-4 py-2 rounded-xl">DevOps</TabsTrigger>
-                  </TabsList>
-                  
-                  <TabsContent value="team1">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {prodTeam1.map((m, i) => <TeamMemberCard key={String(m.id)} member={m} index={i} variant="compact" />)}
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="team2">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {prodTeam2.map((m, i) => <TeamMemberCard key={String(m.id)} member={m} index={i} variant="compact" />)}
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="team3">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {prodTeam3.map((m, i) => <TeamMemberCard key={String(m.id)} member={m} index={i} variant="compact" />)}
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="team4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {prodTeam4.map((m, i) => <TeamMemberCard key={String(m.id)} member={m} index={i} variant="compact" />)}
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="team5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {prodTeam5.map((m, i) => <TeamMemberCard key={String(m.id)} member={m} index={i} variant="compact" />)}
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="design">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {design.map((m, i) => <TeamMemberCard key={String(m.id)} member={m} index={i} variant="compact" />)}
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="qa">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {qa.map((m, i) => <TeamMemberCard key={String(m.id)} member={m} index={i} variant="compact" />)}
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="devops">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {devops.map((m, i) => <TeamMemberCard key={String(m.id)} member={m} index={i} variant="compact" />)}
-                    </div>
-                  </TabsContent>
-                </Tabs>
-              </div>
-
-              <div className="space-y-6">
-                <h3 className="font-display text-2xl lg:text-3xl font-bold text-foreground leading-[1.1]">
-                  Management Department
-                </h3>
-                <Tabs defaultValue="project" className="w-full">
-                  <TabsList className="flex flex-wrap gap-2 h-auto p-1 bg-background/50 backdrop-blur-md mb-8 justify-start">
-                    <TabsTrigger value="project" className="text-xs lg:text-sm px-4 py-2 rounded-xl">Project Mgmt</TabsTrigger>
-                    <TabsTrigger value="client" className="text-xs lg:text-sm px-4 py-2 rounded-xl">Client Mgmt</TabsTrigger>
-                    <TabsTrigger value="people" className="text-xs lg:text-sm px-4 py-2 rounded-xl">People Ops</TabsTrigger>
-                    <TabsTrigger value="office" className="text-xs lg:text-sm px-4 py-2 rounded-xl">Office Mgmt</TabsTrigger>
-                  </TabsList>
-                  
-                  <TabsContent value="project">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {mgtProject.map((m, i) => <TeamMemberCard key={String(m.id)} member={m} index={i} variant="compact" />)}
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="client">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {mgtClient.map((m, i) => <TeamMemberCard key={String(m.id)} member={m} index={i} variant="compact" />)}
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="people">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {mgtPeople.map((m, i) => <TeamMemberCard key={String(m.id)} member={m} index={i} variant="compact" />)}
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="office">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {mgtOffice.map((m, i) => <TeamMemberCard key={String(m.id)} member={m} index={i} variant="compact" />)}
-                    </div>
-                  </TabsContent>
-                </Tabs>
-              </div>
-
-              <TeamGridSection label="Sales Department" members={sales} />
-              <TeamGridSection label="IT Support" members={itSupport} />
+            <div className="space-y-10 lg:space-y-12">
+              {sections.map((section) => (
+                <TeamCarouselSection
+                  key={section.id}
+                  label={section.label}
+                  members={section.members}
+                />
+              ))}
             </div>
           )}
         </div>
