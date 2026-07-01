@@ -469,17 +469,14 @@ export default function IndustriesPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                icon: "🧭",
                 title: "Domain-First Discovery",
                 body: "Every engagement starts with a deep dive into your vertical — its workflows, compliance requirements, and growth dynamics.",
               },
               {
-                icon: "⚙️",
                 title: "Industry-Tuned Tech",
                 body: "We reuse battle-tested vertical components — commission engines, genealogy trees, compliance layers — so you ship faster.",
               },
               {
-                icon: "🚀",
                 title: "Proven Track Record",
                 body: "Over 150 projects across 7+ verticals. From startups to Fortune 500 companies — the patterns we've learned mean fewer surprises and faster ROI.",
               },
@@ -492,7 +489,6 @@ export default function IndustriesPage() {
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="p-7 rounded-2xl bg-background/50 border border-border/60"
               >
-                <span className="text-3xl mb-4 block">{item.icon}</span>
                 <h3 className="font-display font-bold text-foreground text-lg mb-2">
                   {item.title}
                 </h3>
