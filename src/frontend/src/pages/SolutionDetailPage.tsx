@@ -86,7 +86,7 @@ export default function SolutionDetailPage() {
                   </span>
                 )}
               </div>
-              <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-8 tracking-tight">
+              <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-8 tracking-tight">
                 {title}
               </h1>
               <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed mb-12 max-w-3xl">

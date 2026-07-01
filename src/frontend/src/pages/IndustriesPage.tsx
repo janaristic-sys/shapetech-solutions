@@ -301,10 +301,10 @@ export default function IndustriesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-2xl mb-20"
+            className="max-w-4xl relative z-10"
           >
-            <h2 className="font-display font-bold text-4xl lg:text-6xl text-foreground leading-tight mb-4">
-              Commerce Niches We've <br />
+            <h2 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl text-foreground leading-tight mb-4">
+              Industries We Accelerate <br />
               <span className="gradient-accent">Specialized In</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">

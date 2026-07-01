@@ -289,7 +289,7 @@ export default function ShapesPage() {
               Proprietary Technology
             </span>
 
-            <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
+            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
               Our <span className="gradient-accent">Commerce Engines</span>
             </h1>
 

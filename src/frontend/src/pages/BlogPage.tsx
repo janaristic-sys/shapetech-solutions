@@ -46,7 +46,7 @@ export default function BlogPage() {
               <Tag className="size-3.5" />
               Insights & Resources
             </span>
-            <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
+            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
               Insights &amp; <span className="gradient-accent">Articles</span>
             </h1>
             <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-xl">

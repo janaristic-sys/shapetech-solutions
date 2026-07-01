@@ -85,12 +85,12 @@ const SOLUTION_LOGO_URLS: Record<string, string> = {
   "li-bri":            "https://logo.clearbit.com/libri.com",
 };
 
-// Per-shape accent colours (index 0-3)
+// Unified primary shape accents so they don't break the site's aesthetic
 const SHAPE_ACCENTS = [
-  { ring: "from-cyan-500/30 to-primary/10",    dot: "bg-cyan-400",    glow: "bg-cyan-500/10"    },
-  { ring: "from-amber-400/30 to-orange-500/10", dot: "bg-amber-400",  glow: "bg-amber-500/10"   },
-  { ring: "from-violet-500/30 to-primary/10",  dot: "bg-violet-400",  glow: "bg-violet-500/10"  },
-  { ring: "from-emerald-500/30 to-teal-500/10",dot: "bg-emerald-400", glow: "bg-emerald-500/10" },
+  { ring: "from-primary/20 to-primary/5", dot: "bg-primary/80", glow: "bg-primary/10" },
+  { ring: "from-primary/20 to-primary/5", dot: "bg-primary/80", glow: "bg-primary/10" },
+  { ring: "from-primary/20 to-primary/5", dot: "bg-primary/80", glow: "bg-primary/10" },
+  { ring: "from-primary/20 to-primary/5", dot: "bg-primary/80", glow: "bg-primary/10" },
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -138,7 +138,7 @@ function SectionHeading({
         <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
         {eyebrow}
       </span>
-      <h2 className={`font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight mb-4 ${gradient ? "gradient-accent" : "text-foreground"}`}>
+      <h2 className={`font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 ${gradient ? "gradient-accent" : "text-foreground"}`}>
         {title}
       </h2>
       {subtitle && (
@@ -422,7 +422,7 @@ function ShapeCard({ shape, index }: { shape: Shape; index: number }) {
       viewport={{ once: true }}
       transition={{ duration: 0.55, delay: index * 0.1 }}
       data-ocid={`home.shape.${index + 1}`}
-      className="group card-fluid overflow-hidden flex flex-col h-full hover:border-primary/30 transition-smooth"
+      className="card-fluid overflow-hidden flex flex-col h-full transition-smooth border border-border/40"
     >
       {/* Visual header */}
       <div className={`relative h-64 bg-gradient-to-br ${accent.ring} overflow-hidden flex items-center justify-center border-b border-border/30`}>
@@ -443,7 +443,7 @@ function ShapeCard({ shape, index }: { shape: Shape; index: number }) {
           transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: index * 0.7 }}
           className="relative z-10 flex flex-col items-center gap-4"
         >
-          <div className="w-24 h-24 rounded-3xl bg-background/85 backdrop-blur-sm border border-border/50 flex items-center justify-center shadow-xl group-hover:scale-110 transition-smooth">
+          <div className="w-24 h-24 rounded-3xl bg-background/85 backdrop-blur-sm border border-border/50 flex items-center justify-center shadow-xl transition-smooth">
             <DynamicIcon name={shape.iconName ?? "star"} className="size-11 text-primary" />
           </div>
           <span className={`w-2.5 h-2.5 rounded-full ${accent.dot} shadow-lg`} />
@@ -458,7 +458,7 @@ function ShapeCard({ shape, index }: { shape: Shape; index: number }) {
 
       {/* Content */}
       <div className="p-7 flex flex-col flex-1">
-        <h3 className="font-display font-bold text-foreground text-xl mb-3 group-hover:text-primary transition-colors">
+        <h3 className="font-display font-bold text-foreground text-xl mb-3 transition-colors">
           {shape.title}
         </h3>
         <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">

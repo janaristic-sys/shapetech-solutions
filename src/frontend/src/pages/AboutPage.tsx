@@ -685,7 +685,7 @@ function PageHero() {
             >
               About Us
             </Badge>
-            <h1 className="font-display text-5xl lg:text-7xl font-bold leading-[1.05] text-foreground mb-6">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-foreground mb-6">
               About <span className="gradient-accent">ShapeTech Solutions</span>
             </h1>
             <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl">
