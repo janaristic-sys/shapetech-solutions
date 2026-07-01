@@ -104,7 +104,7 @@ function DynamicIcon({ name, ...props }: { name: string } & LucideProps) {
 }
 
 function clientLogoUrl(slug: string) {
-  return SOLUTION_LOGO_URLS[slug] ?? "";
+  return CLIENT_LOGOS[slug] ?? "";
 }
 
 // ─── Wave Divider ─────────────────────────────────────────────────────────────
