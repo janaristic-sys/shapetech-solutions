@@ -57,7 +57,7 @@ const SOLUTION_LOGO_URLS: Record<string, string> = {
   "wine-shop-at-home": "https://logo.clearbit.com/wineshopathome.com",
   reliv:               "https://cdn.worldvectorlogo.com/logos/reliv.svg",
   "sana-vita":         "https://sanavita.hk/cdn/shop/files/Sana_Vita_Wide_Logo.jpg?v=1639039993",
-  "li-bri":            "https://logo.clearbit.com/libri.com",
+  "l-bri":             "https://logo.clearbit.com/libri.com",
 };
 
 function clientLogoUrl(slug: string) {

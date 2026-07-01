@@ -58,7 +58,7 @@ const defaultClients: Client[] = [
   { id: 5n, name: "Wine Shop at Home", logoUrl: "/assets/logos/wine-shop-at-home.png", websiteUrl: "https://wineshopathome.com", sortOrder: 5n, solutionSlug: "wine-shop-at-home" },
   { id: 6n, name: "Reliv", logoUrl: "/assets/logos/reliv.png", websiteUrl: "https://reliv.com", sortOrder: 6n, solutionSlug: "reliv" },
   { id: 7n, name: "Sana Vita", logoUrl: "/assets/logos/sana-vita.png", websiteUrl: "https://sanavita.hk", sortOrder: 7n, solutionSlug: "sana-vita" },
-  { id: 8n, name: "L'BRI", logoUrl: "/assets/logos/li-bri.png", websiteUrl: "https://lbri.com", sortOrder: 8n, solutionSlug: "li-bri" },
+  { id: 8n, name: "L'BRI", logoUrl: "/assets/logos/l-bri.png", websiteUrl: "https://lbri.com", sortOrder: 8n, solutionSlug: "l-bri" },
 ];
 
 const defaultIndustries: Industry[] = [
@@ -224,11 +224,11 @@ const defaultSolutions: Solution[] = [
       "Developed shop on behalf flow, allowing reps to create and place orders for both reps and customers in their organization"
     ],
     gallery: [
-      "/images/placeholder-shop-home.png",
-      "/images/placeholder-bundle-pdp.png",
-      "/images/placeholder-share-cart.png",
-      "/images/placeholder-multi-market.png",
-      "/images/placeholder-shop-on-behalf.png"
+      "/assets/images/newulife/shop-home.png",
+      "/assets/images/newulife/bundle-pdp.png",
+      "/assets/images/newulife/share-cart.png",
+      "/assets/images/newulife/multi-market.png",
+      "/assets/images/newulife/shop-on-behalf.png"
     ]
   },
   {
@@ -323,17 +323,17 @@ const defaultSolutions: Solution[] = [
   },
   {
     id: 8n,
-    title: "Li Bri",
+    title: "L'BRI",
     tagline: "Direct Selling Storefront & Back-Office",
-    description: "We developed a high-performance direct sales storefront and affiliate tracking solution for Li Bri's natural skincare catalog. The platform features replicated representative websites, order routing, and a clean distributor dashboard for tracking commission tiers. The user interface was optimized for speed, resulting in double-digit increases in mobile conversion rates.",
+    description: "We developed a high-performance direct sales storefront and affiliate tracking solution for L'BRI's natural skincare catalog. The platform features replicated representative websites, order routing, and a clean distributor dashboard for tracking commission tiers. The user interface was optimized for speed, resulting in double-digit increases in mobile conversion rates.",
     iconName: "Sparkles",
-    slug: "li-bri",
+    slug: "l-bri",
     sortOrder: 8n,
     features: ["Custom storefront", "Affiliate tracking", "Back-office portal", "Order management"],
     relatedShapeIds: [4n],
     caseStudy: {
       title: "Affiliate Storefront",
-      description: "Built the storefront and affiliate infrastructure supporting Li Bri's direct sales network.",
+      description: "Built the storefront and affiliate infrastructure supporting L'BRI's direct sales network.",
       metrics: [],
     },
     technologies: ["Tailwind CSS", "Next.js", "Node.js", "MongoDB"],

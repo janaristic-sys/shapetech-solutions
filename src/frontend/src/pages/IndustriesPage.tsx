@@ -301,7 +301,7 @@ export default function IndustriesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-4xl relative z-10"
+            className="max-w-4xl relative z-10 mb-16 md:mb-20"
           >
             <h2 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl text-foreground leading-tight mb-4">
               Industries We Accelerate <br />

@@ -118,6 +118,8 @@ export interface TeamMember {
   linkedinUrl: string;
   sortOrder: bigint;
   category?: string;
+  departments?: string[];
+  teams?: string[];
 }
 
 export interface Partner {

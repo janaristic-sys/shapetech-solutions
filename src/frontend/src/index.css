@@ -96,7 +96,8 @@
     @apply border-border;
   }
   html, body {
-    @apply bg-background text-foreground font-body antialiased overflow-x-hidden w-full;
+    @apply bg-background text-foreground font-body antialiased w-full;
+    overflow-x: clip;
   }
 }
 

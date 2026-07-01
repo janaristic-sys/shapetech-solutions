@@ -80,7 +80,7 @@ const CLIENT_LOGOS: Record<string, string> = {
   "wine-shop-at-home": "/assets/logos/wine-shop-at-home.png",
   reliv:               "/assets/logos/reliv.png",
   "sana-vita":         "/assets/logos/sana-vita.png",
-  "li-bri":            "/assets/logos/li-bri.png",
+  "l-bri":             "/assets/logos/l-bri.png",
   newulife:            "/assets/logos/newulife.png",
 };
 
@@ -607,12 +607,12 @@ export default function HomePage() {
     if (solutionsTab === "all") return solutions;
     if (solutionsTab === "direct-selling") {
       return solutions.filter((sol) =>
-        ["newulife", "nuvita", "wine-shop-at-home", "li-bri"].includes(sol.slug)
+        ["newulife", "nuvita", "wine-shop-at-home", "l-bri"].includes(sol.slug)
       );
     }
     if (solutionsTab === "headless") {
       return solutions.filter((sol) =>
-        ["crunchi", "reliv", "li-bri"].includes(sol.slug)
+        ["crunchi", "reliv", "l-bri"].includes(sol.slug)
       );
     }
     if (solutionsTab === "subscriptions") {
