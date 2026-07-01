@@ -316,10 +316,10 @@ function HeroAnimation() {
               <motion.div
                 animate={{ rotate: -dir * 360 }}
                 transition={{ duration, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                className="w-12 h-12 rounded-2xl bg-card/90 border border-border/50 flex items-center justify-center backdrop-blur-sm"
-                style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.45)" }}
+                className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-[1.25rem] bg-card/90 border border-border/60 flex items-center justify-center backdrop-blur-md"
+                style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
               >
-                <Icon className="size-6 text-primary/80" />
+                <Icon className="size-8 md:size-10 text-primary/90" />
               </motion.div>
             </div>
           );
@@ -329,71 +329,71 @@ function HeroAnimation() {
   }
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center">
+    <div className="relative w-full h-full flex items-center justify-center scale-75 sm:scale-90 lg:scale-100 origin-center">
       {/* ── Static ring outlines ── */}
-      <div className="absolute w-[300px] h-[300px] rounded-full border border-primary/10 pointer-events-none" />
-      <div className="absolute w-[492px] h-[492px] rounded-full border border-primary/6 pointer-events-none" />
+      <div className="absolute w-[360px] h-[360px] rounded-full border border-primary/10 pointer-events-none" />
+      <div className="absolute w-[560px] h-[560px] rounded-full border border-primary/6 pointer-events-none" />
 
       {/* ── Conic-gradient sweep on inner ring (clockwise) ── */}
       <motion.div
-        className="absolute w-[300px] h-[300px] rounded-full pointer-events-none"
+        className="absolute w-[360px] h-[360px] rounded-full pointer-events-none"
         animate={{ rotate: 360 }}
         transition={{ duration: 14, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-        style={{ background: "conic-gradient(from 0deg, transparent 62%, oklch(0.75 0.12 195 / 0.22) 100%)" }}
+        style={{ background: "conic-gradient(from 0deg, transparent 62%, oklch(0.75 0.12 195 / 0.3) 100%)" }}
       />
 
       {/* ── Conic-gradient sweep on outer ring (counter-clockwise) ── */}
       <motion.div
-        className="absolute w-[492px] h-[492px] rounded-full pointer-events-none"
+        className="absolute w-[560px] h-[560px] rounded-full pointer-events-none"
         animate={{ rotate: -360 }}
         transition={{ duration: 24, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-        style={{ background: "conic-gradient(from 0deg, transparent 78%, oklch(0.75 0.12 195 / 0.12) 100%)" }}
+        style={{ background: "conic-gradient(from 0deg, transparent 78%, oklch(0.75 0.12 195 / 0.15) 100%)" }}
       />
 
       {/* ── Inner orbit: core commerce actions ── */}
       <OrbitRing
         icons={[
           { Icon: ShoppingCart, angle: -90 },
-          { Icon: CreditCard,   angle:  30 },
-          { Icon: Package,      angle: 150 },
+          { Icon: Wallet,       angle:  30 },
+          { Icon: RefreshCcw,   angle: 150 },
         ]}
-        radius={150}
-        duration={14}
+        radius={180}
+        duration={16}
         dir={1}
       />
 
       {/* ── Outer orbit: ecosystem (counter-clockwise) ── */}
       <OrbitRing
         icons={[
-          { Icon: Smartphone,  angle: -90 },
+          { Icon: Code2,       angle: -90 },
           { Icon: Users,       angle:   0 },
           { Icon: TrendingUp,  angle:  90 },
           { Icon: Globe,       angle: 180 },
         ]}
-        radius={246}
-        duration={24}
+        radius={280}
+        duration={28}
         dir={-1}
       />
 
       {/* ── Ambient background glow ── */}
-      <div className="absolute w-[200px] h-[200px] rounded-full bg-primary/8 blur-[60px] pointer-events-none" />
+      <div className="absolute w-[280px] h-[280px] rounded-full bg-primary/10 blur-[80px] pointer-events-none" />
 
       {/* ── Central hub ── */}
       <motion.div
         animate={{
-          scale: [1, 1.06, 1],
+          scale: [1, 1.05, 1],
           boxShadow: [
-            "0 0 40px oklch(0.75 0.12 195 / 0.35), 0 0 80px oklch(0.75 0.12 195 / 0.12)",
-            "0 0 70px oklch(0.75 0.12 195 / 0.55), 0 0 140px oklch(0.75 0.12 195 / 0.22)",
-            "0 0 40px oklch(0.75 0.12 195 / 0.35), 0 0 80px oklch(0.75 0.12 195 / 0.12)",
+            "0 0 50px oklch(0.75 0.12 195 / 0.4), 0 0 100px oklch(0.75 0.12 195 / 0.15)",
+            "0 0 80px oklch(0.75 0.12 195 / 0.6), 0 0 160px oklch(0.75 0.12 195 / 0.25)",
+            "0 0 50px oklch(0.75 0.12 195 / 0.4), 0 0 100px oklch(0.75 0.12 195 / 0.15)",
           ],
         }}
         transition={{ duration: 3.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-        className="relative z-20 w-28 h-28 rounded-3xl bg-gradient-to-br from-primary/50 to-primary/15 border border-primary/40 flex items-center justify-center"
+        className="relative z-20 w-36 h-36 md:w-44 md:h-44 rounded-[2rem] bg-gradient-to-br from-primary/60 to-primary/20 border border-primary/50 flex items-center justify-center"
       >
         {/* Inner glow layer */}
-        <div className="absolute inset-0 rounded-3xl bg-primary/15 blur-xl" />
-        <Network className="relative size-12 text-primary" />
+        <div className="absolute inset-0 rounded-[2rem] bg-primary/20 blur-xl" />
+        <Network className="relative size-16 md:size-20 text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
       </motion.div>
 
       {/* ── Pulse waves radiating from hub ── */}
