@@ -85,6 +85,8 @@ function IndustryStackCard({
   total: number;
 }) {
 
+  const isDirectSelling = industry.title.includes("Direct Selling");
+  const isEcommerce = industry.title.includes("Commerce");
 
   // Custom radii for the premium look
   const borderRadius = "28px 8px 28px 8px";
