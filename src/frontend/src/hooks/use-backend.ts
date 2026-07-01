@@ -323,21 +323,30 @@ const defaultSolutions: Solution[] = [
   },
   {
     id: 8n,
-    title: "L'BRI",
-    tagline: "Direct Selling Storefront & Back-Office",
-    description: "We developed a high-performance direct sales storefront and affiliate tracking solution for L'BRI's natural skincare catalog. The platform features replicated representative websites, order routing, and a clean distributor dashboard for tracking commission tiers. The user interface was optimized for speed, resulting in double-digit increases in mobile conversion rates.",
+    title: "L'Bri",
+    tagline: "Shopify Direct Middleware & Ecommerce",
+    description: "We implemented Shopify Direct middleware between Shopify and ByDesign as a commission engine. The platform features replicated websites for L'Bri's entire consultant database, preserving the MLM logic on the Shopify storefront.",
     iconName: "Sparkles",
     slug: "l-bri",
     sortOrder: 8n,
-    features: ["Custom storefront", "Affiliate tracking", "Back-office portal", "Order management"],
+    features: ["Shopify Direct", "Replicated websites", "Share cart feature", "Bidirectional sync"],
     relatedShapeIds: [4n],
+    bulletPoints: [
+      "Launched a USA market on Shopify.",
+      "Implemented our Shopify Direct middleware between Shopify and ByDesign as a commission engine.",
+      "Developer replicated websites for L'Bri's entire consultant database.",
+      "Preserved the MLM logic on the Shopify storefront.",
+      "Developed a share cart feature for consultants to distribute to their customers.",
+      "Implemented bidirectional sync between Shopify and ByDesign for orders, customers, and products.",
+      "Developed custom consultant discounts based on their ranks."
+    ],
     caseStudy: {
-      title: "Affiliate Storefront",
-      description: "Built the storefront and affiliate infrastructure supporting L'BRI's direct sales network.",
+      title: "Shopify Direct Migration",
+      description: "Built the storefront and affiliate infrastructure supporting L'Bri's direct sales network by implementing Shopify Direct middleware.",
       metrics: [],
     },
-    technologies: ["Tailwind CSS", "Next.js", "Node.js", "MongoDB"],
-    industryName: "Natural Skincare & Beauty",
+    technologies: ["Shopify", "ByDesign Technology"],
+    industryName: "Direct-Selling, Beauty",
   },
 ];
 
