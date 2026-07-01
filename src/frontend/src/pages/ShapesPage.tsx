@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Hexagon as LucideHexagon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import { useShapes } from "@/hooks/use-backend";
 import { Shape } from "@/types";
@@ -208,11 +208,11 @@ function WaveDivider({
 // ---------------------------------------------------------------------------
 function DiagonalDivider({ shapes }: { shapes: Shape[] }) {
   const ICON_RESOLVER: Record<string, React.ElementType> = {
-    Triangle: TriangleIcon,
-    Circle: CircleIcon,
-    Hexagon: HexagonIcon,
-    Diamond: DiamondIcon,
-    Star: StarIcon,
+    "Triangle": TriangleIcon,
+    "Circle": CircleIcon,
+    "Hexagon": HexagonIcon,
+    "Diamond": DiamondIcon,
+    "Star": StarIcon,
   };
 
   return (
@@ -447,11 +447,11 @@ export default function ShapesPage() {
   const { data: shapes, isLoading } = useShapes();
 
   const ICON_RESOLVER: Record<string, React.ElementType> = {
-    Triangle: TriangleIcon,
-    Circle: CircleIcon,
-    Hexagon: HexagonIcon,
-    Diamond: DiamondIcon,
-    Star: StarIcon,
+    "Triangle": TriangleIcon,
+    "Circle": CircleIcon,
+    "Hexagon": HexagonIcon,
+    "Diamond": DiamondIcon,
+    "Star": StarIcon,
   };
 
   return (
@@ -495,7 +495,7 @@ export default function ShapesPage() {
                 color: TEAL,
               }}
             >
-              <LucideHexagon className="size-3.5" />
+              <ArrowRight className="size-3.5" />
               Proprietary Technology
             </span>
 
