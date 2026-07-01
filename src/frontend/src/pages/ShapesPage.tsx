@@ -406,6 +406,7 @@ function ShapeCard({
           <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform duration-200" />
         </div>
         </div>
+        </div>
       </div>
     </motion.div>
   );
