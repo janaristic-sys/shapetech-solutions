@@ -124,13 +124,13 @@ export default function SolutionDetailPage() {
             <h2 className="font-display font-bold text-3xl md:text-5xl text-foreground mb-16 text-center">
               Project Highlights
             </h2>
-            <div className="space-y-12">
+            <div className="space-y-6">
               {solution.bulletPoints.map((point, i) => (
-                <div key={i} className="flex gap-6 items-start group">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-sm border border-primary/20">
-                    <CheckCircle2 className="size-6" />
+                <div key={i} className="flex gap-5 items-start group">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-sm border border-primary/20 mt-1">
+                    <CheckCircle2 className="size-5" />
                   </div>
-                  <p className="text-foreground/90 text-lg md:text-xl leading-relaxed font-medium pt-2">{point}</p>
+                  <p className="text-foreground/90 text-base md:text-lg leading-relaxed font-medium pt-1">{point}</p>
                 </div>
               ))}
             </div>
@@ -140,7 +140,7 @@ export default function SolutionDetailPage() {
 
       {/* ── Gallery Section ────────────────────────────────────────────── */}
       {(solution?.gallery && solution.gallery.length > 0) && (
-        <section className="bg-card py-32 relative overflow-hidden">
+        <section className="bg-card py-16 relative overflow-hidden">
           <div className="container max-w-7xl mx-auto px-6 lg:px-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
               <div className="max-w-2xl">
