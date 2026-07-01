@@ -95,8 +95,8 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground font-body antialiased;
+  html, body {
+    @apply bg-background text-foreground font-body antialiased overflow-x-hidden w-full;
   }
 }
 

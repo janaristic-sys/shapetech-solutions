@@ -392,7 +392,7 @@ export default function ContactPage() {
 
                   <form
                     onSubmit={handleSubmit}
-                    className="relative rounded-[calc(1.5rem-1px)] p-8 flex flex-col gap-6"
+                    className="relative rounded-[calc(1.5rem-1px)] p-5 sm:p-8 flex flex-col gap-6"
                     style={{ background: "oklch(0.22 0.05 270)" }}
                     data-ocid="contact.form"
                     noValidate

@@ -295,7 +295,7 @@ export default function IndustriesPage() {
         className="bg-background py-16 md:py-24"
         data-ocid="industries.list_section"
       >
-        <div className="container max-w-6xl mx-auto px-6 lg:px-10">
+        <div className="container max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

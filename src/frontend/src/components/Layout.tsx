@@ -40,7 +40,7 @@ export function Layout({ children, hideFooter = false }: LayoutProps) {
 
   return (
     <div
-      className="min-h-screen flex flex-col text-foreground"
+      className="min-h-screen flex flex-col text-foreground overflow-x-hidden"
       style={{ background: "oklch(0.10 0.04 267)" }}
     >
       <Navbar />

@@ -721,7 +721,7 @@ function StatsSection() {
         }}
       />
       <div className="relative max-w-6xl mx-auto px-6">
-        <div className="flex flex-wrap justify-center items-end gap-10 lg:gap-12">
+        <div className="flex flex-wrap justify-center items-end gap-4 md:gap-10 lg:gap-12">
           {STATS.map((stat, i) => {
             const offsets = [
               "lg:translate-y-0",
@@ -730,10 +730,10 @@ function StatsSection() {
               "lg:-translate-y-1",
             ];
             const sizes = [
-              "text-5xl md:text-6xl lg:text-6xl",
-              "text-4xl md:text-5xl lg:text-5xl",
-              "text-6xl md:text-6xl lg:text-7xl",
-              "text-4xl md:text-5xl lg:text-5xl",
+              "text-4xl sm:text-5xl md:text-6xl lg:text-6xl",
+              "text-3xl sm:text-4xl md:text-5xl lg:text-5xl",
+              "text-5xl sm:text-6xl md:text-6xl lg:text-7xl",
+              "text-3xl sm:text-4xl md:text-5xl lg:text-5xl",
             ];
             return (
               <motion.div
@@ -1344,7 +1344,7 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
 
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar scroll-smooth"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar scroll-smooth w-full max-w-full"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           <style dangerouslySetInnerHTML={{

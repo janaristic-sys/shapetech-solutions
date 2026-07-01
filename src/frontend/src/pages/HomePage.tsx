@@ -707,7 +707,7 @@ export default function HomePage() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.3 }}
-                  className="flex flex-wrap items-center gap-10 mt-6 mb-10"
+                  className="flex flex-wrap items-center gap-4 md:gap-10 mt-6 mb-10"
                 >
                   {[
                     { value: "$100M+", label: "Annual Volume" },
@@ -827,7 +827,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4"
+              className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
             >
               {[
                 {
@@ -865,7 +865,7 @@ export default function HomePage() {
                 return (
                   <div
                     key={cap.label}
-                    className="relative overflow-hidden rounded-2xl bg-card/30 border border-border/40 p-6 flex flex-col justify-between group hover:border-primary/30 hover:bg-card/60 transition-all duration-300 backdrop-blur-sm"
+                    className="relative overflow-hidden rounded-2xl bg-card/30 border border-border/40 p-4 md:p-6 flex flex-col justify-between group hover:border-primary/30 hover:bg-card/60 transition-all duration-300 backdrop-blur-sm"
                   >
                     {/* Index Watermark */}
                     <span className="absolute top-4 right-4 text-3xl font-black font-display text-muted-foreground/5 group-hover:text-primary/10 transition-colors duration-300 select-none">
@@ -987,7 +987,7 @@ export default function HomePage() {
                 align: "start",
                 loop: false,
               }}
-              className="w-full mt-4"
+              className="w-full mt-4 overflow-hidden"
             >
               <CarouselContent className="-ml-6">
                 {filteredSolutions.map((sol, index) => {
