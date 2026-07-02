@@ -329,19 +329,24 @@ const defaultSolutions: Solution[] = [
     id: 7n,
     title: "Sana Vita",
     tagline: "Wellness E-Commerce & Distribution Platform",
-    description: "We created a unified e-commerce and distribution platform for Sana Vita's organic wellness product line. The platform integrates distributor onboarding, inventory tracking, replicated marketing pages, and automated subscription orders into a single, cohesive dashboard. The custom storefront offers customers seamless checkouts with integrated subscription options.",
+    description: "ShapeTech teamed up with Bright in a successful co-development initiative to architect and power the enterprise digital infrastructure for Sana Vita Operations. For this project, ShapeTech focused heavily on building the high-performance backend systems, cross-border functionality, and financial workflows required to seamlessly scale Sana Vita's unique direct-selling model—integrating advanced commission tracking and network logic deeply with their e-commerce storefront.",
     iconName: "HeartPulse",
     slug: "sana-vita",
     sortOrder: 7n,
     features: ["Wellness storefront", "Distributor management", "Subscription orders", "Compliance tools"],
-    relatedShapeIds: [1n, 3n],
+    relatedShapeIds: [1n],
     caseStudy: {
       title: "Wellness Distribution",
       description: "Built the unified e-commerce and distribution platform for Sana Vita's wellness product catalog.",
       metrics: [],
     },
-    technologies: ["Custom Storefront", "Motoko", "ICP Canisters", "React"],
-    industryName: "Organic Health & Wellness",
+    technologies: ["MedusaJS", "ByDesign Technologies"],
+    industryName: "Direct-Selling, Health & Wellness",
+    bulletPoints: [
+      "Developed and engineered a robust, automated integration engine that seamlessly syncs order data and Member profiles between the MedusaJS storefront and the ByDesign commission engine in real time.",
+      "Designed and implemented a complex cross-market enrollment system, allowing new Members to seamlessly join and onboard regardless of their regional market and local business rules.",
+      "Built a sophisticated payment orchestration layer to securely handle, route, and process transactions across diverse payment gateways, currencies, and international markets."
+    ]
   },
   {
     id: 8n,
