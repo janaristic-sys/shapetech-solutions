@@ -275,14 +275,23 @@ const defaultSolutions: Solution[] = [
     slug: "wine-shop-at-home",
     sortOrder: 5n,
     features: ["Multi-tier commissions", "Replicated websites", "Consultant portal", "Order management"],
-    relatedShapeIds: [1n, 4n],
+    relatedShapeIds: [4n],
     caseStudy: {
       title: "Consultant Scaling",
       description: "Built the infrastructure to support Wine Shop at Home's growing network of independent consultants.",
       metrics: [],
     },
-    technologies: ["Shopify Plus", "React", "Node.js", "SQL Server"],
-    industryName: "Food & Beverage / Wine",
+    technologies: ["Shopify", "ByDesign Technology", "GoAffPro"],
+    industryName: "Direct-Selling, Wine",
+    bulletPoints: [
+      "Launched a new Shopify store with integration with GoAffPro",
+      "WineShop at Home used to be on ByDesign, then, with our help, made a successful transition to a Shopify-native commission engine",
+      "Preserved all the MLM components and custom discounts",
+      "Developed share cart system",
+      "Developed a sampler system, which lets affiliates sample wines for their customers to distribute on a wine tasting party",
+      "Developed replicated sites using GoAffPro's integrated logic, plus a rep search widget for easier lookup",
+      "Helped the client transition to a new subscribe & save platform"
+    ]
   },
   {
     id: 6n,
