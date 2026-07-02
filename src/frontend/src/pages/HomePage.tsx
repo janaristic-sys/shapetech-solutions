@@ -379,32 +379,14 @@ function HeroAnimation() {
       <div className="absolute w-[280px] h-[280px] rounded-full bg-primary/10 blur-[80px] pointer-events-none" />
 
       {/* ── Central hub ── */}
-      <motion.div
-        animate={{
-          scale: [1, 1.05, 1],
-          boxShadow: [
-            "0 0 50px oklch(0.75 0.12 195 / 0.4), 0 0 100px oklch(0.75 0.12 195 / 0.15)",
-            "0 0 80px oklch(0.75 0.12 195 / 0.6), 0 0 160px oklch(0.75 0.12 195 / 0.25)",
-            "0 0 50px oklch(0.75 0.12 195 / 0.4), 0 0 100px oklch(0.75 0.12 195 / 0.15)",
-          ],
-        }}
-        transition={{ duration: 3.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+      <div
         className="relative z-20 w-36 h-36 md:w-44 md:h-44 rounded-[2rem] bg-gradient-to-br from-primary/60 to-primary/20 border border-primary/50 flex items-center justify-center"
+        style={{ boxShadow: "0 0 50px oklch(0.75 0.12 195 / 0.4)" }}
       >
         {/* Inner glow layer */}
         <div className="absolute inset-0 rounded-[2rem] bg-primary/20 blur-xl" />
         <Network className="relative size-16 md:size-20 text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
-      </motion.div>
-
-      {/* ── Pulse waves radiating from hub ── */}
-      {[0, 1.2, 2.4].map((delay) => (
-        <motion.div
-          key={delay}
-          animate={{ scale: [1, 3.2], opacity: [0.4, 0] }}
-          transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeOut", delay }}
-          className="absolute w-28 h-28 rounded-3xl border border-primary/50 pointer-events-none"
-        />
-      ))}
+      </div>
     </div>
   );
 }
