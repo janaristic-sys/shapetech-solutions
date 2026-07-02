@@ -200,7 +200,7 @@ const defaultSolutions: Solution[] = [
     id: 2n,
     title: "NewULife",
     tagline: "Replicated Storefronts & Integrations",
-    description: "ShapeTech has partnered with the NewULife team to develop and power NewULife’s Shopify implementation. Together, Shapetech and NewUlife proudly support $100+ million in annual sales, running through 50,000+ replicated sites, all across 13 markets.",
+    description: "ShapeTech has partnered with the NewULife team to develop and power NewULife’s Shopify implementation. Together, Shapetech and NewULife proudly support $100+ million in annual sales, running through 50,000+ replicated sites, all across 13 markets.",
     iconName: "Users",
     slug: "newulife",
     sortOrder: 2n,
@@ -214,7 +214,7 @@ const defaultSolutions: Solution[] = [
     technologies: ["Shopify", "ByDesign Technology"],
     industryName: "Direct-Selling, Health & Wellness",
     bulletPoints: [
-      "Launched 13 markets, supporting localization of content, produces, promotions, and business rules, while still supporting NewUlife’s cross-market shopping and sponsoring activities",
+      "Launched 13 markets, supporting localization of content, produces, promotions, and business rules, while still supporting NewULife’s cross-market shopping and sponsoring activities",
       "Implemented enterprise-grade, custom middleware integration between Shopify and client’s commission engine",
       "Developed replicated sites and MLM-based attribution logic on Shopify storefronts",
       "Developed share cart system with unique logic for product swapping between markets",
@@ -323,9 +323,9 @@ const defaultSolutions: Solution[] = [
   },
   {
     id: 8n,
-    title: "L'Bri",
+    title: "L'BRI",
     tagline: "Shopify Direct Middleware & Ecommerce",
-    description: "We implemented Shopify Direct middleware between Shopify and ByDesign as a commission engine. The platform features replicated websites for L'Bri's entire consultant database, preserving the MLM logic on the Shopify storefront.",
+    description: "We implemented Shopify Direct middleware between Shopify and ByDesign as a commission engine. The platform features replicated websites for L'BRI's entire consultant database, preserving the MLM logic on the Shopify storefront.",
     iconName: "Sparkles",
     slug: "l-bri",
     sortOrder: 8n,
@@ -334,7 +334,7 @@ const defaultSolutions: Solution[] = [
     bulletPoints: [
       "Launched a USA market on Shopify.",
       "Implemented our Shopify Direct middleware between Shopify and ByDesign as a commission engine.",
-      "Developer replicated websites for L'Bri's entire consultant database.",
+      "Developer replicated websites for L'BRI's entire consultant database.",
       "Preserved the MLM logic on the Shopify storefront.",
       "Developed a share cart feature for consultants to distribute to their customers.",
       "Implemented bidirectional sync between Shopify and ByDesign for orders, customers, and products.",
@@ -342,7 +342,7 @@ const defaultSolutions: Solution[] = [
     ],
     caseStudy: {
       title: "Shopify Direct Migration",
-      description: "Built the storefront and affiliate infrastructure supporting L'Bri's direct sales network by implementing Shopify Direct middleware.",
+      description: "Built the storefront and affiliate infrastructure supporting L'BRI's direct sales network by implementing Shopify Direct middleware.",
       metrics: [],
     },
     technologies: ["Shopify", "ByDesign Technology"],

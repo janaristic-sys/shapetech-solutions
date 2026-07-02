@@ -125,63 +125,66 @@ export default function SolutionDetailPage() {
       </section>
 
       {/* ── Project Highlights Section ─────────────────────────────────────── */}
-      {(solution?.bulletPoints && solution.bulletPoints.length > 0) && (
-        <section className="bg-background py-24 relative overflow-hidden">
-          <div className="container max-w-5xl mx-auto px-6 lg:px-10">
-            <h2 className="font-display font-bold text-3xl md:text-5xl text-foreground mb-16 text-center">
-              Project Highlights
-            </h2>
-            <div className="space-y-6">
-              {solution.bulletPoints?.map((point, i) => (
-                <div key={i} className="flex gap-5 items-start group">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-sm border border-primary/20 mt-1">
-                    <CheckCircle2 className="size-5" />
-                  </div>
-                  <p className="text-foreground/90 text-base md:text-lg leading-relaxed font-medium pt-1">{point}</p>
+      <section className="bg-background py-24 relative overflow-hidden">
+        <div className="container max-w-5xl mx-auto px-6 lg:px-10">
+          <h2 className="font-display font-bold text-3xl md:text-5xl text-foreground mb-16 text-center">
+            Project Highlights
+          </h2>
+          <div className="space-y-6">
+            {(solution?.bulletPoints?.length ? solution.bulletPoints : [
+              "Placeholder highlight: Detailed implementation point awaiting copy from the content team.",
+              "Placeholder highlight: Custom integration details mapping out technology solutions.",
+              "Placeholder highlight: Metric-driven results and business outcomes achieved during the engagement."
+            ]).map((point, i) => (
+              <div key={i} className="flex gap-5 items-start group">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500 shadow-sm border border-primary/20 mt-1">
+                  <CheckCircle2 className="size-5" />
                 </div>
-              ))}
-            </div>
+                <p className="text-foreground/90 text-base md:text-lg leading-relaxed font-medium pt-1">{point}</p>
+              </div>
+            ))}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* ── Gallery Section ────────────────────────────────────────────── */}
-      {(solution?.gallery && solution.gallery.length > 0) && (
-        <section className="bg-card py-16 relative overflow-hidden">
-          <div className="container max-w-7xl mx-auto px-6 lg:px-10">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-              <div className="max-w-2xl">
-                <h2 className="font-display font-bold text-3xl md:text-5xl text-foreground mb-4">
-                  Inside the Implementation
-                </h2>
-                <p className="text-muted-foreground text-lg">Key workflows and custom interfaces built for {title}.</p>
-              </div>
-            </div>
-            <div className="relative max-w-6xl mx-auto md:px-12">
-              <Carousel
-                opts={{
-                  align: "start",
-                  loop: true,
-                }}
-                className="w-full"
-              >
-                <CarouselContent className="-ml-6">
-                  {solution.gallery?.map((img, i) => (
-                    <CarouselItem key={i} className="pl-6 md:basis-4/5 lg:basis-[85%]">
-                      <div className="aspect-video rounded-[2rem] overflow-hidden bg-background/50 flex items-center justify-center relative group shadow-xl border border-border/50">
-                        <img src={img} alt={`Gallery view ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious className="hidden md:flex -left-6 lg:-left-12 size-14 border-primary/20 hover:border-primary/50 text-foreground hover:text-primary transition-colors" />
-                <CarouselNext className="hidden md:flex -right-6 lg:-right-12 size-14 border-primary/20 hover:border-primary/50 text-foreground hover:text-primary transition-colors" />
-              </Carousel>
+      <section className="bg-card py-16 relative overflow-hidden">
+        <div className="container max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+            <div className="max-w-2xl">
+              <h2 className="font-display font-bold text-3xl md:text-5xl text-foreground mb-4">
+                Inside the Implementation
+              </h2>
+              <p className="text-muted-foreground text-lg">Key workflows and custom interfaces built for {title}.</p>
             </div>
           </div>
-        </section>
-      )}
+          <div className="relative max-w-6xl mx-auto md:px-12">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-6">
+                {(solution?.gallery?.length ? solution.gallery : [
+                  "https://placehold.co/1200x675/1e293b/475569?text=Gallery+Image+Placeholder+1",
+                  "https://placehold.co/1200x675/1e293b/475569?text=Gallery+Image+Placeholder+2"
+                ]).map((img, i) => (
+                  <CarouselItem key={i} className="pl-6 md:basis-4/5 lg:basis-[85%]">
+                    <div className="aspect-video rounded-[2rem] overflow-hidden bg-background/50 flex items-center justify-center relative group shadow-xl border border-border/50">
+                      <img src={img} alt={`Gallery view ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-6 lg:-left-12 size-14 border-primary/20 hover:border-primary/50 text-foreground hover:text-primary transition-colors" />
+              <CarouselNext className="hidden md:flex -right-6 lg:-right-12 size-14 border-primary/20 hover:border-primary/50 text-foreground hover:text-primary transition-colors" />
+            </Carousel>
+          </div>
+        </div>
+      </section>
 
       {/* ── Powered By Shapes Section ─────────────────────────────────────── */}
       <section className="bg-background py-24 border-t border-border/40 relative overflow-hidden">
