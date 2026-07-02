@@ -80,6 +80,7 @@ function LogoImage({ client }: { client: Client }) {
         src={client.logoUrl}
         alt={client.name}
         className={`max-h-10 max-w-[140px] object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-300 ${isSanaVita ? "" : "filter brightness-0 invert"}`}
+        style={isSanaVita ? { filter: "brightness(0.4) contrast(20)", mixBlendMode: "screen" } : {}}
       />
     );
   }
