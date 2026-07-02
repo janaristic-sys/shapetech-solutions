@@ -117,12 +117,12 @@ const defaultIndustries: Industry[] = [
     title: "Medusa Direct",
     tagline: "Headless e-commerce, built for scale",
     description:
-      "Our Medusa-based e-commerce engine powers fully custom storefronts and back-office systems. We build on top of Medusa to handle the unique requirements of direct selling, subscriptions, and distributor networks.",
+      "Our Medusa-based e-commerce engine powers fully custom storefronts. We build on top of Medusa to handle the unique requirements of direct selling, subscriptions, and distributor networks. We integrate other third-party systems to create a powerful e-commerce ecosystem for our clients.",
     iconName: "ShoppingCart",
     sortOrder: 1n,
     capabilities: [
       "Custom headless storefronts",
-      "Distributor back-office",
+      "Commission engine integration",
       "Commission-aware checkout",
       "High-volume order management",
     ],
