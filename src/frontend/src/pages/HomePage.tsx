@@ -263,12 +263,12 @@ function ContactForm() {
 function HeroBlobs() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden>
-      <div className="absolute top-[-10%] right-[-5%] w-[700px] h-[700px] rounded-full bg-primary/8 blur-[140px]" />
-      <div className="absolute bottom-[-5%] left-[5%] w-[500px] h-[500px] rounded-full bg-primary/5 blur-[100px]" />
+      <div className="hidden md:block absolute top-[-10%] right-[-5%] w-[700px] h-[700px] rounded-full bg-primary/5 blur-[140px]" />
+      <div className="hidden md:block absolute bottom-[-5%] left-[5%] w-[500px] h-[500px] rounded-full bg-primary/5 blur-[100px]" />
       <motion.div
         animate={{ borderRadius: ["40% 60% 70% 30% / 40% 50% 60% 50%", "60% 40% 30% 70% / 60% 30% 70% 40%", "40% 60% 70% 30% / 40% 50% 60% 50%"] }}
         transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-[25%] left-[20%] w-48 h-48 bg-primary/4 blur-3xl"
+        className="hidden md:block absolute bottom-[25%] left-[20%] w-48 h-48 bg-primary/5 blur-3xl"
       />
       <svg className="absolute inset-0 w-full h-full opacity-[0.025]" aria-hidden role="presentation">
         <defs>
@@ -1100,8 +1100,8 @@ export default function HomePage() {
           Section 6 · Contact
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="relative bg-card py-20 md:py-28 overflow-hidden" data-ocid="home.contact_section">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/8 blur-[120px] pointer-events-none" aria-hidden />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" aria-hidden />
+        <div className="hidden md:block absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" aria-hidden />
+        <div className="hidden md:block absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" aria-hidden />
 
         <div className="container max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-start">

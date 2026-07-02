@@ -163,7 +163,6 @@
     background: oklch(var(--card));
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 0 1px
       oklch(var(--border) / 0.5);
-    backdrop-filter: blur(1px);
     transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
   }
 
