@@ -673,7 +673,7 @@ function WaveDivider({
 function BlobBackground() {
   return (
     <div
-      className="pointer-events-none absolute inset-0 overflow-hidden"
+      className="hidden md:block pointer-events-none absolute inset-0 overflow-hidden"
       aria-hidden="true"
     >
       <div
@@ -766,7 +766,7 @@ function StatsSection() {
         }}
       />
       <div className="relative max-w-6xl mx-auto px-6">
-        <div className="flex flex-wrap justify-center items-end gap-4 md:gap-10 lg:gap-12">
+        <div className="grid grid-cols-2 gap-y-10 gap-x-4 md:flex md:flex-wrap md:justify-center md:items-end md:gap-10 lg:gap-12">
           {STATS.map((stat, i) => {
             const offsets = [
               "lg:translate-y-0",
