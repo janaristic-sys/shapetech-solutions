@@ -242,7 +242,7 @@ export default function ContactPage() {
         {/* Organic blobs */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute top-0 right-0 w-[700px] h-[700px] blur-3xl opacity-15"
+          className="hidden md:block pointer-events-none absolute top-0 right-0 w-[700px] h-[700px] blur-3xl opacity-15"
           style={{
             background:
               "radial-gradient(circle at 70% 30%, oklch(0.75 0.12 195) 0%, transparent 60%)",
@@ -251,7 +251,7 @@ export default function ContactPage() {
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 left-0 w-[400px] h-[400px] blur-3xl opacity-[0.08]"
+          className="hidden md:block pointer-events-none absolute bottom-0 left-0 w-[400px] h-[400px] blur-3xl opacity-[0.08]"
           style={{
             background:
               "radial-gradient(circle, oklch(0.75 0.12 195) 0%, transparent 70%)",

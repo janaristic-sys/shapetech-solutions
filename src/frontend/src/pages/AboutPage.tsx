@@ -1459,8 +1459,8 @@ function TeamSection() {
         data-ocid="about.team_section"
       >
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full" />
-          <div className="absolute bottom-1/4 -left-20 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-full" />
+          <div className="hidden md:block absolute top-1/4 -right-20 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full" />
+          <div className="hidden md:block absolute bottom-1/4 -left-20 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-full" />
           
           <div className="absolute -top-10 left-10 lg:left-20 opacity-[0.03] select-none">
             <span className="font-display font-black text-[25vw] lg:text-[22rem] leading-none text-primary block tracking-tighter">

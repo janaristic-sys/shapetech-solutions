@@ -168,7 +168,7 @@ function IndustryStackCard({
             />
             {/* Glow Blobs */}
             <div
-              className="absolute -top-20 -right-20 w-80 h-80 rounded-full blur-[100px] opacity-[0.12]"
+              className="hidden md:block absolute -top-20 -right-20 w-80 h-80 rounded-full blur-[100px] opacity-[0.12]"
               style={{
                 background: "radial-gradient(circle, oklch(0.75 0.12 195), transparent 70%)",
               }}
