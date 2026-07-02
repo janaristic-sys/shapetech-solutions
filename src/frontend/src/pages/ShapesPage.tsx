@@ -479,11 +479,11 @@ export default function ShapesPage() {
             </span>
 
             <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
-              Our <span className="gradient-accent">Commerce Engines</span>
+              Our <span className="gradient-accent">E-Commerce Engines</span>
             </h1>
 
             <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto mb-10">
-              Shapes are our proprietary, modular commerce engines — production-ready building blocks engineered to solve the complex compensation, subscription, checkout, and CRM requirements of niche commerce.
+              Shapes are our proprietary, modular e-commerce engines — production-ready building blocks engineered to solve the complex compensation, subscription, checkout, and CRM requirements of niche e-commerce.
             </p>
 
             {/* Stat pills */}
@@ -535,10 +535,10 @@ export default function ShapesPage() {
             className="text-center"
           >
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-foreground mb-5 leading-tight">
-              Built for <span className="gradient-accent">Niche Commerce</span>
+              Built for <span className="gradient-accent">Niche E-Commerce</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-loose max-w-3xl mx-auto">
-              We believe commerce is dominated by a near-endless series of niche use cases — and that the merchants serving those niches deserve purpose-built technology.{" "}
+              We believe e-commerce is dominated by a near-endless series of niche use cases — and that the merchants serving those niches deserve purpose-built technology.{" "}
               <span className="text-foreground font-medium">
                 Each Shape is a standalone product engine
               </span>{" "}

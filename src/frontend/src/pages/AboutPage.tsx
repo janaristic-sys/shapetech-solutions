@@ -734,7 +734,7 @@ function PageHero() {
               About <span className="gradient-accent">ShapeTech Solutions</span>
             </h1>
             <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl">
-              We build and grow specialized commerce solutions for niche use cases,
+              We build and grow specialized e-commerce solutions for niche use cases,
               collectively powering $100s of Millions in annual volume across dozens of countries.
             </p>
           </motion.div>
@@ -877,7 +877,7 @@ function MissionVisionSection() {
                 </h3>
                 <p className="text-muted-foreground leading-relaxed text-base">
                   {about?.mission ??
-                    "To build and grow specialized commerce solutions that solve our clients' complex commerce problems and scale their long-term growth."}
+                    "To build and grow specialized e-commerce solutions that solve our clients' complex e-commerce problems and scale their long-term growth."}
                 </p>
               </div>
             </motion.div>
@@ -913,7 +913,7 @@ function MissionVisionSection() {
                 </h3>
                 <p className="text-muted-foreground leading-relaxed text-base">
                   {about?.vision ??
-                    "To power the world's niche commerce use cases through robust, scalable, and beautifully designed technology products."}
+                    "To power the world's niche e-commerce use cases through robust, scalable, and beautifully designed technology products."}
                 </p>
               </div>
             </motion.div>
@@ -981,10 +981,10 @@ function CompanyStorySection() {
             className="space-y-5"
           >
             <p className="text-muted-foreground text-lg leading-relaxed">
-              ShapeTech Solutions was founded with a clear focus: to build and grow specialized commerce solutions for niche use cases. We believe commerce is dominated by a near endless series of niche use cases, and generic software often fails to deliver optimal long-term outcomes. We built our company to allow us to design, own, and iterate a customized solution over the long-term for each merchant.
+              ShapeTech Solutions was founded with a clear focus: to build and grow specialized e-commerce solutions for niche use cases. We believe e-commerce is dominated by a near endless series of niche use cases, and generic software often fails to deliver optimal long-term outcomes. We built our company to allow us to design, own, and iterate a customized solution over the long-term for each merchant.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Today we power the commerce engines of individual merchants and entire industries, collectively facilitating $100s of Millions in annual transaction volume. From our offices in{" "}
+              Today we power the e-commerce engines of individual merchants and entire industries, collectively facilitating $100s of Millions in annual transaction volume. From our offices in{" "}
               <span className="text-foreground font-medium">
                 Sarasota, Florida (USA)
               </span>{" "}
@@ -1327,7 +1327,7 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
     "Management Department": "Ensuring our teams, clients, and projects run seamlessly and efficiently.",
     "Production Department": "Building the robust, scalable foundations that power our complex digital systems.",
     "Operations Department": "The engine room of our success, ensuring seamless delivery and client satisfaction.",
-    "Sales Department": "Driving growth and expanding our footprint across global commerce niches.",
+    "Sales Department": "Driving growth and expanding our footprint across global e-commerce niches.",
     "IT Support": "Maintaining our internal infrastructure securely and reliably."
   };
 

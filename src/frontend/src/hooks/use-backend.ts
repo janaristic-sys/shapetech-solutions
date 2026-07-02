@@ -29,9 +29,9 @@ const defaultSettings: SiteSettings = {
   linkedinUrl: "https://www.linkedin.com/company/shapetech-solutions/?viewAsMember=true",
   twitterUrl: "https://twitter.com/shapetechsol",
 };const defaultHero: HeroContent = {
-  headline: "Commerce Solutions That Power Global Volume",
+  headline: "E-Commerce Solutions That Power Global Volume",
   subheadline:
-    "We build and grow specialized commerce solutions for niche use cases, collectively powering $100s of Millions in annual volume across dozens of countries.",
+    "We build and grow specialized e-commerce solutions for niche use cases, collectively powering $100s of Millions in annual volume across dozens of countries.",
   ctaPrimary: "Explore Solutions",
   ctaSecondary: "Contact Us",
   ctaPrimaryUrl: "/solutions",
@@ -42,9 +42,9 @@ const defaultAbout: AboutContent = {
   title: "Your Engineering Team for the Long Haul",
   body: "ShapeTech Solutions is an international team of specialists dedicated to building and integrating custom-built software solutions. Where standard software falls short, we step in. We engineer custom tools specifically designed to handle your most complex operational hurdles.",
   mission:
-    "To build and grow specialized commerce solutions that solve our clients' complex commerce problems and scale their long-term growth.",
+    "To build and grow specialized e-commerce solutions that solve our clients' complex e-commerce problems and scale their long-term growth.",
   vision:
-    "To power the world's niche commerce use cases through robust, scalable, and beautifully designed technology products.",
+    "To power the world's niche e-commerce use cases through robust, scalable, and beautifully designed technology products.",
   yearsInBusiness: 8,
   projectsDelivered: 150,
   clientsSatisfied: 95,
@@ -115,9 +115,9 @@ const defaultIndustries: Industry[] = [
     id: 1n,
     slug: "medusa-direct",
     title: "Medusa Direct",
-    tagline: "Headless commerce, built for scale",
+    tagline: "Headless e-commerce, built for scale",
     description:
-      "Our Medusa-based commerce engine powers fully custom storefronts and back-office systems. We build on top of Medusa to handle the unique requirements of direct selling, subscriptions, and distributor networks.",
+      "Our Medusa-based e-commerce engine powers fully custom storefronts and back-office systems. We build on top of Medusa to handle the unique requirements of direct selling, subscriptions, and distributor networks.",
     iconName: "ShoppingCart",
     sortOrder: 1n,
     capabilities: [
@@ -263,7 +263,7 @@ const defaultSolutions: Solution[] = [
   {
     id: 4n,
     title: "FASTer Way to Fat Loss",
-    tagline: "Subscription & Coaching Commerce Platform",
+    tagline: "Subscription & Coaching E-Commerce Platform",
     description: "We designed and deployed a cohort billing and subscription management platform for FASTer Way to Fat Loss's coaching and fitness program. The system manages recurring billing cycles, dunning automation, and coupon/discount routing across a database of thousands of active subscribers. The platform integrates seamlessly with their mobile application and training portal.",
     iconName: "RefreshCcw",
     slug: "faster-way",
@@ -271,7 +271,7 @@ const defaultSolutions: Solution[] = [
     features: ["Subscription management", "Cohort billing", "Coaching integrations", "Dunning automation"],
     relatedShapeIds: [1n],
     caseStudy: {
-      title: "Subscription Commerce",
+      title: "Subscription E-Commerce",
       description: "Built the subscription engine powering FASTer Way to Fat Loss's high-volume coaching and wellness program.",
       metrics: [],
     },
@@ -326,8 +326,8 @@ const defaultSolutions: Solution[] = [
   {
     id: 7n,
     title: "Sana Vita",
-    tagline: "Wellness Commerce & Distribution Platform",
-    description: "We created a unified commerce and distribution platform for Sana Vita's organic wellness product line. The platform integrates distributor onboarding, inventory tracking, replicated marketing pages, and automated subscription orders into a single, cohesive dashboard. The custom storefront offers customers seamless checkouts with integrated subscription options.",
+    tagline: "Wellness E-Commerce & Distribution Platform",
+    description: "We created a unified e-commerce and distribution platform for Sana Vita's organic wellness product line. The platform integrates distributor onboarding, inventory tracking, replicated marketing pages, and automated subscription orders into a single, cohesive dashboard. The custom storefront offers customers seamless checkouts with integrated subscription options.",
     iconName: "HeartPulse",
     slug: "sana-vita",
     sortOrder: 7n,
@@ -335,7 +335,7 @@ const defaultSolutions: Solution[] = [
     relatedShapeIds: [1n, 3n],
     caseStudy: {
       title: "Wellness Distribution",
-      description: "Built the unified commerce and distribution platform for Sana Vita's wellness product catalog.",
+      description: "Built the unified e-commerce and distribution platform for Sana Vita's wellness product catalog.",
       metrics: [],
     },
     technologies: ["Custom Storefront", "Motoko", "ICP Canisters", "React"],
@@ -575,7 +575,7 @@ const defaultPartners: Partner[] = [
     name: "Medusa",
     logoUrl: "",
     websiteUrl: "https://medusajs.com",
-    description: "We leverage the Medusa ecosystem to build high-performance, custom headless commerce engines, engineering custom middleware on top of it to handle specific commission tracking and referral models.",
+    description: "We leverage the Medusa ecosystem to build high-performance, custom headless e-commerce engines, engineering custom middleware on top of it to handle specific commission tracking and referral models.",
     sortOrder: 1n,
   },
   {

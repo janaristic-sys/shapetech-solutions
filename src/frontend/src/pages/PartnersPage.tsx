@@ -28,7 +28,7 @@ const FEATURED_PARTNERS: Partner[] = [
     logoUrl: "",
     websiteUrl: "https://shopify.com",
     description:
-      "Shopify Plus Partner with deep expertise in headless commerce, custom app development, and direct-selling storefronts. We build seamless shopping experiences that scale from startup to enterprise.",
+      "Shopify Plus Partner with deep expertise in headless e-commerce, custom app development, and direct-selling storefronts. We build seamless shopping experiences that scale from startup to enterprise.",
     sortOrder: 1n,
   },
   {
@@ -37,7 +37,7 @@ const FEATURED_PARTNERS: Partner[] = [
     logoUrl: "",
     websiteUrl: "https://medusajs.com",
     description:
-      "Featured Medusa partner specializing in open-source composable commerce. We build scalable, highly customizable bespoke e-commerce architectures tailored exactly to complex enterprise requirements.",
+      "Featured Medusa partner specializing in open-source composable e-commerce. We build scalable, highly customizable bespoke e-commerce architectures tailored exactly to complex enterprise requirements.",
     sortOrder: 2n,
   },
   {
@@ -64,7 +64,7 @@ const FEATURED_PARTNERS: Partner[] = [
     logoUrl: "",
     websiteUrl: "#",
     description:
-      "Featured partner integrating specialized platform solutions. We build powerful tooling to connect your backend operations directly to scalable front-end commerce.",
+      "Featured partner integrating specialized platform solutions. We build powerful tooling to connect your backend operations directly to scalable front-end e-commerce.",
     sortOrder: 5n,
   },
   {
@@ -110,11 +110,11 @@ const HUBSPOT_HIGHLIGHTS = [
 
 const SHOPIFY_HIGHLIGHTS = [
   "Storefront development & theme customisation",
-  "Shopify Plus & headless commerce builds",
+  "Shopify Plus & headless e-commerce builds",
   "Custom app development & integrations",
   "Checkout extensibility & scripts",
   "Direct-selling compensation plan storefronts",
-  "Multi-currency & international commerce",
+  "Multi-currency & international e-commerce",
 ];
 
 // ── Sub-components ───────────────────────────────────────────────────────────
@@ -337,7 +337,7 @@ export default function PartnersPage() {
               Our <span className="gradient-accent">Partners</span>
             </h1>
             <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl">
-              We build on the world's leading commerce platforms — acting as the
+              We build on the world's leading e-commerce platforms — acting as the
               engineering layer that connects them to your unique business model.
               Each partnership enables deeper integrations, not just plug-and-play.
             </p>
@@ -613,7 +613,7 @@ export default function PartnersPage() {
               <p className="text-muted-foreground text-base leading-relaxed mb-6">
                 ShapeTech is a certified Shopify Partner with hands-on Shopify
                 Plus expertise. We build storefronts, custom apps, and
-                integrations that transform your commerce operation — from a
+                integrations that transform your e-commerce operation — from a
                 standard Shopify store to an enterprise-grade direct-selling
                 powerhouse.
               </p>

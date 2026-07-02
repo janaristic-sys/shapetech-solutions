@@ -86,7 +86,7 @@ function IndustryStackCard({
 }) {
 
   const isDirectSelling = industry.title.includes("Direct Selling");
-  const isEcommerce = industry.title.includes("Commerce");
+  const isEcommerce = industry.title.includes("E-Commerce");
 
   // Custom radii for the premium look
   const borderRadius = "28px 8px 28px 8px";
@@ -390,7 +390,7 @@ export default function IndustriesPage() {
                   description: "Scaling high-volume retail platforms with custom headless architectures, sophisticated inventory management, and integrated loyalty systems.",
                   iconName: "ShoppingCart",
                   highlights: [
-                    "Headless Commerce Architectures",
+                    "Headless E-Commerce Architectures",
                     "Multi-channel Inventory Sync",
                     "Custom Loyalty & Rewards Engines",
                     "High-Performance Checkout Flows",

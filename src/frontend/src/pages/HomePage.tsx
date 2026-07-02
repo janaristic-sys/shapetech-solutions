@@ -70,7 +70,7 @@ const ICON_MAP: Record<string, LucideIcon> = {
 const HERO_HEADLINES = [
   "Shaping the Future of Companies",
   "Shaping the Futures of Industries",
-  "Shaping the Future of Commerce",
+  "Shaping the Future of E-Commerce",
 ] as const;
 
 const CLIENT_LOGOS: Record<string, string> = {
@@ -350,7 +350,7 @@ function HeroAnimation() {
         style={{ background: "conic-gradient(from 0deg, transparent 78%, oklch(0.75 0.12 195 / 0.15) 100%)" }}
       />
 
-      {/* ── Inner orbit: core commerce actions ── */}
+      {/* ── Inner orbit: core e-commerce actions ── */}
       <OrbitRing
         icons={[
           { Icon: ShoppingCart, angle: -90 },
@@ -785,14 +785,14 @@ export default function HomePage() {
               <SectionHeading eyebrow="About Us" title="ShapeTech Solutions" align="left" />
 
               <p className="text-foreground/90 font-medium leading-relaxed text-lg md:text-xl mb-6 -mt-6">
-                ShapeTech Solutions is a team of Commerce specialists. We set out each day to redefine
+                ShapeTech Solutions is a team of E-Commerce specialists. We set out each day to redefine
                 the marketing, selling, and distribution of products &amp; services for both individual
                 clients and entire industries.
               </p>
 
               <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-8">
-                What has evolved over 7+ years of business is an ever-growing portfolio of Commerce
-                solutions that are shaping an entirely new future for commerce, all created and supported
+                What has evolved over 7+ years of business is an ever-growing portfolio of E-Commerce
+                solutions that are shaping an entirely new future for e-commerce, all created and supported
                 by our team of experts. We design, develop, and grow our solutions in tandem with clients
                 and industries over the course of years.
               </p>
@@ -816,7 +816,7 @@ export default function HomePage() {
             >
               {[
                 { label: "E-Commerce Sites", icon: ShoppingCart },
-                { label: "Commerce-Focused Mobile Apps", icon: Smartphone },
+                { label: "E-Commerce-Focused Mobile Apps", icon: Smartphone },
                 { label: "Subscription Engines", icon: RefreshCcw },
                 { label: "Point-of-Sale Systems", icon: CreditCard },
                 { label: "Order Management Systems", icon: Package },
@@ -852,7 +852,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Industries"
             title="Industries We Work In"
-            subtitle="We set out to reshape commerce inside the industries we work in."
+            subtitle="We set out to reshape e-commerce inside the industries we work in."
           />
 
           <IndustriesFocusCarousel industries={industries} isLoading={industriesLoading} />
@@ -869,7 +869,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Shapes"
             title="Shapes"
-            subtitle="Each Shape has been built to transform how commerce happens in that market."
+            subtitle="Each Shape has been built to transform how e-commerce happens in that market."
             gradient
           />
 

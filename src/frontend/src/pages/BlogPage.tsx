@@ -50,7 +50,7 @@ export default function BlogPage() {
               Insights &amp; <span className="gradient-accent">Articles</span>
             </h1>
             <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-xl">
-              Commerce engineering insights, product launches, and implementation
+              E-Commerce engineering insights, product launches, and implementation
               deep-dives from the ShapeTech Solutions team.
             </p>
           </motion.div>
