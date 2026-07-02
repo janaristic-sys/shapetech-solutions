@@ -227,8 +227,7 @@ const defaultSolutions: Solution[] = [
       "/assets/images/newulife/shop-home.png",
       "/assets/images/newulife/bundle-pdp.png",
       "/assets/images/newulife/share-cart.png",
-      "/assets/images/newulife/multi-market.png",
-      "/assets/images/newulife/shop-on-behalf.png"
+      "/assets/images/newulife/multi-market.png"
     ]
   },
   {
