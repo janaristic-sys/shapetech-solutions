@@ -826,7 +826,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
+              className="lg:col-span-7 flex flex-col justify-center gap-3 md:gap-4"
             >
               {[
                 { label: "E-Commerce Sites", icon: ShoppingCart },
@@ -840,12 +840,12 @@ export default function HomePage() {
                 return (
                   <div
                     key={cap.label}
-                    className="relative overflow-hidden rounded-2xl bg-card/30 border border-border/40 p-4 md:p-6 flex items-center gap-4 group hover:border-primary/30 hover:bg-card/60 transition-all duration-300 backdrop-blur-sm"
+                    className="group relative flex items-center gap-5 p-4 rounded-2xl bg-card/20 border border-border/30 hover:bg-primary/5 hover:border-primary/30 transition-all duration-300"
                   >
-                    <div className="w-10 h-10 flex-shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <IconComponent className="size-5" />
+                    <div className="w-12 h-12 flex-shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent className="size-6" />
                     </div>
-                    <h4 className="text-foreground font-semibold text-base group-hover:text-primary transition-colors duration-300">
+                    <h4 className="text-foreground font-semibold text-lg md:text-xl group-hover:text-primary transition-colors duration-300">
                       {cap.label}
                     </h4>
                   </div>
