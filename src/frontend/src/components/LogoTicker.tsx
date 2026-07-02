@@ -73,6 +73,7 @@ function TickerItem({ client }: { client: Client }) {
 }
 
 function LogoImage({ client }: { client: Client }) {
+  if (client.logoUrl) {
     const isSolidBg = client.name?.toLowerCase().includes("sana vita") || client.slug === "sana-vita";
     
     return (
