@@ -796,7 +796,7 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-5 flex flex-col justify-center lg:sticky lg:top-28"
             >
-              <SectionHeading eyebrow="Our Approach" title="We build. We solve. We deliver." align="left" />
+              <SectionHeading eyebrow="About Us" title="ShapeTech Solutions" align="left" />
 
               <p className="text-foreground/90 font-medium leading-relaxed text-lg md:text-xl mb-6 -mt-6">
                 ShapeTech Solutions is a team of Commerce specialists. We set out each day to redefine
@@ -829,62 +829,25 @@ export default function HomePage() {
               className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
             >
               {[
-                {
-                  label: "E-Commerce Sites",
-                  description: "High-converting, bespoke digital storefronts tailored to your brand.",
-                  icon: ShoppingCart,
-                },
-                {
-                  label: "Commerce-Focused Mobile Apps",
-                  description: "Immersive, native mobile shopping experiences designed for retention.",
-                  icon: Smartphone,
-                },
-                {
-                  label: "Subscription Engines",
-                  description: "Flexible recurring billing models and automated subscription management.",
-                  icon: RefreshCcw,
-                },
-                {
-                  label: "Point-of-Sale Systems",
-                  description: "Seamless omnichannel retail transactions and unified checkout systems.",
-                  icon: CreditCard,
-                },
-                {
-                  label: "Order Management Systems",
-                  description: "Intelligent inventory routing, order tracking, and warehouse workflows.",
-                  icon: Package,
-                },
-                {
-                  label: "Alternative Payment Methods",
-                  description: "Global payment processing, multi-currency support, and modern wallets.",
-                  icon: Wallet,
-                },
+                { label: "E-Commerce Sites", icon: ShoppingCart },
+                { label: "Commerce-Focused Mobile Apps", icon: Smartphone },
+                { label: "Subscription Engines", icon: RefreshCcw },
+                { label: "Point-of-Sale Systems", icon: CreditCard },
+                { label: "Order Management Systems", icon: Package },
+                { label: "Alternative Payment Methods", icon: Wallet },
               ].map((cap, i) => {
                 const IconComponent = cap.icon;
                 return (
                   <div
                     key={cap.label}
-                    className="relative overflow-hidden rounded-2xl bg-card/30 border border-border/40 p-4 md:p-6 flex flex-col justify-between group hover:border-primary/30 hover:bg-card/60 transition-all duration-300 backdrop-blur-sm"
+                    className="relative overflow-hidden rounded-2xl bg-card/30 border border-border/40 p-4 md:p-6 flex items-center gap-4 group hover:border-primary/30 hover:bg-card/60 transition-all duration-300 backdrop-blur-sm"
                   >
-                    {/* Index Watermark */}
-                    <span className="absolute top-4 right-4 text-3xl font-black font-display text-muted-foreground/5 group-hover:text-primary/10 transition-colors duration-300 select-none">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-
-                    <div>
-                      {/* Icon container */}
-                      <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="size-5" />
-                      </div>
-
-                      {/* Content */}
-                      <h4 className="text-foreground font-semibold text-base mb-2 group-hover:text-primary transition-colors duration-300">
-                        {cap.label}
-                      </h4>
-                      <p className="text-muted-foreground text-xs leading-relaxed">
-                        {cap.description}
-                      </p>
+                    <div className="w-10 h-10 flex-shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent className="size-5" />
                     </div>
+                    <h4 className="text-foreground font-semibold text-base group-hover:text-primary transition-colors duration-300">
+                      {cap.label}
+                    </h4>
                   </div>
                 );
               })}
@@ -948,7 +911,6 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Solutions"
             title="Solutions for our Clients"
-            subtitle="Our solutions are built at the end of the day to power commerce for our clients. See each solution and its results in action."
             gradient
           />
 
@@ -1155,21 +1117,6 @@ export default function HomePage() {
                 subtitle="Have a project in mind? Tell us what you're working on and we'll get back to you within 24 hours."
                 align="left"
               />
-              <ul className="flex flex-col gap-4 mt-6">
-                {[
-                  "Commission and compensation plan engineering",
-                  "Headless Shopify or Medusa builds",
-                  "Distributor back-office and portal development",
-                  "Subscription and recurring billing platforms",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center mt-0.5">
-                      <CheckCircle2 className="size-3.5 text-primary" />
-                    </div>
-                    <span className="text-sm text-muted-foreground">{item}</span>
-                  </li>
-                ))}
-              </ul>
             </motion.div>
 
             <motion.div
