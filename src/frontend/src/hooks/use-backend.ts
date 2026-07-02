@@ -102,11 +102,11 @@ const defaultIndustries: Industry[] = [
     id: 4n,
     title: "Fundraising",
     description:
-      "Custom fundraising platforms with donor engagement tools, gamified loyalty programs, and the back-office infrastructure that keeps organizations running.",
+      "Custom fundraising platforms with donor engagement tools, custom loyalty programs, and the back-office infrastructure that keeps organizations running.",
     iconName: "Landmark",
     slug: "fundraising",
     sortOrder: 4n,
-    highlights: ["Donor Portals", "Gamified Giving", "Engagement Tracking"],
+    highlights: ["Donor Portals", "Recurring Giving", "Engagement Tracking"],
     featured: true,
     relatedSolutionIds: [1n],
   },
