@@ -239,14 +239,26 @@ const defaultSolutions: Solution[] = [
     slug: "nuvita",
     sortOrder: 3n,
     features: ["Distributor portal", "Real-time commissions", "Genealogy trees", "Payout management"],
-    relatedShapeIds: [3n],
+    relatedShapeIds: [4n],
     caseStudy: {
       title: "Real-time Commission Platform",
       description: "Replaced a legacy payout system with real-time tracking across Nuvita's distributor network.",
       metrics: [],
     },
-    technologies: ["Motoko", "Internet Computer (ICP)", "React", "Tailwind CSS"],
-    industryName: "Nutraceuticals & Health",
+    technologies: ["Shopify", "ByDesign Technology", "GoAffPro", "Recharge"],
+    industryName: "Direct-Selling, Health & Wellness",
+    bulletPoints: [
+      "Built and maintained a Shopify Plus store integrated with ByDesign",
+      "Implemented a full compensation plan engine supporting multiple customer types, each with unique pricing, discounts, and commission rules",
+      "Built replicated sites with affiliate attribution, sponsor lookup, and a \"You're Shopping With\" banner so every order gets credited to the right person",
+      "Developed a custom loyalty/credits system where customers earn credits on subscription purchases, with rules for activation delays, expiration, skip penalties, and checkout redemption",
+      "Created a one-to-one customer attribution model with a \"last sponsor\" failsafe that automatically corrects misattributed orders",
+      "Built consultant enrollment flows with kit purchasing, subscription creation, sponsor validation, and re-enrollment logic for returning reps",
+      "Handled volume calculation and sync between Shopify and ByDesign",
+      "Developed custom My Account pages with SSO into the ByDesign back office, subscription management, and credit balance display",
+      "Currently migrating the commission engine from ByDesign to GoAffPro, adopting Shopify's new one-time-code customer accounts, and moving to off-the-shelf affiliate tooling to reduce custom development",
+      "Built an affiliate portal with reporting that shows organization-level sales and commissions across affiliate downlines"
+    ]
   },
   {
     id: 4n,
