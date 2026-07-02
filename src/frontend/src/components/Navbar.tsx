@@ -115,6 +115,7 @@ export function Navbar() {
           {/* ── Logo ── */}
           <Link
             to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
             aria-label="ShapeTech Solutions — home"
             data-ocid="nav.logo_link"
@@ -313,7 +314,10 @@ export function Navbar() {
         <div className="flex items-center justify-between px-5 pt-4 pb-2">
           <Link
             to="/"
-            onClick={closeDrawer}
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              closeDrawer();
+            }}
             className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
             aria-label="ShapeTech Solutions — home"
           >

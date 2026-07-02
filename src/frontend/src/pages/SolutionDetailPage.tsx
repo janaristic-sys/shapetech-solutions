@@ -20,6 +20,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Network,
@@ -172,10 +178,20 @@ export default function SolutionDetailPage() {
                   "https://placehold.co/1200x675/1e293b/475569?text=Gallery+Image+Placeholder+2"
                 ]).map((img, i) => (
                   <CarouselItem key={i} className="pl-6 md:basis-4/5 lg:basis-[85%]">
-                    <div className="aspect-video rounded-[2rem] overflow-hidden bg-background/50 flex items-center justify-center relative group shadow-xl border border-border/50">
-                      <img src={img} alt={`Gallery view ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                    </div>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button className="w-full text-left appearance-none focus:outline-none">
+                          <div className="aspect-video rounded-[2rem] overflow-hidden bg-background/50 flex items-center justify-center relative group shadow-xl border border-border/50 cursor-zoom-in">
+                            <img src={img} alt={`Gallery view ${i + 1}`} className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-[1.02] opacity-90 group-hover:opacity-100" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                          </div>
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 border-none bg-transparent shadow-none [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/80 [&>button]:rounded-full">
+                        <DialogTitle className="sr-only">Gallery Image {i + 1}</DialogTitle>
+                        <img src={img} alt={`Gallery view ${i + 1}`} className="w-full max-h-[90vh] object-contain rounded-xl" />
+                      </DialogContent>
+                    </Dialog>
                   </CarouselItem>
                 ))}
               </CarouselContent>
