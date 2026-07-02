@@ -131,9 +131,9 @@ const defaultIndustries: Industry[] = [
     id: 2n,
     slug: "xtrapoints",
     title: "XtraPoints",
-    tagline: "Multi-Platform Fundraising Engine",
+    tagline: "Fundraising Platform",
     description:
-      "A multi-platform fundraising platform for creating, managing, and supporting fundraisers. Organizations can publish fundraisers and track contributions across web and mobile. Donors can turn the spare change from their everyday card purchases into monthly donations using RoundUp donations.",
+      "A comprehensive system for creating, managing, and supporting fundraisers. Organizations can publish fundraisers and track contributions across web and mobile. Donors can turn the spare change from their everyday card purchases into monthly donations using RoundUp donations.",
     iconName: "Star",
     sortOrder: 2n,
     capabilities: [
