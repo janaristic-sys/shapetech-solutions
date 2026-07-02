@@ -745,13 +745,13 @@ export default function HomePage() {
         />
 
         {/* Seamless Client Logos Ticker */}
-        <div className="w-full relative z-20 overflow-hidden pb-20">
+        <div className="w-full relative z-20 overflow-hidden pt-4 pb-12 mb-16 md:mb-20 border-b border-border/30">
           {clientsLoading ? (
             <div className="flex justify-center gap-x-10 py-4 px-6">
               {[1, 2, 3, 4, 5].map((i) => <Skeleton key={i} className="h-8 w-24 rounded-lg" />)}
             </div>
           ) : (
-            <LogoTicker clients={clients} />
+            <LogoTicker clients={clients} fadeClass="from-card" />
           )}
         </div>
 

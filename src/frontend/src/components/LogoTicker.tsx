@@ -5,9 +5,10 @@ import { Link } from "@tanstack/react-router";
 
 interface LogoTickerProps {
   clients: Client[];
+  fadeClass?: string;
 }
 
-export default function LogoTicker({ clients = [] }: LogoTickerProps) {
+export default function LogoTicker({ clients = [], fadeClass = "from-background" }: LogoTickerProps) {
   if (!clients || clients.length === 0) return null;
 
   // Quadruple so the seamless loop never shows a gap
@@ -16,9 +17,9 @@ export default function LogoTicker({ clients = [] }: LogoTickerProps) {
   return (
     <div className="relative w-full overflow-hidden select-none">
       {/* Left fade */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 sm:w-40 bg-gradient-to-r from-background to-transparent" aria-hidden="true" />
+      <div className={`pointer-events-none absolute inset-y-0 left-0 z-10 w-24 sm:w-40 bg-gradient-to-r ${fadeClass} to-transparent`} aria-hidden="true" />
       {/* Right fade */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 sm:w-40 bg-gradient-to-l from-background to-transparent" aria-hidden="true" />
+      <div className={`pointer-events-none absolute inset-y-0 right-0 z-10 w-24 sm:w-40 bg-gradient-to-l ${fadeClass} to-transparent`} aria-hidden="true" />
 
       <motion.div
         className="flex items-center gap-16 md:gap-24 w-max py-6"
