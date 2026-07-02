@@ -234,7 +234,7 @@ const defaultSolutions: Solution[] = [
     id: 3n,
     title: "Nuvita",
     tagline: "Distributor Portal & Commission Platform",
-    description: "We architected a real-time commission engine and distributor portal for Nuvita's nutraceutical sales network. The platform offers direct selling members live progress tracking towards ranking goals, detailed genealogy trees, and instant payouts. This allows their field team to monitor sales volumes and commissions in real-time, greatly increasing engagement and retention.",
+    description: "We built a direct-selling platform on Shopify Plus for a wellness brand, powered by ByDesign for commissions and back-office operations. The solution handles multiple customer and affiliate types with tailored pricing and commission rules, replicated sites with sponsor attribution, consultant enrollment with kit purchasing, volume calculation and sync, a custom loyalty credits system, and subscription management.",
     iconName: "HeartPulse",
     slug: "nuvita",
     sortOrder: 3n,

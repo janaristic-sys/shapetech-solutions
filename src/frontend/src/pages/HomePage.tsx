@@ -816,7 +816,6 @@ export default function HomePage() {
             >
               {[
                 { label: "E-Commerce Sites", icon: ShoppingCart },
-                { label: "E-Commerce-Focused Mobile Apps", icon: Smartphone },
                 { label: "Subscription Engines", icon: RefreshCcw },
                 { label: "Point-of-Sale Systems", icon: CreditCard },
                 { label: "Order Management Systems", icon: Package },
