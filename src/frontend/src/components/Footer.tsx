@@ -73,7 +73,7 @@ export function Footer() {
   const caffeineUrl = `https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(typeof window !== "undefined" ? window.location.hostname : "")}`;
   const { data: settings } = useSettings();
 
-  const email = settings?.email ?? "office@shapetechsolutions.com";
+  const email = settings?.email ?? "support@shapetechsolutions.com";
   const linkedin =
     settings?.linkedinUrl ??
     "https://www.linkedin.com/company/shapetech-solutions/";

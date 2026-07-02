@@ -77,8 +77,8 @@ const CONTACT_DETAILS = [
   {
     icon: Mail,
     label: "Email",
-    value: "office@shapetechsolutions.com",
-    href: "mailto:office@shapetechsolutions.com",
+    value: "support@shapetechsolutions.com",
+    href: "mailto:support@shapetechsolutions.com",
     ocid: "contact.email_link",
   },
   {
@@ -856,27 +856,12 @@ export default function ContactPage() {
               Prefer to reach out directly?
             </p>
             <a
-              href="mailto:office@shapetechsolutions.com"
+              href="mailto:support@shapetechsolutions.com"
               className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-foreground hover:text-primary transition-smooth"
               data-ocid="contact.email_cta_link"
             >
-              office@shapetechsolutions.com
+              support@shapetechsolutions.com
             </a>
-
-            {/* Phone */}
-            <div className="flex items-center justify-center gap-2 mt-4">
-              <Phone className="size-4 text-primary flex-shrink-0" />
-              <span className="text-muted-foreground text-sm">
-                Or give us a call —{" "}
-                <a
-                  href="tel:+19415551234"
-                  className="text-foreground hover:text-primary transition-smooth"
-                  data-ocid="contact.phone_cta_link"
-                >
-                  +1 (941) 555-1234
-                </a>
-              </span>
-            </div>
           </motion.div>
         </div>
       </section>
