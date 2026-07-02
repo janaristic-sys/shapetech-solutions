@@ -510,20 +510,6 @@ function IndustriesFocusCarousel({
               onClick={() => setOpen(i)}
               className="w-full flex items-center gap-5 py-6 text-left group"
             >
-              {/* Number */}
-              <span
-                className="flex-shrink-0 font-display font-black text-3xl tabular-nums select-none w-14 transition-all duration-300"
-                style={{
-                  background: isOpen
-                    ? "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.8), oklch(0.65 0.14 220 / 0.6))"
-                    : "linear-gradient(135deg, oklch(0.75 0.12 195 / 0.2), oklch(0.65 0.14 220 / 0.12))",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
-
               {/* Icon */}
               <div
                 className={`flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center text-primary transition-smooth ${
