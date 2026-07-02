@@ -727,16 +727,6 @@ export default function HomePage() {
           </Card>
         </div>
 
-        {/* Seamless Client Logos Ticker */}
-        <div className="w-full relative z-20 overflow-hidden pb-24">
-          {clientsLoading ? (
-            <div className="flex justify-center gap-x-10 py-4 px-6">
-              {[1, 2, 3, 4, 5].map((i) => <Skeleton key={i} className="h-8 w-24 rounded-lg" />)}
-            </div>
-          ) : (
-            <LogoTicker clients={clients} />
-          )}
-        </div>
 
         <WaveDivider fill="oklch(0.18 0.05 270)" path="M0,33 C480,55 960,11 1440,33 L1440,50 L0,50 Z" height={50} />
       </section>
@@ -753,6 +743,17 @@ export default function HomePage() {
           }}
           aria-hidden
         />
+
+        {/* Seamless Client Logos Ticker */}
+        <div className="w-full relative z-20 overflow-hidden pb-20">
+          {clientsLoading ? (
+            <div className="flex justify-center gap-x-10 py-4 px-6">
+              {[1, 2, 3, 4, 5].map((i) => <Skeleton key={i} className="h-8 w-24 rounded-lg" />)}
+            </div>
+          ) : (
+            <LogoTicker clients={clients} />
+          )}
+        </div>
 
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
