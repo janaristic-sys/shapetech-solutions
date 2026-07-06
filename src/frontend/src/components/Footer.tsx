@@ -132,11 +132,11 @@ export function Footer() {
             <Link
               to="/"
               className="flex items-center w-fit group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
-              aria-label="ShapeTech Solutions — home"
+              aria-label="Shapetech Solutions — home"
             >
               <img
                 src="/assets/logo.png"
-                alt="ShapeTech Solutions"
+                alt="Shapetech Solutions"
                 className="h-10 w-auto object-contain transition-opacity duration-300 group-hover:opacity-90"
               />
             </Link>
@@ -304,7 +304,7 @@ export function Footer() {
           className="py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs"
           style={{ color: "oklch(0.46 0.02 270)" }}
         >
-          <span>© {year} ShapeTech Solutions. All rights reserved.</span>
+          <span>© {year} Shapetech Solutions. All rights reserved.</span>
           <span>
             Built with love using{" "}
             <a

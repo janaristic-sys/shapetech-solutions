@@ -117,12 +117,12 @@ export function Navbar() {
             to="/"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
-            aria-label="ShapeTech Solutions — home"
+            aria-label="Shapetech Solutions — home"
             data-ocid="nav.logo_link"
           >
             <img
               src="/assets/logo.png"
-              alt="ShapeTech Solutions"
+              alt="Shapetech Solutions"
               className="h-12 w-auto object-contain transition-all duration-300 group-hover:opacity-90 group-hover:scale-[1.02]"
             />
           </Link>
@@ -319,11 +319,11 @@ export function Navbar() {
               closeDrawer();
             }}
             className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
-            aria-label="ShapeTech Solutions — home"
+            aria-label="Shapetech Solutions — home"
           >
             <img
               src="/assets/logo.png"
-              alt="ShapeTech Solutions"
+              alt="Shapetech Solutions"
               className="h-10 w-auto object-contain"
             />
           </Link>

@@ -534,14 +534,14 @@ function IndustriesFocusCarousel({
                     <p className="text-muted-foreground leading-relaxed mb-5 text-sm md:text-base max-w-2xl">
                       {ind.description}
                     </p>
-                    <Link to="/solutions">
+                    <a href={`/solutions?industry=${ind.id}`}>
                       <Button
                         size="sm"
                         className="rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 gap-1.5 transition-smooth"
                       >
                         See Solutions <ArrowRight className="size-3.5" />
                       </Button>
-                    </Link>
+                    </a>
                   </div>
                 </motion.div>
               )}
@@ -765,10 +765,10 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-5 flex flex-col justify-center lg:sticky lg:top-28"
             >
-              <SectionHeading eyebrow="About Us" title="ShapeTech Solutions" align="left" />
+              <SectionHeading eyebrow="About Us" title="Shapetech Solutions" align="left" />
 
               <p className="text-foreground/90 font-medium leading-relaxed text-lg md:text-xl mb-6 -mt-6">
-                ShapeTech Solutions is a team of e-commerce professionals. We set out each day to redefine
+                Shapetech Solutions is a team of e-commerce professionals. We set out each day to redefine
                 the marketing, sales, and distribution of products and services for both individual
                 clients and entire industries.
               </p>

@@ -25,7 +25,7 @@ import type { LucideIcon, LucideProps } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useSolutions, useShapes, useIndustries } from "@/hooks/use-backend";
 import { Solution } from "@/types";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   Landmark,
@@ -116,6 +116,15 @@ export default function SolutionsPage() {
   const [selectedTech, setSelectedTech] = useState<string>("all");
 
   const techOptions = ["Shopify Plus", "Medusa", "Custom"];
+
+  // Initialize from URL params if present
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const ind = params.get("industry");
+    if (ind) {
+      setSelectedIndustry(ind);
+    }
+  }, []);
 
   // Filter Logic
   const filteredSolutions = useMemo(() => {

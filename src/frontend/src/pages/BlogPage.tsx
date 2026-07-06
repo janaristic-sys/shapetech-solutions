@@ -51,7 +51,7 @@ export default function BlogPage() {
             </h1>
             <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-xl">
               E-Commerce engineering insights, product launches, and implementation
-              deep-dives from the ShapeTech Solutions team.
+              deep-dives from the Shapetech Solutions team.
             </p>
           </motion.div>
         </div>

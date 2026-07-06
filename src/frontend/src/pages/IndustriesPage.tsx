@@ -312,7 +312,7 @@ export default function IndustriesPage() {
               That Delivers
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
-              ShapeTech Solutions has built mission-critical technology across
+              Shapetech Solutions has built mission-critical technology across
               the most demanding sectors. Our deep domain knowledge means faster
               delivery, fewer re-works, and better outcomes for your business —
               no matter your industry.
@@ -439,7 +439,7 @@ export default function IndustriesPage() {
         flip
       />
 
-      {/* ── Why ShapeTech strip ── */}
+      {/* ── Why Shapetech strip ── */}
       <section
         className="bg-card py-16"
         data-ocid="industries.why_section"

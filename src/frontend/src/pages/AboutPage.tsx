@@ -113,7 +113,7 @@ const REAL_TEAM: TeamMember[] = [
     id: 1n,
     name: "Connor Hester",
     role: "Co-Founder & President",
-    bio: "Connor leads the strategic vision at ShapeTech Solutions, helping clients transform their businesses through technology. He has worked with dozens of companies from startups to $100M+ enterprises.",
+    bio: "Connor leads the strategic vision at Shapetech Solutions, helping clients transform their businesses through technology. He has worked with dozens of companies from startups to $100M+ enterprises.",
     avatarUrl:
       "https://shapetechsolutions.com/wp-content/uploads/2019/10/Connor-512x491.png",
     linkedinUrl: "",
@@ -125,7 +125,7 @@ const REAL_TEAM: TeamMember[] = [
     id: 0n,
     name: "Gordon Hester",
     role: "Co-Founder & Chairman of the Board",
-    bio: 'Gordon is a 30-year veteran of the direct-selling industry. He co-founded ShapeTech in 2018, authored "Positioned Right," and serves on the DSA/DSEF Board.',
+    bio: 'Gordon is a 30-year veteran of the direct-selling industry. He co-founded Shapetech in 2018, authored "Positioned Right," and serves on the DSA/DSEF Board.',
     avatarUrl:
       "https://shapetechsolutions.com/wp-content/uploads/2019/10/Gordon-512x491.png",
     linkedinUrl: "",
@@ -197,7 +197,7 @@ const REAL_TEAM: TeamMember[] = [
     id: 7n,
     name: "Nemanja Jotić",
     role: "Chief Financial Officer",
-    bio: "Nemanja oversees the financial health and strategic growth planning for ShapeTech Solutions.",
+    bio: "Nemanja oversees the financial health and strategic growth planning for Shapetech Solutions.",
     avatarUrl:
       "https://shapetechsolutions.com/wp-content/uploads/2019/10/Ares-512x491.png",
     linkedinUrl: "",
@@ -317,7 +317,7 @@ const REAL_TEAM: TeamMember[] = [
     id: 17n,
     name: "Milan Stanković",
     role: "Frontend Developer",
-    bio: "Milan is an integral part of the ShapeTech team, contributing expertise and dedication to our shared goals.",
+    bio: "Milan is an integral part of the Shapetech team, contributing expertise and dedication to our shared goals.",
     avatarUrl:
       "https://shapetechsolutions.com/wp-content/uploads/2021/11/Milan-Stankovic-dots-\u2013-1-512x491.png",
     linkedinUrl: "",
@@ -439,7 +439,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Full-stack Developer",
     bio: "Predrag builds robust full-stack features, blending frontend elegance with reliable backend architecture.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2023/04/Predrag-Aleksov-Full-stack-developer-shapetech-Nis-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2023/04/Predrag-Aleksov-Full-stack-developer-Shapetech-Nis-512x491.png",
     linkedinUrl: "",
     sortOrder: 27n,
     departments: ["Production Department"],
@@ -451,7 +451,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Client Manager",
     bio: "Mihajlo ensures seamless communication and project alignment, serving as the trusted point of contact for our enterprise clients.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2024/01/MIhajlo-Petrovic-ShapeTech-Solutions-1-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2024/01/MIhajlo-Petrovic-Shapetech-Solutions-1-512x491.png",
     linkedinUrl: "",
     sortOrder: 28n,
     departments: ["Production Department", "Management Department"],
@@ -463,7 +463,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "UX/UI Designer",
     bio: "Mila crafts intuitive and beautiful interfaces that elevate the user experience across all digital touchpoints.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2024/01/Mila-Teokarevic-ShapeTech-Solutions-1-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2024/01/Mila-Teokarevic-Shapetech-Solutions-1-512x491.png",
     linkedinUrl: "",
     sortOrder: 29n,
     departments: ["Production Department"],
@@ -475,7 +475,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Project Manager",
     bio: "Milena manages project lifecycles from discovery to deployment, ensuring on-time and on-budget delivery.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/02/Milena-Radosavljevic-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/02/Milena-Radosavljevic-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 30n,
     departments: ["Production Department", "Management Department"],
@@ -487,7 +487,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Full-stack Developer",
     bio: "Andrija builds robust full-stack features, blending frontend elegance with reliable backend architecture.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andrija-\u0110or\u0111evi\u0107-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andrija-\u0110or\u0111evi\u0107-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 31n,
     departments: ["Production Department"],
@@ -499,7 +499,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Client Manager",
     bio: "Andria ensures seamless communication and project alignment, serving as the trusted point of contact for our enterprise clients.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andria-Trojanovi\u0107-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andria-Trojanovi\u0107-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 32n,
     departments: ["Production Department", "Management Department"],
@@ -511,7 +511,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Client Manager",
     bio: "Milica ensures seamless communication and project alignment, serving as the trusted point of contact for our enterprise clients.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Milica-Antonijevic-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Milica-Antonijevic-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 33n,
     departments: ["Management Department"],
@@ -521,9 +521,9 @@ const REAL_TEAM: TeamMember[] = [
     id: 34n,
     name: "Jana Ristić",
     role: "Business Development Representative",
-    bio: "Jana is an integral part of the ShapeTech team, contributing expertise and dedication to our shared goals.",
+    bio: "Jana is an integral part of the Shapetech team, contributing expertise and dedication to our shared goals.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Jana-Risti\u0107-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Jana-Risti\u0107-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 34n,
     departments: ["Sales Department"],
@@ -535,7 +535,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Team Lead",
     bio: "Filip orchestrates engineering teams and owns the end-to-end delivery of specialized commerce solutions.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Filip-Minic-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Filip-Minic-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 35n,
     departments: ["Production Department"],
@@ -547,7 +547,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Back-end Developer",
     bio: "Dušan engineers scalable backend services, optimizing data flows and system performance across complex platforms.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/07/Du\u0161an-Risti\u0107-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/07/Du\u0161an-Risti\u0107-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 36n,
     departments: ["Production Department"],
@@ -605,7 +605,7 @@ const REAL_TEAM: TeamMember[] = [
     id: 41n,
     name: "Milica Savić",
     role: "Frontend Developer",
-    bio: "Milica is an integral part of the ShapeTech team, contributing expertise and dedication to our shared goals.",
+    bio: "Milica is an integral part of the Shapetech team, contributing expertise and dedication to our shared goals.",
     avatarUrl:
       "https://shapetechsolutions.com/wp-content/uploads/2026/03/Milica-Savi\u0107-ST-512x491.png",
     linkedinUrl: "",
@@ -731,7 +731,7 @@ function PageHero() {
               About Us
             </Badge>
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-foreground mb-6">
-              About <span className="gradient-accent">ShapeTech Solutions</span>
+              About <span className="gradient-accent">Shapetech Solutions</span>
             </h1>
             <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl">
               We build and grow specialized e-commerce solutions for niche use cases,
@@ -981,7 +981,7 @@ function CompanyStorySection() {
             className="space-y-5"
           >
             <p className="text-muted-foreground text-lg leading-relaxed">
-              ShapeTech Solutions was founded with a clear focus: to build and grow specialized e-commerce solutions for niche use cases. We believe e-commerce is dominated by a near-endless series of niche use cases, and generic software often fails to deliver optimal long-term outcomes. We built our company to allow us to design, own, and iterate on a customized solution over the long-term for each merchant.
+              Shapetech Solutions was founded with a clear focus: to build and grow specialized e-commerce solutions for niche use cases. We believe e-commerce is dominated by a near-endless series of niche use cases, and generic software often fails to deliver optimal long-term outcomes. We built our company to allow us to design, own, and iterate on a customized solution over the long-term for each merchant.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
               Today we power the e-commerce engines of individual merchants and entire industries, collectively facilitating $100M+ in annual transaction volume. From our offices in{" "}
@@ -1323,7 +1323,7 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const descriptions: Record<string, string> = {
-    "Board": "The visionary force steering ShapeTech Solutions towards global innovation.",
+    "Board": "The visionary force steering Shapetech Solutions towards global innovation.",
     "Management Department": "Ensuring our teams, clients, and projects run seamlessly and efficiently.",
     "Production Department": "Building the robust, scalable foundations that power our complex digital systems.",
     "Operations Department": "The engine room of our success, ensuring seamless delivery and client satisfaction.",
@@ -1494,7 +1494,7 @@ function TeamSection() {
                 </Badge>
                 <h2 className="font-display text-5xl lg:text-7xl font-bold text-foreground mb-8 leading-[1.05]">
                   The Talent Behind <br />
-                  <span className="gradient-accent">ShapeTech</span>
+                  <span className="gradient-accent">Shapetech</span>
                 </h2>
                 <p className="text-muted-foreground text-xl leading-relaxed max-w-xl">
                   A globally distributed team of designers, engineers, and strategists

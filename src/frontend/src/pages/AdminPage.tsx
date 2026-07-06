@@ -77,7 +77,7 @@ function PinLogin({ onSuccess }: { onSuccess: () => void }) {
         {/* Logo */}
         <img
           src="/assets/logo.png"
-          alt="ShapeTech Solutions"
+          alt="Shapetech Solutions"
           className="h-12 object-contain"
         />
 
@@ -191,7 +191,7 @@ export default function AdminPage() {
         <div className="px-5 py-5 border-b border-border flex-shrink-0">
           <img
             src="/assets/logo.png"
-            alt="ShapeTech Solutions"
+            alt="Shapetech Solutions"
             className="h-10 object-contain"
           />
         </div>
@@ -251,7 +251,7 @@ export default function AdminPage() {
             <div className="px-5 py-5 border-b border-border flex items-center justify-between">
               <img
                 src="/assets/logo.png"
-                alt="ShapeTech Solutions"
+                alt="Shapetech Solutions"
                 className="h-9 object-contain"
               />
               <button
@@ -315,7 +315,7 @@ export default function AdminPage() {
           <div className="ml-auto lg:hidden">
             <img
               src="/assets/logo.png"
-              alt="ShapeTech Solutions"
+              alt="Shapetech Solutions"
               className="h-7 object-contain"
             />
           </div>
