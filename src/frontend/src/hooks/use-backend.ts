@@ -251,7 +251,6 @@ const defaultSolutions: Solution[] = [
     gallery: [
       "/assets/images/nuvita/account-dashboard.png",
       "/assets/images/nuvita/cart-discount.png",
-      "/assets/images/nuvita/affiliate-link.png",
       "/assets/images/nuvita/shopping-with-1.png",
       "/assets/images/nuvita/shopping-with-2.png"
     ],
