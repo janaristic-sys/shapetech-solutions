@@ -62,7 +62,7 @@ const FEATURED_PARTNERS: Partner[] = [
     id: 5n,
     name: "LPT",
     logoUrl: "",
-    websiteUrl: "#",
+    websiteUrl: "https://www.lpt.io",
     description:
       "Featured partner integrating specialized platform solutions. We build powerful tooling to connect your backend operations directly to scalable front-end e-commerce.",
     sortOrder: 5n,
