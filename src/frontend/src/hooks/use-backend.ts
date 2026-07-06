@@ -247,7 +247,14 @@ const defaultSolutions: Solution[] = [
       description: "Replaced a legacy payout system with real-time tracking across Nuvita's distributor network.",
       metrics: [],
     },
-    technologies: ["Shopify", "ByDesign Technology", "GoAffPro", "Recharge"],
+    technologies: ["Shopify", "ByDesign Technology", "Recharge"],
+    galleryImages: [
+      "/assets/images/nuvita/account-dashboard.png",
+      "/assets/images/nuvita/cart-discount.png",
+      "/assets/images/nuvita/affiliate-link.png",
+      "/assets/images/nuvita/search-sponsors.png",
+      "/assets/images/nuvita/core-tech.png"
+    ],
     industryName: "Direct-Selling, Health & Wellness",
     bulletPoints: [
       "Built and maintained a Shopify Plus store integrated with ByDesign",
