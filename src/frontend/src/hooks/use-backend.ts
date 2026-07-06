@@ -123,7 +123,6 @@ const defaultIndustries: Industry[] = [
     capabilities: [
       "Custom headless storefronts",
       "Commission engine integration",
-      "Commission-aware checkout",
       "High-volume order management",
     ],
   },
