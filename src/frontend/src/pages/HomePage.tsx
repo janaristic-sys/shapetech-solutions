@@ -208,7 +208,7 @@ function ContactForm() {
           <Input
             id="contact-name" required placeholder="Jane Smith" value={form.name}
             onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-            className="rounded-xl bg-background/50 border-border/60 focus:border-primary/60 transition-smooth h-11"
+            className="rounded-xl bg-white/95 border-none text-black placeholder:text-black/50 focus:ring-2 focus:ring-primary transition-smooth h-11"
             data-ocid="home.contact_name_input"
           />
         </div>
@@ -217,7 +217,7 @@ function ContactForm() {
           <Input
             id="contact-email" type="email" required placeholder="jane@company.com" value={form.email}
             onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-            className="rounded-xl bg-background/50 border-border/60 focus:border-primary/60 transition-smooth h-11"
+            className="rounded-xl bg-white/95 border-none text-black placeholder:text-black/50 focus:ring-2 focus:ring-primary transition-smooth h-11"
             data-ocid="home.contact_email_input"
           />
         </div>
@@ -227,7 +227,7 @@ function ContactForm() {
         <Input
           id="contact-company" placeholder="Your Company Inc." value={form.company}
           onChange={(e) => setForm((f) => ({ ...f, company: e.target.value }))}
-          className="rounded-xl bg-background/50 border-border/60 focus:border-primary/60 transition-smooth h-11"
+          className="rounded-xl bg-white/95 border-none text-black placeholder:text-black/50 focus:ring-2 focus:ring-primary transition-smooth h-11"
           data-ocid="home.contact_company_input"
         />
       </div>
@@ -238,7 +238,7 @@ function ContactForm() {
           placeholder="Tell us about your project — what you're building, your timeline, and any specific challenges."
           value={form.message}
           onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-          className="rounded-xl bg-background/50 border-border/60 focus:border-primary/60 transition-smooth resize-none"
+          className="rounded-xl bg-white/95 border-none text-black placeholder:text-black/50 focus:ring-2 focus:ring-primary transition-smooth resize-none"
           data-ocid="home.contact_message_textarea"
         />
       </div>
