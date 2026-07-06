@@ -1176,6 +1176,7 @@ function TeamMemberCard({
   index,
   variant = "detailed",
 }: TeamMemberCardProps) {
+  const [imgError, setImgError] = useState(false);
   const initials = member.name
     .split(" ")
     .map((n) => n[0])
@@ -1195,10 +1196,11 @@ function TeamMemberCard({
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <div className="shrink-0 w-14 h-14 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-center overflow-hidden relative z-10">
-          {member.avatarUrl ? (
+          {member.avatarUrl && !imgError ? (
             <img
               src={member.avatarUrl}
               alt={member.name}
+              onError={() => setImgError(true)}
               className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-500"
             />
           ) : (
@@ -1234,10 +1236,11 @@ function TeamMemberCard({
       <div className="relative p-6 lg:p-8 flex flex-col h-full flex-1">
         <div className="mb-6 relative inline-block">
           <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-          {member.avatarUrl ? (
+          {member.avatarUrl && !imgError ? (
             <img
               src={member.avatarUrl}
               alt={member.name}
+              onError={() => setImgError(true)}
               className="w-16 h-16 rounded-2xl object-cover border-2 border-primary/10 shadow-2xl relative z-10 transition-all duration-500"
             />
           ) : (
