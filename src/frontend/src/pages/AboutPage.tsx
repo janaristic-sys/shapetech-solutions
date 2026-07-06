@@ -130,7 +130,7 @@ const REAL_TEAM: TeamMember[] = [
       "https://shapetechsolutions.com/wp-content/uploads/2019/10/Connor-512x491.png",
     linkedinUrl: "",
     sortOrder: 1n,
-    departments: ["Production Department", "Sales Department"],
+    departments: ["Board", "Production Department", "Sales Department"],
     teams: ["Team 2"],
   },
   {
