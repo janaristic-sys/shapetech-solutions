@@ -64,6 +64,17 @@ function clientLogoUrl(slug: string) {
   return SOLUTION_LOGO_URLS[slug] ?? "";
 }
 
+// ─── Wave Divider ─────────────────────────────────────────────────────────────
+function WaveDivider({ fill, path, height = 70 }: { fill: string; path: string; height?: number }) {
+  return (
+    <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-0 pointer-events-none" style={{ transform: "translateY(1px)" }}>
+      <svg viewBox={`0 0 1440 ${height}`} className="relative block w-full h-auto" preserveAspectRatio="none" style={{ height: `${height}px` }}>
+        <path d={path} fill={fill}></path>
+      </svg>
+    </div>
+  );
+}
+
 function SolutionSkeleton() {
   return (
     <div className="card-fluid p-8 flex flex-col justify-between min-h-[380px]">
@@ -193,24 +204,8 @@ export default function SolutionsPage() {
           </motion.div>
         </div>
 
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 left-0 right-0 leading-none"
-        >
-          <svg
-            viewBox="0 0 1440 120"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full block"
-            preserveAspectRatio="none"
-            style={{ height: "60px" }}
-            aria-hidden="true"
-          >
-            <path
-              d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,30 1440,60 L1440,120 L0,120 Z"
-              fill="oklch(0.12 0.05 267)"
-            />
-          </svg>
         </div>
+        <WaveDivider fill="oklch(var(--background))" path="M0,33 C480,55 960,11 1440,33 L1440,50 L0,50 Z" height={50} />
       </section>
 
       {/* ── Filter Controls Section ── */}

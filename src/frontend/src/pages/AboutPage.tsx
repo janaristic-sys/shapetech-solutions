@@ -23,6 +23,17 @@ import {
 import { motion } from "motion/react";
 import { FaLinkedinIn } from "react-icons/fa6";
 
+// ─── Wave Divider ─────────────────────────────────────────────────────────────
+function WaveDivider({ fill, path, height = 70 }: { fill: string; path: string; height?: number }) {
+  return (
+    <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-0 pointer-events-none" style={{ transform: "translateY(1px)" }}>
+      <svg viewBox={`0 0 1440 ${height}`} className="relative block w-full h-auto" preserveAspectRatio="none" style={{ height: `${height}px` }}>
+        <path d={path} fill={fill}></path>
+      </svg>
+    </div>
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
@@ -710,8 +721,9 @@ function PageHero() {
             </p>
           </motion.div>
         </div>
+        <WaveDivider fill="oklch(var(--background))" path="M0,33 C480,55 960,11 1440,33 L1440,50 L0,50 Z" height={50} />
       </section>
-          </>
+    </>
   );
 }
 
