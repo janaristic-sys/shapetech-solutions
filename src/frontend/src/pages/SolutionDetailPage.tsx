@@ -180,16 +180,27 @@ export default function SolutionDetailPage() {
                   <CarouselItem key={i} className="pl-6 md:basis-4/5 lg:basis-[85%]">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <button className="w-full text-left appearance-none focus:outline-none">
-                          <div className="aspect-video rounded-[2rem] overflow-hidden bg-background/50 flex items-center justify-center relative group shadow-xl border border-border/50 cursor-zoom-in">
-                            <img src={img} alt={`Gallery view ${i + 1}`} className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-[1.02] opacity-90 group-hover:opacity-100" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                        <button className="w-full text-left appearance-none focus:outline-none group">
+                          <div className="aspect-[16/10] sm:aspect-video rounded-xl overflow-hidden bg-card flex flex-col relative shadow-lg border border-border/50 cursor-zoom-in group-hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-1">
+                            {/* Browser Bar */}
+                            <div className="h-10 bg-muted/30 border-b border-border/50 flex items-center px-4 gap-2 shrink-0">
+                              <div className="w-3 h-3 rounded-full bg-red-400/80" />
+                              <div className="w-3 h-3 rounded-full bg-amber-400/80" />
+                              <div className="w-3 h-3 rounded-full bg-green-400/80" />
+                            </div>
+                            {/* Image Container */}
+                            <div className="flex-1 relative bg-muted/10 overflow-hidden flex items-start justify-center">
+                              <img src={img} alt={`Gallery view ${i + 1}`} className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03] opacity-90 group-hover:opacity-100" />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                            </div>
                           </div>
                         </button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 border-none bg-transparent shadow-none [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/80 [&>button]:rounded-full">
+                      <DialogContent className="max-w-[95vw] md:max-w-[90vw] max-h-[95vh] p-0 border-none bg-transparent shadow-none [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/80 [&>button]:rounded-full flex justify-center items-center">
                         <DialogTitle className="sr-only">Gallery Image {i + 1}</DialogTitle>
-                        <img src={img} alt={`Gallery view ${i + 1}`} className="w-full max-h-[90vh] object-contain rounded-xl" />
+                        <div className="overflow-y-auto max-h-[95vh] w-full rounded-xl bg-background border border-border/50 shadow-2xl flex items-start justify-center custom-scrollbar">
+                          <img src={img} alt={`Gallery view ${i + 1}`} className="w-full h-auto object-contain block" />
+                        </div>
                       </DialogContent>
                     </Dialog>
                   </CarouselItem>
