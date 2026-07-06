@@ -630,7 +630,7 @@ const defaultPartners: Partner[] = [
     id: 2n,
     name: "LPT",
     logoUrl: "",
-    websiteUrl: "#",
+    websiteUrl: "https://www.lpt.io",
     description: "As a featured partner, we specialize in building custom overlays and unique tools tailored specifically for the LPT environment to bridge the gap with your specific business strategy.",
     sortOrder: 2n,
   },
