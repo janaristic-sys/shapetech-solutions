@@ -16,10 +16,19 @@ declare global {
 
 const queryClient = new QueryClient();
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <QueryClientProvider client={queryClient}>
-    <InternetIdentityProvider>
-      <App />
-    </InternetIdentityProvider>
-  </QueryClientProvider>,
-);
+const renderApp = () => {
+  ReactDOM.createRoot(document.getElementById("root")!).render(
+    <QueryClientProvider client={queryClient}>
+      <InternetIdentityProvider>
+        <App />
+      </InternetIdentityProvider>
+    </QueryClientProvider>,
+  );
+};
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(renderApp);
+} else {
+  // Fallback for older browsers
+  requestAnimationFrame(renderApp);
+}
