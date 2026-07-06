@@ -71,7 +71,7 @@ export default function BlogPage() {
           >
             <path
               d="M0,40 C180,100 360,0 540,50 C720,100 900,10 1080,55 C1260,95 1380,20 1440,45 L1440,120 L0,120 Z"
-              fill="oklch(var(--background))"
+              fill="oklch(0.11 0.04 267)"
             />
           </svg>
         </div>
@@ -81,7 +81,7 @@ export default function BlogPage() {
       <section
         className="bg-background py-16 md:py-20"
         data-ocid="blog.coming_soon_section"
-        style={{ background: "oklch(var(--background))" }}
+        style={{ background: "oklch(0.11 0.04 267)" }}
       >
         <div className="container max-w-3xl mx-auto px-4 sm:px-6">
           <motion.div

@@ -297,7 +297,7 @@ export default function ContactPage() {
           >
             <path
               d="M0,60 C240,110 480,10 720,60 C960,110 1200,10 1440,55 L1440,120 L0,120 Z"
-              fill="oklch(var(--background))"
+              fill="oklch(0.11 0.04 267)"
             />
           </svg>
         </div>
@@ -307,7 +307,7 @@ export default function ContactPage() {
       <section
         className="py-12 md:py-20"
         data-ocid="contact.form_section"
-        style={{ background: "oklch(var(--background))" }}
+        style={{ background: "oklch(0.11 0.04 267)" }}
       >
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-start">

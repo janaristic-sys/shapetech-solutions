@@ -365,7 +365,7 @@ export default function PartnersPage() {
           >
             <path
               d="M0,80 C320,20 620,100 900,60 C1100,30 1300,80 1440,50 L1440,120 L0,120 Z"
-              fill="oklch(var(--background))"
+              fill="oklch(0.11 0.04 267)"
             />
           </svg>
         </div>
@@ -438,7 +438,7 @@ export default function PartnersPage() {
           >
             <path
               d="M0,0 C480,80 960,0 1440,60 L1440,0 L0,0 Z"
-              fill="oklch(var(--background))"
+              fill="oklch(0.11 0.04 267)"
             />
           </svg>
         </div>
@@ -549,7 +549,7 @@ export default function PartnersPage() {
           >
             <path
               d="M0,40 C360,80 1080,0 1440,60 L1440,80 L0,80 Z"
-              fill="oklch(var(--background))"
+              fill="oklch(0.11 0.04 267)"
             />
           </svg>
         </div>
@@ -675,7 +675,7 @@ export default function PartnersPage() {
           >
             <path
               d="M0,60 C480,0 960,80 1440,20 L1440,0 L0,0 Z"
-              fill="oklch(var(--background))"
+              fill="oklch(0.11 0.04 267)"
             />
           </svg>
         </div>
@@ -758,7 +758,7 @@ export default function PartnersPage() {
           >
             <path
               d="M0,20 C360,80 1080,0 1440,50 L1440,80 L0,80 Z"
-              fill="oklch(var(--background))"
+              fill="oklch(0.11 0.04 267)"
             />
           </svg>
         </div>
@@ -826,7 +826,7 @@ export default function PartnersPage() {
           >
             <path
               d="M0,50 C400,0 1000,80 1440,20 L1440,0 L0,0 Z"
-              fill="oklch(var(--background))"
+              fill="oklch(0.11 0.04 267)"
             />
           </svg>
         </div>

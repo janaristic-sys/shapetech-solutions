@@ -721,7 +721,7 @@ function PageHero() {
             </p>
           </motion.div>
         </div>
-        <WaveDivider fill="oklch(var(--background))" path="M0,33 C480,55 960,11 1440,33 L1440,50 L0,50 Z" height={50} />
+        <WaveDivider fill="oklch(0.11 0.04 267)" path="M0,33 C480,55 960,11 1440,33 L1440,50 L0,50 Z" height={50} />
       </section>
     </>
   );
