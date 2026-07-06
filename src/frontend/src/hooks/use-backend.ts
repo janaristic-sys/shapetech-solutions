@@ -252,7 +252,6 @@ const defaultSolutions: Solution[] = [
       "/assets/images/nuvita/account-dashboard.png",
       "/assets/images/nuvita/cart-discount.png",
       "/assets/images/nuvita/affiliate-link.png",
-      "/assets/images/nuvita/search-sponsors.png",
       "/assets/images/nuvita/shopping-with-1.png",
       "/assets/images/nuvita/shopping-with-2.png"
     ],
@@ -398,7 +397,9 @@ const defaultSolutions: Solution[] = [
       "Preserved the MLM logic on the Shopify storefront.",
       "Developed a share cart feature for consultants to distribute to their customers.",
       "Implemented bidirectional sync between Shopify and ByDesign for orders, customers, and products.",
-      "Developed custom consultant discounts based on their ranks."
+      "Developed custom consultant discounts based on their ranks.",
+      "Created a sample system where retail customers can choose their free samples on orders over $75 intuitively.",
+      "Developed a rep lookup tool for easier consultant find."
     ],
     caseStudy: {
       title: "Shopify Direct Migration",
