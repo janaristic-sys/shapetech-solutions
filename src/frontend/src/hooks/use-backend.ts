@@ -535,19 +535,19 @@ const defaultFaq: FaqItem[] = [
 
 const defaultTeam: TeamMember[] = [
   {
-    id: 1n,
-    name: "Gordon Hester",
-    role: "Co-Founder & Chairman of the Board",
-    bio: 'Gordon is a veteran of the direct-selling industry with over 30 years of experience on both the field and operations side of the business. He co-founded ShapeTech Solutions in 2018 to provide transformative technology solutions for direct selling businesses worldwide. He is the author of "Positioned Right: The Forces Shaping the Future of Direct Selling and Network Marketing" and sits on the DSA/DSEF Board.',
+    id: 2n,
+    name: "Connor Hester",
+    role: "Co-Founder & CEO",
+    bio: "Connor spends most of his time using an overly complex story or analogy to explain something that could have been said in a few words. However, when not annoying the staff, Connor works on helping to develop new business, managing client projects ranging from product launches to company modernization projects and overall, leading the continued scaling of the ShapeTech operations. He has worked with over a half-dozen companies ranging from pre-product startups to $100 million+ in revenue. He can constantly be found either reading a new book or on the tennis court.",
     avatarUrl: "",
     linkedinUrl: "",
     sortOrder: 1n,
   },
   {
-    id: 2n,
-    name: "Connor Hester",
-    role: "Co-Founder & CEO",
-    bio: "Connor spends most of his time using an overly complex story or analogy to explain something that could have been said in a few words. However, when not annoying the staff, Connor works on helping to develop new business, managing client projects ranging from product launches to company modernization projects and overall, leading the continued scaling of the ShapeTech operations. He has worked with over a half-dozen companies ranging from pre-product startups to $100 million+ in revenue. He can constantly be found either reading a new book or on the tennis court.",
+    id: 1n,
+    name: "Gordon Hester",
+    role: "Co-Founder & Chairman of the Board",
+    bio: 'Gordon is a 30-year veteran of the direct-selling industry. He co-founded ShapeTech in 2018, authored "Positioned Right," and serves on the DSA/DSEF Board.',
     avatarUrl: "",
     linkedinUrl: "",
     sortOrder: 2n,

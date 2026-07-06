@@ -110,18 +110,6 @@ const VALUES: ValueItem[] = [
 // ---------------------------------------------------------------------------
 const REAL_TEAM: TeamMember[] = [
   {
-    id: 0n,
-    name: "Gordon Hester",
-    role: "Co-Founder & Chairman of the Board",
-    bio: 'Gordon is a veteran of the direct-selling industry with over 30 years of experience on both the field and operations side of the business. He co-founded ShapeTech Solutions in 2018 to provide transformative technology solutions for direct selling businesses worldwide. He is the author of "Positioned Right: The Forces Shaping the Future of Direct Selling and Network Marketing" and sits on the DSA/DSEF Board.',
-    avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Gordon-512x491.png",
-    linkedinUrl: "",
-    sortOrder: 0n,
-    departments: ["Board"],
-    teams: [],
-  },
-  {
     id: 1n,
     name: "Connor Hester",
     role: "Co-Founder & President",
@@ -129,9 +117,21 @@ const REAL_TEAM: TeamMember[] = [
     avatarUrl:
       "https://shapetechsolutions.com/wp-content/uploads/2019/10/Connor-512x491.png",
     linkedinUrl: "",
-    sortOrder: 1n,
+    sortOrder: 0n,
     departments: ["Board", "Production Department", "Sales Department"],
     teams: ["Team 2"],
+  },
+  {
+    id: 0n,
+    name: "Gordon Hester",
+    role: "Co-Founder & Chairman of the Board",
+    bio: 'Gordon is a 30-year veteran of the direct-selling industry. He co-founded ShapeTech in 2018, authored "Positioned Right," and serves on the DSA/DSEF Board.',
+    avatarUrl:
+      "https://shapetechsolutions.com/wp-content/uploads/2019/10/Gordon-512x491.png",
+    linkedinUrl: "",
+    sortOrder: 1n,
+    departments: ["Board"],
+    teams: [],
   },
   {
     id: 2n,
