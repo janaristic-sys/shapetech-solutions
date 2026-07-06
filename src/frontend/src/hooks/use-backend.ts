@@ -253,7 +253,8 @@ const defaultSolutions: Solution[] = [
       "/assets/images/nuvita/cart-discount.png",
       "/assets/images/nuvita/affiliate-link.png",
       "/assets/images/nuvita/search-sponsors.png",
-      "/assets/images/nuvita/core-tech.png"
+      "/assets/images/nuvita/shopping-with-1.png",
+      "/assets/images/nuvita/shopping-with-2.png"
     ],
     industryName: "Direct-Selling, Health & Wellness",
     bulletPoints: [
@@ -307,7 +308,9 @@ const defaultSolutions: Solution[] = [
       "/assets/images/wineshop/gallery-1.png",
       "/assets/images/wineshop/gallery-2.png",
       "/assets/images/wineshop/gallery-3.png",
-      "/assets/images/wineshop/gallery-4.png"
+      "/assets/images/wineshop/gallery-4.png",
+      "/assets/images/wineshop/gallery-5.png",
+      "/assets/images/wineshop/gallery-6.png"
     ],
     industryName: "Direct-Selling, Wine",
     bulletPoints: [
