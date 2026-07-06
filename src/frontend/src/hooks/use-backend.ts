@@ -291,7 +291,7 @@ const defaultSolutions: Solution[] = [
     id: 5n,
     title: "Wine Shop at Home",
     tagline: "Consultant-Led Direct Selling Platform",
-    description: "We engineered a consultant-led e-commerce and direct selling portal for Wine Shop at Home. The application handles multi-tier commission structures, replicated consultant websites, and regional licensing compliance for wine shipments. The platform enables independent consultants to host online wine tastings and process party orders on any device.",
+    description: "Successfully migrated WineShop at Home from ByDesign to a fully Shopify-native ecosystem while preserving their complex MLM architecture. By integrating GoAffPro, we built a robust commission engine and launched custom replicated affiliate sites equipped with an intuitive rep search widget. To drive sales and engagement, we developed a custom share cart system, a specialized sampler system for affiliates to order wines for tasting parties, and seamlessly transitioned the client to a modern Subscribe & Save platform - all while maintaining their intricate MLM components and custom discount structures.",
     iconName: "Users",
     slug: "wine-shop-at-home",
     sortOrder: 5n,
@@ -303,6 +303,12 @@ const defaultSolutions: Solution[] = [
       metrics: [],
     },
     technologies: ["Shopify", "ByDesign Technology", "GoAffPro"],
+    galleryImages: [
+      "/assets/images/wineshop/gallery-1.png",
+      "/assets/images/wineshop/gallery-2.png",
+      "/assets/images/wineshop/gallery-3.png",
+      "/assets/images/wineshop/gallery-4.png"
+    ],
     industryName: "Direct-Selling, Wine",
     bulletPoints: [
       "Launched a new Shopify store with integration with GoAffPro",
