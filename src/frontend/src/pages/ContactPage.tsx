@@ -104,7 +104,7 @@ const WHY_POINTS = [
   {
     icon: Globe,
     title: "Global Team with Local Expertise",
-    desc: "Our US and Serbia offices ensure round-the-clock support, cultural fluency, and a cost-effective delivery model that doesn't sacrifice quality.",
+    desc: "Our offices in the US and Serbia ensure round-the-clock support, cultural fluency, and a cost-effective delivery model that doesn't sacrifice quality.",
   },
 ];
 

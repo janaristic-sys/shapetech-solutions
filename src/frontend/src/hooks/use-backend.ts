@@ -31,7 +31,7 @@ const defaultSettings: SiteSettings = {
 };const defaultHero: HeroContent = {
   headline: "E-Commerce Solutions That Power Global Volume",
   subheadline:
-    "We build and grow specialized e-commerce solutions for niche use cases, collectively powering $100s of Millions in annual volume across dozens of countries.",
+    "We build and grow specialized e-commerce solutions for niche use cases, collectively powering $100M+ in annual volume in annual volume across dozens of countries.",
   ctaPrimary: "Explore Solutions",
   ctaSecondary: "Contact Us",
   ctaPrimaryUrl: "/solutions",
@@ -196,7 +196,7 @@ const defaultSolutions: Solution[] = [
       metrics: [],
     },
     technologies: ["Shopify Plus", "Next.js", "GraphQL", "Tailwind CSS"],
-    industryName: "Clean Beauty & Cosmetics",
+    industryName: "Clean Beauty & Cosmetics Industry",
   },
   {
     id: 2n,
@@ -216,11 +216,11 @@ const defaultSolutions: Solution[] = [
     technologies: ["Shopify", "ByDesign Technology"],
     industryName: "Direct-Selling, Health & Wellness",
     bulletPoints: [
-      "Launched 13 markets, supporting localization of content, produces, promotions, and business rules, while still supporting NewULife’s cross-market shopping and sponsoring activities",
+      "Launched 13 markets, supporting localization of content, products, promotions, and business rules, while still supporting NewULife’s cross-market shopping and sponsoring activities",
       "Implemented enterprise-grade, custom middleware integration between Shopify and client’s commission engine",
       "Developed replicated sites and MLM-based attribution logic on Shopify storefronts",
       "Developed share cart system with unique logic for product swapping between markets",
-      "Created search for rep system on corporate site",
+      "Created search for representative system on corporate site",
       "Created complex bundle + subscribe & save logic",
       "Created promotion system, enabling NewULife marketing and sales team to build volume-based promotions ad-hoc",
       "Developed shop on behalf flow, allowing reps to create and place orders for both reps and customers in their organization"
@@ -292,7 +292,7 @@ const defaultSolutions: Solution[] = [
     id: 5n,
     title: "Wine Shop at Home",
     tagline: "Consultant-Led Direct Selling Platform",
-    description: "Successfully migrated WineShop at Home from ByDesign to a fully Shopify-native ecosystem while preserving their complex MLM architecture. By integrating GoAffPro, we built a robust commission engine and launched custom replicated affiliate sites equipped with an intuitive rep search widget. To drive sales and engagement, we developed a custom share cart system, a specialized sampler system for affiliates to order wines for tasting parties, and seamlessly transitioned the client to a modern Subscribe & Save platform - all while maintaining their intricate MLM components and custom discount structures.",
+    description: "Successfully migrated WineShop at Home from ByDesign to a fully Shopify-native ecosystem while preserving their complex MLM architecture. By deeply integrating GoAffPro, we built a robust commission engine and launched custom replicated affiliate sites equipped with an intuitive representative search widget. To drive sales and engagement, we developed a custom share cart system, a specialized sampler system for affiliates to order wines for tasting parties, and seamlessly transitioned the client to a modern Subscribe & Save platform - all while maintaining its intricate MLM components and custom discount structures.",
     iconName: "Users",
     slug: "wine-shop-at-home",
     sortOrder: 5n,
@@ -312,7 +312,7 @@ const defaultSolutions: Solution[] = [
       "/assets/images/wineshop/gallery-5.png",
       "/assets/images/wineshop/gallery-6.png"
     ],
-    industryName: "Direct-Selling, Wine",
+    industryName: "Direct-Selling, Wine Industry",
     bulletPoints: [
       "Launched a new Shopify store with integration with GoAffPro",
       "WineShop at Home used to be on ByDesign, then, with our help, made a successful transition to a Shopify-native commission engine",
@@ -373,7 +373,7 @@ const defaultSolutions: Solution[] = [
       description: "Built the unified e-commerce and distribution platform for Sana Vita's wellness product catalog.",
       metrics: [],
     },
-    technologies: ["MedusaJS", "ByDesign Technologies"],
+    technologies: ["MedusaJS", "ByDesign Technology"],
     industryName: "Direct-Selling, Health & Wellness",
     bulletPoints: [
       "Developed and engineered a robust, automated integration engine that seamlessly syncs order data and Member profiles between the MedusaJS storefront and the ByDesign commission engine in real time.",
@@ -384,7 +384,7 @@ const defaultSolutions: Solution[] = [
   {
     id: 8n,
     title: "L'BRI",
-    tagline: "Shopify Direct Middleware & Ecommerce",
+    tagline: "Shopify Direct Middleware & e-commerce",
     description: "We implemented Shopify Direct middleware between Shopify and ByDesign as a commission engine. The platform features replicated websites for L'BRI's entire consultant database, preserving the MLM logic on the Shopify storefront.",
     iconName: "Sparkles",
     slug: "l-bri",
@@ -414,7 +414,7 @@ const defaultSolutions: Solution[] = [
       "/assets/images/l-bri/gallery-4.png"
     ],
     technologies: ["Shopify", "ByDesign Technology"],
-    industryName: "Direct-Selling, Beauty",
+    industryName: "Direct-Selling, Beauty Industry",
   },
 ];
 
@@ -538,7 +538,7 @@ const defaultTeam: TeamMember[] = [
     id: 1n,
     name: "Gordon Hester",
     role: "Co-Founder & Chairman of the Board",
-    bio: 'Gordon is a 30+ year veteran of direct selling with experience on both the field and operations side of the business. He co-founded ShapeTech Solutions in 2018 to provide transformative technology solutions for direct selling businesses worldwide. He is the author of "Positioned Right: The Forces Shaping the Future of Direct Selling and Network Marketing" and sits on the DSA/DSEF Board.',
+    bio: 'Gordon is a veteran of the direct-selling industry with over 30 years of experience on both the field and operations side of the business. He co-founded ShapeTech Solutions in 2018 to provide transformative technology solutions for direct selling businesses worldwide. He is the author of "Positioned Right: The Forces Shaping the Future of Direct Selling and Network Marketing" and sits on the DSA/DSEF Board.',
     avatarUrl: "",
     linkedinUrl: "",
     sortOrder: 1n,

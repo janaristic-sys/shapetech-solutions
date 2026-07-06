@@ -497,7 +497,7 @@ export default function ShapesPage() {
               {[
                 { label: "Core Shapes", value: "4" },
                 { label: "Years in Production", value: "8+" },
-                { label: "Client Implementations", value: "X" },
+                { label: "Client Implementations", value: "30+" },
               ].map((stat) => (
                 <div
                   key={stat.label}

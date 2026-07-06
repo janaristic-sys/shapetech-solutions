@@ -202,7 +202,7 @@ export default function SolutionsPage() {
               <span className="gradient-accent">Database</span>
             </h1>
             <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl">
-              Browse our portfolio of specialized e-commerce integrations, custom payout back-offices, and high-conversion storefront builds powering $100s of Millions in annual volume.
+              Browse our portfolio of specialized e-commerce integrations, custom payout back-offices, and high-conversion storefront builds powering $100M+ in annual volume in annual volume.
             </p>
           </motion.div>
         </div>

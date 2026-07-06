@@ -109,7 +109,7 @@ const HUBSPOT_HIGHLIGHTS = [
 ];
 
 const SHOPIFY_HIGHLIGHTS = [
-  "Storefront development & theme customisation",
+  "Storefront development & theme customization",
   "Shopify Plus & headless e-commerce builds",
   "Custom app development & integrations",
   "Checkout extensibility & scripts",

@@ -312,7 +312,7 @@ export default function IndustriesPage() {
               That Delivers
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
-              Shapetech Solutions has built mission-critical technology across
+              ShapeTech Solutions has built mission-critical technology across
               the most demanding sectors. Our deep domain knowledge means faster
               delivery, fewer re-works, and better outcomes for your business —
               no matter your industry.
@@ -385,7 +385,7 @@ export default function IndustriesPage() {
               {/* Combine and sort for the stack */}
               {(() => {
                 const ECOMMERCE_FALLBACK: Industry = {
-                  id: "ecommerce-fallback",
+                  id: "e-commerce-fallback",
                   title: "E-Commerce & Retail",
                   description: "Scaling high-volume retail platforms with custom headless architectures, sophisticated inventory management, and integrated loyalty systems.",
                   iconName: "ShoppingCart",
@@ -439,7 +439,7 @@ export default function IndustriesPage() {
         flip
       />
 
-      {/* ── Why Shapetech strip ── */}
+      {/* ── Why ShapeTech strip ── */}
       <section
         className="bg-card py-16"
         data-ocid="industries.why_section"

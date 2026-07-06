@@ -68,7 +68,7 @@ const OFFICES: Office[] = [
     flag: "🇷🇸",
     address: "Niš, Serbia — Development Office",
     description:
-      "Our engineering hub in Serbia, powering product development and delivery for European timezone clients with a world-class technical team of developers and architects.",
+      "Our engineering hub in Serbia, powering product development and delivery for clients across European time zones with a world-class technical team of developers and architects.",
   },
 ];
 
@@ -113,7 +113,7 @@ const REAL_TEAM: TeamMember[] = [
     id: 0n,
     name: "Gordon Hester",
     role: "Co-Founder & Chairman of the Board",
-    bio: 'Gordon is a 30+ year veteran of direct selling with experience on both the field and operations side of the business. He co-founded ShapeTech Solutions in 2018 to provide transformative technology solutions for direct selling businesses worldwide. He is the author of "Positioned Right: The Forces Shaping the Future of Direct Selling and Network Marketing" and sits on the DSA/DSEF Board.',
+    bio: 'Gordon is a veteran of the direct-selling industry with over 30 years of experience on both the field and operations side of the business. He co-founded ShapeTech Solutions in 2018 to provide transformative technology solutions for direct selling businesses worldwide. He is the author of "Positioned Right: The Forces Shaping the Future of Direct Selling and Network Marketing" and sits on the DSA/DSEF Board.',
     avatarUrl:
       "https://shapetechsolutions.com/wp-content/uploads/2019/10/Gordon-512x491.png",
     linkedinUrl: "",
@@ -735,7 +735,7 @@ function PageHero() {
             </h1>
             <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl">
               We build and grow specialized e-commerce solutions for niche use cases,
-              collectively powering $100s of Millions in annual volume across dozens of countries.
+              collectively powering $100M+ in annual volume in annual volume across dozens of countries.
             </p>
           </motion.div>
         </div>
@@ -981,10 +981,10 @@ function CompanyStorySection() {
             className="space-y-5"
           >
             <p className="text-muted-foreground text-lg leading-relaxed">
-              ShapeTech Solutions was founded with a clear focus: to build and grow specialized e-commerce solutions for niche use cases. We believe e-commerce is dominated by a near endless series of niche use cases, and generic software often fails to deliver optimal long-term outcomes. We built our company to allow us to design, own, and iterate a customized solution over the long-term for each merchant.
+              ShapeTech Solutions was founded with a clear focus: to build and grow specialized e-commerce solutions for niche use cases. We believe e-commerce is dominated by a near-endless series of niche use cases, and generic software often fails to deliver optimal long-term outcomes. We built our company to allow us to design, own, and iterate on a customized solution over the long-term for each merchant.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Today we power the e-commerce engines of individual merchants and entire industries, collectively facilitating $100s of Millions in annual transaction volume. From our offices in{" "}
+              Today we power the e-commerce engines of individual merchants and entire industries, collectively facilitating $100M+ in annual transaction volume. From our offices in{" "}
               <span className="text-foreground font-medium">
                 Sarasota, Florida (USA)
               </span>{" "}
@@ -1335,10 +1335,14 @@ function TeamCarouselSection({ label, members }: { label: string; members: TeamM
     if (scrollRef.current) {
       const firstChild = scrollRef.current.firstElementChild as HTMLElement;
       if (!firstChild) return;
-      const itemWidth = firstChild.offsetWidth + 32; // width + gap-8 (32px)
+      const itemWidth = firstChild.offsetWidth + 24; // gap-6 is 24px
       const scrollAmount = itemWidth * (window.innerWidth >= 1024 ? 3 : 1);
+      
+      // When scrolling left with snap-mandatory, we need to make sure we scroll past the snap point threshold
+      const offset = direction === "left" ? -scrollAmount - 10 : scrollAmount + 10;
+      
       scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
+        left: offset,
         behavior: "smooth",
       });
     }

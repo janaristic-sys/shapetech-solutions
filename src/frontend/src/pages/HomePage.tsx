@@ -768,16 +768,16 @@ export default function HomePage() {
               <SectionHeading eyebrow="About Us" title="ShapeTech Solutions" align="left" />
 
               <p className="text-foreground/90 font-medium leading-relaxed text-lg md:text-xl mb-6 -mt-6">
-                ShapeTech Solutions is a team of E-Commerce specialists. We set out each day to redefine
-                the marketing, selling, and distribution of products &amp; services for both individual
+                ShapeTech Solutions is a team of e-commerce professionals. We set out each day to redefine
+                the marketing, sales, and distribution of products and services for both individual
                 clients and entire industries.
               </p>
 
               <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-8">
-                What has evolved over 7+ years of business is an ever-growing portfolio of E-Commerce
+                What has evolved over 7+ years of business is an ever-growing portfolio of e-commerce
                 solutions that are shaping an entirely new future for e-commerce, all created and supported
-                by our team of experts. We design, develop, and grow our solutions in tandem with clients
-                and industries over the course of years.
+                by our team of experts. We design, develop, and evolve our solutions in tandem with clients
+                and industries.
               </p>
 
               <div>
@@ -834,7 +834,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Industries"
             title="Industries We Work In"
-            subtitle="We set out to reshape e-commerce inside the industries we work in."
+            subtitle="We set out to reshape e-commerce across the industries we work with."
           />
 
           <IndustriesFocusCarousel industries={industries} isLoading={industriesLoading} />
@@ -851,7 +851,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Shapes"
             title="Shapes"
-            subtitle="Each Shape has been built to transform how e-commerce happens in that market."
+            subtitle="Each Shape has been built to transform how e-commerce operates in that market."
             gradient
           />
 
