@@ -276,14 +276,14 @@ export default function SolutionsPage() {
                 <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
               </div>
 
-              {/* Shape / Product Dropdown */}
+              {/* Shape Dropdown */}
               <div className="relative">
                 <select
                   value={selectedShape}
                   onChange={(e) => setSelectedShape(e.target.value)}
                   className="appearance-none pl-4 pr-10 py-2.5 rounded-xl bg-card border border-border/60 focus:border-primary/50 text-foreground text-sm transition-smooth outline-none cursor-pointer"
                 >
-                  <option value="all">All Products</option>
+                  <option value="all">All Shapes</option>
                   {shapes.map((shape) => (
                     <option key={String(shape.id)} value={String(shape.id)}>
                       {shape.title}
@@ -341,7 +341,7 @@ export default function SolutionsPage() {
               )}
               {selectedShape !== "all" && (
                 <Badge variant="secondary" className="gap-1 px-3 py-1 rounded-full text-xs">
-                  Product: {shapes.find((s) => String(s.id) === selectedShape)?.title}
+                  Shape: {shapes.find((s) => String(s.id) === selectedShape)?.title}
                   <X className="size-3 cursor-pointer" onClick={() => setSelectedShape("all")} />
                 </Badge>
               )}
