@@ -248,7 +248,7 @@ const defaultSolutions: Solution[] = [
       metrics: [],
     },
     technologies: ["Shopify", "ByDesign Technology", "Recharge"],
-    galleryImages: [
+    gallery: [
       "/assets/images/nuvita/account-dashboard.png",
       "/assets/images/nuvita/cart-discount.png",
       "/assets/images/nuvita/affiliate-link.png",
@@ -303,7 +303,7 @@ const defaultSolutions: Solution[] = [
       metrics: [],
     },
     technologies: ["Shopify", "ByDesign Technology", "GoAffPro"],
-    galleryImages: [
+    gallery: [
       "/assets/images/wineshop/gallery-1.png",
       "/assets/images/wineshop/gallery-2.png",
       "/assets/images/wineshop/gallery-3.png",
