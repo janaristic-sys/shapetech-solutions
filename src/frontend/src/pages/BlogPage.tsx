@@ -11,7 +11,7 @@ export default function BlogPage() {
       <section
         className="relative overflow-hidden pt-16 pb-28 md:pt-32 md:pb-40"
         data-ocid="blog.hero_section"
-        style={{ background: "oklch(0.22 0.05 270)" }}
+        style={{ background: "oklch(var(--card))" }}
       >
         <div
           aria-hidden="true"
@@ -71,7 +71,7 @@ export default function BlogPage() {
           >
             <path
               d="M0,40 C180,100 360,0 540,50 C720,100 900,10 1080,55 C1260,95 1380,20 1440,45 L1440,120 L0,120 Z"
-              fill="oklch(0.15 0.07 267)"
+              fill="oklch(var(--background))"
             />
           </svg>
         </div>
@@ -81,7 +81,7 @@ export default function BlogPage() {
       <section
         className="bg-background py-16 md:py-20"
         data-ocid="blog.coming_soon_section"
-        style={{ background: "oklch(0.15 0.07 267)" }}
+        style={{ background: "oklch(var(--background))" }}
       >
         <div className="container max-w-3xl mx-auto px-4 sm:px-6">
           <motion.div

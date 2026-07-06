@@ -64,29 +64,6 @@ function clientLogoUrl(slug: string) {
   return SOLUTION_LOGO_URLS[slug] ?? "";
 }
 
-function WaveDivider({ flip = false }: { flip?: boolean }) {
-  return (
-    <div
-      className="relative -my-px leading-none overflow-hidden pointer-events-none"
-      aria-hidden="true"
-    >
-      <svg
-        viewBox="0 0 1440 80"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full block"
-        preserveAspectRatio="none"
-        style={{ height: "80px", transform: flip ? "scaleY(-1)" : undefined }}
-        aria-hidden="true"
-      >
-        <path
-          d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"
-          fill="oklch(0.22 0.05 270)"
-        />
-      </svg>
-    </div>
-  );
-}
-
 function SolutionSkeleton() {
   return (
     <div className="card-fluid p-8 flex flex-col justify-between min-h-[380px]">
@@ -526,8 +503,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* ── Partner Integrations Section ── */}
-      <WaveDivider />
-      <section className="bg-card py-20 md:py-24" data-ocid="solutions.partners_section">
+            <section className="bg-card py-20 md:py-24" data-ocid="solutions.partners_section">
         <div className="container max-w-5xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -575,8 +551,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* ── Bottom CTA ── */}
-      <WaveDivider flip />
-      <section
+            <section
         className="relative overflow-hidden py-24 md:py-32 bg-background"
         data-ocid="solutions.cta_section"
       >

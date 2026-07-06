@@ -171,38 +171,6 @@ const BLOB_RADII = [
 // ---------------------------------------------------------------------------
 // Wave Divider
 // ---------------------------------------------------------------------------
-function WaveDivider({
-  flip = false,
-  fromBg = "oklch(0.18 0.05 270)",
-  toBg = "oklch(0.11 0.04 267)",
-}: { flip?: boolean; fromBg?: string; toBg?: string }) {
-  const fill = flip ? fromBg : toBg;
-  return (
-    <div
-      className="relative -my-px leading-none overflow-hidden"
-      aria-hidden="true"
-    >
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 1440 80"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full block"
-        preserveAspectRatio="none"
-        style={{
-          height: "80px",
-          transform: flip ? "scaleY(-1)" : undefined,
-          display: "block",
-        }}
-      >
-        <path
-          d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"
-          fill={fill}
-        />
-      </svg>
-    </div>
-  );
-}
-
 // ---------------------------------------------------------------------------
 // Diagonal Accent Divider — large angled band between intro and cards
 // ---------------------------------------------------------------------------
@@ -520,8 +488,7 @@ export default function ShapesPage() {
         </div>
       </section>
 
-      <WaveDivider fromBg="oklch(0.18 0.05 270)" toBg="oklch(0.11 0.04 267)" />
-
+      
       {/* ── Intro paragraph & Shapes Navigation ── */}
       <section
         className="bg-background pt-16 lg:pt-24 pb-8"
@@ -630,12 +597,7 @@ export default function ShapesPage() {
         </div>
       </section>
 
-      <WaveDivider
-        flip
-        fromBg="oklch(0.11 0.04 267)"
-        toBg="oklch(0.18 0.05 270)"
-      />
-
+      
       {/* ── CTA ── */}
       <section
         className="relative bg-card overflow-hidden py-24 lg:py-36"

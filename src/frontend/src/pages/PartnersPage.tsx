@@ -214,7 +214,7 @@ function PartnerCardSkeleton({ offset = false }: { offset?: boolean }) {
   return (
     <div
       className={`rounded-3xl border border-border/50 p-7 flex flex-col gap-5${offset ? " lg:mt-8" : ""}`}
-      style={{ background: "oklch(0.22 0.05 270)" }}
+      style={{ background: "oklch(var(--card))" }}
     >
       <div className="flex items-center gap-4">
         <Skeleton className="w-16 h-16 rounded-2xl flex-shrink-0" />
@@ -308,7 +308,7 @@ export default function PartnersPage() {
       <section
         className="relative overflow-hidden pt-16 pb-28 md:pt-32 md:pb-40"
         data-ocid="partners.hero_section"
-        style={{ background: "oklch(0.22 0.05 270)" }}
+        style={{ background: "oklch(var(--card))" }}
       >
         <div
           aria-hidden="true"
@@ -365,7 +365,7 @@ export default function PartnersPage() {
           >
             <path
               d="M0,80 C320,20 620,100 900,60 C1100,30 1300,80 1440,50 L1440,120 L0,120 Z"
-              fill="oklch(0.15 0.07 267)"
+              fill="oklch(var(--background))"
             />
           </svg>
         </div>
@@ -438,7 +438,7 @@ export default function PartnersPage() {
           >
             <path
               d="M0,0 C480,80 960,0 1440,60 L1440,0 L0,0 Z"
-              fill="oklch(0.15 0.07 267)"
+              fill="oklch(var(--background))"
             />
           </svg>
         </div>
@@ -515,7 +515,7 @@ export default function PartnersPage() {
             >
               <div
                 className="rounded-3xl border border-border/40 p-8"
-                style={{ background: "oklch(0.22 0.05 270)" }}
+                style={{ background: "oklch(var(--card))" }}
               >
                 <div className="flex items-center gap-3 mb-6">
                   <LayoutGrid className="size-5 text-primary" />
@@ -549,7 +549,7 @@ export default function PartnersPage() {
           >
             <path
               d="M0,40 C360,80 1080,0 1440,60 L1440,80 L0,80 Z"
-              fill="oklch(0.15 0.07 267)"
+              fill="oklch(var(--background))"
             />
           </svg>
         </div>
@@ -571,7 +571,7 @@ export default function PartnersPage() {
             >
               <div
                 className="rounded-3xl border border-border/40 p-8"
-                style={{ background: "oklch(0.22 0.05 270)" }}
+                style={{ background: "oklch(var(--card))" }}
               >
                 <div className="flex items-center gap-3 mb-6">
                   <ShoppingBag className="size-5 text-primary" />
@@ -675,7 +675,7 @@ export default function PartnersPage() {
           >
             <path
               d="M0,60 C480,0 960,80 1440,20 L1440,0 L0,0 Z"
-              fill="oklch(0.15 0.07 267)"
+              fill="oklch(var(--background))"
             />
           </svg>
         </div>
@@ -758,7 +758,7 @@ export default function PartnersPage() {
           >
             <path
               d="M0,20 C360,80 1080,0 1440,50 L1440,80 L0,80 Z"
-              fill="oklch(0.15 0.07 267)"
+              fill="oklch(var(--background))"
             />
           </svg>
         </div>
@@ -800,7 +800,7 @@ export default function PartnersPage() {
       <section
         className="relative py-16 md:py-20 overflow-hidden"
         data-ocid="partners.cta_section"
-        style={{ background: "oklch(0.22 0.05 270)" }}
+        style={{ background: "oklch(var(--card))" }}
       >
         <div
           aria-hidden="true"
@@ -826,7 +826,7 @@ export default function PartnersPage() {
           >
             <path
               d="M0,50 C400,0 1000,80 1440,20 L1440,0 L0,0 Z"
-              fill="oklch(0.15 0.07 267)"
+              fill="oklch(var(--background))"
             />
           </svg>
         </div>

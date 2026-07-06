@@ -40,38 +40,6 @@ function IndustryIcon({
 // ---------------------------------------------------------------------------
 // SVG Wave Divider
 // ---------------------------------------------------------------------------
-function WaveDivider({
-  topColor,
-  bottomColor,
-  flip = false,
-}: {
-  topColor: string;
-  bottomColor: string;
-  flip?: boolean;
-}) {
-  return (
-    <div
-      className="relative w-full overflow-hidden -my-px"
-      style={{ height: 80 }}
-    >
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 1440 80"
-        preserveAspectRatio="none"
-        className="absolute inset-0 w-full h-full"
-        style={{ transform: flip ? "scaleX(-1)" : undefined }}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect width="1440" height="80" fill={topColor} />
-        <path
-          d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"
-          fill={bottomColor}
-        />
-      </svg>
-    </div>
-  );
-}
-
 // ---------------------------------------------------------------------------
 // Industry Stack Card — New sophisticated stacking design
 // ---------------------------------------------------------------------------
@@ -346,11 +314,7 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <WaveDivider
-        topColor="oklch(0.18 0.05 270)"
-        bottomColor="oklch(0.12 0.06 267)"
-      />
-
+      
       {/* ── Industries Stack ── */}
       <section
         className="bg-background py-16 md:py-24"
@@ -433,12 +397,7 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <WaveDivider
-        topColor="oklch(0.12 0.06 267)"
-        bottomColor="oklch(0.18 0.05 270)"
-        flip
-      />
-
+      
       {/* ── Why Shapetech strip ── */}
       <section
         className="bg-card py-16"
@@ -501,11 +460,7 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <WaveDivider
-        topColor="oklch(0.18 0.05 270)"
-        bottomColor="oklch(0.12 0.06 267)"
-      />
-
+      
       {/* ── CTA ── */}
       <section
         className="relative overflow-hidden bg-background py-16 md:py-20"

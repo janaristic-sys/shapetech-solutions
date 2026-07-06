@@ -237,7 +237,7 @@ export default function ContactPage() {
       <section
         className="relative overflow-hidden pt-16 pb-28 md:pt-32 md:pb-52"
         data-ocid="contact.hero_section"
-        style={{ background: "oklch(0.22 0.05 270)" }}
+        style={{ background: "oklch(var(--card))" }}
       >
         {/* Organic blobs */}
         <div
@@ -297,7 +297,7 @@ export default function ContactPage() {
           >
             <path
               d="M0,60 C240,110 480,10 720,60 C960,110 1200,10 1440,55 L1440,120 L0,120 Z"
-              fill="oklch(0.15 0.07 267)"
+              fill="oklch(var(--background))"
             />
           </svg>
         </div>
@@ -307,7 +307,7 @@ export default function ContactPage() {
       <section
         className="py-12 md:py-20"
         data-ocid="contact.form_section"
-        style={{ background: "oklch(0.15 0.07 267)" }}
+        style={{ background: "oklch(var(--background))" }}
       >
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-start">
@@ -327,7 +327,7 @@ export default function ContactPage() {
                 >
                   <div
                     className="rounded-[calc(1.5rem-1px)] p-14 text-center flex flex-col items-center gap-6"
-                    style={{ background: "oklch(0.22 0.05 270)" }}
+                    style={{ background: "oklch(var(--card))" }}
                   >
                     <div className="relative">
                       <div
@@ -393,7 +393,7 @@ export default function ContactPage() {
                   <form
                     onSubmit={handleSubmit}
                     className="relative rounded-[calc(1.5rem-1px)] p-5 sm:p-8 flex flex-col gap-6"
-                    style={{ background: "oklch(0.22 0.05 270)" }}
+                    style={{ background: "oklch(var(--card))" }}
                     data-ocid="contact.form"
                     noValidate
                   >
@@ -618,7 +618,7 @@ export default function ContactPage() {
                 {/* Contact details card */}
                 <div
                   className="rounded-3xl border border-border/50 p-6 flex flex-col gap-4"
-                  style={{ background: "oklch(0.22 0.05 270)" }}
+                  style={{ background: "oklch(var(--card))" }}
                 >
                   <h3 className="font-display font-semibold text-foreground text-base mb-1">
                     Contact Details
@@ -701,7 +701,7 @@ export default function ContactPage() {
                       transition={{ duration: 0.4, delay: 0.3 + idx * 0.1 }}
                       data-ocid={`contact.office.${idx + 1}`}
                       className="rounded-3xl overflow-hidden border border-border/50 group hover:border-primary/30 transition-smooth"
-                      style={{ background: "oklch(0.22 0.05 270)" }}
+                      style={{ background: "oklch(var(--card))" }}
                     >
                       {/* Map placeholder */}
                       <div className="p-3 pb-0">
@@ -802,7 +802,7 @@ export default function ContactPage() {
                 >
                   <div
                     className="rounded-[calc(1.5rem-1px)] p-7 h-full flex flex-col gap-4"
-                    style={{ background: "oklch(0.22 0.05 270)" }}
+                    style={{ background: "oklch(var(--card))" }}
                   >
                     <div
                       className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
@@ -833,7 +833,7 @@ export default function ContactPage() {
       <section
         className="relative py-16 overflow-hidden"
         data-ocid="contact.cta_section"
-        style={{ background: "oklch(0.22 0.05 270)" }}
+        style={{ background: "oklch(var(--card))" }}
       >
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 text-center relative">
           <motion.div
@@ -860,7 +860,7 @@ export default function ContactPage() {
       <div
         aria-hidden="true"
         className="relative overflow-hidden"
-        style={{ background: "oklch(0.22 0.05 270)" }}
+        style={{ background: "oklch(var(--card))" }}
       >
         <svg
           viewBox="0 0 1440 180"

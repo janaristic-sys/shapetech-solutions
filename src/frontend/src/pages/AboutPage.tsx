@@ -638,35 +638,6 @@ const REAL_TEAM: TeamMember[] = [
     teams: ["Team 3", "Team 5", "Project Management"],
   },
 ];
-function WaveDivider({
-  topColor,
-  bottomColor,
-}: {
-  topColor: string;
-  bottomColor: string;
-}) {
-  return (
-    <div
-      className="relative w-full overflow-hidden -my-px"
-      style={{ height: 60 }}
-    >
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 1440 80"
-        preserveAspectRatio="none"
-        className="absolute inset-0 w-full h-full"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect width="1440" height="60" fill={topColor} />
-        <path
-          d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"
-          fill={bottomColor}
-        />
-      </svg>
-    </div>
-  );
-}
-
 // ---------------------------------------------------------------------------
 // BlobBackground
 // ---------------------------------------------------------------------------
@@ -740,11 +711,7 @@ function PageHero() {
           </motion.div>
         </div>
       </section>
-      <WaveDivider
-        topColor="oklch(0.22 0.05 270)"
-        bottomColor="oklch(0.15 0.07 267)"
-      />
-    </>
+          </>
   );
 }
 
@@ -815,11 +782,7 @@ function MissionVisionSection() {
 
   return (
     <>
-      <WaveDivider
-        topColor="oklch(0.15 0.07 267)"
-        bottomColor="oklch(0.22 0.05 270)"
-      />
-      <section
+            <section
         className="relative bg-card py-16 overflow-hidden"
         data-ocid="about.mission_vision_section"
       >
@@ -920,11 +883,7 @@ function MissionVisionSection() {
           </div>
         </div>
       </section>
-      <WaveDivider
-        topColor="oklch(0.22 0.05 270)"
-        bottomColor="oklch(0.15 0.07 267)"
-      />
-    </>
+          </>
   );
 }
 
@@ -1008,11 +967,7 @@ function CompanyStorySection() {
 function ValuesSection() {
   return (
     <>
-      <WaveDivider
-        topColor="oklch(0.15 0.07 267)"
-        bottomColor="oklch(0.22 0.05 270)"
-      />
-      <section
+            <section
         className="relative bg-card py-12 md:py-20 overflow-hidden"
         data-ocid="about.values_section"
       >
@@ -1083,11 +1038,7 @@ function ValuesSection() {
           </div>
         </div>
       </section>
-      <WaveDivider
-        topColor="oklch(0.22 0.05 270)"
-        bottomColor="oklch(0.15 0.07 267)"
-      />
-    </>
+          </>
   );
 }
 
@@ -1456,11 +1407,7 @@ function TeamSection() {
 
   return (
     <>
-      <WaveDivider
-        topColor="oklch(0.15 0.07 267)"
-        bottomColor="oklch(0.22 0.05 270)"
-      />
-      <section
+            <section
         className="relative bg-card py-16 lg:py-20 overflow-hidden"
         data-ocid="about.team_section"
       >
@@ -1545,11 +1492,7 @@ function TeamSection() {
 function ContactCta() {
   return (
     <>
-      <WaveDivider
-        topColor="oklch(0.22 0.05 270)"
-        bottomColor="oklch(0.15 0.07 267)"
-      />
-      <section
+            <section
         className="relative overflow-hidden bg-background py-20"
         data-ocid="about.contact_cta_section"
       >
