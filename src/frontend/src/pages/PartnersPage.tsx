@@ -249,26 +249,34 @@ function HighlightPill({ text }: { text: string }) {
 
 function ClientLogoPlaceholder({
   name,
+  slug,
   index,
 }: {
   name: string;
+  slug?: string;
   index: number;
 }) {
-  return (
+  const content = (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.06 }}
       data-ocid={`partners.client_logo.${index + 1}`}
-      className="rounded-2xl border border-border/40 px-6 py-5 flex items-center justify-center hover:border-primary/30 transition-smooth cursor-default"
+      className={`rounded-2xl border border-border/40 px-6 py-5 flex items-center justify-center transition-all duration-300 ${slug ? 'hover:border-primary/50 hover:bg-card/50 hover:-translate-y-1 cursor-pointer shadow-sm hover:shadow-[0_8px_30px_oklch(0.75_0.12_195/0.15)]' : 'hover:border-primary/30 cursor-default'}`}
       style={{ background: "oklch(0.20 0.05 270)" }}
     >
-      <span className="font-display font-semibold text-sm text-muted-foreground/70 text-center leading-tight">
+      <span className={`font-display font-semibold text-sm text-center leading-tight transition-colors ${slug ? 'text-muted-foreground/90 group-hover:text-foreground' : 'text-muted-foreground/70'}`}>
         {name}
       </span>
     </motion.div>
   );
+
+  if (slug) {
+    return <Link to={`/solutions/${slug}`} className="group block">{content}</Link>;
+  }
+
+  return content;
 }
 
 // ── Page ─────────────────────────────────────────────────────────────────────
@@ -281,17 +289,17 @@ export default function PartnersPage() {
       ? backendPartners
       : FEATURED_PARTNERS;
 
-  const clientNames = clients
-    ? clients.map((c) => c.name)
+  const activeClients = clients
+    ? clients
     : [
-        "Forever Living",
-        "Isagenix",
-        "4Life Research",
-        "Kyäni",
-        "Synergy WorldWide",
-        "Noni by NewAge",
-        "Mannatech",
-        "Rain International",
+        { name: "Forever Living" },
+        { name: "Isagenix" },
+        { name: "4Life Research" },
+        { name: "Kyäni" },
+        { name: "Synergy WorldWide" },
+        { name: "Noni by NewAge" },
+        { name: "Mannatech" },
+        { name: "Rain International" },
       ];
 
   return (
@@ -781,8 +789,8 @@ export default function PartnersPage() {
           </motion.div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {clientNames.map((name, i) => (
-              <ClientLogoPlaceholder key={name} name={name} index={i} />
+            {activeClients.map((client, i) => (
+              <ClientLogoPlaceholder key={client.name} name={client.name} slug={(client as any).solutionSlug} index={i} />
             ))}
           </div>
         </div>
