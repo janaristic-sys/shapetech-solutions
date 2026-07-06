@@ -249,10 +249,12 @@ const defaultSolutions: Solution[] = [
     },
     technologies: ["Shopify", "ByDesign Technology", "Recharge"],
     gallery: [
-      "/assets/images/nuvita/account-dashboard.png",
-      "/assets/images/nuvita/cart-discount.png",
-      "/assets/images/nuvita/shopping-with-1.png",
-      "/assets/images/nuvita/shopping-with-2.png"
+      "/assets/images/nuvita/gallery-1.png",
+      "/assets/images/nuvita/gallery-2.png",
+      "/assets/images/nuvita/gallery-3.png",
+      "/assets/images/nuvita/gallery-4.png",
+      "/assets/images/nuvita/gallery-5.png",
+      "/assets/images/nuvita/shopping-with-1.png"
     ],
     industryName: "Direct-Selling, Health & Wellness",
     bulletPoints: [
