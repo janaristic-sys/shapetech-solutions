@@ -405,6 +405,12 @@ const defaultSolutions: Solution[] = [
       description: "Built the storefront and affiliate infrastructure supporting L'BRI's direct sales network by implementing Shopify Direct middleware.",
       metrics: [],
     },
+    gallery: [
+      "/assets/images/l-bri/gallery-1.png",
+      "/assets/images/l-bri/gallery-2.png",
+      "/assets/images/l-bri/gallery-3.png",
+      "/assets/images/l-bri/gallery-4.png"
+    ],
     technologies: ["Shopify", "ByDesign Technology"],
     industryName: "Direct-Selling, Beauty",
   },
