@@ -301,6 +301,7 @@ function HeroAnimation() {
         className="absolute inset-0 flex items-center justify-center"
         animate={{ rotate: dir * 360 }}
         transition={{ duration, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        style={{ willChange: "transform" }}
       >
         {icons.map(({ Icon, angle }) => {
           const rad = (angle * Math.PI) / 180;
@@ -316,8 +317,8 @@ function HeroAnimation() {
               <motion.div
                 animate={{ rotate: -dir * 360 }}
                 transition={{ duration, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-[1.25rem] bg-card/90 border border-border/60 flex items-center justify-center backdrop-blur-md"
-                style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
+                className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-[1.25rem] bg-card border border-border/60 flex items-center justify-center"
+                style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.5)", willChange: "transform" }}
               >
                 <Icon className="size-8 md:size-10 text-primary/90" />
               </motion.div>
@@ -339,7 +340,7 @@ function HeroAnimation() {
         className="absolute w-[360px] h-[360px] rounded-full pointer-events-none"
         animate={{ rotate: 360 }}
         transition={{ duration: 14, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-        style={{ background: "conic-gradient(from 0deg, transparent 62%, oklch(0.75 0.12 195 / 0.3) 100%)" }}
+        style={{ background: "conic-gradient(from 0deg, transparent 62%, oklch(0.75 0.12 195 / 0.3) 100%)", willChange: "transform" }}
       />
 
       {/* ── Conic-gradient sweep on outer ring (counter-clockwise) ── */}
@@ -347,7 +348,7 @@ function HeroAnimation() {
         className="absolute w-[560px] h-[560px] rounded-full pointer-events-none"
         animate={{ rotate: -360 }}
         transition={{ duration: 24, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-        style={{ background: "conic-gradient(from 0deg, transparent 78%, oklch(0.75 0.12 195 / 0.15) 100%)" }}
+        style={{ background: "conic-gradient(from 0deg, transparent 78%, oklch(0.75 0.12 195 / 0.15) 100%)", willChange: "transform" }}
       />
 
       {/* ── Inner orbit: core e-commerce actions ── */}

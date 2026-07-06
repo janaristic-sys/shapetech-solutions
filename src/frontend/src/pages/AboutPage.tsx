@@ -1221,7 +1221,8 @@ function TeamMemberCard({
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: (index % 10) * 0.05 }}
         whileHover={{ y: -5, scale: 1.02 }}
-        className="group relative flex items-center gap-4 p-4 rounded-3xl bg-card/40 backdrop-blur-sm border border-border/40 hover:border-primary/40 hover:bg-card/60 transition-all duration-500 h-full overflow-hidden"
+        className="group relative flex items-center gap-4 p-4 rounded-3xl bg-card border border-border/40 hover:border-primary/40 hover:bg-card transition-all duration-500 h-full overflow-hidden"
+        style={{ WebkitBackfaceVisibility: "hidden", WebkitTransform: "translate3d(0,0,0)", willChange: "transform, opacity" }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <div className="shrink-0 w-14 h-14 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-center overflow-hidden relative z-10">
@@ -1255,7 +1256,8 @@ function TeamMemberCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.05, ease: [0.21, 0.45, 0.32, 0.9] }}
-      className="group relative bg-card/30 backdrop-blur-md rounded-[2rem] border border-border/30 hover:border-primary/40 transition-all duration-500 overflow-hidden h-full flex flex-col"
+      className="group relative bg-card rounded-[2rem] border border-border/30 hover:border-primary/40 transition-all duration-500 overflow-hidden h-full flex flex-col"
+      style={{ WebkitBackfaceVisibility: "hidden", WebkitTransform: "translate3d(0,0,0)", willChange: "transform, opacity" }}
       data-ocid={`about.team_card.${index + 1}`}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
