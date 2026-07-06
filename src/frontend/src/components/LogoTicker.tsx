@@ -74,13 +74,11 @@ function TickerItem({ client }: { client: Client }) {
 
 function LogoImage({ client }: { client: Client }) {
   if (client.logoUrl) {
-    const isSanaVita = client.name?.toLowerCase().includes("sana vita") || client.slug === "sana-vita";
     return (
       <img
         src={client.logoUrl}
         alt={client.name}
-        className={`max-h-10 max-w-[140px] object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-300 ${isSanaVita ? "" : "filter brightness-0 invert"}`}
-        style={isSanaVita ? { filter: "brightness(0.4) contrast(20)", mixBlendMode: "screen" } : {}}
+        className="max-h-10 max-w-[140px] object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-300 filter brightness-0 invert"
       />
     );
   }
