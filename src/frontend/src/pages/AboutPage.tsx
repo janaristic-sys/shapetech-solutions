@@ -1400,11 +1400,54 @@ function TeamSection() {
   const allTeam = hasValidBackendTeam ? backendTeam : REAL_TEAM;
 
   const getMembers = (dept: string, team?: string) => {
-    return allTeam.filter((m) => {
+    let members = allTeam.filter((m) => {
       const inDept = m.departments?.includes(dept);
       if (!team) return inDept;
       return inDept && m.teams?.includes(team);
     });
+
+    // 1. Extract specific people we need to force into positions
+    let connor = members.find(m => m.name === "Connor Hester");
+    let nenad = members.find(m => m.name === "Nenad Andrejević");
+
+    // Remove them from the general sorting pool for this department if they have specific rules
+    if (connor && (dept === "Board" || dept === "Sales Department")) {
+      members = members.filter(m => m.name !== "Connor Hester");
+    } else {
+      connor = undefined;
+    }
+
+    if (nenad && (dept === "Production Department" || dept === "Operations Department")) {
+      members = members.filter(m => m.name !== "Nenad Andrejević");
+    } else {
+      nenad = undefined;
+    }
+
+    // 2. Sort the remaining members so they don't look repetitive
+    // We use a department-based rotation to shift who appears first
+    const shift = dept.length * 7;
+    members.sort((a, b) => {
+      const wA = (Number(a.id) + shift) % 50;
+      const wB = (Number(b.id) + shift) % 50;
+      return wA - wB;
+    });
+
+    // 3. Re-insert the specific people at their requested positions
+    if (dept === "Board" && connor) {
+      members.unshift(connor); // 1st
+    }
+    if (dept === "Production Department" && nenad) {
+      members.unshift(nenad); // 1st
+    }
+    if (dept === "Sales Department" && connor) {
+      // 4th position (index 3)
+      members.splice(Math.min(3, members.length), 0, connor);
+    }
+    if (dept === "Operations Department" && nenad) {
+      members.push(nenad); // Last
+    }
+
+    return members;
   };
 
   const board = getMembers("Board");
