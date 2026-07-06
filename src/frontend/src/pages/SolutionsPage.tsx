@@ -203,8 +203,6 @@ export default function SolutionsPage() {
             </p>
           </motion.div>
         </div>
-
-        </div>
         <WaveDivider fill="oklch(var(--background))" path="M0,33 C480,55 960,11 1440,33 L1440,50 L0,50 Z" height={50} />
       </section>
 
