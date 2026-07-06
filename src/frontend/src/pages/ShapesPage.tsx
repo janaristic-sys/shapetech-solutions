@@ -282,6 +282,7 @@ function ShapeCard({
 
   return (
     <motion.div
+      id={`shape-${shape.id}`}
       data-ocid={`shapes.card.${index + 1}`}
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -521,9 +522,9 @@ export default function ShapesPage() {
 
       <WaveDivider fromBg="oklch(0.18 0.05 270)" toBg="oklch(0.11 0.04 267)" />
 
-      {/* ── Intro paragraph ── */}
+      {/* ── Intro paragraph & Shapes Navigation ── */}
       <section
-        className="bg-background py-16 lg:py-20"
+        className="bg-background pt-16 lg:pt-24 pb-8"
         data-ocid="shapes.intro_section"
       >
         <div className="container max-w-4xl mx-auto px-6">
@@ -537,23 +538,47 @@ export default function ShapesPage() {
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-foreground mb-5 leading-tight">
               Built for <span className="gradient-accent">Niche E-Commerce</span>
             </h2>
-            <p className="text-muted-foreground text-lg leading-loose max-w-3xl mx-auto">
+            <p className="text-muted-foreground text-lg leading-loose max-w-3xl mx-auto mb-10">
               We believe e-commerce is dominated by a near-endless series of niche use cases — and that the merchants serving those niches deserve purpose-built technology.{" "}
               <span className="text-foreground font-medium">
                 Each Shape is a standalone product engine
               </span>{" "}
               that solves a specific, recurring commerce complexity. They are modular by design — deployable individually or combined into a complete commerce stack tailored to your business model.
             </p>
+
+            {/* Jump Links replacing the old DiagonalDivider */}
+            <div className="flex flex-wrap justify-center gap-3">
+              {(shapes || []).map((s, i) => (
+                <motion.button
+                  key={String(s.id)}
+                  onClick={() => {
+                    const el = document.getElementById(`shape-${s.id}`);
+                    if (el) {
+                      const y = el.getBoundingClientRect().top + window.scrollY - 100;
+                      window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                  }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                  className="group flex items-center gap-2.5 px-5 py-2.5 rounded-full border bg-card hover:bg-card/80 hover:shadow-lg hover:-translate-y-0.5 transition-all cursor-pointer"
+                  style={{ borderColor: `${TEAL}30` }}
+                >
+                  <div className="w-1.5 h-1.5 rounded-full shadow-[0_0_8px_oklch(0.75_0.12_195)]" style={{ background: TEAL }} />
+                  <span className="font-display font-medium text-sm text-foreground/90 group-hover:text-foreground transition-colors">
+                    {s.title}
+                  </span>
+                </motion.button>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Diagonal Divider Accent ── */}
-      <DiagonalDivider shapes={shapes || []} />
-
       {/* ── Shape Cards Grid ── */}
       <section
-        className="bg-background py-16 lg:py-28"
+        className="bg-background pb-16 lg:pb-28 pt-8 lg:pt-12"
         data-ocid="shapes.cards_section"
       >
         <div className="container max-w-7xl mx-auto px-6 lg:px-10">
@@ -562,7 +587,7 @@ export default function ShapesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-14"
+            className="text-center mb-16"
           >
             <span
               className="inline-block text-xs font-semibold uppercase tracking-widest mb-3 px-3 py-1 rounded-full border"
@@ -575,10 +600,10 @@ export default function ShapesPage() {
               Four Engines
             </span>
             <h2 className="font-display font-bold text-4xl text-foreground mt-2">
-              Our Four Commerce Shapes
+              Our Commerce Shapes
             </h2>
             <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-              Each Shape is a production-grade commerce engine. Deploy one or combine them into a full stack built for your specific niche.
+              Deploy one engine or combine them into a full stack built for your specific niche.
             </p>
           </motion.div>
 
