@@ -204,6 +204,12 @@ const defaultSolutions: Solution[] = [
       "**Data Consistency & Real-Time Syncing:** Ensuring that returns, refunds, or cancellations in Shopify instantly communicate with BDT was a crucial piece of logic. ShapeTech developed complex mapping rules to accurately handle edge-case events like partial refunds, ensuring affiliates aren't overpaid or underpaid.",
       "**High-Volume Scalability:** During flash sales or product launches, Shopify processes thousands of transactions concurrently. ShapeTech optimized the middleware to throttle requests appropriately, ensuring high volumes of traffic do not overload BDT's API limits."
     ],
+    gallery: [
+      "/assets/images/crunchi/cart-advocate.png",
+      "/assets/images/crunchi/product-listing.png",
+      "/assets/images/crunchi/home-banner.png",
+      "/assets/images/crunchi/brand-definition.png"
+    ]
   },
   {
     id: 2n,
