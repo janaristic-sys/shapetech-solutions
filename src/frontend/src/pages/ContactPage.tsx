@@ -423,7 +423,7 @@ export default function ContactPage() {
                           }
                           onBlur={validate}
                           placeholder="Alex Johnson"
-                          className="rounded-xl border-border/60 bg-background/60 text-foreground placeholder:text-muted-foreground/50 h-11 focus:border-primary transition-smooth"
+                          className="rounded-xl border-none bg-white/95 text-black placeholder:text-black/50 h-11 focus:ring-2 focus:ring-primary transition-smooth"
                           data-ocid="contact.name_input"
                         />
                         {errors.name && (
@@ -452,7 +452,7 @@ export default function ContactPage() {
                           }
                           onBlur={validate}
                           placeholder="alex@company.com"
-                          className="rounded-xl border-border/60 bg-background/60 text-foreground placeholder:text-muted-foreground/50 h-11 focus:border-primary transition-smooth"
+                          className="rounded-xl border-none bg-white/95 text-black placeholder:text-black/50 h-11 focus:ring-2 focus:ring-primary transition-smooth"
                           data-ocid="contact.email_input"
                         />
                         {errors.email && (
@@ -482,7 +482,7 @@ export default function ContactPage() {
                             setForm({ ...form, company: e.target.value })
                           }
                           placeholder="Acme Corp"
-                          className="rounded-xl border-border/60 bg-background/60 text-foreground placeholder:text-muted-foreground/50 h-11 focus:border-primary transition-smooth"
+                          className="rounded-xl border-none bg-white/95 text-black placeholder:text-black/50 h-11 focus:ring-2 focus:ring-primary transition-smooth"
                           data-ocid="contact.company_input"
                         />
                       </div>
@@ -505,7 +505,7 @@ export default function ContactPage() {
                             setForm({ ...form, phone: e.target.value })
                           }
                           placeholder="+1 (555) 000-0000"
-                          className="rounded-xl border-border/60 bg-background/60 text-foreground placeholder:text-muted-foreground/50 h-11 focus:border-primary transition-smooth"
+                          className="rounded-xl border-none bg-white/95 text-black placeholder:text-black/50 h-11 focus:ring-2 focus:ring-primary transition-smooth"
                           data-ocid="contact.phone_input"
                         />
                       </div>
@@ -526,26 +526,16 @@ export default function ContactPage() {
                           setForm({ ...form, projectType: e.target.value })
                         }
                         data-ocid="contact.project_type_select"
-                        className="rounded-xl h-11 px-3 text-sm border transition-smooth outline-none focus:border-primary"
-                        style={{
-                          background: "oklch(0.15 0.07 267 / 0.6)",
-                          borderColor: "oklch(0.35 0.04 270 / 0.6)",
-                          color: form.projectType
-                            ? "oklch(0.95 0 0)"
-                            : "oklch(0.55 0.01 270)",
-                        }}
+                        className="rounded-xl h-11 px-3 text-sm border-none bg-white/95 text-black transition-smooth outline-none focus:ring-2 focus:ring-primary"
                       >
-                        <option value="" disabled>
+                        <option value="" disabled className="text-black/50">
                           Select a project type
                         </option>
                         {PROJECT_TYPES.map((type) => (
                           <option
                             key={type}
                             value={type}
-                            style={{
-                              background: "oklch(0.18 0.07 267)",
-                              color: "oklch(0.92 0 0)",
-                            }}
+                            className="bg-white text-black"
                           >
                             {type}
                           </option>
@@ -570,7 +560,7 @@ export default function ContactPage() {
                         onBlur={validate}
                         placeholder="Tell us about your project, goals, timeline and budget..."
                         rows={5}
-                        className="rounded-xl border-border/60 bg-background/60 text-foreground placeholder:text-muted-foreground/50 resize-none focus:border-primary transition-smooth"
+                        className="rounded-xl border-none bg-white/95 text-black placeholder:text-black/50 resize-none focus:ring-2 focus:ring-primary transition-smooth"
                         data-ocid="contact.message_textarea"
                       />
                       {errors.message && (
