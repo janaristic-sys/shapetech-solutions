@@ -137,7 +137,7 @@ function SectionHeading({
         <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
         {eyebrow}
       </span>
-      <h2 className={`font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 ${gradient ? "gradient-accent" : "text-foreground"}`}>
+      <h2 className={`font-display font-bold text-3xl md:text-4xl lg:text-6xl leading-tight mb-4 ${gradient ? "gradient-accent" : "text-foreground"}`}>
         {title}
       </h2>
       {subtitle && (
@@ -626,23 +626,23 @@ export default function HomePage() {
           Section 1 · Hero
       ══════════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden bg-background"
+        className="relative min-h-[90svh] md:min-h-[100svh] flex flex-col justify-center overflow-hidden bg-background"
         data-ocid="home.hero_section"
       >
         <HeroBlobs />
 
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-20 pb-16 md:pt-24 md:pb-12 relative z-10">
-          <Card className="w-full min-h-[600px] bg-background/5 border-none relative rounded-3xl backdrop-blur-sm overflow-visible">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-12 md:pt-24 md:pb-12 relative z-10">
+          <Card className="w-full min-h-[400px] md:min-h-[600px] bg-background/5 border-none relative rounded-3xl backdrop-blur-sm overflow-visible">
             <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="oklch(var(--primary))" />
 
-            <div className="flex flex-col lg:flex-row h-full min-h-[560px] md:min-h-[620px] items-center overflow-visible">
+            <div className="flex flex-col lg:flex-row h-full min-h-[400px] md:min-h-[620px] items-center overflow-visible">
 
               {/* ── Left: Copy ── */}
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="flex-1 p-8 md:p-16 relative z-20 flex flex-col justify-center"
+                className="flex-1 p-6 sm:p-8 md:p-16 relative z-20 flex flex-col justify-center"
               >
                 {/* Cycling headline — absolute positioned so long lines never clip */}
                 <div className="relative w-full" style={{ minHeight: "clamp(12rem, 18vw, 15rem)" }}>
@@ -653,7 +653,7 @@ export default function HomePage() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -32 }}
                       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                      className="absolute top-0 left-0 right-0 text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight tracking-tight text-foreground"
+                      className="absolute top-0 left-0 right-0 text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight tracking-tight text-foreground"
                     >
                       {(() => {
                         const words = HERO_HEADLINES[headlineIdx].split(" ");
@@ -847,7 +847,7 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════════════════════════════════
           Section 4 · Shapes
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="relative bg-card py-20 md:py-28" data-ocid="home.shapes_section">
+      <section className="relative bg-card py-12 md:py-28" data-ocid="home.shapes_section">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <SectionHeading
             eyebrow="Shapes"
@@ -875,7 +875,7 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════════════════════════════════
           Section 5 · Solutions
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="relative bg-background py-20 md:py-28 overflow-hidden" data-ocid="home.solutions_section">
+      <section className="relative bg-background py-12 md:py-28 overflow-hidden" data-ocid="home.solutions_section">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <SectionHeading
             eyebrow="Solutions"
