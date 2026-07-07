@@ -23,7 +23,7 @@ import {
 import { motion } from "motion/react";
 import { FaLinkedinIn } from "react-icons/fa6";
 
-// â”€â”€â”€ Wave Divider â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Wave Divider ─────────────────────────────────────────────────────────────
 function WaveDivider({ fill, path, height = 70 }: { fill: string; path: string; height?: number }) {
   return (
     <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none" aria-hidden="true">
@@ -74,16 +74,16 @@ const OFFICES: Office[] = [
   {
     city: "Sarasota",
     country: "Florida, USA",
-    flag: "ðŸ‡ºðŸ‡¸",
-    address: "Sarasota, FL â€” Headquarters",
+    flag: "🇺🇸",
+    address: "Sarasota, FL — Headquarters",
     description:
-      "Our North American headquarters â€” home to our leadership, sales, and client success teams. Serving clients across the Americas and coordinating global engagements.",
+      "Our North American headquarters — home to our leadership, sales, and client success teams. Serving clients across the Americas and coordinating global engagements.",
   },
   {
-    city: "NiÅ¡",
+    city: "Niš",
     country: "Serbia",
-    flag: "ðŸ‡·ðŸ‡¸",
-    address: "NiÅ¡, Serbia â€” Development Office",
+    flag: "🇷🇸",
+    address: "Niš, Serbia — Development Office",
     description:
       "Our engineering hub in Serbia, powering product development and delivery for clients across European time zones with a world-class technical team of developers and architects.",
   },
@@ -100,30 +100,30 @@ const VALUES: ValueItem[] = [
     icon: Handshake,
     title: "Partnership",
     description:
-      "We don't just deliver software â€” we become partners in your success. We invest in understanding your business, your goals, and your challenges as if they were our own.",
+      "We don't just deliver software — we become partners in your success. We invest in understanding your business, your goals, and your challenges as if they were our own.",
   },
   {
     icon: Medal,
     title: "Excellence",
     description:
-      "We hold ourselves to the highest standards in everything we do â€” from code quality and design to communication and project management. Good enough is never enough.",
+      "We hold ourselves to the highest standards in everything we do — from code quality and design to communication and project management. Good enough is never enough.",
   },
   {
     icon: ShieldCheck,
     title: "Transparency",
     description:
-      "No hidden costs, no surprises, no spin. We communicate clearly and honestly throughout every engagement â€” about timelines, progress, risks, and results.",
+      "No hidden costs, no surprises, no spin. We communicate clearly and honestly throughout every engagement — about timelines, progress, risks, and results.",
   },
   {
     icon: TrendingUp,
     title: "Results-Driven",
     description:
-      "We measure our success by the outcomes we create for our clients â€” not lines of code or hours billed. Every decision is made with your business goals in mind.",
+      "We measure our success by the outcomes we create for our clients — not lines of code or hours billed. Every decision is made with your business goals in mind.",
   },
 ];
 
 // ---------------------------------------------------------------------------
-// Real team members â€” shown when backend returns empty
+// Real team members — shown when backend returns empty
 // ---------------------------------------------------------------------------
 const REAL_TEAM: TeamMember[] = [
   {
@@ -152,9 +152,9 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 2n,
-    name: "SaÅ¡a VeliÄkoviÄ‡",
+    name: "Saša Veličković",
     role: "Co-Founder & President",
-    bio: "SaÅ¡a oversees client relations and business strategy, ensuring that every project is perfectly aligned with the client's long-term objectives.",
+    bio: "Saša oversees client relations and business strategy, ensuring that every project is perfectly aligned with the client's long-term objectives.",
     avatarUrl:
       "https://shapetechsolutions.com/wp-content/uploads/2019/10/Sale-512x491.png",
     linkedinUrl: "",
@@ -164,7 +164,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 3n,
-    name: "Nenad AndrejeviÄ‡",
+    name: "Nenad Andrejević",
     role: "Chief Technology Officer",
     bio: "Nenad is the architectural lead, responsible for the technical integrity and scalability of the solutions we deliver.",
     avatarUrl:
@@ -176,7 +176,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 4n,
-    name: "Darko MilenkoviÄ‡",
+    name: "Darko Milenković",
     role: "Chief Creative Officer",
     bio: "Darko sets the creative standard, blending high-end design with functional excellence to create immersive digital experiences.",
     avatarUrl:
@@ -188,9 +188,9 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 5n,
-    name: "DuÅ¡an MitroviÄ‡",
+    name: "Dušan Mitrović",
     role: "Co-Founder & Managing Partner",
-    bio: "DuÅ¡an manages operational excellence across our engineering teams, ensuring robust delivery and technical growth.",
+    bio: "Dušan manages operational excellence across our engineering teams, ensuring robust delivery and technical growth.",
     avatarUrl:
       "https://shapetechsolutions.com/wp-content/uploads/2019/10/Smajli-512x491.png",
     linkedinUrl: "",
@@ -200,7 +200,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 6n,
-    name: "Miodrag VidojkoviÄ‡",
+    name: "Miodrag Vidojković",
     role: "Chief Executive Officer",
     bio: "Miodrag keeps our global operations running smoothly, bridging the gap between strategy and execution.",
     avatarUrl:
@@ -212,7 +212,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 7n,
-    name: "Nemanja JotiÄ‡",
+    name: "Nemanja Jotić",
     role: "Chief Financial Officer",
     bio: "Nemanja oversees the financial health and strategic growth planning for Shapetech Solutions.",
     avatarUrl:
@@ -224,7 +224,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 8n,
-    name: "Nikola OlariÄ‡",
+    name: "Nikola Olarić",
     role: "DevOps Team Lead",
     bio: "Nikola leads our infrastructure practices, ensuring secure, scalable, and highly available environments for all client projects.",
     avatarUrl:
@@ -236,7 +236,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 9n,
-    name: "Ana MitroviÄ‡",
+    name: "Ana Mitrović",
     role: "Operations & Sales",
     bio: "Ana drives our operational workflows, focusing on building strong partnerships and internal efficiency.",
     avatarUrl:
@@ -248,7 +248,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 10n,
-    name: "Andriana MiladinoviÄ‡",
+    name: "Andriana Miladinović",
     role: "Client Manager",
     bio: "Andriana ensures seamless communication and project alignment, serving as the trusted point of contact for our enterprise clients.",
     avatarUrl:
@@ -260,7 +260,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 11n,
-    name: "Sandra MarkoviÄ‡",
+    name: "Sandra Marković",
     role: "Full-stack Developer",
     bio: "Sandra builds robust full-stack features, blending frontend elegance with reliable backend architecture.",
     avatarUrl:
@@ -272,7 +272,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 12n,
-    name: "Milena BlagojeviÄ‡",
+    name: "Milena Blagojević",
     role: "Back-end Developer",
     bio: "Milena engineers scalable backend services, optimizing data flows and system performance across complex platforms.",
     avatarUrl:
@@ -284,7 +284,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 13n,
-    name: "Djordje StojanoviÄ‡",
+    name: "Djordje Stojanović",
     role: "Team Lead & Solution Owner",
     bio: "Djordje orchestrates engineering teams and owns the end-to-end delivery of specialized commerce solutions.",
     avatarUrl:
@@ -308,9 +308,9 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 15n,
-    name: "UroÅ¡ TerziÄ‡",
+    name: "Uroš Terzić",
     role: "Back-end Developer",
-    bio: "UroÅ¡ engineers scalable backend services, optimizing data flows and system performance across complex platforms.",
+    bio: "Uroš engineers scalable backend services, optimizing data flows and system performance across complex platforms.",
     avatarUrl:
       "https://shapetechsolutions.com/wp-content/uploads/2021/11/Terza-dots-512x491.png",
     linkedinUrl: "",
@@ -320,7 +320,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 16n,
-    name: "Marija VeljkoviÄ‡",
+    name: "Marija Veljković",
     role: "Back-end Developer",
     bio: "Marija engineers scalable backend services, optimizing data flows and system performance across complex platforms.",
     avatarUrl:
@@ -332,11 +332,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 17n,
-    name: "Milan StankoviÄ‡",
+    name: "Milan Stanković",
     role: "Frontend Developer",
     bio: "Milan is an integral part of the Shapetech team, contributing expertise and dedication to our shared goals.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2021/11/Milan-Stankovic-dots---1-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2021/11/Milan-Stankovic-dots-\u2013-1-512x491.png",
     linkedinUrl: "",
     sortOrder: 17n,
     departments: ["Production Department"],
@@ -344,7 +344,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 18n,
-    name: "Katarina ToniÄ‡",
+    name: "Katarina Tonić",
     role: "People Operations Manager",
     bio: "Katarina drives our operational workflows, focusing on building strong partnerships and internal efficiency.",
     avatarUrl:
@@ -356,7 +356,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 19n,
-    name: "Sara MilovanoviÄ‡",
+    name: "Sara Milovanović",
     role: "Back-end Developer",
     bio: "Sara engineers scalable backend services, optimizing data flows and system performance across complex platforms.",
     avatarUrl:
@@ -368,7 +368,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 20n,
-    name: "Marko BudiÅ¡a",
+    name: "Marko Budiša",
     role: "Team Lead",
     bio: "Marko orchestrates engineering teams and owns the end-to-end delivery of specialized commerce solutions.",
     avatarUrl:
@@ -380,7 +380,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 21n,
-    name: "Milica PrvuloviÄ‡",
+    name: "Milica Prvulović",
     role: "Full-stack Developer",
     bio: "Milica builds robust full-stack features, blending frontend elegance with reliable backend architecture.",
     avatarUrl:
@@ -392,7 +392,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 22n,
-    name: "Filip StamenkoviÄ‡",
+    name: "Filip Stamenković",
     role: "DevOps Engineer",
     bio: "Filip leads our infrastructure practices, ensuring secure, scalable, and highly available environments for all client projects.",
     avatarUrl:
@@ -404,7 +404,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 23n,
-    name: "Marko KostiÄ‡",
+    name: "Marko Kostić",
     role: "DevOps Engineer",
     bio: "Marko leads our infrastructure practices, ensuring secure, scalable, and highly available environments for all client projects.",
     avatarUrl:
@@ -416,7 +416,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 24n,
-    name: "Matea MilosavljeviÄ‡",
+    name: "Matea Milosavljević",
     role: "Back-end Developer",
     bio: "Matea engineers scalable backend services, optimizing data flows and system performance across complex platforms.",
     avatarUrl:
@@ -428,11 +428,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 25n,
-    name: "SlaÄ‘an MilenoviÄ‡",
+    name: "Slađan Milenović",
     role: "IT Administrator",
-    bio: "SlaÄ‘an provides essential administrative support, keeping our daily operations organized and efficient.",
+    bio: "Slađan provides essential administrative support, keeping our daily operations organized and efficient.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2023/02/Dani-ST-1-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2023/02/\u0110ani-ST-1-512x491.png",
     linkedinUrl: "",
     sortOrder: 25n,
     departments: ["IT Support"],
@@ -440,7 +440,7 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 26n,
-    name: "Damjan DeniÄ‡",
+    name: "Damjan Denić",
     role: "Team Lead",
     bio: "Damjan orchestrates engineering teams and owns the end-to-end delivery of specialized commerce solutions.",
     avatarUrl:
@@ -456,7 +456,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Full-stack Developer",
     bio: "Predrag builds robust full-stack features, blending frontend elegance with reliable backend architecture.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2023/04/Predrag-Aleksov-Full-stack-developer-shapetech-Nis-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2023/04/Predrag-Aleksov-Full-stack-developer-Shapetech-Nis-512x491.png",
     linkedinUrl: "",
     sortOrder: 27n,
     departments: ["Production Department"],
@@ -464,11 +464,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 28n,
-    name: "Mihajlo PetroviÄ‡",
+    name: "Mihajlo Petrović",
     role: "Client Manager",
     bio: "Mihajlo ensures seamless communication and project alignment, serving as the trusted point of contact for our enterprise clients.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2024/01/MIhajlo-Petrovic-ShapeTech-Solutions-1-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2024/01/MIhajlo-Petrovic-Shapetech-Solutions-1-512x491.png",
     linkedinUrl: "",
     sortOrder: 28n,
     departments: ["Production Department", "Management Department"],
@@ -476,11 +476,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 29n,
-    name: "Mila TeokareviÄ‡",
+    name: "Mila Teokarević",
     role: "UX/UI Designer",
     bio: "Mila crafts intuitive and beautiful interfaces that elevate the user experience across all digital touchpoints.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2024/01/Mila-Teokarevic-ShapeTech-Solutions-1-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2024/01/Mila-Teokarevic-Shapetech-Solutions-1-512x491.png",
     linkedinUrl: "",
     sortOrder: 29n,
     departments: ["Production Department"],
@@ -488,11 +488,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 30n,
-    name: "Milena RadosavljeviÄ‡",
+    name: "Milena Radosavljević",
     role: "Project Manager",
     bio: "Milena manages project lifecycles from discovery to deployment, ensuring on-time and on-budget delivery.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/02/Milena-Radosavljevic-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/02/Milena-Radosavljevic-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 30n,
     departments: ["Production Department", "Management Department"],
@@ -500,11 +500,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 31n,
-    name: "Andrija ÄorÄ‘eviÄ‡",
+    name: "Andrija Đorđević",
     role: "Full-stack Developer",
     bio: "Andrija builds robust full-stack features, blending frontend elegance with reliable backend architecture.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andrija-Dordevic-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andrija-\u0110or\u0111evi\u0107-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 31n,
     departments: ["Production Department"],
@@ -512,11 +512,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 32n,
-    name: "Andria TrojanoviÄ‡",
+    name: "Andria Trojanović",
     role: "Client Manager",
     bio: "Andria ensures seamless communication and project alignment, serving as the trusted point of contact for our enterprise clients.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andria-Trojanovic-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andria-Trojanovi\u0107-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 32n,
     departments: ["Production Department", "Management Department"],
@@ -524,11 +524,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 33n,
-    name: "Milica AntonijeviÄ‡",
+    name: "Milica Antonijević",
     role: "Client Manager",
     bio: "Milica ensures seamless communication and project alignment, serving as the trusted point of contact for our enterprise clients.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Milica-Antonijevic-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Milica-Antonijevic-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 33n,
     departments: ["Management Department"],
@@ -536,11 +536,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 34n,
-    name: "Jana RistiÄ‡",
+    name: "Jana Ristić",
     role: "Business Development Representative",
     bio: "Jana is an integral part of the Shapetech team, contributing expertise and dedication to our shared goals.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Jana-Ristic-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Jana-Risti\u0107-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 34n,
     departments: ["Sales Department"],
@@ -548,11 +548,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 35n,
-    name: "Filip MiniÄ‡",
+    name: "Filip Minić",
     role: "Team Lead",
     bio: "Filip orchestrates engineering teams and owns the end-to-end delivery of specialized commerce solutions.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Filip-Minic-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Filip-Minic-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 35n,
     departments: ["Production Department"],
@@ -560,11 +560,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 36n,
-    name: "DuÅ¡an RistiÄ‡",
+    name: "Dušan Ristić",
     role: "Back-end Developer",
-    bio: "DuÅ¡an engineers scalable backend services, optimizing data flows and system performance across complex platforms.",
+    bio: "Dušan engineers scalable backend services, optimizing data flows and system performance across complex platforms.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/07/Dusan-Ristic-ShapeTech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/07/Du\u0161an-Risti\u0107-Shapetech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 36n,
     departments: ["Production Department"],
@@ -572,11 +572,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 37n,
-    name: "Teodora VelisavljeviÄ‡",
+    name: "Teodora Velisavljević",
     role: "Full-stack Developer",
     bio: "Teodora builds robust full-stack features, blending frontend elegance with reliable backend architecture.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/08/Teodora-Velisavljevic-ST-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/08/Teodora-Velisavljevi\u0107-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 37n,
     departments: ["Production Department"],
@@ -584,11 +584,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 38n,
-    name: "Marko SpasiÄ‡",
+    name: "Marko Spasić",
     role: "Full-stack Developer",
     bio: "Marko builds robust full-stack features, blending frontend elegance with reliable backend architecture.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/08/Marko-Spasic-St-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/08/Marko-Spasi\u0107-St-512x491.png",
     linkedinUrl: "",
     sortOrder: 38n,
     departments: ["Production Department"],
@@ -608,11 +608,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 40n,
-    name: "Irina VeliÄkoviÄ‡",
+    name: "Irina Veličković",
     role: "People Operations Assistant",
     bio: "Irina drives our operational workflows, focusing on building strong partnerships and internal efficiency.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2026/03/Irina-Velickovic-ST-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2026/03/Irina-Veli\u010dkovi\u0107-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 40n,
     departments: ["Management Department"],
@@ -620,11 +620,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 41n,
-    name: "Milica SaviÄ‡",
+    name: "Milica Savić",
     role: "Frontend Developer",
     bio: "Milica is an integral part of the Shapetech team, contributing expertise and dedication to our shared goals.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2026/03/Milica-Savic-ST-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2026/03/Milica-Savi\u0107-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 41n,
     departments: ["Production Department"],
@@ -632,11 +632,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 42n,
-    name: "Dalibor StanojeviÄ‡",
+    name: "Dalibor Stanojević",
     role: "Full-stack Developer",
     bio: "Dalibor builds robust full-stack features, blending frontend elegance with reliable backend architecture.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2026/03/Dalibor-Stanojevic-ST-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2026/03/Dalibor-Stanojevi\u0107-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 42n,
     departments: ["Production Department"],
@@ -644,11 +644,11 @@ const REAL_TEAM: TeamMember[] = [
   },
   {
     id: 43n,
-    name: "MiloÅ¡ VidenoviÄ‡",
+    name: "Miloš Videnović",
     role: "Project Manager",
-    bio: "MiloÅ¡ manages project lifecycles from discovery to deployment, ensuring on-time and on-budget delivery.",
+    bio: "Miloš manages project lifecycles from discovery to deployment, ensuring on-time and on-budget delivery.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2026/03/MIlos-Videnovic-ST-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2026/03/MIlo\u0161-Videnovi\u0107-ST-512x491.png",
     linkedinUrl: "",
     sortOrder: 43n,
     departments: ["Production Department", "Management Department"],
@@ -966,11 +966,11 @@ function CompanyStorySection() {
                 Sarasota, Florida (USA)
               </span>{" "}
               and{" "}
-              <span className="text-foreground font-medium">NiÅ¡, Serbia</span>,
+              <span className="text-foreground font-medium">Niš, Serbia</span>,
               our engineering teams manage robust platforms that support dozens of countries.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Whether running complex subscription billing cycles with our <span className="text-primary font-semibold">Subscriptions</span> engine, managing multi-currency digital wallets via <span className="text-primary font-semibold">Credits</span>, bridging Shopify to any commission model with <span className="text-primary font-semibold">Shopify Direct</span>, or syncing real-time field data into HubSpot through <span className="text-primary font-semibold">CRM Direct</span> â€” our focus is building solutions that last.
+              Whether running complex subscription billing cycles with our <span className="text-primary font-semibold">Subscriptions</span> engine, managing multi-currency digital wallets via <span className="text-primary font-semibold">Credits</span>, bridging Shopify to any commission model with <span className="text-primary font-semibold">Shopify Direct</span>, or syncing real-time field data into HubSpot through <span className="text-primary font-semibold">CRM Direct</span> — our focus is building solutions that last.
             </p>
           </motion.div>
         </div>
@@ -1411,7 +1411,7 @@ function TeamSection() {
 
     // 1. Extract specific people we need to force into positions
     let connor = members.find(m => m.name === "Connor Hester");
-    let nenad = members.find(m => m.name === "Nenad AndrejeviÄ‡");
+    let nenad = members.find(m => m.name === "Nenad Andrejević");
 
     // Remove them from the general sorting pool for this department if they have specific rules
     if (connor && (dept === "Board" || dept === "Sales Department")) {
@@ -1421,7 +1421,7 @@ function TeamSection() {
     }
 
     if (nenad && (dept === "Production Department" || dept === "Operations Department")) {
-      members = members.filter(m => m.name !== "Nenad AndrejeviÄ‡");
+      members = members.filter(m => m.name !== "Nenad Andrejević");
     } else {
       nenad = undefined;
     }
@@ -1630,9 +1630,5 @@ export default function AboutPage() {
     </main>
   );
 }
-
-
-
-
 
 

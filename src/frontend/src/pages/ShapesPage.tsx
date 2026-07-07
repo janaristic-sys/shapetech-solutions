@@ -303,6 +303,172 @@ function ShapeCard({
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-smooth pointer-events-none"
         aria-hidden="true"
         style={{
+          background: `linear-gradient(135deg, ${TEAL}0d 0%, transparent 60%)`,
+          borderRadius: "20px",
+        }}
+      />
+
+      <div className="relative z-10 flex flex-col h-full p-5 md:p-8">
+        {/* Header row */}
+        <div className="flex items-start justify-end mb-6">
+          {/* Ghost number */}
+          <span
+            className="font-display font-bold text-7xl leading-none select-none"
+            style={{ color: `${TEAL}18` }}
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        </div>
+
+        {/* Shape badge — uses shape title as the label */}
+        <div className="flex items-center gap-2 mb-3">
+          <span
+            className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest"
+            style={{
+              background: `${TEAL}14`,
+              border: `1px solid ${TEAL}35`,
+              color: TEAL,
+            }}
+          >
+            {shape.title}
+          </span>
+        </div>
+
+        {/* Title & tagline */}
+        <h3 className="font-display font-bold text-2xl text-foreground mb-1 leading-tight">
+          {shape.title}
+        </h3>
+        <p className="text-primary font-medium text-sm mb-4">{shape.tagline}</p>
+
+        {/* Description */}
+        <p className="text-muted-foreground text-base leading-relaxed mb-6 flex-1">
+          {shape.description}
+        </p>
+
+        {/* Capabilities */}
+        <ul className="space-y-2 mb-6">
+          {shape.capabilities?.map((cap) => (
+            <li
+              key={cap}
+              className="flex items-start gap-2.5 text-sm text-foreground/75"
+            >
+              <div
+                className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                style={{
+                  background: `${TEAL}18`,
+                  border: `1px solid ${TEAL}35`,
+                }}
+              >
+                <div
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ background: TEAL }}
+                />
+              </div>
+              <span>{cap}</span>
+            </li>
+          ))}
+        </ul>
+        </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Skeleton Card (loading state)
+// ---------------------------------------------------------------------------
+function ShapeCardSkeleton({ index }: { index: number }) {
+  return (
+    <div
+      data-ocid={`shapes.loading_state.${index + 1}`}
+      className="card-fluid border border-border p-8"
+      style={{ borderRadius: "20px" }}
+    >
+      <div className="flex items-start justify-between mb-6">
+        <Skeleton className="w-20 h-20 rounded-2xl" />
+        <Skeleton className="w-16 h-14 rounded-lg" />
+      </div>
+      <Skeleton className="w-20 h-5 rounded-full mb-3" />
+      <Skeleton className="w-2/3 h-7 rounded mb-2" />
+      <Skeleton className="w-1/3 h-4 rounded mb-4" />
+      <Skeleton className="w-full h-20 rounded mb-6" />
+      <div className="space-y-2">
+        {[1, 2, 3].map((j) => (
+          <Skeleton key={j} className="w-full h-4 rounded" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Page
+// -----------------------------------------------------------// ---------------------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------------------
+export default function ShapesPage() {
+  const { data: shapes, isLoading } = useShapes();
+
+  const ICON_RESOLVER: Record<string, React.ElementType> = {
+    "Triangle": TriangleIcon,
+    "Circle": CircleIcon,
+    "Hexagon": HexagonIcon,
+    "Diamond": DiamondIcon,
+    "Star": StarIcon,
+  };
+
+  return (
+    <div data-ocid="shapes.page">
+      {/* ── Hero ── */}
+      <section
+        className="relative overflow-hidden bg-card py-16 md:py-40"
+        data-ocid="shapes.hero_section"
+      >
+        <div
+          className="pointer-events-none absolute -top-24 -right-24 w-[600px] h-[600px] opacity-[0.08]"
+          style={{
+            background: `radial-gradient(circle, ${TEAL}, transparent 65%)`,
+            borderRadius: "40% 60% 70% 30% / 50% 40% 60% 50%",
+            animation: "flowing 12s ease-in-out infinite",
+          }}
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute bottom-0 -left-32 w-[500px] h-[500px] opacity-[0.06]"
+          style={{
+            background: `radial-gradient(circle, ${TEAL}, transparent 65%)`,
+            borderRadius: "60% 40% 30% 70% / 40% 70% 30% 60%",
+            animation: "flowing 16s ease-in-out infinite reverse",
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="relative container max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-12 md:py-28 lg:py-40">
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <span
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest mb-6 px-4 py-2 rounded-full border"
+              style={{
+                background: `${TEAL}14`,
+                borderColor: `${TEAL}35`,
+                color: TEAL,
+              }}
+            >
+              <ArrowRight className="size-3.5" />
+              Proprietary Technology
+            </span>
+
+            <h1 className="font-display font-bold text-4xl md:text-6xl lg:text-7xl text-foreground leading-[1.05] mb-6">
+              Our <span className="gradient-accent">E-Commerce Engines</span>
+            </h1>
+
+            <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto mb-10">
+              Shapes are our proprietary, modular e-commerce engines — production-ready building blocks engineered to solve the complex compensation, subscription, checkout, and CRM requirements of niche e-commerce.
             </p>
 
             {/* Stat pills */}
