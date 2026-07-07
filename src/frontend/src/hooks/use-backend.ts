@@ -197,12 +197,12 @@ const defaultSolutions: Solution[] = [
     technologies: ["ByDesign Technologies", "Shopify", "Recharge"],
     industryName: "Direct-Selling, Cosmetics",
     bulletPoints: [
-      "**Webhook Architecture:** The system leverages real-time Shopify webhooks (e.g., order/created, customer/created, order/updated). As soon as an event occurs on the storefront, Shopify sends the payload to ShapeTech's integration.",
-      "**Data Transformation Layer:** Shopify data structures are inherently different from commission tracking models. ShapeTech's system intercepts the raw JSON payloads, isolates relevant variables (such as items purchased, totals, and tracking codes), and maps them into the precise format required by the BDT API.",
-      "**API Pipeline & Attribution Routing:** Once formatted, data is pushed securely into the BDT commission engine. The system ensures that specific customer orders are tied directly to correct referring Advocate or affiliate ID stored in BDT.",
-      "**Handling Network Fluctuations and Downtime:** ShapeTech implemented a robust queueing and retry mechanism. If BDT's API fails to acknowledge a payload, the system automatically queues it and retires safely without dropping order details or losing commission records.",
-      "**Data Consistency & Real-Time Syncing:** Ensuring that returns, refunds, or cancellations in Shopify instantly communicate with BDT was a crucial piece of logic. ShapeTech developed complex mapping rules to accurately handle edge-case events like partial refunds, ensuring affiliates aren't overpaid or underpaid.",
-      "**High-Volume Scalability:** During flash sales or product launches, Shopify processes thousands of transactions concurrently. ShapeTech optimized the middleware to throttle requests appropriately, ensuring high volumes of traffic do not overload BDT's API limits."
+      "Webhook Architecture: The system leverages real-time Shopify webhooks (e.g., order/created, customer/created, order/updated). As soon as an event occurs on the storefront, Shopify sends the payload to ShapeTech's integration.",
+      "Data Transformation Layer: Shopify data structures are inherently different from commission tracking models. ShapeTech's system intercepts the raw JSON payloads, isolates relevant variables (such as items purchased, totals, and tracking codes), and maps them into the precise format required by the BDT API.",
+      "API Pipeline & Attribution Routing: Once formatted, data is pushed securely into the BDT commission engine. The system ensures that specific customer orders are tied directly to correct referring Advocate or affiliate ID stored in BDT.",
+      "Handling Network Fluctuations and Downtime: ShapeTech implemented a robust queueing and retry mechanism. If BDT's API fails to acknowledge a payload, the system automatically queues it and retires safely without dropping order details or losing commission records.",
+      "Data Consistency & Real-Time Syncing: Ensuring that returns, refunds, or cancellations in Shopify instantly communicate with BDT was a crucial piece of logic. ShapeTech developed complex mapping rules to accurately handle edge-case events like partial refunds, ensuring affiliates aren't overpaid or underpaid.",
+      "High-Volume Scalability: During flash sales or product launches, Shopify processes thousands of transactions concurrently. ShapeTech optimized the middleware to throttle requests appropriately, ensuring high volumes of traffic do not overload BDT's API limits."
     ],
     gallery: [
       "/assets/images/crunchi/cart-advocate.png",
@@ -292,7 +292,7 @@ const defaultSolutions: Solution[] = [
     slug: "faster-way",
     sortOrder: 4n,
     features: ["Custom CRM Middleware", "Hybrid Integration Model", "Advanced Shopify Flows", "UX/UI Optimization"],
-    relatedShapeIds: [1n],
+    relatedShapeIds: [4n],
     caseStudy: {
       title: "Comprehensive Integration Ecosystem",
       description: "Architected a multi-layered ecosystem bridging Shopify, Recharge, ByDesign, and HubSpot to support a massive network of subscriptions, real-time app access, and engagement workflows.",
@@ -301,12 +301,12 @@ const defaultSolutions: Solution[] = [
     technologies: ["Shopify", "ByDesign Technology", "HubSpot", "Recharge"],
     industryName: "Direct-Selling, Health & Wellness",
     bulletPoints: [
-      "**Hybrid Integration Model:** Architected a multi-layered data pipeline bridging Base Data (Shopify-to-HubSpot), Event Workflows (Shopify Flow triggers), and External Data (CRM Middleware).",
-      "**Custom Middleware Development:** Designed and developed the bridge between business logic and multiple platforms, processing complex events like Recharge subscription webhooks and ByDesign rank webhooks.",
-      "**Advanced Shopify Flows:** Built complex flows that ingest data from the custom middleware, mapping responses to feed relevant data into HubSpot to control downstream workflows and real-time app access.",
-      "**Data Migration:** Supported the high-stakes migration and implementation of legacy products, customer data, and user accounts into the new commerce platform.",
-      "**UX/UI & Journey Optimization:** Defined and implemented optimized user journeys across core platform experiences, specifically focusing on the user dashboard and the Coach Connector.",
-      "**Custom Functionality & Automation:** Built bespoke components to address unique direct-selling requirements and integrated third-party systems to automate manual workflows."
+      "Hybrid Integration Model: Architected a multi-layered data pipeline bridging Base Data (Shopify-to-HubSpot), Event Workflows (Shopify Flow triggers), and External Data (CRM Middleware).",
+      "Custom Middleware Development: Designed and developed the bridge between business logic and multiple platforms, processing complex events like Recharge subscription webhooks and ByDesign rank webhooks.",
+      "Advanced Shopify Flows: Built complex flows that ingest data from the custom middleware, mapping responses to feed relevant data into HubSpot to control downstream workflows and real-time app access.",
+      "Data Migration: Supported the high-stakes migration and implementation of legacy products, customer data, and user accounts into the new commerce platform.",
+      "UX/UI & Journey Optimization: Defined and implemented optimized user journeys across core platform experiences, specifically focusing on the user dashboard and the Coach Connector.",
+      "Custom Functionality & Automation: Built bespoke components to address unique direct-selling requirements and integrated third-party systems to automate manual workflows."
     ]
   },
   {
