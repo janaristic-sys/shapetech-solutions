@@ -286,20 +286,28 @@ const defaultSolutions: Solution[] = [
   {
     id: 4n,
     title: "FASTer Way to Fat Loss",
-    tagline: "Subscription & Coaching E-Commerce Platform",
-    description: "We designed and deployed a cohort billing and subscription management platform for FASTer Way to Fat Loss' coaching and fitness program. The system manages recurring billing cycles, dunning automation, and coupon/discount routing across a database of thousands of active subscribers. The platform integrates seamlessly with their mobile application and training portal.",
+    tagline: "Composable Event-Driven Platform",
+    description: "Contributed to the successful launch of FASTer Way’s new digital experience, migrating the brand from a fragmented legacy setup (SamCart, ActiveCampaign, Zapier, manual workflows) to a composable, event-driven platform. The modernization enabled the business to leverage best-in-class technologies while delivering a seamless, unified experience for customers, coaches, and partners.",
     iconName: "RefreshCcw",
     slug: "faster-way",
     sortOrder: 4n,
-    features: ["Subscription management", "Cohort billing", "Coaching integrations", "Dunning automation"],
+    features: ["Custom CRM Middleware", "Hybrid Integration Model", "Advanced Shopify Flows", "UX/UI Optimization"],
     relatedShapeIds: [1n],
     caseStudy: {
-      title: "Subscription E-Commerce",
-      description: "Built the subscription engine powering FASTer Way to Fat Loss' high-volume coaching and wellness program.",
+      title: "Comprehensive Integration Ecosystem",
+      description: "Architected a multi-layered ecosystem bridging Shopify, Recharge, ByDesign, and HubSpot to support a massive network of subscriptions, real-time app access, and engagement workflows.",
       metrics: [],
     },
-    technologies: ["MedusaJS", "Stripe", "Next.js", "PostgreSQL"],
-    industryName: "Fitness & Wellness Coaching",
+    technologies: ["Shopify", "ByDesign Technology", "HubSpot", "Recharge"],
+    industryName: "Direct-Selling, Health & Wellness",
+    bulletPoints: [
+      "**Hybrid Integration Model:** Architected a multi-layered data pipeline bridging Base Data (Shopify-to-HubSpot), Event Workflows (Shopify Flow triggers), and External Data (CRM Middleware).",
+      "**Custom Middleware Development:** Designed and developed the bridge between business logic and multiple platforms, processing complex events like Recharge subscription webhooks and ByDesign rank webhooks.",
+      "**Advanced Shopify Flows:** Built complex flows that ingest data from the custom middleware, mapping responses to feed relevant data into HubSpot to control downstream workflows and real-time app access.",
+      "**Data Migration:** Supported the high-stakes migration and implementation of legacy products, customer data, and user accounts into the new commerce platform.",
+      "**UX/UI & Journey Optimization:** Defined and implemented optimized user journeys across core platform experiences, specifically focusing on the user dashboard and the Coach Connector.",
+      "**Custom Functionality & Automation:** Built bespoke components to address unique direct-selling requirements and integrated third-party systems to automate manual workflows."
+    ]
   },
   {
     id: 5n,
