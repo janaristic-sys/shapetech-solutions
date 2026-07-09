@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
 import { Spotlight } from "@/components/ui/spotlight";
+import { SEO } from "@/components/SEO";
 import LogoTicker from "@/components/LogoTicker";
 import {
   Carousel,
@@ -621,6 +622,10 @@ export default function HomePage() {
 
   return (
     <div data-ocid="home.page">
+      <SEO
+        title="Transforming Ideas into Digital Solutions"
+        description="Shapetech Solutions is your partner for custom software development, UX/UI design, and scalable technology strategies."
+      />
 
       {/* ══════════════════════════════════════════════════════════════════════
           Section 1 · Hero

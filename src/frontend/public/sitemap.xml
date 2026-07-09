@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://shapetechsolutions.com/</loc>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://shapetechsolutions.com/about</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://shapetechsolutions.com/solutions</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://shapetechsolutions.com/industries</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://shapetechsolutions.com/shapes</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://shapetechsolutions.com/contact</loc>
+    <priority>0.7</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  
+  <!-- Solutions -->
+  <url><loc>https://shapetechsolutions.com/solutions/crunchi</loc></url>
+  <url><loc>https://shapetechsolutions.com/solutions/newulife</loc></url>
+  <url><loc>https://shapetechsolutions.com/solutions/nuvita</loc></url>
+  <url><loc>https://shapetechsolutions.com/solutions/faster-way</loc></url>
+  <url><loc>https://shapetechsolutions.com/solutions/wine-shop-at-home</loc></url>
+  <url><loc>https://shapetechsolutions.com/solutions/reliv</loc></url>
+  <url><loc>https://shapetechsolutions.com/solutions/sana-vita</loc></url>
+  <url><loc>https://shapetechsolutions.com/solutions/l-bri</loc></url>
+
+  <!-- Industries -->
+  <url><loc>https://shapetechsolutions.com/industries/direct-selling</loc></url>
+  <url><loc>https://shapetechsolutions.com/industries/health-wellness</loc></url>
+  <url><loc>https://shapetechsolutions.com/industries/subscriptions</loc></url>
+  <url><loc>https://shapetechsolutions.com/industries/fundraising</loc></url>
+
+  <!-- Shapes -->
+  <url><loc>https://shapetechsolutions.com/shapes/medusa-direct</loc></url>
+  <url><loc>https://shapetechsolutions.com/shapes/xtrapoints</loc></url>
+  <url><loc>https://shapetechsolutions.com/shapes/dmv</loc></url>
+  <url><loc>https://shapetechsolutions.com/shapes/shopify-direct</loc></url>
+</urlset>

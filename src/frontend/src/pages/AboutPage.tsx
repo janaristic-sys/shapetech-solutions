@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAbout, useTeam } from "@/hooks/use-backend";
+import { SEO } from "@/components/SEO";
 import type { TeamMember } from "@/types";
 import { useState, useMemo, useRef } from "react";
 import { Link } from "@tanstack/react-router";
@@ -1618,7 +1619,11 @@ function ContactCta() {
 // ---------------------------------------------------------------------------
 export default function AboutPage() {
   return (
-    <main data-ocid="about.page">
+    <div data-ocid="about.page">
+      <SEO
+        title="About Us"
+        description="Learn about the team, mission, and vision of Shapetech Solutions."
+      />
       <PageHero />
       <StatsSection />
       <MissionVisionSection />

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
@@ -419,8 +420,13 @@ export default function ShapesPage() {
   };
 
   return (
-    <div data-ocid="shapes.page">
-      {/* ── Hero ── */}
+    <div data-ocid="shapes.page" className="bg-background min-h-screen">
+      <SEO
+        title="Shapes (Proprietary E-Commerce Engines)"
+        description="Discover Shapes — our proprietary, modular e-commerce engines engineered to solve complex compensation, subscription, and CRM requirements."
+      />
+
+      {/* ── 1. Hero Section ── */}
       <section
         className="relative overflow-hidden bg-card py-16 md:py-40"
         data-ocid="shapes.hero_section"

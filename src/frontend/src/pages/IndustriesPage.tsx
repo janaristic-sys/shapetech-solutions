@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useIndustries } from "@/hooks/use-backend";
 import type { Industry } from "@/types";
@@ -251,6 +252,11 @@ export default function IndustriesPage() {
 
   return (
     <div data-ocid="industries.page">
+      <SEO
+        title="Industries We Serve"
+        description="We build robust e-commerce and digital solutions for complex industries including Direct Selling, Health & Wellness, Subscriptions, and Fundraising."
+      />
+
       {/* ── Hero Banner ── */}
       <section
         className="relative overflow-hidden bg-card py-12 md:py-24"

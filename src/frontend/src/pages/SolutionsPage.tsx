@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SEO } from "@/components/SEO";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "@tanstack/react-router";
 import {
@@ -175,6 +176,10 @@ export default function SolutionsPage() {
 
   return (
     <div data-ocid="solutions.page">
+      <SEO
+        title="Our Solutions & Case Studies"
+        description="Explore our portfolio of successful digital transformations, featuring direct selling platforms, enterprise CMS, and custom scalable e-commerce systems."
+      />
       {/* ── Hero Section ── */}
       <section
         className="relative bg-card overflow-hidden pt-24 pb-24 md:pt-36 md:pb-32"
