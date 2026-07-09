@@ -311,8 +311,8 @@ export default function IndustriesPage() {
             className="flex flex-wrap gap-5 mt-12"
           >
             {[
-              { value: "7+", label: "Verticals mastered" },
-              { value: "150+", label: "Projects delivered" },
+              { value: "5", label: "Verticals mastered" },
+              { value: "30+", label: "Projects delivered" },
             ].map((stat) => (
               <div
                 key={stat.label}

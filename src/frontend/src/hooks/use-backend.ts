@@ -46,7 +46,7 @@ const defaultAbout: AboutContent = {
   vision:
     "To power the world's niche e-commerce use cases through robust, scalable, and beautifully designed technology products.",
   yearsInBusiness: 8,
-  projectsDelivered: 150,
+  projectsDelivered: 30,
   clientsSatisfied: 95,
 };
 

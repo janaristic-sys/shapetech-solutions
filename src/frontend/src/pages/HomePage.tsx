@@ -680,7 +680,7 @@ export default function HomePage() {
                   {[
                     { value: "$100M+", label: "Annual Volume" },
                     { value: "Dozens", label: "Countries Served" },
-                    { value: "8+",     label: "Client Solutions" },
+                    { value: "8",      label: "Client Solutions" },
                   ].map((stat) => (
                     <div key={stat.label} className="flex flex-col items-start">
                       <span className="font-display font-black text-4xl gradient-accent">
@@ -775,7 +775,7 @@ export default function HomePage() {
               </p>
 
               <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-8">
-                What has evolved over 7+ years of business is an ever-growing portfolio of e-commerce
+                What has evolved over 8+ years of business is an ever-growing portfolio of e-commerce
                 solutions that are shaping an entirely new future for e-commerce, all created and supported
                 by our team of experts. We design, develop, and evolve our solutions in tandem with clients
                 and industries.
