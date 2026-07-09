@@ -1632,8 +1632,6 @@ export default function AboutPage() {
       <OfficesSection />
       <TeamSection />
       <ContactCta />
-    </main>
-  );
+      </div>
+    );
 }
-
-
