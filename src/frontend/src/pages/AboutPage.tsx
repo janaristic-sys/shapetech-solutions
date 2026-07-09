@@ -456,7 +456,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Full-stack Developer",
     bio: "Predrag builds robust full-stack features, blending frontend elegance with reliable backend architecture.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2023/04/Predrag-Aleksov-Full-stack-developer-Shapetech-Nis-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2023/04/Predrag-Aleksov-Full-stack-developer-shapetech-Nis-512x491.png",
     linkedinUrl: "",
     sortOrder: 27n,
     departments: ["Production Department"],
@@ -468,7 +468,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Client Manager",
     bio: "Mihajlo ensures seamless communication and project alignment, serving as the trusted point of contact for our enterprise clients.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2024/01/MIhajlo-Petrovic-Shapetech-Solutions-1-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2024/01/MIhajlo-Petrovic-ShapeTech-Solutions-1-512x491.png",
     linkedinUrl: "",
     sortOrder: 28n,
     departments: ["Production Department", "Management Department"],
@@ -480,7 +480,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "UX/UI Designer",
     bio: "Mila crafts intuitive and beautiful interfaces that elevate the user experience across all digital touchpoints.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2024/01/Mila-Teokarevic-Shapetech-Solutions-1-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2024/01/Mila-Teokarevic-ShapeTech-Solutions-1-512x491.png",
     linkedinUrl: "",
     sortOrder: 29n,
     departments: ["Production Department"],
@@ -492,7 +492,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Project Manager",
     bio: "Milena manages project lifecycles from discovery to deployment, ensuring on-time and on-budget delivery.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/02/Milena-Radosavljevic-Shapetech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/02/Milena-Radosavljevic-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 30n,
     departments: ["Production Department", "Management Department"],
@@ -504,7 +504,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Full-stack Developer",
     bio: "Andrija builds robust full-stack features, blending frontend elegance with reliable backend architecture.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andrija-\u0110or\u0111evi\u0107-Shapetech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andrija-\u0110or\u0111evi\u0107-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 31n,
     departments: ["Production Department"],
@@ -516,7 +516,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Client Manager",
     bio: "Andria ensures seamless communication and project alignment, serving as the trusted point of contact for our enterprise clients.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andria-Trojanovi\u0107-Shapetech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Andria-Trojanovi\u0107-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 32n,
     departments: ["Production Department", "Management Department"],
@@ -528,7 +528,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Client Manager",
     bio: "Milica ensures seamless communication and project alignment, serving as the trusted point of contact for our enterprise clients.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Milica-Antonijevic-Shapetech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Milica-Antonijevic-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 33n,
     departments: ["Management Department"],
@@ -552,7 +552,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Team Lead",
     bio: "Filip orchestrates engineering teams and owns the end-to-end delivery of specialized commerce solutions.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Filip-Minic-Shapetech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Filip-Minic-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 35n,
     departments: ["Production Department"],
@@ -564,7 +564,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Back-end Developer",
     bio: "Dušan engineers scalable backend services, optimizing data flows and system performance across complex platforms.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/07/Du\u0161an-Risti\u0107-Shapetech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/07/Du\u0161an-Risti\u0107-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 36n,
     departments: ["Production Department"],
