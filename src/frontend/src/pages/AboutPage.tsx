@@ -540,7 +540,7 @@ const REAL_TEAM: TeamMember[] = [
     role: "Business Development Representative",
     bio: "Jana is an integral part of the Shapetech team, contributing expertise and dedication to our shared goals.",
     avatarUrl:
-      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Jana-Risti\u0107-Shapetech-Solutions-512x491.png",
+      "https://shapetechsolutions.com/wp-content/uploads/2025/04/Jana-Risti\u0107-ShapeTech-Solutions-512x491.png",
     linkedinUrl: "",
     sortOrder: 34n,
     departments: ["Sales Department"],
