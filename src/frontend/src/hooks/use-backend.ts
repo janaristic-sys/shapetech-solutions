@@ -975,7 +975,31 @@ export function useDeleteBlogPost() {
 
 export function useSubmitContact() {
   return useMutation({
-    mutationFn: async (data: Omit<ContactSubmission, "id" | "submittedAt">) =>
-      data,
+    mutationFn: async (data: Omit<ContactSubmission, "id" | "submittedAt">) => {
+      const response = await fetch("https://formsubmit.co/ajax/support@shapetechsolutions.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          Name: data.name,
+          Email: data.email,
+          Company: data.company || "Not provided",
+          Phone: data.phone || "Not provided",
+          "Project Type": data.projectType || "Not provided",
+          Message: data.message,
+          _subject: `New Lead from ${data.name} via Shapetech Solutions`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      return data;
+    },
   });
 }
