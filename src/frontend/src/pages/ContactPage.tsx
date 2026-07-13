@@ -210,18 +210,34 @@ export default function ContactPage() {
   }
 
   async function handleSubmit(e: React.FormEvent) {
-    if (!validate()) {
-      e.preventDefault();
-      return;
-    }
-    // Let the native form submission proceed to FormSubmit.co
+    e.preventDefault();
+    if (!validate()) return;
+    
+    submitContact.mutate(
+      {
+        name: form.name,
+        email: form.email,
+        company: form.company,
+        phone: form.phone,
+        projectType: form.projectType,
+        message: form.message,
+      },
+      {
+        onSuccess: () => {
+          setSubmitted(true);
+          toast.success("Message received! We'll be in touch within 24 hours.");
+        },
+        onError: () => {
+          toast.error("Something went wrong. Please try again.");
+        },
+      },
+    );
   }
 
-  // Check if we just returned from a successful FormSubmit redirect
+  // Clear query params if we came from a redirect
   useEffect(() => {
     if (typeof window !== 'undefined' && window.location.search.includes('success=true')) {
-      setSubmitted(true);
-      toast.success("Message received! We'll be in touch within 24 hours.");
+      window.history.replaceState({}, document.title, window.location.pathname);
     }
   }, []);
 
@@ -385,19 +401,12 @@ export default function ContactPage() {
                   />
 
                   <form
-                    action="https://formsubmit.co/support@shapetechsolutions.com"
-                    method="POST"
                     onSubmit={handleSubmit}
                     className="relative rounded-[calc(1.5rem-1px)] p-5 sm:p-8 flex flex-col gap-6"
                     style={{ background: "oklch(var(--card))" }}
                     data-ocid="contact.form"
                     noValidate
                   >
-                    {/* FormSubmit Configuration Fields */}
-                    <input type="hidden" name="_subject" value={`New Lead from ${form.name} via Shapetech Solutions`} />
-                    <input type="hidden" name="_template" value="table" />
-                    <input type="hidden" name="_next" value="https://shapetechsolutions.com/contact?success=true" />
-                    <input type="hidden" name="_captcha" value="false" />
                     <div>
                       <h2 className="font-display font-bold text-2xl text-foreground mb-1">
                         Send Us a Message
@@ -583,17 +592,24 @@ export default function ContactPage() {
                     {/* Submit */}
                     <button
                       type="submit"
+                      disabled={submitContact.isPending}
                       data-ocid="contact.submit_button"
-                      className="w-full rounded-full font-semibold text-sm flex items-center justify-center gap-2 transition-smooth hover:opacity-90 py-3.5"
+                      className="w-full rounded-full font-semibold text-sm flex items-center justify-center gap-2 transition-smooth disabled:opacity-60 py-3.5"
                       style={{
                         background:
                           "linear-gradient(90deg, oklch(0.75 0.12 195), oklch(0.65 0.14 205))",
                         color: "oklch(0.12 0.03 270)",
-                        boxShadow: "0 0 28px oklch(0.75 0.12 195 / 0.35)",
+                        boxShadow: submitContact.isPending
+                          ? "none"
+                          : "0 0 28px oklch(0.75 0.12 195 / 0.35)",
                       }}
                     >
-                      <Send className="size-4" />
-                      Send Message
+                      {submitContact.isPending ? (
+                        <Loader2 className="size-4 animate-spin" />
+                      ) : (
+                        <Send className="size-4" />
+                      )}
+                      {submitContact.isPending ? "Sending..." : "Send Message"}
                     </button>
 
                     <p className="text-xs text-muted-foreground text-center -mt-2">

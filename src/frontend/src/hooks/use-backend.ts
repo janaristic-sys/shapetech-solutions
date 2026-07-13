@@ -975,7 +975,7 @@ export function useDeleteBlogPost() {
 
 export function useSubmitContact() {
   return useMutation({
-    mutationFn: async (data: Omit<ContactSubmission, "id" | "submittedAt">) => {
+    mutationFn: async (data: Omit<ContactSubmission, "id" | "submittedAt"> & { phone?: string; projectType?: string }) => {
       const response = await fetch("https://formsubmit.co/ajax/support@shapetechsolutions.com", {
         method: "POST",
         headers: {
