@@ -127,40 +127,6 @@ const defaultIndustries: Industry[] = [
     ],
   },
   {
-    id: 2n,
-    slug: "xtrapoints",
-    title: "XtraPoints",
-    tagline: "Fundraising Platform",
-    description:
-      "A comprehensive system for creating, managing, and supporting fundraisers. Organizations can publish fundraisers and track contributions across web and mobile. Donors can turn the spare change from their everyday card purchases into monthly donations using RoundUp donations.",
-    iconName: "Star",
-    sortOrder: 2n,
-    capabilities: [
-      "RoundUp donations",
-      "Recurring donations",
-      "One-time donations",
-      "Fundraiser and campaign management",
-      "Donation and payment tracking",
-      "Organization and donor dashboards",
-    ],
-  },
-  {
-    id: 3n,
-    slug: "dmv",
-    title: "DMV",
-    tagline: "Distributor management & back-office",
-    description:
-      "DMV is our distributor management platform — a complete back-office for direct selling companies. It handles genealogy trees, rank tracking, commission calculations, and field-facing dashboards.",
-    iconName: "Network",
-    sortOrder: 3n,
-    capabilities: [
-      "Genealogy tree management",
-      "Rank advancement tracking",
-      "Real-time commission engine",
-      "Replicated distributor sites",
-    ],
-  },
-  {
     id: 4n,
     slug: "shopify-direct",
     title: "Shopify Direct",
