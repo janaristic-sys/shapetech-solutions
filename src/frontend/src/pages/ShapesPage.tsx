@@ -618,25 +618,20 @@ export default function ShapesPage() {
 
             {/* Stealth Mode Banner */}
             {!isLoading && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="w-full flex"
-              >
-                <div className="card-fluid w-full h-full border border-dashed border-primary/40 bg-card/40 backdrop-blur-md p-12 text-center flex flex-col items-center justify-center min-h-[480px] md:min-h-[450px]" style={{ borderRadius: "20px" }}>
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6">
-                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
-                      <circle cx="32" cy="32" r="22" stroke="currentColor" strokeWidth="2.5" fill="none"/>
-                      <circle cx="32" cy="32" r="13" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.45"/>
-                      <circle cx="32" cy="32" r="4.5" fill="currentColor" opacity="0.8"/>
-                    </svg>
-                  </div>
-                  <h3 className="font-display font-bold text-3xl text-foreground mb-4">Stealth Mode</h3>
-                  <p className="text-muted-foreground text-lg max-w-sm">One exciting new e-commerce engine is currently in development. Check back soon for its official release.</p>
-                </div>
-              </motion.div>
+              <ShapeCard
+                shape={{
+                  id: 999n,
+                  slug: "stealth-mode",
+                  title: "Stealth Mode",
+                  tagline: "Coming soon",
+                  description: "One exciting new e-commerce engine is currently in development. Check back soon for its official release.",
+                  iconName: "Circle",
+                  capabilities: ["To be announced"],
+                  sortOrder: 999n,
+                  Icon: CircleIcon,
+                } as any}
+                index={shapes?.length || 3}
+              />
             )}
           </div>
         </div>
