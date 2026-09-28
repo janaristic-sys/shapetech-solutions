@@ -871,13 +871,13 @@ export default function HomePage() {
                 <ShapeCard key={String(shape.id)} shape={shape} index={i} />
               ))}
               {/* Stealth Mode Banner */}
-              <div className="card-fluid overflow-hidden flex flex-col justify-center items-center text-center p-8 transition-smooth border border-dashed border-primary/40 bg-card/40 backdrop-blur-md min-h-[300px] sm:col-span-2">
+              <div className="card-fluid overflow-hidden flex flex-col justify-center items-center text-center p-8 transition-smooth border border-dashed border-primary/40 bg-card/40 backdrop-blur-md min-h-[300px]">
                   <div className="w-16 h-16 rounded-full bg-primary/10 text-primary mb-4 flex items-center justify-center">
                     <Compass className="w-8 h-8 opacity-70" />
                   </div>
                   <h3 className="font-display font-bold text-foreground text-xl mb-2">Stealth Mode</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
-                    We are currently building two new proprietary engines. Stay tuned for their official release.
+                    One exciting new e-commerce engine is currently in development. Check back soon for its official release.
                   </p>
               </div>
             </div>
