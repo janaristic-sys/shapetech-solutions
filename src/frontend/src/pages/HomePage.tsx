@@ -685,7 +685,7 @@ export default function HomePage() {
                   {[
                     { value: "$100M+", label: "Annual Volume" },
                     { value: "Dozens", label: "Countries Served" },
-                    { value: "8",      label: "Client Solutions" },
+                    { value: "20+",      label: "Client Solutions" },
                   ].map((stat) => (
                     <div key={stat.label} className="flex flex-col items-start">
                       <span className="font-display font-black text-4xl gradient-accent">

@@ -13,16 +13,13 @@ const TEAL_GLOW = "oklch(0.75 0.12 195 / 0.3)";
 
 const COMPANY_LINKS = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
   { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ];
 
 const SERVICE_LINKS = [
-  { label: "Industries", to: "/industries" },
   { label: "Shapes", to: "/shapes" },
   { label: "Solutions", to: "/solutions" },
-  { label: "Partners", to: "/partners" },
 ];
 
 const OFFICES = [

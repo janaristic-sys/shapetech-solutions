@@ -57,7 +57,7 @@ const defaultClients: Client[] = [
   { id: 4n, name: "FASTer Way to Fat Loss", logoUrl: "/assets/logos/faster-way.png", websiteUrl: "https://www.fasterway.com", sortOrder: 4n, solutionSlug: "faster-way" },
   { id: 5n, name: "Wine Shop at Home", logoUrl: "/assets/logos/wine-shop-at-home.png", websiteUrl: "https://wineshopathome.com", sortOrder: 5n, solutionSlug: "wine-shop-at-home" },
   { id: 6n, name: "Reliv", logoUrl: "/assets/logos/reliv.png", websiteUrl: "https://reliv.com", sortOrder: 6n, solutionSlug: "reliv" },
-  { id: 7n, name: "Sana Vita", logoUrl: "/assets/logos/sana-vita.png", websiteUrl: "https://sanavita.hk", sortOrder: 7n, solutionSlug: "sana-vita" },
+  // { id: 7n, name: "Sana Vita", logoUrl: "/assets/logos/sana-vita.png", websiteUrl: "https://sanavita.hk", sortOrder: 7n, solutionSlug: "sana-vita" },
   { id: 8n, name: "L'BRI", logoUrl: "/assets/logos/l-bri.png", websiteUrl: "https://lbri.com", sortOrder: 8n, solutionSlug: "l-bri" },
 ];
 
@@ -111,6 +111,21 @@ const defaultIndustries: Industry[] = [
     relatedSolutionIds: [1n],
   },
 ];const defaultShapes: Shape[] = [
+  {
+    id: 2n,
+    slug: "xtrapoints",
+    title: "XtraPoints",
+    tagline: "The Future of Incentives",
+    description: "Our newly refined incentives shape, Xtra Points, provides a centralized hub to track loyalty points, custom bonuses, and product vouchers. Its robust transaction ledger allows merchants to configure flexible rewards programs without affecting core accounting data.",
+    iconName: "Gift",
+    sortOrder: 2n,
+    capabilities: [
+      "Loyalty points tracking",
+      "Custom bonuses",
+      "Product vouchers",
+      "Flexible rewards programs",
+    ],
+  },
   {
     id: 1n,
     slug: "medusa-direct",
@@ -290,7 +305,7 @@ const defaultSolutions: Solution[] = [
       description: "Built the infrastructure to support Wine Shop at Home's growing network of independent consultants.",
       metrics: [],
     },
-    technologies: ["Shopify", "ByDesign Technology", "GoAffPro"],
+    technologies: ["Shopify", "GoAffPro"],
     gallery: [
       "/assets/images/wineshop/gallery-1.png",
       "/assets/images/wineshop/gallery-2.png",
@@ -345,6 +360,7 @@ const defaultSolutions: Solution[] = [
       "/assets/images/reliv/account-dashboard.png"
     ]
   },
+  /*
   {
     id: 7n,
     title: "Sana Vita",
@@ -368,6 +384,7 @@ const defaultSolutions: Solution[] = [
       "Built a sophisticated payment orchestration layer to securely handle, route, and process transactions across diverse payment gateways, currencies, and international markets."
     ]
   },
+  */
   {
     id: 8n,
     title: "L'BRI",

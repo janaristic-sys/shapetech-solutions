@@ -67,7 +67,7 @@ interface ValueItem {
 const STATS: StatItem[] = [
   { value: "$100M+", label: "Annual Volume Powered" },
   { value: "Dozens", label: "Countries Served" },
-  { value: "8", label: "Client Solutions" },
+  { value: "20+", label: "Client Solutions" },
   { value: "5", label: "Core Industries" },
 ];
 
