@@ -118,7 +118,7 @@ const defaultIndustries: Industry[] = [
     tagline: "For the team behind the team",
     description: "Turn everyday spending into ongoing support. XtraPoint brings together round-up giving, recurring gifts, and one-time donations to help schools, teams, and communities grow.",
     iconName: "HeartPulse",
-    sortOrder: 2n,
+    sortOrder: 3n,
     capabilities: [
       "Round-up giving",
       "Recurring gifts",
@@ -148,7 +148,7 @@ const defaultIndustries: Industry[] = [
     description:
       "Shopify Direct bridges the gap between Shopify's world-class checkout and the complex requirements of network marketing. Commission tracking, replicated storefronts, and field link integrity — all intact.",
     iconName: "Globe",
-    sortOrder: 4n,
+    sortOrder: 2n,
     capabilities: [
       "Shopify Plus extensions",
       "Replicated distributor stores",

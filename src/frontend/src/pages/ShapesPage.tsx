@@ -269,16 +269,15 @@ function ShapeCard({
     <motion.div
       id={`shape-${shape.id}`}
       data-ocid={`shapes.card.${index + 1}`}
-      initial={{ opacity: 0, y: 100 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="sticky top-20 md:top-24 w-full mb-20 md:mb-32 last:mb-0 pt-10"
-      style={{ zIndex: index + 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className="w-full flex"
     >
-      <div className="relative">
+      <div className="relative w-full h-full flex">
         <div
-          className="group relative flex flex-col card-fluid border border-border hover:border-primary/40 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] min-h-[480px] md:min-h-[450px]"
+          className="group w-full h-full relative flex flex-col card-fluid border border-border hover:border-primary/40 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] min-h-[480px] md:min-h-[450px]"
           style={{ borderRadius: "20px", background: "oklch(0.14 0.04 265)" }}
         >
       {/* Organic blob background accent */}
@@ -597,9 +596,9 @@ export default function ShapesPage() {
             </p>
           </motion.div>
 
-          {/* Stacked Cards Container */}
+          {/* Grid Cards Container */}
           <div
-            className="flex flex-col relative"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 relative"
             data-ocid="shapes.cards_list"
           >
             {isLoading
@@ -620,14 +619,13 @@ export default function ShapesPage() {
             {/* Stealth Mode Banner */}
             {!isLoading && (
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="sticky top-20 md:top-24 w-full mb-20 md:mb-32 pt-10"
-                style={{ zIndex: 10 }}
+                className="w-full flex"
               >
-                <div className="card-fluid border border-dashed border-primary/40 bg-card/40 backdrop-blur-md p-12 text-center flex flex-col items-center justify-center min-h-[300px]" style={{ borderRadius: "20px" }}>
+                <div className="card-fluid w-full h-full border border-dashed border-primary/40 bg-card/40 backdrop-blur-md p-12 text-center flex flex-col items-center justify-center min-h-[480px] md:min-h-[450px]" style={{ borderRadius: "20px" }}>
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6">
                     <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
                       <circle cx="32" cy="32" r="22" stroke="currentColor" strokeWidth="2.5" fill="none"/>
@@ -636,7 +634,7 @@ export default function ShapesPage() {
                     </svg>
                   </div>
                   <h3 className="font-display font-bold text-3xl text-foreground mb-4">Stealth Mode</h3>
-                  <p className="text-muted-foreground text-lg max-w-lg">Two exciting new e-commerce engines are currently in development. Check back soon for their official launch.</p>
+                  <p className="text-muted-foreground text-lg max-w-sm">One exciting new e-commerce engine is currently in development. Check back soon for its official release.</p>
                 </div>
               </motion.div>
             )}
