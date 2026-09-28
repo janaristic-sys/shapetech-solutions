@@ -632,13 +632,13 @@ module {
       published = true;
     });
     ignore addBlogPost(blog, idCounter, {
-      title     = "The Future of Incentives: Introducing the \"Xtra Points\" Promotion Engine.";
-      slug      = "xtra-points-promotion-engine";
-      summary   = "A powerful engine supporting product bundles, coupon codes, and centralized performance dashboards.";
-      content   = "Our newly refined incentives shape, Xtra Points, provides a centralized hub to track loyalty points, custom bonuses, and product vouchers. Its robust transaction ledger allows merchants to configure flexible rewards programs without affecting core accounting data.";
+      title     = "Turn everyday spending into ongoing support with XtraPoint.";
+      slug      = "xtrapoint";
+      summary   = "XtraPoint brings together round-up giving, recurring gifts, and one-time donations to help schools, teams, and communities grow.";
+      content   = "Turn everyday spending into ongoing support. XtraPoint brings together round-up giving, recurring gifts, and one-time donations to help schools, teams, and communities grow. It provides a centralized hub to track giving and helps your community take part.";
       date      = 1_773_100_800_000_000_000;
       author    = "Nenad Andrejevic";
-      tags      = ["Incentives", "Loyalty", "Software Architecture"];
+      tags      = ["Fundraising", "Community", "Donations"];
       published = true;
     });
     ignore addBlogPost(blog, idCounter, {

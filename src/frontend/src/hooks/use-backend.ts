@@ -113,17 +113,16 @@ const defaultIndustries: Industry[] = [
 ];const defaultShapes: Shape[] = [
   {
     id: 2n,
-    slug: "xtrapoints",
-    title: "XtraPoints",
-    tagline: "The Future of Incentives",
-    description: "Our newly refined incentives shape, Xtra Points, provides a centralized hub to track loyalty points, custom bonuses, and product vouchers. Its robust transaction ledger allows merchants to configure flexible rewards programs without affecting core accounting data.",
-    iconName: "Gift",
+    slug: "xtrapoint",
+    title: "XtraPoint",
+    tagline: "For the team behind the team",
+    description: "Turn everyday spending into ongoing support. XtraPoint brings together round-up giving, recurring gifts, and one-time donations to help schools, teams, and communities grow.",
+    iconName: "HeartPulse",
     sortOrder: 2n,
     capabilities: [
-      "Loyalty points tracking",
-      "Custom bonuses",
-      "Product vouchers",
-      "Flexible rewards programs",
+      "Round-up giving",
+      "Recurring gifts",
+      "One-time donations",
     ],
   },
   {
@@ -699,14 +698,14 @@ const defaultBlogPosts: BlogPost[] = [
   },
   {
     id: 3n,
-    slug: "xtra-points-promotion-engine",
-    title: 'The Future of Incentives: Introducing the "Xtra Points" Promotion Engine.',
-    excerpt: "A powerful engine supporting product bundles, coupon codes, and centralized performance dashboards.",
-    content: "Our newly refined incentives shape, Xtra Points, provides a centralized hub to track loyalty points, custom bonuses, and product vouchers. Its robust transaction ledger allows merchants to configure flexible rewards programs without affecting core accounting data.",
+    slug: "xtrapoint",
+    title: 'Turn everyday spending into ongoing support with XtraPoint.',
+    excerpt: "XtraPoint brings together round-up giving, recurring gifts, and one-time donations to help schools, teams, and communities grow.",
+    content: "Turn everyday spending into ongoing support. XtraPoint brings together round-up giving, recurring gifts, and one-time donations to help schools, teams, and communities grow. It provides a centralized hub to track giving and helps your community take part.",
     coverImageUrl: "",
     authorName: "Nenad Andrejević",
     publishedAt: "2026-03-10",
-    tags: ["Incentives", "Loyalty", "Software Architecture"],
+    tags: ["Fundraising", "Community", "Donations"],
     published: true,
   },
   {
