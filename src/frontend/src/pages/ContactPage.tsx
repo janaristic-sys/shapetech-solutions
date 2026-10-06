@@ -65,7 +65,7 @@ const OFFICES = [
   {
     city: "Niš, Serbia",
     country: "Serbia",
-    address: "Nikole Pašića 13\n18000 Niš, Serbia",
+    address: "Bogdana Popovića 2\n18000 Niš, Serbia",
     timezone: "CET (UTC+1)",
     tzLabel: "Central European Time",
     flag: "🇷🇸",
