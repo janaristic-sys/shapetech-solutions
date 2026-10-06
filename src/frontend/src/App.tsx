@@ -21,6 +21,7 @@ const PartnersPage = lazy(() => import("@/pages/PartnersPage"));
 const BlogPage = lazy(() => import("@/pages/BlogPage"));
 const ContactPage = lazy(() => import("@/pages/ContactPage"));
 const AdminPage = lazy(() => import("@/pages/AdminPage"));
+const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -208,7 +209,16 @@ const routeTree = rootRoute.addChildren([
   adminRoute,
 ]);
 
-const router = createRouter({ routeTree });
+const router = createRouter({
+  routeTree,
+  defaultNotFoundComponent: () => (
+    <Layout>
+      <Suspense fallback={<PageFallback />}>
+        <NotFoundPage />
+      </Suspense>
+    </Layout>
+  ),
+});
 
 declare module "@tanstack/react-router" {
   interface Register {
