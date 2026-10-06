@@ -7,7 +7,7 @@ interface SEOProps {
   ogType?: "website" | "article";
 }
 
-export function SEO({ title, description, ogImage = "/assets/logos/shapetech.png", ogType = "website" }: SEOProps) {
+export function SEO({ title, description, ogImage = "/assets/logo.png", ogType = "website" }: SEOProps) {
   useEffect(() => {
     // Update Title
     document.title = `${title} | Shapetech Solutions`;
