@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { SEO } from "@/components/SEO";
 import { useSubmitContact } from "@/hooks/use-backend";
 import {
   Award,
@@ -243,6 +244,10 @@ export default function ContactPage() {
 
   return (
     <div data-ocid="contact.page">
+      <SEO 
+        title="Contact Us" 
+        description="Ready to shape your technology future? Get in touch with our team of direct selling platform experts and custom development specialists."
+      />
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden pt-16 pb-28 md:pt-32 md:pb-52"

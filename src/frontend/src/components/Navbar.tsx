@@ -118,7 +118,7 @@ export function Navbar() {
             data-ocid="nav.logo_link"
           >
             <img
-              src="/assets/logo.png"
+              src="/assets/logo-latest.png"
               alt="Shapetech Solutions"
               className="h-12 w-auto object-contain transition-all duration-300 group-hover:opacity-90 group-hover:scale-[1.02]"
             />
@@ -319,7 +319,7 @@ export function Navbar() {
             aria-label="Shapetech Solutions — home"
           >
             <img
-              src="/assets/logo.png"
+              src="/assets/logo-latest.png"
               alt="Shapetech Solutions"
               className="h-10 w-auto object-contain"
             />
