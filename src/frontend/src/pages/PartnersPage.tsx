@@ -3,6 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useClients, usePartners } from "@/hooks/use-backend";
 import type { Partner } from "@/types";
 import { Link } from "@tanstack/react-router";
+import { SEO } from "@/components/SEO";
 import {
   ArrowRight,
   Award,
@@ -304,6 +305,7 @@ export default function PartnersPage() {
 
   return (
     <div data-ocid="partners.page">
+      <SEO title="Technology Partners" description="We partner with industry leaders like Shopify and HubSpot to build seamless shopping experiences." />
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden pt-16 pb-28 md:pt-32 md:pb-40"

@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, ChevronRight, Puzzle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { useShapes, useSolutionsByShape } from "@/hooks/use-backend";
 import {
   Compass,
@@ -56,6 +57,7 @@ export default function ShapeDetailPage() {
 
   return (
     <div data-ocid="shape_detail.page">
+      <SEO title={title} description={description} />
       {/* ── Hero Section ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-card pt-24 md:pt-32 pb-16 md:pb-24 min-h-[70vh] flex flex-col justify-center">
         {/* Abstract 3D Render Image Background */}
@@ -63,7 +65,7 @@ export default function ShapeDetailPage() {
           <div className="absolute inset-0 bg-card/70 backdrop-blur-sm z-10" />
           <img 
             src="/images/shape_abstract.png" 
-            alt="" 
+            alt="Abstract shape representation" 
             className="w-full h-full object-cover object-center opacity-40 mix-blend-screen"
             aria-hidden="true"
           />

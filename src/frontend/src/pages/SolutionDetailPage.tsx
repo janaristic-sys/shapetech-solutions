@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, ChevronRight, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { useSolutions, useShapesBySolution } from "@/hooks/use-backend";
 import {
   Network,
@@ -60,6 +61,7 @@ export default function SolutionDetailPage() {
 
   return (
     <div data-ocid="solution_detail.page">
+      <SEO title={title} description={description} />
       {/* ── Hero Section ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-card pt-24 md:pt-32 pb-16 md:pb-24 min-h-[70vh] flex flex-col justify-center">
         {/* Organic animated blobs (keeping subtle ambient glow) */}

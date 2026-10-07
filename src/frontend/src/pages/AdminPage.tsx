@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Delete, LayoutDashboard, LogOut, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { SEO } from "@/components/SEO";
 
 import AdminAboutTab from "@/components/admin/AdminAboutTab";
 import AdminBlogTab from "@/components/admin/AdminBlogTab";
@@ -70,9 +71,10 @@ function PinLogin({ onSuccess }: { onSuccess: () => void }) {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-background"
+      className="min-h-[100dvh] flex items-center justify-center bg-background"
       data-ocid="admin.login_section"
     >
+      <SEO title="Admin Login" description="ShapeTech Solutions administration portal login." />
       <div className="w-full max-w-xs flex flex-col items-center gap-8 px-4">
         {/* Logo */}
         <img
@@ -182,9 +184,10 @@ export default function AdminPage() {
 
   return (
     <div
-      className="flex h-screen overflow-hidden bg-background"
+      className="flex h-[100dvh] overflow-hidden bg-background"
       data-ocid="admin.page"
     >
+      <SEO title="Admin Dashboard" description="ShapeTech Solutions administration portal." />
       {/* Sidebar — desktop */}
       <aside className="hidden lg:flex flex-col w-64 bg-card border-r border-border flex-shrink-0">
         {/* Sidebar header */}

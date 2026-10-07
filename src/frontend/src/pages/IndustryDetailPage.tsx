@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { useIndustries, useSolutionsByIndustry } from "@/hooks/use-backend";
 import {
   Network,
@@ -52,6 +53,7 @@ export default function IndustryDetailPage() {
 
   return (
     <div data-ocid="industry_detail.page">
+      <SEO title={title} description={description} />
       {/* ── Hero Section ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-card pt-24 md:pt-32 pb-16 md:pb-24 min-h-[70vh] flex flex-col justify-center">
         {/* Abstract 3D Render Image Background */}
@@ -59,7 +61,7 @@ export default function IndustryDetailPage() {
           <div className="absolute inset-0 bg-card/70 backdrop-blur-sm z-10" />
           <img 
             src="/images/industry_abstract.png" 
-            alt="" 
+            alt="Abstract industry representation" 
             className="w-full h-full object-cover object-center opacity-40 mix-blend-screen"
             aria-hidden="true"
           />

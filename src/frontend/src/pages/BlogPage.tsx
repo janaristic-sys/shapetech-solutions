@@ -3,10 +3,12 @@ import { Link } from "@tanstack/react-router";
 import { BookOpen, Tag } from "lucide-react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
+import { SEO } from "@/components/SEO";
 
 export default function BlogPage() {
   return (
     <div data-ocid="blog.page">
+      <SEO title="Insights & Articles" description="E-Commerce engineering insights, product launches, and implementation deep-dives from the Shapetech Solutions team." />
       {/* ── Hero ── */}
       <section
         className="relative overflow-hidden pt-16 pb-28 md:pt-32 md:pb-40"
